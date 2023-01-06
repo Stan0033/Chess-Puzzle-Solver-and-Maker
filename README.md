@@ -2,7 +2,8 @@
 
 Solve and Create chess puzzles!
 
-With this app you can solve create puzzles and puzzle rushes! You can also change the colors of the board based on your preference and some other settings. Nice and simple app. Developed and maintained by StanislavVladev from Stara Zagora, Bulgaria.
+With this app you can solve create puzzles and puzzle rushes! You can also change the colors of the board based on your preference and some other settings. Nice and simple app. 
+Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 
 WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this project as your own.
 
