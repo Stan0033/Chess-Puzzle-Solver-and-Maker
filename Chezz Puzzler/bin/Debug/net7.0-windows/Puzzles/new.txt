@@ -1,0 +1,4 @@
+<No description.>
+[rnbqkbnrpppppppp--------------------------------PPPPPPPPRNBQKBNR][d2xd4][No hints][ ][ ][White to move][ ]
+[rnbqkbnrpppppppp-------------------P------------PPP-PPPPRNBQKBNR][d7xd5][No hints][ ][ ][Black to move][ ]
+[rnbqkbnrppp-pppp-----------p-------P------------PPP-PPPPRNBQKBNR][c2xc4][No hints][ ][ ][White to move][ ]
