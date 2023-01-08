@@ -12,3 +12,10 @@ IMAGES:
 https://ibb.co/BqShkqT https://ibb.co/XCvyp8Y
 
 You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/]
+
+SOCIAL LINKS:
+
+https://www.facebook.com/stnXX/
+https://www.twitch.tv/stan0033x
+Discord: stan0033 #4385
+
