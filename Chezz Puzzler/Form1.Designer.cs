@@ -2591,9 +2591,8 @@
             this.label_toMove2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_toMove2.Location = new System.Drawing.Point(547, 355);
             this.label_toMove2.Name = "label_toMove2";
-            this.label_toMove2.Size = new System.Drawing.Size(14, 21);
+            this.label_toMove2.Size = new System.Drawing.Size(0, 21);
             this.label_toMove2.TabIndex = 86;
-            this.label_toMove2.Text = " ";
             this.label_toMove2.ToMove = "None";
             // 
             // Form_base
@@ -2651,7 +2650,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.6";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.7";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

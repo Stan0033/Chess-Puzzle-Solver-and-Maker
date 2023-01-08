@@ -133,9 +133,10 @@ Added a button "Reverse ranks"
 - Fixed the recently created bug where right-click will also move a piece in the composer board
 - Now you cannot change the puzzle response time below 100 or over 10000 nor from the setting nor by editing settings.txt
 - Now the button "create puzzle rush" will only be enabled if  "I am making a puzzle rush" is checked
-
-
-
+-----------------------
+1.7.7
+-----------------------
+- Now when you move a piece, the cursor will change accordingly on the target square
 
 
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fj4vi7ncXZtEMqcejjc4R+eOiObR8wT/SvnpnJoafyEhgWpHpBRGVPvmSX+zw8SUIyeY9oqzLp+uG0e8lQP96A==",
+  "dgSpecHash": "MtwbeoAfJvh9oGtP6AgjQadK/UmtGUJhWcIcirBwGNAeLQqr/MRwQ7upzXHE9GML/5WOW+dkw41g2VZauPBjcw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzler--Solve-And-Create-Puzzles\\Chezz Puzzler\\Chezz Puzzler.csproj",
+  "projectFilePath": "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

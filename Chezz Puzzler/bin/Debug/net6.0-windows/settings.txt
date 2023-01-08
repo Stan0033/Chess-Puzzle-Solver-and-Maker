@@ -1,11 +1,11 @@
 ColorWhite=245,245,245
 ColorBlack=211,211,211
-SelectedSquareColor=173,216,230
+SelectedSquareColor=0,128,255
 LastMoveHightlightedSquaresColor=223,228,235
 HoverSquareColor=224,255,255
 MarkColor_Normal=255,0,0
 MarkColor_Ctrl=255,165,0
-MarkColor_Alt=0,0,255
+MarkColor_Alt=255,165,0
 MarkColor_Shift=144,238,144
 AutoCountdown=0
 HotkeysOn=True

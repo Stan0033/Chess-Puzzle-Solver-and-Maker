@@ -364,261 +364,7 @@ namespace Chezz_Puzzler
              * if it is and the end of the puzzle when hitting the button, restart the puzzle and restart the autoplay
              */
         }
-        public class ChessButton : Button
-        {
-            public ChessButton()
-            {
-                pieceName = "-";
-                squareName = "-";
-                belongsToLastMove = false;
-                isHovered = false;
-                isSelected = false;
-                belongsToLastMove = false;
-                color_select = Color.LightBlue;
-                color_hover = Color.LightCyan;
-                Color_BelongsToLastMove = Color.LightYellow;
-                WaitingPaste = false;
-                isMarked = false;
-                CanInteract = true;
-                markColor = Color.Empty;
-            }
-            public Panel belongsToWhichPanel;
-            //----------------------------------------------------------
-            private string pieceName;
-            private string squareName;
-            private string squareColorAsChar;
-            //----------------------------------------------------------
-            private bool isHovered;
-            private bool belongsToLastMove;
-            private bool isSelected;
-            private bool isWhiteSquare;
-            private bool waitingPaste;
-            public bool CanInteract;
-            private string PlayertoMove;
-            public bool SolverIsMoving;
-            private bool isMarked;
-            //----------------------------------------------------------
-            private Color CurrentColor_White;
-            private Color CurrentColor_Black;
-            private Color defaultBackColor;
-            private Color color_select;
-            private Color color_hover;
-            private Color color_BelongsToLastMove;
-            private Color markColor;
-            public string ToMove { get => PlayertoMove; set => PlayertoMove = value; }
-            public bool WaitingPaste
-            {
-                get => waitingPaste;
-                set
-                {
-                    waitingPaste = value;
-                    if (value == false)
-                    {
-                        if (BackgroundImage != null)
-                        {
-                            Cursor = Cursors.Arrow;
-                        }
-                        else
-                        {
-                            Cursor = Cursors.Hand;
-                        }
-                    }
-                }
-            }
-            // we have select color, hover color, last move color, and the default square color
-            public bool IsWhiteSquare
-            {
-                get => isWhiteSquare;
-                set => isWhiteSquare = value;
-            }
-            public void Mark(Color newColor)
-            {
-                if (isMarked)
-                {
-                    if (markColor == newColor) // if the same color is given, demark
-                    {
-                        isMarked=false;
-                        SetDefaultBackColor();
-                    }
-                    else
-                    {
-                        BackColor = newColor;
-                        markColor = newColor;
-                    }
-                }
-                else
-                {
-                    IsMarked = true;
-                    BackColor = newColor;
-                    markColor = newColor;
-                }
-            }
-            public bool IsMarked { get => isMarked; set { isMarked = value; if (value == false) { SetDefaultBackColor(); } } }
-            public string PieceName { get => pieceName; set => pieceName = value; }
-            public string SquareName { get => squareName; set => squareName = value; }
-            public string SquareColor { get => squareColorAsChar; set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
-            public Color defaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
-            public Color defaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
-            public Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }
-            public void SetDefaultBackColor()
-            {
-                if (!belongsToLastMove && !isSelected )
-                {
-                    BackColor = DefaultBackColor;
-                    return;
-                }
-                if (isSelected) { BackColor = color_select; return; }
-                if (belongsToLastMove) { BackColor = color_BelongsToLastMove; return; }
-            }
-            //---------------------------------------------------------------------
-            public bool IsHovered
-            {
-                // if you hover a piece that is the opposite color, while movingn, it will be cross
-                get => IsHovered; set
-                {
-                    isHovered = value;
-                    if (CanInteract == false)
-                    {
-                        Cursor = Cursors.No;
-                    }
-                    else
-                    {
-                        if (value == true && BackgroundImage != null)  // if hovered and has an image
-                        {
-                            if (PlayertoMove == "White to move") // if white is to move 
-                            {
-                                if (char.IsUpper(pieceName[0])) // if this piece is white
-                                {
-                                    // if sover is moving and he hovers the selected square get hand
-                                    // else get NO
-                                    // if hovers on opposite color OR EMPTY have CROSS
-                                    if (waitingPaste)
-                                    {
-                                        if (isSelected)
-                                        {
-                                            Cursor = Cursors.Hand;
-                                        }
-                                        else
-                                        {
-                                            Cursor = Cursors.No;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.Hand;
-                                    }
-                                }
-                                if (PlayertoMove == "Black to move")
-                                {
-                                    if (waitingPaste)
-                                    {
-                                        Cursor = Cursors.Cross;
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.No;
-                                    }
-                                }
-                            }
-                            else if (PlayertoMove == "Black to move") // if black is the move
-                            {
-                                if (char.IsLower(pieceName[0])) // if this piece is black
-                                {
-                                    if (waitingPaste)
-                                    {
-                                        if (isSelected)
-                                        {
-                                            Cursor = Cursors.Hand;
-                                        }
-                                        else
-                                        {
-                                            Cursor = Cursors.No;
-                                        }
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.Hand;
-                                    }
-                                }
-                                else
-                                {
-                                    if (waitingPaste)
-                                    {
-                                        Cursor = Cursors.Cross;
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.No;
-                                    }
-                                }
-                            }
-                            else if (PlayertoMove == "Any")
-                            {
-                                if (waitingPaste)
-                                {
-                                    if (isSelected)
-                                    {
-                                        Cursor = Cursors.Hand;
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.No;
-                                    }
-                                }
-                                else
-                                {
-                                    Cursor = Cursors.Hand;
-                                }
-                            }
-                            else
-                            {
-                                if (waitingPaste)
-                                {
-                                    if (isSelected)
-                                    {
-                                        Cursor = Cursors.Hand;
-                                    }
-                                    else
-                                    {
-                                        Cursor = Cursors.No;
-                                    }
-                                }
-                                else
-                                {
-                                    Cursor = Cursors.Hand;
-                                }
-                            }
-                        }
-                        else // if not hovered
-                        {
-                            if (waitingPaste)
-                            {
-                                Cursor = Cursors.Cross;
-                            }
-                            else
-                            {
-                                Cursor = Cursors.Arrow;
-                            }
-                        }
-                        if (value == true) { BackColor = color_hover; } else { if (!isMarked) { SetDefaultBackColor(); } else { BackColor = markColor; } }
-                    }
-                }
-            }
-            public bool IsSelected { get => isSelected; set { isSelected = value; if (value == true) { BackColor = color_select; } else { SetDefaultBackColor(); } } }
-            public bool BelongsToLastMove { get => belongsToLastMove; set { belongsToLastMove = value; if (value == true) { this.BackColor = color_BelongsToLastMove; } else { SetDefaultBackColor(); } } }
-            public Color Color_Select { get => color_select; set => color_select = value; }
-            public Color Color_Hover { get => color_hover; set => color_hover = value; }
-            public Color Color_BelongsToLastMove { get => color_BelongsToLastMove; set => color_BelongsToLastMove = value; }
-            public void SetColors(Color SelectColor, Color Hover, Color BlackColor, Color WhiteColor, Color lastSquares)
-            {
-                Color_Select = SelectColor;
-                Color_Hover = Hover;
-                defaultColors_Black = BlackColor;
-                defaultColors_White = WhiteColor;
-                color_BelongsToLastMove = lastSquares;
-                SetDefaultBackColor();
-            }
-        }
+        
         public void SetColorsOfAllButtons()
         {
             for (int i = 0; i < 8; i++)
@@ -1008,10 +754,7 @@ namespace Chezz_Puzzler
         {
             ChessButton ourB = (ChessButton)sender;
             ourB.IsHovered = false;
-            if (ourB.belongsToWhichPanel == panel_composer)
-            {
-                label_square_displayer.Text = "";
-            }
+            if (ourB.belongsToWhichPanel == panel_composer) {  label_square_displayer.Text = "";  }
         }
         public void LoadSettings()
         {
@@ -1056,41 +799,7 @@ namespace Chezz_Puzzler
             //--------------------------------------------------
             Point BoardPoint = new Point(panel_solver.Location.X, panel_solver.Location.Y);
             panel_composer.Location = BoardPoint;
-            //--------------------------------------------------
-            // PRODUCE ALL BOARDS WITH TOP-TO-BOTTOM RANNK-BY-RANK 
-            //--------------------------------------------------
-            /* string[] letters = { "a", "b", "c", "d", "e", "f", "g", "h" };
-             int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8 };
-             letters = letters.Reverse().ToArray();
-             int[] posX = new int[8];
-             int[] posY = new int[8];
-             posX[0] = 0;
-             posY[0] = 0;
-             for (int i = 1; i < 8; i++) { posX[i] = posX[i - 1] + sizeOfSquare; posY[i] = posY[i - 1] + sizeOfSquare; }
-             List<int[]> Coordinates = new List<int[]>();
-             for (int i = 0; i < 8; i++) { for (int x = 0; x < 8; x++) { int[] coords = { posX[i], posY[x] }; Coordinates.Add(coords); } }
-             List<string> LettersNumbers = new List<string>();
-             for (int i = 0; i < 8; i++)
-             {
-                 for (int x = 0; x < 8; x++)
-                 {
-                     LettersNumbers.Add($"{letters[i]}{numbers[x]}");
-                 }
-             }
-             LettersNumbers.Reverse();
-             Dictionary<int, string> SquareNamesSquared8 = new Dictionary<int, string>();
-             for (int square = 0; square < 64; square++)
-             {
-                 Color c = colors[square];
-                 string name = LettersNumbers[square] + "|-";
-                 CreateButton(name, Coordinates[square], c, panel_solver);
-             }
-             for (int square = 0; square < 64; square++)
-             {
-                 Color c = colors[square];
-                 string name = LettersNumbers[square] + "|-";
-                 CreateButton(name, Coordinates[square], c, panel_composer);
-             }*/
+            
             //--------------------------------------------------
             // PRODUCE ALL BOARDS WITH TOP-TO-BOTTOM FILE-BY-FILE 
             //--------------------------------------------------
@@ -1652,6 +1361,7 @@ namespace Chezz_Puzzler
                         string sqname1 = SelectedSquare_Start.SquareName;
                         string sqname2 = SelectedSquare_End.SquareName;
                         ProposedSolution = sqname1 + "x" + sqname2;
+                       
                         //----------------------------------------------------------------------
                         // if starting square's color is the ending square's color (the same!), deselect the square
                         //----------------------------------------------------------------------
@@ -1676,6 +1386,7 @@ namespace Chezz_Puzzler
                                     label_chapterCounter.Text = "Solved!";
                                     button_reset_puzzle.Visible = CurrentlySolvingAPuzzleRush ? false : true;
                                     TransitionToPositionFromGivenActionSquareXSquare(CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep - 1], panel_solver);
+                                   
                                     label_move_right.Text = CurrentPuzzle_rightAnswers[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_event.Text = CurrentEvents[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_move_wrong.Text = string.Empty;
@@ -1735,6 +1446,7 @@ namespace Chezz_Puzzler
                                                 label_toMove2.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; setToMoveInButtons(label_toMove2.Text);
                                             }
                                         }
+
                                     }
                                     //------------------------------------------------------------------------------------------------------------------
                                     //------------------------------------------------------------------------------------------------------------------
@@ -1742,6 +1454,7 @@ namespace Chezz_Puzzler
                                     {
                                         label_toMove2.Text = "";
                                     }
+                                    
                                 }
                                 else // if the  the answer is correct
                                 {
@@ -1766,6 +1479,7 @@ namespace Chezz_Puzzler
                                 if (AllPuzzles_of_PuzzleRush.Count > 0) ChangeColorForTargetPuzzleRush_InList(CurrentlySolvedPuzzleNumber, Color.Red);
                             }
                             ProposedSolution = string.Empty;
+                            SelectedSquare_End.IsHovered = true;
                         }
                     }
                 }
@@ -1933,6 +1647,7 @@ namespace Chezz_Puzzler
                     TargetButton.PieceName = previousButtonName;
                     LastSelectedToMoveComposerSquare = null;
                     Composer_Mode_Select = true;
+                    TargetButton.IsHovered = true;
                 }
             }
         }
@@ -3449,6 +3164,184 @@ namespace Chezz_Puzzler
         private void checkBox_Making_PR_CheckedChanged(object sender, EventArgs e)
         {
             button_generate_PR.Enabled = checkBox_Making_PR.Checked;
+        }
+    }
+    public class ChessButton : Button
+    {
+        public ChessButton()
+        {
+            pieceName = "-";
+            squareName = "-";
+            belongsToLastMove = false;
+            isHovered = false;
+            isSelected = false;
+            belongsToLastMove = false;
+            color_select = Color.LightBlue;
+            color_hover = Color.LightCyan;
+            Color_BelongsToLastMove = Color.LightYellow;
+            WaitingPaste = false;
+            isMarked = false;
+            CanInteract = true;
+            markColor = Color.Empty;
+        }
+        public Panel belongsToWhichPanel;
+        //----------------------------------------------------------
+        private string pieceName;
+        private string squareName;
+        private string squareColorAsChar;
+        //----------------------------------------------------------
+        private bool isHovered;
+        private bool belongsToLastMove;
+        private bool isSelected;
+        private bool isWhiteSquare;
+        private bool waitingPaste;
+        public bool CanInteract;
+        private string PlayertoMove;
+        public bool SolverIsMoving;
+        private bool isMarked;
+        //----------------------------------------------------------
+        private Color CurrentColor_White;
+        private Color CurrentColor_Black;
+        private Color defaultBackColor;
+        private Color color_select;
+        private Color color_hover;
+        private Color color_BelongsToLastMove;
+        private Color markColor;
+        public string ToMove { get => PlayertoMove; set => PlayertoMove = value; }
+        public bool WaitingPaste
+        {
+            get => waitingPaste;
+            set=>  waitingPaste=value;
+             
+        }
+        // we have select color, hover color, last move color, and the default square color
+        public bool IsWhiteSquare
+        {
+            get => isWhiteSquare;
+            set => isWhiteSquare = value;
+        }
+        public void Mark(Color newColor)
+        {
+            if (isMarked)
+            {
+                if (markColor == newColor) // if the same color is given, demark
+                {
+                    isMarked = false;
+                    SetDefaultBackColor();
+                }
+                else
+                {
+                    BackColor = newColor;
+                    markColor = newColor;
+                }
+            }
+            else
+            {
+                IsMarked = true;
+                BackColor = newColor;
+                markColor = newColor;
+            }
+        }
+        public bool IsMarked { get => isMarked; set { isMarked = value; if (value == false) { SetDefaultBackColor(); } } }
+        public string PieceName { get => pieceName; set => pieceName = value; }
+        public string SquareName { get => squareName; set => squareName = value; }
+        public string SquareColor { get => squareColorAsChar; set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
+        public Color defaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
+        public Color defaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
+        public Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }
+        public void SetDefaultBackColor()
+        {
+            if (!belongsToLastMove && !isSelected)
+            {
+                BackColor = DefaultBackColor;
+                return;
+            }
+            if (isSelected) { BackColor = color_select; return; }
+            if (belongsToLastMove) { BackColor = color_BelongsToLastMove; return; }
+        }
+        //---------------------------------------------------------------------
+        public bool IsHovered
+        {
+             
+            get => IsHovered; 
+            set
+            {
+                isHovered = value;
+              
+                if (CanInteract == false)
+                {
+                    Cursor = Cursors.No;
+                }
+                else
+                {
+                    if (value) { BackColor = color_hover; } else { if (isMarked) { BackColor = markColor;  } else { SetDefaultBackColor(); } }
+                    bool ThisPieceIs_White = char.IsUpper(pieceName[0]);
+                    bool ThisPieceIs_Black = char.IsLower(pieceName[0]);
+                    bool izHovered = value;
+                    bool thisSquareHasImage = BackgroundImage == null ? false : true;
+                    bool thisSquareHasNOImage = BackgroundImage == null ? true : false;
+                   
+                     if (izHovered && waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Cross; return; } 
+                    if (izHovered && !waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Arrow; return; }
+
+                    //-----------------------------------------------------
+                    // if hovered
+                    //-----------------------------------------------------
+                    if (izHovered && thisSquareHasImage)  // if hovered and has an image
+                    {
+                        if (PlayertoMove == "White to move") // if white is to move 
+                        {
+                            // if targeted a white piece
+                            if (ThisPieceIs_White && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
+                            if (ThisPieceIs_White && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
+                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.Hand; return; }
+                            // if targeted a black piece
+                            if (ThisPieceIs_Black && waitingPaste) { Cursor = Cursors.Cross; return; }
+                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.No; return; }
+
+                        }
+                        else if (PlayertoMove == "Black to move") // if black is the move
+                        {
+                            // if targeted a black piece
+                            if (ThisPieceIs_Black && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
+                            if (ThisPieceIs_Black && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
+                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.Hand; return; }
+                            // if targeted a white piece
+                            if (ThisPieceIs_White && waitingPaste) { Cursor = Cursors.Cross; return; }
+                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.No; return; }
+                        }
+                        else if (PlayertoMove == "Any")
+                        {
+                            if (waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
+                            if (waitingPaste && !isSelected) { Cursor = Cursors.No; return; }
+                            if (!waitingPaste) { Cursor = Cursors.Hand; }
+
+                        }
+                        else
+                        {
+                            if (waitingPaste && IsSelected) { Cursor = Cursors.Hand; return; }
+                            if (waitingPaste && !IsSelected) { Cursor = Cursors.No; return; }
+                            if (!waitingPaste) { Cursor = Cursors.Hand; return; }
+
+                        }
+                    }
+
+                }
+            }
+        }
+        public bool IsSelected { get => isSelected; set { isSelected = value; if (value == true) { BackColor = color_select; } else { SetDefaultBackColor(); } } }
+        public bool BelongsToLastMove { get => belongsToLastMove; set { belongsToLastMove = value; if (value == true) { this.BackColor = color_BelongsToLastMove; } else { SetDefaultBackColor(); } } }
+        public Color Color_Select { get => color_select; set => color_select = value; }
+        public Color Color_Hover { get => color_hover; set => color_hover = value; }
+        public Color Color_BelongsToLastMove { get => color_BelongsToLastMove; set => color_BelongsToLastMove = value; }
+        public void SetColors(Color SelectColor, Color Hover, Color BlackColor, Color WhiteColor, Color lastSquares)
+        {
+            Color_Select = SelectColor;
+            Color_Hover = Hover;
+            defaultColors_Black = BlackColor;
+            defaultColors_White = WhiteColor;
+            color_BelongsToLastMove = lastSquares;
+            SetDefaultBackColor();
         }
     }
     public class ToMoveIndicatorLabel : Label
