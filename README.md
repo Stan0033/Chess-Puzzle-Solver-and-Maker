@@ -11,4 +11,4 @@ IMAGES:
 
 https://ibb.co/BqShkqT https://ibb.co/XCvyp8Y
 
-You can start the app from [Chezz Puzzler/bin/Debug/net7.0-windows/]
+You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/]
