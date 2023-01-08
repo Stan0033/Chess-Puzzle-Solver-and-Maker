@@ -22,3 +22,4 @@ C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puz
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.pdb
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.genruntimeconfig.cache
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\ref\Chezz Puzzler.dll
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMPLauncher.dll
