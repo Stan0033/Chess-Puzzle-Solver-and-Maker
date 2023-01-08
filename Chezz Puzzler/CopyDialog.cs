@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 namespace Chezz_Puzzler
 {
     public partial class CopyDialog : Form
@@ -16,7 +15,6 @@ namespace Chezz_Puzzler
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(textBox1.Text);

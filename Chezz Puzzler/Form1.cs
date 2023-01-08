@@ -364,7 +364,6 @@ namespace Chezz_Puzzler
              * if it is and the end of the puzzle when hitting the button, restart the puzzle and restart the autoplay
              */
         }
-        
         public void SetColorsOfAllButtons()
         {
             for (int i = 0; i < 8; i++)
@@ -799,7 +798,6 @@ namespace Chezz_Puzzler
             //--------------------------------------------------
             Point BoardPoint = new Point(panel_solver.Location.X, panel_solver.Location.Y);
             panel_composer.Location = BoardPoint;
-            
             //--------------------------------------------------
             // PRODUCE ALL BOARDS WITH TOP-TO-BOTTOM FILE-BY-FILE 
             //--------------------------------------------------
@@ -1361,7 +1359,6 @@ namespace Chezz_Puzzler
                         string sqname1 = SelectedSquare_Start.SquareName;
                         string sqname2 = SelectedSquare_End.SquareName;
                         ProposedSolution = sqname1 + "x" + sqname2;
-                       
                         //----------------------------------------------------------------------
                         // if starting square's color is the ending square's color (the same!), deselect the square
                         //----------------------------------------------------------------------
@@ -1386,7 +1383,6 @@ namespace Chezz_Puzzler
                                     label_chapterCounter.Text = "Solved!";
                                     button_reset_puzzle.Visible = CurrentlySolvingAPuzzleRush ? false : true;
                                     TransitionToPositionFromGivenActionSquareXSquare(CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep - 1], panel_solver);
-                                   
                                     label_move_right.Text = CurrentPuzzle_rightAnswers[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_event.Text = CurrentEvents[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_move_wrong.Text = string.Empty;
@@ -1446,7 +1442,6 @@ namespace Chezz_Puzzler
                                                 label_toMove2.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; setToMoveInButtons(label_toMove2.Text);
                                             }
                                         }
-
                                     }
                                     //------------------------------------------------------------------------------------------------------------------
                                     //------------------------------------------------------------------------------------------------------------------
@@ -1454,7 +1449,6 @@ namespace Chezz_Puzzler
                                     {
                                         label_toMove2.Text = "";
                                     }
-                                    
                                 }
                                 else // if the  the answer is correct
                                 {
@@ -2034,7 +2028,6 @@ namespace Chezz_Puzzler
             bool allCharactersInStringAreDigits = code.Any(char.IsDigit);
             if (allCharactersInStringAreDigits) { MessageBox.Show("Invalid SCN"); return; }
             RecreatePuzzleFromSCN(code, panel_composer);
-         
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -3137,10 +3130,8 @@ namespace Chezz_Puzzler
             }
             else
             {
-               
                 if (Autoplay_Timer.Enabled == false)
                 {
-                   
                         CurrentlySolvedPuzzleChapterStep = 0;
                         RecreatePuzzleFromSCN(CurrentPuzzle_Solutions[0], panel_solver);
                         for (int i = 0; i < 8; i++)
@@ -3151,16 +3142,13 @@ namespace Chezz_Puzzler
                             }
                         }
                         Autoplay_Timer.Start();
-                   
                 }
             }
         }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
             MessageBox.Show($"pixel size of square: {Board_Solver[0][0].Width}px");
         }
-
         private void checkBox_Making_PR_CheckedChanged(object sender, EventArgs e)
         {
             button_generate_PR.Enabled = checkBox_Making_PR.Checked;
@@ -3212,7 +3200,6 @@ namespace Chezz_Puzzler
         {
             get => waitingPaste;
             set=>  waitingPaste=value;
-             
         }
         // we have select color, hover color, last move color, and the default square color
         public bool IsWhiteSquare
@@ -3262,12 +3249,10 @@ namespace Chezz_Puzzler
         //---------------------------------------------------------------------
         public bool IsHovered
         {
-             
             get => IsHovered; 
             set
             {
                 isHovered = value;
-              
                 if (CanInteract == false)
                 {
                     Cursor = Cursors.No;
@@ -3280,10 +3265,8 @@ namespace Chezz_Puzzler
                     bool izHovered = value;
                     bool thisSquareHasImage = BackgroundImage == null ? false : true;
                     bool thisSquareHasNOImage = BackgroundImage == null ? true : false;
-                   
                      if (izHovered && waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Cross; return; } 
                     if (izHovered && !waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Arrow; return; }
-
                     //-----------------------------------------------------
                     // if hovered
                     //-----------------------------------------------------
@@ -3298,7 +3281,6 @@ namespace Chezz_Puzzler
                             // if targeted a black piece
                             if (ThisPieceIs_Black && waitingPaste) { Cursor = Cursors.Cross; return; }
                             if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.No; return; }
-
                         }
                         else if (PlayertoMove == "Black to move") // if black is the move
                         {
@@ -3315,17 +3297,14 @@ namespace Chezz_Puzzler
                             if (waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
                             if (waitingPaste && !isSelected) { Cursor = Cursors.No; return; }
                             if (!waitingPaste) { Cursor = Cursors.Hand; }
-
                         }
                         else
                         {
                             if (waitingPaste && IsSelected) { Cursor = Cursors.Hand; return; }
                             if (waitingPaste && !IsSelected) { Cursor = Cursors.No; return; }
                             if (!waitingPaste) { Cursor = Cursors.Hand; return; }
-
                         }
                     }
-
                 }
             }
         }
