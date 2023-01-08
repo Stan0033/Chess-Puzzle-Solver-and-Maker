@@ -2602,9 +2602,9 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 811);
+            this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.label_toMove2);
             this.Controls.Add(this.button_Autoplay);
-            this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.PuzzlesDisplay);
             this.Controls.Add(this.button_gotoNextPuzzle);
             this.Controls.Add(this.label_Action_Response);
@@ -2687,6 +2687,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
         private PictureBox icon_solved;
