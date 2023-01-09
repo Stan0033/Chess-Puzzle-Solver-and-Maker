@@ -20,7 +20,7 @@ namespace Chezz_Puzzler
         string path_sounds;
         string path_tutorials;
         string path_pieces;
-        bool AddedOptionalMove;
+     
         TextBox FocusedTextBox;
         Dictionary<string, ChessButton> squares;
         List<Color> colors;
@@ -173,7 +173,7 @@ namespace Chezz_Puzzler
             ButtonIsPressed_Alt = false;
             TotalPuzzlesSolvedInPuzzleRush = 0;
             CurrentPuzzle_Event = string.Empty;
-            AddedOptionalMove = false;
+            
             LastMovePlayedBeforeThePuzzleStarts = string.Empty;
             AllPuzzles_of_PuzzleRush = new List<List<string>>();
             CurrentlySolvingAPuzzleRush = false;
@@ -869,6 +869,11 @@ namespace Chezz_Puzzler
             if (checkBox_Making_PR.Checked == false) // if not making a puzzle rush
             {
                 //-------------------------------------------------------------------------
+                if (checkBox_LastPlayedOptional.Checked)
+                {
+                    string LastMoveBeforePuzzleStarts = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}";
+                    CurrentPuzzleComposition_List[0][7] = LastMoveBeforePuzzleStarts;
+                }
                 string savePath = $"{path_puzzles}\\{name}.txt";
                 List<string> composedLines = new List<string>();
                 composedLines.Add($"<{description}>");
@@ -887,7 +892,7 @@ namespace Chezz_Puzzler
                 MessageBox.Show($"Generated the puzzle, with {CurrentPuzzleComposition_List.Count} chapter/s, as:\n{savePath}");
                 ClearTextBoxes(textBox_name, textBox_hint, textbox_Wrong, textBox_Right, textBox_event, textBox_description);
                 label_Action_Response.Text = "To move: player";
-                AddedOptionalMove = false;
+               
                 //-------------------------------------------------------------------------
             }
             else // if making a puzzle rush - add to puzzle rush collection
@@ -901,7 +906,7 @@ namespace Chezz_Puzzler
                 PlaySoundFile("create_puzzle.wav");
                 ClearTextBoxes(textBox_hint, textbox_Wrong, textBox_Right, textBox_event, textBox_description);
                 MessageBox.Show("Added the puzzle to the puzzle rush composition.");
-                AddedOptionalMove = false;
+                 
             }
             listbox_Puzzle_Fragments.Items.Clear();
             CurrentPuzzleComposition_List.Clear();
@@ -988,7 +993,7 @@ namespace Chezz_Puzzler
         public void AddArrangedChapter()
         {
             string Proposed_solution = $"{c_letter1.Text}{c_number1.Text}x{c_letter2.Text}{c_number2.Text}";
-            string lastM = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}";
+            
             //---------------------------------------------------------------------------------------------------------------------------
             if ($"{c_letter1.Text}{c_number1.Text}" == $"{c_letter2.Text}{c_number2.Text}") { MessageBox.Show("The starting square and the ending square cannot be the same."); return; }
             //---------------------------------------------------------------------------------------------------------------------------
@@ -1008,25 +1013,12 @@ namespace Chezz_Puzzler
             //---------------------------------------------------------------------------------------------------------------------------
             //---------------------------------------------------------------------------------------------------------------------------
             if (PuzzleRushPuzzles_Composed.Count < CurrentlyEditedPuzzleNumber) { PuzzleRushPuzzles_Composed.Add(new List<string[]>()); }
-            if (listbox_Puzzle_Fragments.Items.Count == 0)
-            {
-                if (checkBox_LastPlayedOptional.Checked && AddedOptionalMove == false)
-                {
-                    string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_, lastM };
-                    AddedOptionalMove = true;
+             
+                 
+                    string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_, "" };
                     CurrentPuzzleComposition_List.Add(ChapterData);
-                }
-                else
-                {
-                    string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_ };
-                    CurrentPuzzleComposition_List.Add(ChapterData);
-                }
-            }
-            else
-            {
-                string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_ };
-                CurrentPuzzleComposition_List.Add(ChapterData);
-            }
+                 
+            
             Last_move_recorded = Proposed_solution;
             listbox_Puzzle_Fragments.Items.Add(Proposed_solution);
             ClearTextBoxes(textBox_hint, textbox_Wrong, textBox_Right, textBox_event);
@@ -2660,7 +2652,7 @@ namespace Chezz_Puzzler
                         textbox_Wrong.Text = lastChapter[3];
                         textBox_Right.Text = lastChapter[4];
                         textBox_event.Text = lastChapter[6];
-                        if (lastChapter.Length == 8) FillFirstMoveromRawString(lastChapter[7]);
+                        if (CurrentPuzzleComposition_List[0][7].Length == 5) FillFirstMoveromRawString(CurrentPuzzleComposition_List[0][7]);
                         listbox_Puzzle_Fragments.SelectedIndex = listbox_Puzzle_Fragments.Items.Count - 1;
                     }
                     tabControl1.SelectedIndex = 1; // swutch to tab
@@ -2705,7 +2697,7 @@ namespace Chezz_Puzzler
             textbox_Wrong.Text = chapterData[3];
             textBox_Right.Text = chapterData[4];
             textBox_event.Text = chapterData[6];
-            if (chapterData.Length == 8) FillFirstMoveromRawString(chapterData[7]);
+            if (chapterData[7].Length == 5) FillFirstMoveromRawString(chapterData[7]);
         }
         private void ChangeChhapterWithCurrenctComposition_click(object sender, EventArgs e)
         {
@@ -2715,7 +2707,7 @@ namespace Chezz_Puzzler
             string startSq = $"{c_letter1.Text}{c_number1.Text}";
             char strtSqPieceLetter = SquaresButtonsOfCompositor[startSq].PieceName.ToCharArray()[0];
             string solution = $"{c_letter1.Text}{c_number1.Text}x{c_letter2.Text}{c_number2.Text}";
-            string lastM = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}"; ;
+            string LastMoveBeforePuzzleStarts = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}"; ;
             string position = GeneratePositionAsString(Board_Composer);
             string hint = textBox_hint.Text.Trim() == string.Empty ? "No hints" : textBox_hint.Text;
             string wrong = textbox_Wrong.Text.Trim() == string.Empty ? " " : textbox_Wrong.Text;
@@ -2729,9 +2721,9 @@ namespace Chezz_Puzzler
             ChapterData.Add(right);
             ChapterData.Add(toMove);
             ChapterData.Add(event_);
-            if (checkBox_LastPlayedOptional.Checked && AddedOptionalMove == false)
+            if (checkBox_LastPlayedOptional.Checked  )
             {
-                ChapterData.Add(lastM);
+                ChapterData.Add(LastMoveBeforePuzzleStarts);
             }
             CurrentPuzzleComposition_List[index] = ChapterData.ToArray();
         }
