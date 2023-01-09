@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Media;
 using System.Security.Cryptography.X509Certificates;
@@ -66,6 +67,7 @@ namespace Chezz_Puzzler
         public Color DefaultSquareHoverColor;
         public Color DefaultSquareLastMoveColor;
         public Color DefaultSelectSquareColor;
+        
         //----------------------------------------------------------
         Dictionary<Button, Color> LastHightlightedButtonsAndTheirColors;
         List<Color> DefaultButtonColors;
@@ -92,6 +94,7 @@ namespace Chezz_Puzzler
         int CurrentlySolvedPuzzleChapterStep;
         int Current_Puzzle_In_PR_Index;
         ChessButton Currently_Hovered_Button;
+        
         ChessButton Currently_Selected_Square;
         string Currenctly_Solved_Puzzle_Name;
         List<string> CurrentArrangement_hints;
@@ -127,9 +130,11 @@ namespace Chezz_Puzzler
         bool LastMoveWasDoneByClicks;
         public Form_base()
         {
-             Key_Pressed_Alt=false;
-             Key_Pressed_Ctrl=false;
-             Key_Pressed_Shift=false;
+           
+            Key_Pressed_Alt = false;
+            Key_Pressed_Ctrl = false;
+            Key_Pressed_Shift = false;
+            
             Color_Hightlight_Normal = Color.Red;
             Color_Hightlight_Ctrl = Color.Orange;
             Color_Hightlight_Alt = Color.Blue;
@@ -355,7 +360,7 @@ namespace Chezz_Puzzler
             PieceNameToImagePath.Add('P', "pawn_white.png");
             PieceNameToImagePath.Add('p', "pawn_black.png");
         }
-        public void AutoPlayCurrentGame(object sender, EventArgs e) 
+        public void AutoPlayCurrentGame(object sender, EventArgs e)
         {
             /* when a puzzle is finished stop the timer and hide the button and the icons and the label = ""
              * else
@@ -460,8 +465,8 @@ namespace Chezz_Puzzler
             string SettingsPath = Application.StartupPath + "settings.txt";
             if (File.Exists(SettingsPath))
             {
-               try
-               {
+                try
+                {
                     List<string> lines = File.ReadAllLines(SettingsPath).ToList();
                     foreach (string line in lines)
                     {
@@ -521,7 +526,7 @@ namespace Chezz_Puzzler
                             case "AutoCountdown":
                                 AutoCountdown = int.Parse(value);
                                 TimeSpan t = TimeSpan.FromSeconds(AutoCountdown);
-                                numericUpDown6.Value = t.Hours; 
+                                numericUpDown6.Value = t.Hours;
                                 numericUpDown5.Value = t.Minutes;
                                 numericUpDown4.Value = t.Seconds;
                                 break;
@@ -545,7 +550,7 @@ namespace Chezz_Puzzler
                                 break;
                             case "MarkColor_Ctrl":
                                 tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
-                                Color_Hightlight_Ctrl= tempColor; button_hColor2.BackColor = tempColor;
+                                Color_Hightlight_Ctrl = tempColor; button_hColor2.BackColor = tempColor;
                                 break;
                             case "MarkColor_Alt":
                                 tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
@@ -555,10 +560,10 @@ namespace Chezz_Puzzler
                                 tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
                                 Color_Hightlight_Shift = tempColor; button_hColor4.BackColor = tempColor;
                                 break;
-                            case "Player2ResponseTime": 
-                                Player2ResponseTime = int.Parse(value)<100 || int.Parse(value)>10000 ? 300 : int.Parse(value); 
-                                Autoplay_Timer.Interval = Player2ResponseTime; 
-                                numericUpDown7.Value = Player2ResponseTime; 
+                            case "Player2ResponseTime":
+                                Player2ResponseTime = int.Parse(value) < 100 || int.Parse(value) > 10000 ? 300 : int.Parse(value);
+                                Autoplay_Timer.Interval = Player2ResponseTime;
+                                numericUpDown7.Value = Player2ResponseTime;
                                 break;
                         }
                     }
@@ -569,11 +574,11 @@ namespace Chezz_Puzzler
                             Board_Solver[i][x].SetColors(Color_Selected_Current, Color_Hover_Current, Color_Black_Current, Color_White_Current, Color_LastMove_Current);
                         }
                     }
-              }
-               catch
-              {
+                }
+                catch
+                {
                     MessageBox.Show("Error reading the settings file. One or more of the values are not in the accepted range, missing, or not properly formatted."); SetInitialColorsToButtons();
-              }
+                }
             }
             else
             {
@@ -748,12 +753,14 @@ namespace Chezz_Puzzler
             Currently_Hovered_Button = ourB;
             ourB.IsHovered = true;
             if (ourB.belongsToWhichPanel == panel_composer) { label_square_displayer.Text = ourB.SquareName; }
+          
         }
         public void HoverLEaveChessSquare(object sender, EventArgs e)
         {
             ChessButton ourB = (ChessButton)sender;
             ourB.IsHovered = false;
-            if (ourB.belongsToWhichPanel == panel_composer) {  label_square_displayer.Text = "";  }
+            if (ourB.belongsToWhichPanel == panel_composer) { label_square_displayer.Text = ""; }
+           
         }
         public void LoadSettings()
         {
@@ -909,14 +916,14 @@ namespace Chezz_Puzzler
         {
             if (tabControl1.SelectedIndex == 0) // if solving
             {
-                ShowSelectedControls(button_Autoplay,label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, label_toMove2, label_event, panel_cd_event);
+                ShowSelectedControls(button_Autoplay, label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, label_toMove2, label_event, panel_cd_event);
                 HideSelectedControls(panel_composer, button_clear_Board, button_GenerateStartingChessPosition, icon_notSolved, icon_solved, label_square_displayer, label_Action_Response);
                 if (CurrentlySolvingAPuzzleRush) { PuzzlesDisplay.Visible = true; }
                 if (PR_Paused) { button_gotoNextPuzzle.Visible = true; }
             }
             else // if composing
             {
-                HideSelectedControls(button_Autoplay,button_gotoNextPuzzle, PuzzlesDisplay, panel_cd_event, label_toMove2, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
+                HideSelectedControls(button_Autoplay, button_gotoNextPuzzle, PuzzlesDisplay, panel_cd_event, label_toMove2, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
                 ShowSelectedControls(panel_composer, button_clear_Board, label_square_displayer, label_Action_Response, button_GenerateStartingChessPosition);
                 Point BoardPoint = new Point(panel_solver.Location.X, panel_solver.Location.Y);
                 panel_composer.Location = BoardPoint;
@@ -1317,20 +1324,20 @@ namespace Chezz_Puzzler
         }
         public void clearAllMarks()
         {
-            for (int i=0;i<8;i++)
+            for (int i = 0; i < 8; i++)
             {
-                for (int x=0; x < 8; x++)
+                for (int x = 0; x < 8; x++)
                 {
-                    Board_Solver[i][x].IsMarked= false; 
+                    Board_Solver[i][x].IsMarked = false;
                 }
             }
         }
-        public void UserClicksSolverSquare(object sender, MouseEventArgs e )
+        public void UserClicksSolverSquare(object sender, MouseEventArgs e)
         {
             ChessButton thisButton = (ChessButton)sender;
             if (thisButton.CanInteract == false) { return; }
-           if (e.Button.ToString() == "Left")
-                {
+            if (e.Button.ToString() == "Left")
+            {
                 clearAllMarks();
                 if (APuzzleIsLoaded == true && CurrentPuzzleIsSolved == false && UserToMove == true)
                 {
@@ -1478,27 +1485,27 @@ namespace Chezz_Puzzler
                     }
                 }
             }
-           else
+            else // if mouse right-click
             {
-                if (thisButton.IsMarked) { thisButton.IsMarked = false;return; }
+                if (thisButton.IsMarked) { thisButton.IsMarked = false; return; }
                 if (Key_Pressed_Alt && !Key_Pressed_Ctrl && !Key_Pressed_Shift) //alt
                 {
-                    thisButton.Mark(Color_Hightlight_Alt);
-                     return;
+                    thisButton.Mark(Color_Hightlight_Alt); 
+                    return;
                 }
                 if (!Key_Pressed_Alt && Key_Pressed_Ctrl && !Key_Pressed_Shift) //ctrl
                 {
-                    thisButton.Mark(Color_Hightlight_Ctrl);
-                      return;
+                    thisButton.Mark(Color_Hightlight_Ctrl); 
+                    return;
                 }
                 if (!Key_Pressed_Alt && !Key_Pressed_Ctrl && Key_Pressed_Shift) //shift
                 {
-                    thisButton.Mark(Color_Hightlight_Shift);
-                      return;
+                    thisButton.Mark(Color_Hightlight_Shift); 
+                    return;
                 }
                 if (!Key_Pressed_Alt && !Key_Pressed_Ctrl && !Key_Pressed_Shift) //none
                 {
-                    thisButton.Mark(Color_Hightlight_Normal);
+                    thisButton.Mark(Color_Hightlight_Normal); 
                     return;
                 }
             }
@@ -1612,11 +1619,11 @@ namespace Chezz_Puzzler
                     if (TargetButton == LastSelectedToMoveComposerSquare)  // if they are the same square return
                     {
                         LastSelectedToMoveComposerSquare.IsSelected = false;
-                        Composer_Mode_Select = true; 
+                        Composer_Mode_Select = true;
                         setWaitingPaste(false, Board_Composer);
                         return;
                     }
-                                                                                                                                                                        //----------------------------------------------------
+                    //----------------------------------------------------
                     currentProposedSquareEnd = TargetButton.SquareName;
                     if (checkbox_smartAdd.Checked)
                     {
@@ -1835,7 +1842,7 @@ namespace Chezz_Puzzler
             c_number2.Text = startSquare[1].ToString();
             LastMoveWasDoneByClicks = false;
         }
-            private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode.ToString() == "Menu") { Key_Pressed_Alt = true; }
             if (e.KeyCode.ToString() == "ShiftKey") { Key_Pressed_Shift = true; }
@@ -1854,13 +1861,19 @@ namespace Chezz_Puzzler
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_white"];
-                    Currently_Hovered_Button.PieceName = "P";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_white"];
+                        Currently_Hovered_Button.PieceName = "P";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_black"];
-                    Currently_Hovered_Button.PieceName = "p";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_black"];
+                        Currently_Hovered_Button.PieceName = "p";
+                    }
                 }
                 if (e.Modifiers == Keys.None)
                 {
@@ -1877,13 +1890,19 @@ namespace Chezz_Puzzler
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_white"];
-                    Currently_Hovered_Button.PieceName = "R";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_white"];
+                        Currently_Hovered_Button.PieceName = "R";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_black"];
-                    Currently_Hovered_Button.PieceName = "r";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_black"];
+                        Currently_Hovered_Button.PieceName = "r";
+                    }
                 }
                 if (e.Modifiers == Keys.None)
                 {
@@ -1897,52 +1916,76 @@ namespace Chezz_Puzzler
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_white"];
-                    Currently_Hovered_Button.PieceName = "Q";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_white"];
+                        Currently_Hovered_Button.PieceName = "Q";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_black"];
-                    Currently_Hovered_Button.PieceName = "q";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_black"];
+                        Currently_Hovered_Button.PieceName = "q";
+                    }
                 }
             }
             if (e.KeyCode == Keys.D4)
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["king_white"];
-                    Currently_Hovered_Button.PieceName = "K";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["king_white"];
+                        Currently_Hovered_Button.PieceName = "K";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["king_black"];
-                    Currently_Hovered_Button.PieceName = "P";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["king_black"];
+                        Currently_Hovered_Button.PieceName = "P";
+                    }
                 }
             }
             if (e.KeyCode == Keys.D5)
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_white"];
-                    Currently_Hovered_Button.PieceName = "B";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_white"];
+                        Currently_Hovered_Button.PieceName = "B";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_black"];
-                    Currently_Hovered_Button.PieceName = "b";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_black"];
+                        Currently_Hovered_Button.PieceName = "b";
+                    }
                 }
             }
             if (e.KeyCode == Keys.D6)
             {
                 if (e.Modifiers == Keys.Control)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_white"];
-                    Currently_Hovered_Button.PieceName = "N";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_white"];
+                        Currently_Hovered_Button.PieceName = "N";
+                    }
                 }
                 if (e.Modifiers == Keys.Alt)
                 {
-                    Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_black"];
-                    Currently_Hovered_Button.PieceName = "n";
+                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    {
+                        Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_black"];
+                        Currently_Hovered_Button.PieceName = "n";
+                    }
                 }
             }
         }
@@ -2720,7 +2763,8 @@ namespace Chezz_Puzzler
         }
         private void button_swapColors_click(object sender, EventArgs e)
         {
-            for (int rank=0; rank < 8; rank++){
+            for (int rank = 0; rank < 8; rank++)
+            {
                 for (int file = 0; file < 8; file++)
                 {
                     if (Board_Composer[rank][file].PieceName == "-") { continue; }
@@ -2746,36 +2790,65 @@ namespace Chezz_Puzzler
         {
             MessageBox.Show("It is similar to FEN, but only the squares are listed, and the empty squares are not squished into numbers. The length of the notation is always 64. \r\nWhite pieces are with capital letters, black with miniscule. Empty square are marked as \"-\".");
         }
-        public void swap2Ranks(int topRank, int bottomRank, bool mirror)
+
+
+        public void swap2Files(int LeftFile, int RightFile)
         {
-            List<Image> tempImages_BottomRank = Board_Composer[bottomRank].Select(b => b.BackgroundImage).ToList();
-            List<string> tempNames_BottomRank = Board_Composer[bottomRank].Select(b => b.PieceName).ToList();
-            List<Image> tempImages_topRank = Board_Composer[topRank].Select(b => b.BackgroundImage).ToList();
-            List<string> tempNames_topRank = Board_Composer[topRank].Select(b => b.PieceName).ToList();
-            if (mirror)
+            
+            for (int rank = 0; rank <= 7; rank++)
             {
-                tempImages_BottomRank.Reverse();
-                tempNames_BottomRank.Reverse();
-                tempImages_topRank.Reverse();
-                tempNames_topRank.Reverse();
+                Image RightImage = Board_Composer[rank][RightFile].BackgroundImage;
+                Image LeftImage = Board_Composer[rank][LeftFile].BackgroundImage;
+                string RightPieceName = Board_Composer[rank][RightFile].PieceName;
+                string LeftPieceName = Board_Composer[rank][LeftFile].PieceName;
+                //----------------------------------------------------------------------------------
+                Board_Composer[rank][LeftFile].BackgroundImage = RightImage;
+                Board_Composer[rank][LeftFile].PieceName = RightPieceName;
+                //----------------------------------------------------------------------------------
+                Board_Composer[rank][RightFile].BackgroundImage = LeftImage;
+                Board_Composer[rank][RightFile].PieceName = LeftPieceName;
+
             }
-            for (int i = 0; i <= 7; i++) // set top
-            {
-                Board_Composer[topRank][i].BackgroundImage = tempImages_BottomRank[i];
-                Board_Composer[topRank][i].PieceName = tempNames_BottomRank[i];
-            }
-            for (int i = 0; i <= 7; i++) // set top
-            {
-                Board_Composer[bottomRank][i].BackgroundImage = tempImages_topRank[i];
-                Board_Composer[i][bottomRank].PieceName = tempNames_topRank[i];
-            }
+
         }
-        private void SwapPlayers_Click(object sender, EventArgs e)
+
+        public void swap2Ranks(int topRank, int bottomRank)
         {
-            swap2Ranks(0, 7, false);
-            swap2Ranks(1, 6, false);
-            swap2Ranks(2, 5, false);
-            swap2Ranks(3, 4, false);
+
+            List<Image> TopPieceImages = new List<Image>();
+            List<string> TopPieceNames = new List<string>();
+            // the top is not changed in the actual list of lists
+            for (int file=0; file<8; file++) // put top's data in temporary lists
+            {
+                TopPieceImages.Add(Board_Composer[topRank][file].BackgroundImage);
+                TopPieceNames.Add(Board_Composer[topRank][file].PieceName); 
+
+            }
+            for (int file = 0; file <8; file++) // change bottom with unchanged top
+            {
+                Board_Composer[topRank][file].BackgroundImage = Board_Composer[bottomRank][file].BackgroundImage;
+                Board_Composer[topRank][file].PieceName = Board_Composer[bottomRank][file].PieceName;
+            }
+            for (int file = 0; file < 8; file++) // change bottom with temp lists data
+            { 
+                Board_Composer[bottomRank][file].BackgroundImage = TopPieceImages[file];
+                Board_Composer[bottomRank][file].PieceName = TopPieceNames[file];
+            }
+           
+
+        }
+        private void SwapPlayers_Click(object sender, EventArgs e) // SWAP RANKS AND SWAP FILES
+        {
+            swap2Ranks(0, 7);
+            swap2Ranks(1, 6);
+            swap2Ranks(2, 5);
+            swap2Ranks(3, 4);
+            //------------------
+            swap2Files(0, 7);
+            swap2Files(1, 6);
+            swap2Files(2, 5);
+            swap2Files(3, 4);
+
         }
         private void changeTheHoverColorOfTheSquaresToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2811,32 +2884,22 @@ namespace Chezz_Puzzler
             }
             WriteSettingsFile();
         }
-        private void button4_Click(object sender, EventArgs e)
+
+        private void Btn_reverseFiles_click(object sender, EventArgs e)
         {
-            swap2Ranks(0, 7, true);
-            swap2Ranks(1, 6, true);
-            swap2Ranks(2, 5, true);
-            swap2Ranks(3, 4, true);
+            swap2Files(0, 7);
+            swap2Files(1, 6);
+            swap2Files(2, 5);
+            swap2Files(3, 4);
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            ReverseRanks();
+            swap2Ranks(0, 7);
+            swap2Ranks(1, 6);
+            swap2Ranks(2, 5);
+            swap2Ranks(3, 4);
         }
-        public void ReverseRanks()
-        {
-            for (int rank = 0; rank < 8; rank++)
-            {
-                List<Image> imagesOfRanks = Board_Composer[rank].Select(b => b.BackgroundImage).ToList();
-                List<string> namesofRanks = Board_Composer[rank].Select(b => b.PieceName).ToList();
-                imagesOfRanks.Reverse();
-                namesofRanks.Reverse();
-                for (int file = 0; file < 8; file++)
-                {
-                    Board_Composer[rank][file].BackgroundImage = imagesOfRanks[file];
-                    Board_Composer[rank][file].PieceName = namesofRanks[file];
-                }
-            }
-        }
+         
         private void button3_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Board_Solver[0][0].Size.Width.ToString());
@@ -3124,7 +3187,7 @@ namespace Chezz_Puzzler
         }
         private void button_Autoplay_Click(object sender, EventArgs e)
         {
-            if (CurrentlyOpenedPuzzleFilename.Length==0)
+            if (CurrentlyOpenedPuzzleFilename.Length == 0)
             {
                 MessageBox.Show("No puzzle is opened or the last opened was solved.");
             }
@@ -3132,16 +3195,16 @@ namespace Chezz_Puzzler
             {
                 if (Autoplay_Timer.Enabled == false)
                 {
-                        CurrentlySolvedPuzzleChapterStep = 0;
-                        RecreatePuzzleFromSCN(CurrentPuzzle_Solutions[0], panel_solver);
-                        for (int i = 0; i < 8; i++)
+                    CurrentlySolvedPuzzleChapterStep = 0;
+                    RecreatePuzzleFromSCN(CurrentPuzzle_Solutions[0], panel_solver);
+                    for (int i = 0; i < 8; i++)
+                    {
+                        for (int x = 0; x < 8; x++)
                         {
-                            for (int x = 0; x < 8; x++)
-                            {
-                                Board_Solver[i][x].CanInteract = false;
-                            }
+                            Board_Solver[i][x].CanInteract = false;
                         }
-                        Autoplay_Timer.Start();
+                    }
+                    Autoplay_Timer.Start();
                 }
             }
         }
@@ -3153,206 +3216,9 @@ namespace Chezz_Puzzler
         {
             button_generate_PR.Enabled = checkBox_Making_PR.Checked;
         }
+
+ 
     }
-    public class ChessButton : Button
-    {
-        public ChessButton()
-        {
-            pieceName = "-";
-            squareName = "-";
-            belongsToLastMove = false;
-            isHovered = false;
-            isSelected = false;
-            belongsToLastMove = false;
-            color_select = Color.LightBlue;
-            color_hover = Color.LightCyan;
-            Color_BelongsToLastMove = Color.LightYellow;
-            WaitingPaste = false;
-            isMarked = false;
-            CanInteract = true;
-            markColor = Color.Empty;
-        }
-        public Panel belongsToWhichPanel;
-        //----------------------------------------------------------
-        private string pieceName;
-        private string squareName;
-        private string squareColorAsChar;
-        //----------------------------------------------------------
-        private bool isHovered;
-        private bool belongsToLastMove;
-        private bool isSelected;
-        private bool isWhiteSquare;
-        private bool waitingPaste;
-        public bool CanInteract;
-        private string PlayertoMove;
-        public bool SolverIsMoving;
-        private bool isMarked;
-        //----------------------------------------------------------
-        private Color CurrentColor_White;
-        private Color CurrentColor_Black;
-        private Color defaultBackColor;
-        private Color color_select;
-        private Color color_hover;
-        private Color color_BelongsToLastMove;
-        private Color markColor;
-        public string ToMove { get => PlayertoMove; set => PlayertoMove = value; }
-        public bool WaitingPaste
-        {
-            get => waitingPaste;
-            set=>  waitingPaste=value;
-        }
-        // we have select color, hover color, last move color, and the default square color
-        public bool IsWhiteSquare
-        {
-            get => isWhiteSquare;
-            set => isWhiteSquare = value;
-        }
-        public void Mark(Color newColor)
-        {
-            if (isMarked)
-            {
-                if (markColor == newColor) // if the same color is given, demark
-                {
-                    isMarked = false;
-                    SetDefaultBackColor();
-                }
-                else
-                {
-                    BackColor = newColor;
-                    markColor = newColor;
-                }
-            }
-            else
-            {
-                IsMarked = true;
-                BackColor = newColor;
-                markColor = newColor;
-            }
-        }
-        public bool IsMarked { get => isMarked; set { isMarked = value; if (value == false) { SetDefaultBackColor(); } } }
-        public string PieceName { get => pieceName; set => pieceName = value; }
-        public string SquareName { get => squareName; set => squareName = value; }
-        public string SquareColor { get => squareColorAsChar; set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
-        public Color defaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
-        public Color defaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
-        public Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }
-        public void SetDefaultBackColor()
-        {
-            if (!belongsToLastMove && !isSelected)
-            {
-                BackColor = DefaultBackColor;
-                return;
-            }
-            if (isSelected) { BackColor = color_select; return; }
-            if (belongsToLastMove) { BackColor = color_BelongsToLastMove; return; }
-        }
-        //---------------------------------------------------------------------
-        public bool IsHovered
-        {
-            get => IsHovered; 
-            set
-            {
-                isHovered = value;
-                if (CanInteract == false)
-                {
-                    Cursor = Cursors.No;
-                }
-                else
-                {
-                    if (value) { BackColor = color_hover; } else { if (isMarked) { BackColor = markColor;  } else { SetDefaultBackColor(); } }
-                    bool ThisPieceIs_White = char.IsUpper(pieceName[0]);
-                    bool ThisPieceIs_Black = char.IsLower(pieceName[0]);
-                    bool izHovered = value;
-                    bool thisSquareHasImage = BackgroundImage == null ? false : true;
-                    bool thisSquareHasNOImage = BackgroundImage == null ? true : false;
-                     if (izHovered && waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Cross; return; } 
-                    if (izHovered && !waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Arrow; return; }
-                    //-----------------------------------------------------
-                    // if hovered
-                    //-----------------------------------------------------
-                    if (izHovered && thisSquareHasImage)  // if hovered and has an image
-                    {
-                        if (PlayertoMove == "White to move") // if white is to move 
-                        {
-                            // if targeted a white piece
-                            if (ThisPieceIs_White && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (ThisPieceIs_White && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
-                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.Hand; return; }
-                            // if targeted a black piece
-                            if (ThisPieceIs_Black && waitingPaste) { Cursor = Cursors.Cross; return; }
-                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.No; return; }
-                        }
-                        else if (PlayertoMove == "Black to move") // if black is the move
-                        {
-                            // if targeted a black piece
-                            if (ThisPieceIs_Black && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (ThisPieceIs_Black && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
-                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.Hand; return; }
-                            // if targeted a white piece
-                            if (ThisPieceIs_White && waitingPaste) { Cursor = Cursors.Cross; return; }
-                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.No; return; }
-                        }
-                        else if (PlayertoMove == "Any")
-                        {
-                            if (waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (waitingPaste && !isSelected) { Cursor = Cursors.No; return; }
-                            if (!waitingPaste) { Cursor = Cursors.Hand; }
-                        }
-                        else
-                        {
-                            if (waitingPaste && IsSelected) { Cursor = Cursors.Hand; return; }
-                            if (waitingPaste && !IsSelected) { Cursor = Cursors.No; return; }
-                            if (!waitingPaste) { Cursor = Cursors.Hand; return; }
-                        }
-                    }
-                }
-            }
-        }
-        public bool IsSelected { get => isSelected; set { isSelected = value; if (value == true) { BackColor = color_select; } else { SetDefaultBackColor(); } } }
-        public bool BelongsToLastMove { get => belongsToLastMove; set { belongsToLastMove = value; if (value == true) { this.BackColor = color_BelongsToLastMove; } else { SetDefaultBackColor(); } } }
-        public Color Color_Select { get => color_select; set => color_select = value; }
-        public Color Color_Hover { get => color_hover; set => color_hover = value; }
-        public Color Color_BelongsToLastMove { get => color_BelongsToLastMove; set => color_BelongsToLastMove = value; }
-        public void SetColors(Color SelectColor, Color Hover, Color BlackColor, Color WhiteColor, Color lastSquares)
-        {
-            Color_Select = SelectColor;
-            Color_Hover = Hover;
-            defaultColors_Black = BlackColor;
-            defaultColors_White = WhiteColor;
-            color_BelongsToLastMove = lastSquares;
-            SetDefaultBackColor();
-        }
-    }
-    public class ToMoveIndicatorLabel : Label
-        {
-            public ToMoveIndicatorLabel()
-            {
-                ToMove = "None";
-            }
-            private string toMove;
-            public string ToMove
-            {
-                get => toMove;
-                set
-                {
-                    toMove = value;
-                    if (value.Contains("Black"))
-                    {
-                        BackColor = Color.FromArgb(38, 37, 33);
-                        ForeColor = Color.WhiteSmoke;
-                        Text = "Black to move";
-                    }
-                    if (value.Contains("White"))
-                    {
-                        BackColor = Color.WhiteSmoke;
-                        ForeColor = Color.FromArgb(38, 37, 33);
-                        Text = "White to move";
-                    }
-                    if (value == "None")
-                    {
-                        Text = string.Empty;
-                    }
-                }
-            }
-        }
-    }
+     
+ 
+}

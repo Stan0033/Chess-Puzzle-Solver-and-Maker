@@ -137,7 +137,11 @@ Added a button "Reverse ranks"
 1.7.7
 -----------------------
 - Now when you move a piece, the cursor will change accordingly on the target square
-
+-----------------------
+1.7.8
+-----------------------
+- now you cannot use the hotkeys  to create pieces on the solver board. Only on the composer board.
+- all swapping buttons have been reworked to work properly
 
 
 

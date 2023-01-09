@@ -46,7 +46,7 @@
             this.panel_PuzleEditContainer = new System.Windows.Forms.Panel();
             this.panel_ComposePuzzleContainer = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button_SwapMirror = new System.Windows.Forms.Button();
+            this.btn_reverseFiles = new System.Windows.Forms.Button();
             this.labelTBOX_Name = new System.Windows.Forms.Label();
             this.labelTBOX_Hint = new System.Windows.Forms.Label();
             this.labelTBOX_Wrong = new System.Windows.Forms.Label();
@@ -236,7 +236,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label_toMove2 = new Chezz_Puzzler.ToMoveIndicatorLabel();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -452,7 +451,7 @@
             // 
             this.panel_ComposePuzzleContainer.AutoScroll = true;
             this.panel_ComposePuzzleContainer.Controls.Add(this.button2);
-            this.panel_ComposePuzzleContainer.Controls.Add(this.button_SwapMirror);
+            this.panel_ComposePuzzleContainer.Controls.Add(this.btn_reverseFiles);
             this.panel_ComposePuzzleContainer.Controls.Add(this.labelTBOX_Name);
             this.panel_ComposePuzzleContainer.Controls.Add(this.labelTBOX_Hint);
             this.panel_ComposePuzzleContainer.Controls.Add(this.labelTBOX_Wrong);
@@ -518,18 +517,18 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button_SwapMirror
+            // btn_reverseFiles
             // 
-            this.button_SwapMirror.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_SwapMirror.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_SwapMirror.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_SwapMirror.Location = new System.Drawing.Point(12, 838);
-            this.button_SwapMirror.Name = "button_SwapMirror";
-            this.button_SwapMirror.Size = new System.Drawing.Size(236, 32);
-            this.button_SwapMirror.TabIndex = 125;
-            this.button_SwapMirror.Text = "Swap Players And Mirror";
-            this.button_SwapMirror.UseVisualStyleBackColor = true;
-            this.button_SwapMirror.Click += new System.EventHandler(this.button4_Click);
+            this.btn_reverseFiles.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_reverseFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reverseFiles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btn_reverseFiles.Location = new System.Drawing.Point(12, 838);
+            this.btn_reverseFiles.Name = "btn_reverseFiles";
+            this.btn_reverseFiles.Size = new System.Drawing.Size(236, 32);
+            this.btn_reverseFiles.TabIndex = 125;
+            this.btn_reverseFiles.Text = "Reverse Files";
+            this.btn_reverseFiles.UseVisualStyleBackColor = true;
+            this.btn_reverseFiles.Click += new System.EventHandler(this.Btn_reverseFiles_click);
             // 
             // labelTBOX_Name
             // 
@@ -2585,16 +2584,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
             // 
-            // label_toMove2
-            // 
-            this.label_toMove2.AutoSize = true;
-            this.label_toMove2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_toMove2.Location = new System.Drawing.Point(547, 355);
-            this.label_toMove2.Name = "label_toMove2";
-            this.label_toMove2.Size = new System.Drawing.Size(0, 21);
-            this.label_toMove2.TabIndex = 86;
-            this.label_toMove2.ToMove = "None";
-            // 
             // Form_base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2603,7 +2592,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 811);
             this.Controls.Add(this.panel_setttings);
-            this.Controls.Add(this.label_toMove2);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
             this.Controls.Add(this.button_gotoNextPuzzle);
@@ -2650,7 +2638,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.7";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.8";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -2861,7 +2849,7 @@
         private Label labelTBOX_Righht;
         private Panel panel_PuzleEditContainer;
         private Panel PuzzlesDisplay;
-        private Button button_SwapMirror;
+        private Button btn_reverseFiles;
         private Button button2;
         private ToMoveIndicatorLabel label_toMove;
         private CheckBox checkBox_AU_Reset;
