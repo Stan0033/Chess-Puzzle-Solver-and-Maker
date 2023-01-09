@@ -539,6 +539,7 @@
             this.labelTBOX_Name.Size = new System.Drawing.Size(39, 15);
             this.labelTBOX_Name.TabIndex = 124;
             this.labelTBOX_Name.Text = "Name";
+            this.toolTip1.SetToolTip(this.labelTBOX_Name, "Applied to the whole puzzle or PR");
             // 
             // labelTBOX_Hint
             // 
@@ -548,6 +549,7 @@
             this.labelTBOX_Hint.Size = new System.Drawing.Size(30, 15);
             this.labelTBOX_Hint.TabIndex = 123;
             this.labelTBOX_Hint.Text = "Hint";
+            this.toolTip1.SetToolTip(this.labelTBOX_Hint, "Applieed to a single chapter");
             // 
             // labelTBOX_Wrong
             // 
@@ -557,6 +559,7 @@
             this.labelTBOX_Wrong.Size = new System.Drawing.Size(43, 15);
             this.labelTBOX_Wrong.TabIndex = 122;
             this.labelTBOX_Wrong.Text = "Wrong";
+            this.toolTip1.SetToolTip(this.labelTBOX_Wrong, "Applieed to a single chapter");
             // 
             // labelTBOX_Righht
             // 
@@ -566,6 +569,7 @@
             this.labelTBOX_Righht.Size = new System.Drawing.Size(35, 15);
             this.labelTBOX_Righht.TabIndex = 121;
             this.labelTBOX_Righht.Text = "Right";
+            this.toolTip1.SetToolTip(this.labelTBOX_Righht, "Applieed to a single chapter");
             // 
             // checkbox_smartAdd
             // 
@@ -623,8 +627,7 @@
             this.textBox_description.Name = "textBox_description";
             this.textBox_description.Size = new System.Drawing.Size(270, 29);
             this.textBox_description.TabIndex = 116;
-            this.toolTip1.SetToolTip(this.textBox_description, "The description of the puzzle or the puzzle rush when you click on it, in the puz" +
-        "zle list");
+            this.toolTip1.SetToolTip(this.textBox_description, "Applied to the whole puzzle");
             // 
             // contextMenu_TextBoxes
             // 
@@ -776,6 +779,7 @@
             this.labelTXB_Event.Size = new System.Drawing.Size(36, 15);
             this.labelTXB_Event.TabIndex = 109;
             this.labelTXB_Event.Text = "Event";
+            this.toolTip1.SetToolTip(this.labelTXB_Event, "Applied to the whole puxzle");
             // 
             // textBox_event
             // 
