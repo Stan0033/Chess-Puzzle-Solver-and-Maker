@@ -921,7 +921,7 @@ namespace Chezz_Puzzler
         {
             if (tabControl1.SelectedIndex == 0) // if solving
             {
-                ShowSelectedControls(button_Autoplay, label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, label_toMove3, label_event, panel_cd_event);
+                ShowSelectedControls(label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, label_toMove3, label_event, panel_cd_event);
                 HideSelectedControls(panel_composer, button_clear_Board, button_GenerateStartingChessPosition, icon_notSolved, icon_solved, label_square_displayer, label_Action_Response);
                 if (CurrentlySolvingAPuzzleRush) { PuzzlesDisplay.Visible = true; }
                 if (PR_Paused) { button_gotoNextPuzzle.Visible = true; }

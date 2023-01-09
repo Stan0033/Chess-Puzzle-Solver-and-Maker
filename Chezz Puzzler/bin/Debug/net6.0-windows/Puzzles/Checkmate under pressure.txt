@@ -1,0 +1,8 @@
+<No description.>
+[R----B-R-KP---P----P---P---rP----p--N----Qp-bn---p---ppp--k--q-r][f1xb5][No hints][ ][ ][Black to move][ ][a4xb3]
+[R----B-R-KP---P----P---P-q-rP----p--N----Qp-bn---p---ppp--k----r][b7xc8][No hints][ ][ ][White to move][ ][]
+[R-K--B-R--P---P----P---P-q-rP----p--N----Qp-bn---p---ppp--k----r][b5xe8][No hints][ ][ ][Black to move][ ][]
+[R-K-qB-R--P---P----P---P---rP----p--N----Qp-bn---p---ppp--k----r][c8xb7][No hints][ ][ ][White to move][ ][]
+[R---qB-R-KP---P----P---P---rP----p--N----Qp-bn---p---ppp--k----r][d5xb5][No hints][ ][ ][Black to move][ ][]
+[R---qB-R-KP---P----P---P-r--P----p--N----Qp-bn---p---ppp--k----r][b7xa6][No hints][ ][ ][White to move][ ][]
+[R---qB-R--P---P-K--P---P-r--P----p--N----Qp-bn---p---ppp--k----r][e8xc6][No hints][ ][ ][Black to move][ ][]
