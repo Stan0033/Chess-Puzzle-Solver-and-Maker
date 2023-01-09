@@ -236,6 +236,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.___LABEL_TOMOVE = new Chezz_Puzzler.ToMoveIndicatorLabel();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -2589,6 +2590,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
             // 
+            // ___LABEL_TOMOVE
+            // 
+            this.___LABEL_TOMOVE.AutoSize = true;
+            this.___LABEL_TOMOVE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.___LABEL_TOMOVE.Location = new System.Drawing.Point(547, 355);
+            this.___LABEL_TOMOVE.Name = "___LABEL_TOMOVE";
+            this.___LABEL_TOMOVE.Size = new System.Drawing.Size(188, 21);
+            this.___LABEL_TOMOVE.TabIndex = 86;
+            this.___LABEL_TOMOVE.Text = "toMoveIndicatorLabel1";
+            this.___LABEL_TOMOVE.ToMove = "None";
+            // 
             // Form_base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2596,6 +2608,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 811);
+            this.Controls.Add(this.___LABEL_TOMOVE);
             this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
@@ -2856,7 +2869,7 @@
         private Panel PuzzlesDisplay;
         private Button btn_reverseFiles;
         private Button button2;
-        private ToMoveIndicatorLabel label_toMove;
+        
         private CheckBox checkBox_AU_Reset;
         private Panel panel_setttings;
         private Button button_setDefaultCountdown_Panel;
@@ -2894,7 +2907,7 @@
         private Label label14;
         private Button button_resetAllSettings_Panel;
         private Button button_Autoplay;
-        private ToMoveIndicatorLabel label_toMove3;
-        private ToMoveIndicatorLabel label_toMove2;
+        
+        private ToMoveIndicatorLabel ___LABEL_TOMOVE;
     }
 }
