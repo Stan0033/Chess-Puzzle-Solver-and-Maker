@@ -9,7 +9,9 @@ WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute
 
 IMAGES:
 
-https://ibb.co/BqShkqT https://ibb.co/XCvyp8Y
+![Solve](https://i.ibb.co/SR9kSRV/solve.png)
+![Create](https://i.ibb.co/x7RmGHF/create.png)
+ 
 
 You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/]
 
