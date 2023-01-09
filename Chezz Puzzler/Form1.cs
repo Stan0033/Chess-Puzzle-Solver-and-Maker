@@ -1536,6 +1536,8 @@ namespace Chezz_Puzzler
                 PlaySoundFile("open.wav");
                 HightlightLastMoveSquares(LastMovePlayedBeforeThePuzzleStarts);
                 label_toMove3.ToMove = CurrentPuzzle_ToMove[0]; setToMoveInButtons(label_toMove3.Text);
+                icon_notSolved.Visible = false;
+                icon_solved.Visible = false;
             }
             catch
             {

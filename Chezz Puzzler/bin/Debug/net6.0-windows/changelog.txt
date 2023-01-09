@@ -143,5 +143,5 @@ Added a button "Reverse ranks"
 - now you cannot use the hotkeys  to create pieces on the solver board. Only on the composer board.
 - all swapping buttons have been reworked to work properly
 - Fixed writing and reading of the last move, before a puzzle starts
-
+- The Tick And Cross are hidden when moving to the next puzzle in a puzzle rush
 
