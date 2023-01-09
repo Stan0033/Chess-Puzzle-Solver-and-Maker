@@ -1,3 +1,8 @@
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.exe
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.deps.json
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.runtimeconfig.json
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.dll
+C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.pdb
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.AssemblyReference.cache
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMPLib.dll
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.MediaPlayer.dll
@@ -13,11 +18,6 @@ C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puz
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfoInputs.cache
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfo.cs
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.CoreCompileInputs.cache
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.exe
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.deps.json
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.runtimeconfig.json
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.pdb
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.dll
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\refint\Chezz Puzzler.dll
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.pdb
