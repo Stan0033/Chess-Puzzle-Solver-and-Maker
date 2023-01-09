@@ -236,7 +236,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label_toMove3 = new Chezz_Puzzler.ToMoveIndicatorLabel();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -618,6 +617,7 @@
             this.labelTXB_Descr.Size = new System.Drawing.Size(39, 15);
             this.labelTXB_Descr.TabIndex = 117;
             this.labelTXB_Descr.Text = "Descr:";
+            this.toolTip1.SetToolTip(this.labelTXB_Descr, "Applied to the whole puzzle");
             // 
             // textBox_description
             // 
@@ -2589,16 +2589,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
             // 
-            // label_toMove3
-            // 
-            this.label_toMove3.AutoSize = true;
-            this.label_toMove3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_toMove3.Location = new System.Drawing.Point(547, 360);
-            this.label_toMove3.Name = "label_toMove3";
-            this.label_toMove3.Size = new System.Drawing.Size(0, 21);
-            this.label_toMove3.TabIndex = 86;
-            this.label_toMove3.ToMove = "None";
-            // 
             // Form_base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2607,7 +2597,6 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 811);
             this.Controls.Add(this.panel_setttings);
-            this.Controls.Add(this.label_toMove3);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
             this.Controls.Add(this.button_gotoNextPuzzle);
