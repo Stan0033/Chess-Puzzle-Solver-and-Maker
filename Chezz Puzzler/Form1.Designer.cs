@@ -315,7 +315,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(373, 753);
             this.tabControl1.TabIndex = 38;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -341,7 +341,7 @@
             this.panel_dummy_EL.Name = "panel_dummy_EL";
             this.panel_dummy_EL.Size = new System.Drawing.Size(359, 613);
             this.panel_dummy_EL.TabIndex = 83;
-            this.panel_dummy_EL.Paint += new System.Windows.Forms.PaintEventHandler(this.panel_dummy_EL_Paint);
+            
             // 
             // menuPuzzles
             // 
@@ -359,7 +359,7 @@
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
             this.refreshToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.refreshToolStripMenuItem.Text = "Refresh";
-            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.refreshToolStripMenuItem_Click);
+            this.refreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -372,7 +372,7 @@
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
             // deleteToolStripMenuItem
             // 
@@ -380,7 +380,7 @@
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
             // listofPuzzles
             // 
@@ -396,8 +396,8 @@
             this.listofPuzzles.Name = "listofPuzzles";
             this.listofPuzzles.Size = new System.Drawing.Size(359, 613);
             this.listofPuzzles.TabIndex = 2;
-            this.listofPuzzles.SelectedIndexChanged += new System.EventHandler(this.listofPuzzles_SelectedIndexChanged);
-            this.listofPuzzles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listofPuzzles_MouseDoubleClick);
+            this.listofPuzzles.SelectedIndexChanged += new System.EventHandler(this.ListofPuzzles_SelectedIndexChanged);
+            this.listofPuzzles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListofPuzzles_MouseDoubleClick);
             // 
             // richTextBox_description
             // 
@@ -425,7 +425,7 @@
             this.button_solve.TabIndex = 1;
             this.button_solve.Text = "(S)olve";
             this.button_solve.UseVisualStyleBackColor = false;
-            this.button_solve.Click += new System.EventHandler(this.button1_Click);
+            this.button_solve.Click += new System.EventHandler(this.SolveButton_Click);
             // 
             // tabPage2
             // 
@@ -516,7 +516,7 @@
             this.button2.TabIndex = 126;
             this.button2.Text = "Reverse Ranks";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.SwapAllRanks);
             // 
             // btn_reverseFiles
             // 
@@ -529,7 +529,7 @@
             this.btn_reverseFiles.TabIndex = 125;
             this.btn_reverseFiles.Text = "Reverse Files";
             this.btn_reverseFiles.UseVisualStyleBackColor = true;
-            this.btn_reverseFiles.Click += new System.EventHandler(this.Btn_reverseFiles_click);
+            this.btn_reverseFiles.Click += new System.EventHandler(this.SwapAllFiles);
             // 
             // labelTBOX_Name
             // 
@@ -608,7 +608,7 @@
             this.button_swapColors.TabIndex = 118;
             this.button_swapColors.Text = "Swap Colors";
             this.button_swapColors.UseVisualStyleBackColor = true;
-            this.button_swapColors.Click += new System.EventHandler(this.button_swapColors_click);
+            this.button_swapColors.Click += new System.EventHandler(this.Button_swapColors_click);
             // 
             // labelTXB_Descr
             // 
@@ -646,35 +646,35 @@
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
             this.copyToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
+            this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // copyAllToolStripMenuItem
             // 
             this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
             this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.copyAllToolStripMenuItem.Text = "Copy All";
-            this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.copyAllToolStripMenuItem_Click);
+            this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.CopyAllToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
             this.pasteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
+            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // clearAndPasteToolStripMenuItem
             // 
             this.clearAndPasteToolStripMenuItem.Name = "clearAndPasteToolStripMenuItem";
             this.clearAndPasteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.clearAndPasteToolStripMenuItem.Text = "Clear And Paste";
-            this.clearAndPasteToolStripMenuItem.Click += new System.EventHandler(this.clearAndPasteToolStripMenuItem_Click);
+            this.clearAndPasteToolStripMenuItem.Click += new System.EventHandler(this.ClearAndPasteToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem1
             // 
             this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
             this.clearToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.clearToolStripMenuItem1.Text = "Clear";
-            this.clearToolStripMenuItem1.Click += new System.EventHandler(this.clearToolStripMenuItem1_Click);
+            this.clearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
             // 
             // checkBox_LastPlayedOptional
             // 
@@ -831,7 +831,7 @@
             this.listbox_Puzzles_Rush.Name = "listbox_Puzzles_Rush";
             this.listbox_Puzzles_Rush.Size = new System.Drawing.Size(311, 49);
             this.listbox_Puzzles_Rush.TabIndex = 102;
-            this.listbox_Puzzles_Rush.SelectedIndexChanged += new System.EventHandler(this.listbox_Puzzles_Rush_SelectedIndexChanged);
+            this.listbox_Puzzles_Rush.SelectedIndexChanged += new System.EventHandler(this.Listbox_Puzzles_Rush_SelectedIndexChanged);
             // 
             // contextRushMenu
             // 
@@ -847,7 +847,7 @@
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(244, 26);
             this.toolStripMenuItem4.Text = "Remove Selected Puzzle";
-            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
             // toolStripMenuItem5
             // 
@@ -855,7 +855,7 @@
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
             this.toolStripMenuItem5.Size = new System.Drawing.Size(244, 26);
             this.toolStripMenuItem5.Text = "Clear";
-            this.toolStripMenuItem5.Click += new System.EventHandler(this.toolStripMenuItem5_Click);
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.ToolStripMenuItem5_Click);
             // 
             // label_Solutions
             // 
@@ -877,7 +877,7 @@
             this.linkLabel_SCN.TabIndex = 99;
             this.linkLabel_SCN.TabStop = true;
             this.linkLabel_SCN.Text = "What is SCN?";
-            this.linkLabel_SCN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            this.linkLabel_SCN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel2_LinkClicked);
             // 
             // button_import_local
             // 
@@ -920,7 +920,7 @@
             this.linkLabel_FEN.TabIndex = 95;
             this.linkLabel_FEN.TabStop = true;
             this.linkLabel_FEN.Text = "What is FEN?";
-            this.linkLabel_FEN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.linkLabel_FEN.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // label_FENImportLabel
             // 
@@ -1027,7 +1027,7 @@
             this.loadChapterToolStripMenuItem.Name = "loadChapterToolStripMenuItem";
             this.loadChapterToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.loadChapterToolStripMenuItem.Text = "Load This Chapter";
-            this.loadChapterToolStripMenuItem.Click += new System.EventHandler(this.loadChapterToolStripMenuItem_Click);
+            this.loadChapterToolStripMenuItem.Click += new System.EventHandler(this.LoadChapterToolStripMenuItem_Click);
             // 
             // editChapterWithCurrentFieldsToolStripMenuItem
             // 
@@ -1048,7 +1048,7 @@
             this.removeLastChapterToolStripMenuItem.Name = "removeLastChapterToolStripMenuItem";
             this.removeLastChapterToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.removeLastChapterToolStripMenuItem.Text = "Remove Last Chapter";
-            this.removeLastChapterToolStripMenuItem.Click += new System.EventHandler(this.removeLastChapterToolStripMenuItem_Click);
+            this.removeLastChapterToolStripMenuItem.Click += new System.EventHandler(this.RemoveLastChapterToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem
             // 
@@ -1056,7 +1056,7 @@
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
             this.clearToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.clearToolStripMenuItem.Text = "Clear Puzzle";
-            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
             // clearPuzzleToolStripMenuItem
             // 
@@ -1064,7 +1064,7 @@
             this.clearPuzzleToolStripMenuItem.Name = "clearPuzzleToolStripMenuItem";
             this.clearPuzzleToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.clearPuzzleToolStripMenuItem.Text = "Clear List Only";
-            this.clearPuzzleToolStripMenuItem.Click += new System.EventHandler(this.clearPuzzleToolStripMenuItem_Click);
+            this.clearPuzzleToolStripMenuItem.Click += new System.EventHandler(this.ClearPuzzleToolStripMenuItem_Click);
             // 
             // button_Add
             // 
@@ -1077,9 +1077,9 @@
             this.button_Add.Text = "(A)dd";
             this.toolTip1.SetToolTip(this.button_Add, "Add new chapter");
             this.button_Add.UseVisualStyleBackColor = true;
-            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
-            this.button_Add.MouseEnter += new System.EventHandler(this.button_Add_MouseEnter);
-            this.button_Add.MouseLeave += new System.EventHandler(this.button_Add_MouseLeave);
+            this.button_Add.Click += new System.EventHandler(this.Button_Add_Click);
+            this.button_Add.MouseEnter += new System.EventHandler(this.Button_Add_MouseEnter);
+            this.button_Add.MouseLeave += new System.EventHandler(this.Button_Add_MouseLeave);
             // 
             // c_number2
             // 
@@ -1218,7 +1218,7 @@
             this.linkLabel_Dif.TabIndex = 61;
             this.linkLabel_Dif.TabStop = true;
             this.linkLabel_Dif.Text = "What\'s the difference?";
-            this.linkLabel_Dif.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.link_Diffenrence_click);
+            this.linkLabel_Dif.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Link_Diffenrence_click);
             // 
             // checkBox_Making_PR
             // 
@@ -1230,7 +1230,7 @@
             this.checkBox_Making_PR.TabIndex = 60;
             this.checkBox_Making_PR.Text = "I am making a Puzzle Rush";
             this.checkBox_Making_PR.UseVisualStyleBackColor = true;
-            this.checkBox_Making_PR.CheckedChanged += new System.EventHandler(this.checkBox_Making_PR_CheckedChanged);
+            this.checkBox_Making_PR.CheckedChanged += new System.EventHandler(this.CheckBox_Making_PR_CheckedChanged);
             // 
             // button_Generate_P
             // 
@@ -1244,8 +1244,8 @@
             this.button_Generate_P.Text = "(G)enerate Puzzle";
             this.button_Generate_P.UseVisualStyleBackColor = true;
             this.button_Generate_P.Click += new System.EventHandler(this.GeneratePuzzle_Click);
-            this.button_Generate_P.MouseEnter += new System.EventHandler(this.button_Generate_P_MouseEnter);
-            this.button_Generate_P.MouseLeave += new System.EventHandler(this.button_Generate_P_MouseLeave);
+            this.button_Generate_P.MouseEnter += new System.EventHandler(this.Button_Generate_P_MouseEnter);
+            this.button_Generate_P.MouseLeave += new System.EventHandler(this.Button_Generate_P_MouseLeave);
             // 
             // button_generate_PR
             // 
@@ -1259,9 +1259,9 @@
             this.button_generate_PR.TabIndex = 59;
             this.button_generate_PR.Text = "Generate Puz(z)le Rush";
             this.button_generate_PR.UseVisualStyleBackColor = true;
-            this.button_generate_PR.Click += new System.EventHandler(this.button_generate_PR_Click);
-            this.button_generate_PR.MouseEnter += new System.EventHandler(this.button_generate_PR_MouseEnter);
-            this.button_generate_PR.MouseLeave += new System.EventHandler(this.button_generate_PR_MouseLeave);
+            this.button_generate_PR.Click += new System.EventHandler(this.Button_generate_PR_Click);
+            this.button_generate_PR.MouseEnter += new System.EventHandler(this.Button_generate_PR_MouseEnter);
+            this.button_generate_PR.MouseLeave += new System.EventHandler(this.Button_generate_PR_MouseLeave);
             // 
             // button_hint
             // 
@@ -1327,7 +1327,7 @@
             this.whitePawnToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+1";
             this.whitePawnToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whitePawnToolStripMenuItem.Text = "White Pawn";
-            this.whitePawnToolStripMenuItem.Click += new System.EventHandler(this.whitePawnToolStripMenuItem_Click);
+            this.whitePawnToolStripMenuItem.Click += new System.EventHandler(this.WhitePawnToolStripMenuItem_Click);
             // 
             // whiteRookToolStripMenuItem
             // 
@@ -1336,7 +1336,7 @@
             this.whiteRookToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+2";
             this.whiteRookToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whiteRookToolStripMenuItem.Text = "White Rook";
-            this.whiteRookToolStripMenuItem.Click += new System.EventHandler(this.whiteRookToolStripMenuItem_Click);
+            this.whiteRookToolStripMenuItem.Click += new System.EventHandler(this.WhiteRookToolStripMenuItem_Click);
             // 
             // whiteQueenToolStripMenuItem
             // 
@@ -1345,7 +1345,7 @@
             this.whiteQueenToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+3";
             this.whiteQueenToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whiteQueenToolStripMenuItem.Text = "White Queen";
-            this.whiteQueenToolStripMenuItem.Click += new System.EventHandler(this.whiteQueenToolStripMenuItem_Click);
+            this.whiteQueenToolStripMenuItem.Click += new System.EventHandler(this.WhiteQueenToolStripMenuItem_Click);
             // 
             // whiteKingToolStripMenuItem1
             // 
@@ -1354,7 +1354,7 @@
             this.whiteKingToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+4";
             this.whiteKingToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteKingToolStripMenuItem1.Text = "White King";
-            this.whiteKingToolStripMenuItem1.Click += new System.EventHandler(this.whiteKingToolStripMenuItem1_Click);
+            this.whiteKingToolStripMenuItem1.Click += new System.EventHandler(this.WhiteKingToolStripMenuItem1_Click);
             // 
             // whiteBishopToolStripMenuItem1
             // 
@@ -1363,7 +1363,7 @@
             this.whiteBishopToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+5";
             this.whiteBishopToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteBishopToolStripMenuItem1.Text = "White Bishop";
-            this.whiteBishopToolStripMenuItem1.Click += new System.EventHandler(this.whiteBishopToolStripMenuItem1_Click);
+            this.whiteBishopToolStripMenuItem1.Click += new System.EventHandler(this.WhiteBishopToolStripMenuItem1_Click);
             // 
             // whiteKnightToolStripMenuItem1
             // 
@@ -1372,7 +1372,7 @@
             this.whiteKnightToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+6";
             this.whiteKnightToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteKnightToolStripMenuItem1.Text = "White Knight";
-            this.whiteKnightToolStripMenuItem1.Click += new System.EventHandler(this.whiteKnightToolStripMenuItem1_Click);
+            this.whiteKnightToolStripMenuItem1.Click += new System.EventHandler(this.WhiteKnightToolStripMenuItem1_Click);
             // 
             // blackToolStripMenuItem
             // 
@@ -1396,7 +1396,7 @@
             this.blackPawnToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+1";
             this.blackPawnToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackPawnToolStripMenuItem1.Text = "Black Pawn";
-            this.blackPawnToolStripMenuItem1.Click += new System.EventHandler(this.blackPawnToolStripMenuItem1_Click);
+            this.blackPawnToolStripMenuItem1.Click += new System.EventHandler(this.BlackPawnToolStripMenuItem1_Click);
             // 
             // blackRookToolStripMenuItem1
             // 
@@ -1405,7 +1405,7 @@
             this.blackRookToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+2";
             this.blackRookToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackRookToolStripMenuItem1.Text = "Black Rook";
-            this.blackRookToolStripMenuItem1.Click += new System.EventHandler(this.blackRookToolStripMenuItem1_Click);
+            this.blackRookToolStripMenuItem1.Click += new System.EventHandler(this.BlackRookToolStripMenuItem1_Click);
             // 
             // blackQueenToolStripMenuItem1
             // 
@@ -1414,7 +1414,7 @@
             this.blackQueenToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+3";
             this.blackQueenToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackQueenToolStripMenuItem1.Text = "Black Queen";
-            this.blackQueenToolStripMenuItem1.Click += new System.EventHandler(this.blackQueenToolStripMenuItem1_Click);
+            this.blackQueenToolStripMenuItem1.Click += new System.EventHandler(this.BlackQueenToolStripMenuItem1_Click);
             // 
             // blackKingToolStripMenuItem1
             // 
@@ -1423,7 +1423,7 @@
             this.blackKingToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+4";
             this.blackKingToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackKingToolStripMenuItem1.Text = "Black King";
-            this.blackKingToolStripMenuItem1.Click += new System.EventHandler(this.blackKingToolStripMenuItem1_Click);
+            this.blackKingToolStripMenuItem1.Click += new System.EventHandler(this.BlackKingToolStripMenuItem1_Click);
             // 
             // blackBishopToolStripMenuItem1
             // 
@@ -1432,7 +1432,7 @@
             this.blackBishopToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+5";
             this.blackBishopToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackBishopToolStripMenuItem1.Text = "Black Bishop";
-            this.blackBishopToolStripMenuItem1.Click += new System.EventHandler(this.blackBishopToolStripMenuItem1_Click);
+            this.blackBishopToolStripMenuItem1.Click += new System.EventHandler(this.BlackBishopToolStripMenuItem1_Click);
             // 
             // blackKnightToolStripMenuItem1
             // 
@@ -1441,7 +1441,7 @@
             this.blackKnightToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+6";
             this.blackKnightToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackKnightToolStripMenuItem1.Text = "Black Knight";
-            this.blackKnightToolStripMenuItem1.Click += new System.EventHandler(this.blackKnightToolStripMenuItem1_Click);
+            this.blackKnightToolStripMenuItem1.Click += new System.EventHandler(this.BlBckKnightToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1459,7 +1459,7 @@
             this.eMPYToolStripMenuItem.Name = "eMPYToolStripMenuItem";
             this.eMPYToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
             this.eMPYToolStripMenuItem.Text = "EMPY";
-            this.eMPYToolStripMenuItem.Click += new System.EventHandler(this.eMPYToolStripMenuItem_Click);
+            this.eMPYToolStripMenuItem.Click += new System.EventHandler(this.EMPYToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
@@ -1475,7 +1475,7 @@
             this.thisIsAttackerToolStripMenuItem.ShortcutKeyDisplayString = "1";
             this.thisIsAttackerToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
             this.thisIsAttackerToolStripMenuItem.Text = "This is Attacker";
-            this.thisIsAttackerToolStripMenuItem.Click += new System.EventHandler(this.thisIsAttackerToolStripMenuItem_Click);
+            this.thisIsAttackerToolStripMenuItem.Click += new System.EventHandler(this.ThisIsAttackerToolStripMenuItem_Click);
             // 
             // thisIsAttackedToolStripMenuItem
             // 
@@ -1485,7 +1485,7 @@
             this.thisIsAttackedToolStripMenuItem.ShortcutKeyDisplayString = "2";
             this.thisIsAttackedToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
             this.thisIsAttackedToolStripMenuItem.Text = "This is Attacked";
-            this.thisIsAttackedToolStripMenuItem.Click += new System.EventHandler(this.thisIsAttackedToolStripMenuItem_Click);
+            this.thisIsAttackedToolStripMenuItem.Click += new System.EventHandler(this.ThisIsAttackedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1499,7 +1499,7 @@
             this.thisIsPrepuzzleStartToolStripMenuItem.Name = "thisIsPrepuzzleStartToolStripMenuItem";
             this.thisIsPrepuzzleStartToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
             this.thisIsPrepuzzleStartToolStripMenuItem.Text = "This is last move played, start";
-            this.thisIsPrepuzzleStartToolStripMenuItem.Click += new System.EventHandler(this.thisIsPrepuzzleStartToolStripMenuItem_Click);
+            this.thisIsPrepuzzleStartToolStripMenuItem.Click += new System.EventHandler(this.ThisIsPrepuzzleStartToolStripMenuItem_Click);
             // 
             // thisIsPrePuzzleEndToolStripMenuItem
             // 
@@ -1508,7 +1508,7 @@
             this.thisIsPrePuzzleEndToolStripMenuItem.Name = "thisIsPrePuzzleEndToolStripMenuItem";
             this.thisIsPrePuzzleEndToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
             this.thisIsPrePuzzleEndToolStripMenuItem.Text = "This is last move played, end";
-            this.thisIsPrePuzzleEndToolStripMenuItem.Click += new System.EventHandler(this.thisIsPrePuzzleEndToolStripMenuItem_Click);
+            this.thisIsPrePuzzleEndToolStripMenuItem.Click += new System.EventHandler(this.ThisIsPrePuzzleEndToolStripMenuItem_Click);
             // 
             // label_chapterCounter
             // 
@@ -1583,7 +1583,7 @@
             this.button_settings.Size = new System.Drawing.Size(30, 30);
             this.button_settings.TabIndex = 54;
             this.button_settings.UseVisualStyleBackColor = true;
-            this.button_settings.Click += new System.EventHandler(this.button9_Click);
+            this.button_settings.Click += new System.EventHandler(this.Button9_Click);
             // 
             // checkBox_AU_Reset
             // 
@@ -1595,7 +1595,7 @@
             this.checkBox_AU_Reset.TabIndex = 58;
             this.checkBox_AU_Reset.Text = "Automatically restart the currently solved puzzle\r\n";
             this.checkBox_AU_Reset.UseVisualStyleBackColor = true;
-            this.checkBox_AU_Reset.CheckedChanged += new System.EventHandler(this.checkBox_AU_Reset_CheckedChanged);
+            this.checkBox_AU_Reset.CheckedChanged += new System.EventHandler(this.CheckBox_AU_Reset_CheckedChanged);
             // 
             // checkBox_UseBG
             // 
@@ -1607,7 +1607,7 @@
             this.checkBox_UseBG.TabIndex = 57;
             this.checkBox_UseBG.Text = "Use background Image";
             this.checkBox_UseBG.UseVisualStyleBackColor = true;
-            this.checkBox_UseBG.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox_UseBG.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // checkBox_autoPR
             // 
@@ -1621,7 +1621,7 @@
             this.checkBox_autoPR.TabIndex = 56;
             this.checkBox_autoPR.Text = "Automatically go to the next puzzle in a puzzle rush";
             this.checkBox_autoPR.UseVisualStyleBackColor = true;
-            this.checkBox_autoPR.CheckedChanged += new System.EventHandler(this.checkBox_autoPR_CheckedChanged);
+            this.checkBox_autoPR.CheckedChanged += new System.EventHandler(this.CheckBox_autoPR_CheckedChanged);
             // 
             // button1
             // 
@@ -1636,7 +1636,7 @@
             this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 55;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.button1.Click += new System.EventHandler(this.HelpButton_Click);
             // 
             // checkBox_hotkeys
             // 
@@ -1650,7 +1650,7 @@
             this.checkBox_hotkeys.TabIndex = 50;
             this.checkBox_hotkeys.Text = "Use Hotkeys";
             this.checkBox_hotkeys.UseVisualStyleBackColor = true;
-            this.checkBox_hotkeys.CheckedChanged += new System.EventHandler(this.checkBox_hotkeys_CheckedChanged);
+            this.checkBox_hotkeys.CheckedChanged += new System.EventHandler(this.CheckBox_hotkeys_CheckedChanged);
             // 
             // context_options
             // 
@@ -1673,7 +1673,7 @@
             this.changeColorOfWhiteSquareToolStripMenuItem.Name = "changeColorOfWhiteSquareToolStripMenuItem";
             this.changeColorOfWhiteSquareToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeColorOfWhiteSquareToolStripMenuItem.Text = "Change Color of White Squares...";
-            this.changeColorOfWhiteSquareToolStripMenuItem.Click += new System.EventHandler(this.changeColorOfWhiteSquareToolStripMenuItem_Click);
+            this.changeColorOfWhiteSquareToolStripMenuItem.Click += new System.EventHandler(this.ChangeColorOfWhiteSquareToolStripMenuItem_Click);
             // 
             // changeColorOfBlackSquaresToolStripMenuItem
             // 
@@ -1681,7 +1681,7 @@
             this.changeColorOfBlackSquaresToolStripMenuItem.Name = "changeColorOfBlackSquaresToolStripMenuItem";
             this.changeColorOfBlackSquaresToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeColorOfBlackSquaresToolStripMenuItem.Text = "Change Color of Black Squares...";
-            this.changeColorOfBlackSquaresToolStripMenuItem.Click += new System.EventHandler(this.changeColorOfBlackSquaresToolStripMenuItem_Click);
+            this.changeColorOfBlackSquaresToolStripMenuItem.Click += new System.EventHandler(this.ChangeColorOfBlackSquaresToolStripMenuItem_Click);
             // 
             // changeHightlightedSquareColorToolStripMenuItem
             // 
@@ -1689,7 +1689,7 @@
             this.changeHightlightedSquareColorToolStripMenuItem.Name = "changeHightlightedSquareColorToolStripMenuItem";
             this.changeHightlightedSquareColorToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeHightlightedSquareColorToolStripMenuItem.Text = "Change Selected Square\'s Color...";
-            this.changeHightlightedSquareColorToolStripMenuItem.Click += new System.EventHandler(this.changeHightlightedSquareColorToolStripMenuItem_Click);
+            this.changeHightlightedSquareColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeHightlightedSquareColorToolStripMenuItem_Click);
             // 
             // changeTheHoverColorOfTheSquaresToolStripMenuItem
             // 
@@ -1697,7 +1697,7 @@
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Name = "changeTheHoverColorOfTheSquaresToolStripMenuItem";
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Text = "Change The Hover Color Of The Squares...";
-            this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Click += new System.EventHandler(this.changeTheHoverColorOfTheSquaresToolStripMenuItem_Click);
+            this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Click += new System.EventHandler(this.ChangeTheHoverColorOfTheSquaresToolStripMenuItem_Click);
             // 
             // changeLastMoveHightlightColorToolStripMenuItem
             // 
@@ -1705,7 +1705,7 @@
             this.changeLastMoveHightlightColorToolStripMenuItem.Name = "changeLastMoveHightlightColorToolStripMenuItem";
             this.changeLastMoveHightlightColorToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeLastMoveHightlightColorToolStripMenuItem.Text = "Change Last Move Hightlight\'s Color...";
-            this.changeLastMoveHightlightColorToolStripMenuItem.Click += new System.EventHandler(this.changeLastMoveHightlightColorToolStripMenuItem_Click);
+            this.changeLastMoveHightlightColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeLastMoveHightlightColorToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -1734,7 +1734,7 @@
             this.resetAllToolStripMenuItem.Name = "resetAllToolStripMenuItem";
             this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.resetAllToolStripMenuItem.Text = "Reset All";
-            this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.resetAllToolStripMenuItem_Click);
+            this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.ResetAllToolStripMenuItem_Click);
             // 
             // button_show_solution
             // 
@@ -1771,7 +1771,7 @@
             this.button_export_Local.TabIndex = 52;
             this.button_export_Local.Text = "Export position as SCN";
             this.button_export_Local.UseVisualStyleBackColor = true;
-            this.button_export_Local.Click += new System.EventHandler(this.button6_Click);
+            this.button_export_Local.Click += new System.EventHandler(this.DisplaySCNCopyDialog);
             // 
             // button_export_FEN
             // 
@@ -1984,7 +1984,7 @@
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.pauseToolStripMenuItem.Text = "Pause";
-            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
+            this.pauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
             // resumeToolStripMenuItem
             // 
@@ -1992,7 +1992,7 @@
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
             this.resumeToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.resumeToolStripMenuItem.Text = "Resume";
-            this.resumeToolStripMenuItem.Click += new System.EventHandler(this.resumeToolStripMenuItem_Click);
+            this.resumeToolStripMenuItem.Click += new System.EventHandler(this.ResumeToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
@@ -2000,7 +2000,7 @@
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.stopToolStripMenuItem.Text = "Stop";
-            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopToolStripMenuItem_Click);
             // 
             // restartToolStripMenuItem
             // 
@@ -2008,7 +2008,7 @@
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
             this.restartToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.restartToolStripMenuItem.Text = "Restart";
-            this.restartToolStripMenuItem.Click += new System.EventHandler(this.restartToolStripMenuItem_Click);
+            this.restartToolStripMenuItem.Click += new System.EventHandler(this.RestartToolStripMenuItem_Click);
             // 
             // label_move_wrong
             // 
@@ -2098,7 +2098,7 @@
             this.toolTip1.SetToolTip(this.button_clear_Board, "Clear Board");
             this.button_clear_Board.UseVisualStyleBackColor = false;
             this.button_clear_Board.Visible = false;
-            this.button_clear_Board.Click += new System.EventHandler(this.button2_Click_1);
+            this.button_clear_Board.Click += new System.EventHandler(this.ClearComposerBoard_Click);
             // 
             // button_gotoNextPuzzle
             // 
@@ -2115,7 +2115,7 @@
             this.toolTip1.SetToolTip(this.button_gotoNextPuzzle, "Go to the next puzzle in the puzzle rush");
             this.button_gotoNextPuzzle.UseVisualStyleBackColor = false;
             this.button_gotoNextPuzzle.Visible = false;
-            this.button_gotoNextPuzzle.Click += new System.EventHandler(this.button_gotoNextPuzzle_Click);
+            this.button_gotoNextPuzzle.Click += new System.EventHandler(this.Button_gotoNextPuzzle_Click);
             // 
             // button_Autoplay
             // 
@@ -2132,7 +2132,7 @@
             this.toolTip1.SetToolTip(this.button_Autoplay, "autoplay the opened puzzle or puzzle rush");
             this.button_Autoplay.UseVisualStyleBackColor = false;
             this.button_Autoplay.Visible = false;
-            this.button_Autoplay.Click += new System.EventHandler(this.button_Autoplay_Click);
+            this.button_Autoplay.Click += new System.EventHandler(this.Button_Autoplay_Click);
             // 
             // imageList_ForPRList
             // 
@@ -2156,14 +2156,14 @@
             this.howToSolvePuzzlesToolStripMenuItem.Name = "howToSolvePuzzlesToolStripMenuItem";
             this.howToSolvePuzzlesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.howToSolvePuzzlesToolStripMenuItem.Text = "Tutorials";
-            this.howToSolvePuzzlesToolStripMenuItem.Click += new System.EventHandler(this.howToSolvePuzzlesToolStripMenuItem_Click);
+            this.howToSolvePuzzlesToolStripMenuItem.Click += new System.EventHandler(this.HowToSolvePuzzlesToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.aboutToolStripMenuItem.Text = "About the app";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // PuzzlesDisplay
             // 
@@ -2226,7 +2226,7 @@
             this.button_hColor4.Size = new System.Drawing.Size(25, 25);
             this.button_hColor4.TabIndex = 32;
             this.button_hColor4.UseVisualStyleBackColor = false;
-            this.button_hColor4.Click += new System.EventHandler(this.button_hColor4_Click);
+            this.button_hColor4.Click += new System.EventHandler(this.ChangeHLColor_SHIFT);
             // 
             // label14
             // 
@@ -2248,7 +2248,7 @@
             this.button15.TabIndex = 30;
             this.button15.Text = "x";
             this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.button15.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // button_setResponseTimePL
             // 
@@ -2261,7 +2261,7 @@
             this.button_setResponseTimePL.TabIndex = 29;
             this.button_setResponseTimePL.Text = "Set";
             this.button_setResponseTimePL.UseVisualStyleBackColor = false;
-            this.button_setResponseTimePL.Click += new System.EventHandler(this.button_setResponseTimePL_Click);
+            this.button_setResponseTimePL.Click += new System.EventHandler(this.Button_setResponseTimePL_Click);
             // 
             // numericUpDown7
             // 
@@ -2317,7 +2317,7 @@
             this.button_SetCurrentCountdown.TabIndex = 25;
             this.button_SetCurrentCountdown.Text = "Set";
             this.button_SetCurrentCountdown.UseVisualStyleBackColor = false;
-            this.button_SetCurrentCountdown.Click += new System.EventHandler(this.button12_Click);
+            this.button_SetCurrentCountdown.Click += new System.EventHandler(this.SetCurrentTimer);
             // 
             // numericUpDown4
             // 
@@ -2432,7 +2432,7 @@
             this.button_hColor3.Size = new System.Drawing.Size(25, 25);
             this.button_hColor3.TabIndex = 15;
             this.button_hColor3.UseVisualStyleBackColor = false;
-            this.button_hColor3.Click += new System.EventHandler(this.button_hColor3_Click);
+            this.button_hColor3.Click += new System.EventHandler(this.ChangeHLColor_ALT);
             // 
             // label8
             // 
@@ -2453,7 +2453,7 @@
             this.button_hColor2.Size = new System.Drawing.Size(25, 25);
             this.button_hColor2.TabIndex = 13;
             this.button_hColor2.UseVisualStyleBackColor = false;
-            this.button_hColor2.Click += new System.EventHandler(this.button9_Click_1);
+            this.button_hColor2.Click += new System.EventHandler(this.ChangeHLColor_CTRL);
             // 
             // label9
             // 
@@ -2474,7 +2474,7 @@
             this.button_hColor1.Size = new System.Drawing.Size(25, 25);
             this.button_hColor1.TabIndex = 11;
             this.button_hColor1.UseVisualStyleBackColor = false;
-            this.button_hColor1.Click += new System.EventHandler(this.button10_Click);
+            this.button_hColor1.Click += new System.EventHandler(this.ChangeHLColor_Normal);
             // 
             // label10
             // 
@@ -2495,7 +2495,7 @@
             this.button_stHoverColor.Size = new System.Drawing.Size(25, 25);
             this.button_stHoverColor.TabIndex = 9;
             this.button_stHoverColor.UseVisualStyleBackColor = false;
-            this.button_stHoverColor.Click += new System.EventHandler(this.button_stHoverColor_Click);
+            this.button_stHoverColor.Click += new System.EventHandler(this.Button_stHoverColor_Click);
             // 
             // label7
             // 
@@ -2516,7 +2516,7 @@
             this.button_setLastMoveColor.Size = new System.Drawing.Size(25, 25);
             this.button_setLastMoveColor.TabIndex = 7;
             this.button_setLastMoveColor.UseVisualStyleBackColor = false;
-            this.button_setLastMoveColor.Click += new System.EventHandler(this.button_setLastMoveColor_Click);
+            this.button_setLastMoveColor.Click += new System.EventHandler(this.Button_setLastMoveColor_Click);
             // 
             // label5
             // 
@@ -2537,7 +2537,7 @@
             this.button_setSElectedSquare.Size = new System.Drawing.Size(25, 25);
             this.button_setSElectedSquare.TabIndex = 5;
             this.button_setSElectedSquare.UseVisualStyleBackColor = false;
-            this.button_setSElectedSquare.Click += new System.EventHandler(this.button_setSElectedSquare_Click);
+            this.button_setSElectedSquare.Click += new System.EventHandler(this.Button_setSElectedSquare_Click);
             // 
             // label4
             // 
@@ -2558,7 +2558,7 @@
             this.button_blackSqSetColor.Size = new System.Drawing.Size(25, 25);
             this.button_blackSqSetColor.TabIndex = 3;
             this.button_blackSqSetColor.UseVisualStyleBackColor = false;
-            this.button_blackSqSetColor.Click += new System.EventHandler(this.button_blackSqSetColor_Click);
+            this.button_blackSqSetColor.Click += new System.EventHandler(this.Button_blackSqSetColor_Click);
             // 
             // label3
             // 
@@ -2579,7 +2579,7 @@
             this.button_setwhiteSqColor.Size = new System.Drawing.Size(25, 25);
             this.button_setwhiteSqColor.TabIndex = 1;
             this.button_setwhiteSqColor.UseVisualStyleBackColor = false;
-            this.button_setwhiteSqColor.Click += new System.EventHandler(this.button_setwhiteSqColor_Click);
+            this.button_setwhiteSqColor.Click += new System.EventHandler(this.Button_setwhiteSqColor_Click);
             // 
             // label1
             // 
@@ -2882,7 +2882,7 @@
         private NumericUpDown numericUpDown2;
         private NumericUpDown numericUpDown1;
         private Label label11;
-        private Button button_resetAllSettings;
+         
         private Button button_hColor3;
         private Label label8;
         private Button button_hColor2;

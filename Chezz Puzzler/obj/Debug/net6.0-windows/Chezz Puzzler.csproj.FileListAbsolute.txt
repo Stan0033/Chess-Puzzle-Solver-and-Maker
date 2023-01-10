@@ -4,12 +4,6 @@ C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puz
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.dll
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.pdb
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.AssemblyReference.cache
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMPLib.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.MediaPlayer.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMPDXMLib.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMPLauncher.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Interop.WMLSS.dll
-C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.ResolveComReference.cache
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.CopyDialog.resources
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Form_base.resources
 C:\Users\Stan\source\repos\Chezz Puzzler\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Properties.Resources.resources

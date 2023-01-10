@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Chezz_Puzzler
 {
     public class ChessButton : Button
@@ -81,13 +80,14 @@ namespace Chezz_Puzzler
                 markColor = newColor;
             }
         }
+        public override Image? BackgroundImage { get => base.BackgroundImage; set => base.BackgroundImage = value; }
         public bool IsMarked { get => isMarked; set { isMarked = value; if (value == false) { SetDefaultBackColor(); } } }
         public string PieceName { get => pieceName; set => pieceName = value; }
         public string SquareName { get => squareName; set => squareName = value; }
         public string SquareColor { get => squareColorAsChar; set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
-        public Color defaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
-        public Color defaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
-        public Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }
+        public Color DefaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
+        public Color DefaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
+        public new Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }
         public void SetDefaultBackColor()
         {
             if (!belongsToLastMove && !isSelected)
@@ -101,7 +101,7 @@ namespace Chezz_Puzzler
         //---------------------------------------------------------------------
         public bool IsHovered
         {
-            get => IsHovered;
+            get => isHovered;
             set
             {
                 isHovered = value;
@@ -115,8 +115,8 @@ namespace Chezz_Puzzler
                     bool ThisPieceIs_White = char.IsUpper(pieceName[0]);
                     bool ThisPieceIs_Black = char.IsLower(pieceName[0]);
                     bool izHovered = value;
-                    bool thisSquareHasImage = BackgroundImage == null ? false : true;
-                    bool thisSquareHasNOImage = BackgroundImage == null ? true : false;
+                    bool thisSquareHasImage = BackgroundImage != null;
+                    bool thisSquareHasNOImage = BackgroundImage == null;
                     if (izHovered && waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Cross; return; }
                     if (izHovered && !waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Arrow; return; }
                     //-----------------------------------------------------
@@ -169,8 +169,8 @@ namespace Chezz_Puzzler
         {
             Color_Select = SelectColor;
             Color_Hover = Hover;
-            defaultColors_Black = BlackColor;
-            defaultColors_White = WhiteColor;
+            DefaultColors_Black = BlackColor;
+            DefaultColors_White = WhiteColor;
             color_BelongsToLastMove = lastSquares;
             SetDefaultBackColor();
         }
