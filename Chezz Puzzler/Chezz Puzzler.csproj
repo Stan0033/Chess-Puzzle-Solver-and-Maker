@@ -16,7 +16,6 @@
     <Compile Remove="SetResponseTimeForPuzzles.Designer.cs" />
     <Compile Remove="SetTimer.cs" />
     <Compile Remove="SetTimer.Designer.cs" />
-    <Compile Remove="settings.cs" />
     <Compile Remove="settings.Designer.cs" />
   </ItemGroup>
   <ItemGroup>

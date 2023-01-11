@@ -22,12 +22,17 @@ namespace Chezz_Puzzler
             isMarked = false;
             CanInteract = true;
             markColor = Color.Empty;
+            Width = 65;
+            Height = 65;
+            AutoSize = false;
+            FlatStyle = FlatStyle.Flat;
+            PieceName = "-";
         }
-        public Panel belongsToWhichPanel;
+        public Panel? belongsToWhichPanel;
         //----------------------------------------------------------
         private string pieceName;
         private string squareName;
-        private string squareColorAsChar;
+        private string? squareColorAsChar;
         //----------------------------------------------------------
         private bool isHovered;
         private bool belongsToLastMove;
@@ -35,7 +40,7 @@ namespace Chezz_Puzzler
         private bool isWhiteSquare;
         private bool waitingPaste;
         public bool CanInteract;
-        private string PlayertoMove;
+        private string? PlayertoMove;
         public bool SolverIsMoving;
         private bool isMarked;
         //----------------------------------------------------------
@@ -46,7 +51,7 @@ namespace Chezz_Puzzler
         private Color color_hover;
         private Color color_BelongsToLastMove;
         private Color markColor;
-        public string ToMove { get => PlayertoMove; set => PlayertoMove = value; }
+        public string ToMove { get => PlayertoMove ?? ""; set => PlayertoMove = value; }
         public bool WaitingPaste
         {
             get => waitingPaste;
@@ -84,7 +89,7 @@ namespace Chezz_Puzzler
         public bool IsMarked { get => isMarked; set { isMarked = value; if (value == false) { SetDefaultBackColor(); } } }
         public string PieceName { get => pieceName; set => pieceName = value; }
         public string SquareName { get => squareName; set => squareName = value; }
-        public string SquareColor { get => squareColorAsChar; set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
+        public string SquareColor { get { return squareColorAsChar ?? ""; } set { this.BackColor = value == "b" ? CurrentColor_Black : CurrentColor_White; squareColorAsChar = value; } }
         public Color DefaultColors_Black { get => CurrentColor_Black; set => CurrentColor_Black = value; }
         public Color DefaultColors_White { get => CurrentColor_White; set => CurrentColor_White = value; }
         public new Color DefaultBackColor { get => defaultBackColor; set => defaultBackColor = value; }

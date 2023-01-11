@@ -145,4 +145,9 @@ Added a button "Reverse ranks"
 - Fixed writing and reading of the last move, before a puzzle starts
 - The Tick And Cross are hidden when moving to the next puzzle in a puzzle rush
 - added tooltips on the labels in the composer tab
-
+-----------------------
+1.7.9
+-----------------------
+- Addded an option to change the piece set from settings. You can also make your own by creating a folder with the name of the set and putting the 12 required image files with their exact names.
+The image is recommended to be 150x150
+- The settings panel now has a header text

@@ -203,9 +203,13 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PuzzlesDisplay = new System.Windows.Forms.Panel();
             this.panel_setttings = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
+            this.label_logo_settings = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.button_SetPieceTheme = new System.Windows.Forms.Button();
+            this.comboBox_Psets = new System.Windows.Forms.ComboBox();
             this.button_hColor4 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.button15 = new System.Windows.Forms.Button();
             this.button_setResponseTimePL = new System.Windows.Forms.Button();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
@@ -341,7 +345,6 @@
             this.panel_dummy_EL.Name = "panel_dummy_EL";
             this.panel_dummy_EL.Size = new System.Drawing.Size(359, 613);
             this.panel_dummy_EL.TabIndex = 83;
-            
             // 
             // menuPuzzles
             // 
@@ -2177,9 +2180,13 @@
             // panel_setttings
             // 
             this.panel_setttings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_setttings.Controls.Add(this.button15);
+            this.panel_setttings.Controls.Add(this.label_logo_settings);
+            this.panel_setttings.Controls.Add(this.label15);
+            this.panel_setttings.Controls.Add(this.button_SetPieceTheme);
+            this.panel_setttings.Controls.Add(this.comboBox_Psets);
             this.panel_setttings.Controls.Add(this.button_hColor4);
             this.panel_setttings.Controls.Add(this.label14);
-            this.panel_setttings.Controls.Add(this.button15);
             this.panel_setttings.Controls.Add(this.button_setResponseTimePL);
             this.panel_setttings.Controls.Add(this.numericUpDown7);
             this.panel_setttings.Controls.Add(this.label13);
@@ -2210,18 +2217,74 @@
             this.panel_setttings.Controls.Add(this.label3);
             this.panel_setttings.Controls.Add(this.button_setwhiteSqColor);
             this.panel_setttings.Controls.Add(this.label1);
-            this.panel_setttings.Location = new System.Drawing.Point(673, 310);
+            this.panel_setttings.Location = new System.Drawing.Point(673, 249);
             this.panel_setttings.Name = "panel_setttings";
-            this.panel_setttings.Size = new System.Drawing.Size(352, 443);
+            this.panel_setttings.Size = new System.Drawing.Size(352, 504);
             this.panel_setttings.TabIndex = 84;
             this.panel_setttings.Visible = false;
+            // 
+            // button15
+            // 
+            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button15.Location = new System.Drawing.Point(322, 3);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(25, 25);
+            this.button15.TabIndex = 30;
+            this.button15.Text = "x";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.SettingsButton_Click);
+            // 
+            // label_logo_settings
+            // 
+            this.label_logo_settings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_logo_settings.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_logo_settings.Location = new System.Drawing.Point(0, 0);
+            this.label_logo_settings.Name = "label_logo_settings";
+            this.label_logo_settings.Size = new System.Drawing.Size(350, 27);
+            this.label_logo_settings.TabIndex = 130;
+            this.label_logo_settings.Text = "Settings";
+            this.label_logo_settings.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(12, 423);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(57, 15);
+            this.label15.TabIndex = 129;
+            this.label15.Text = "Piece Set:";
+            // 
+            // button_SetPieceTheme
+            // 
+            this.button_SetPieceTheme.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_SetPieceTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SetPieceTheme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_SetPieceTheme.Location = new System.Drawing.Point(294, 418);
+            this.button_SetPieceTheme.Name = "button_SetPieceTheme";
+            this.button_SetPieceTheme.Size = new System.Drawing.Size(45, 25);
+            this.button_SetPieceTheme.TabIndex = 128;
+            this.button_SetPieceTheme.Text = "Set";
+            this.button_SetPieceTheme.UseVisualStyleBackColor = false;
+            this.button_SetPieceTheme.Click += new System.EventHandler(this.Button_SetPieceTheme_Click);
+            // 
+            // comboBox_Psets
+            // 
+            this.comboBox_Psets.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox_Psets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Psets.FormattingEnabled = true;
+            this.comboBox_Psets.Location = new System.Drawing.Point(76, 418);
+            this.comboBox_Psets.Name = "comboBox_Psets";
+            this.comboBox_Psets.Size = new System.Drawing.Size(212, 23);
+            this.comboBox_Psets.TabIndex = 127;
             // 
             // button_hColor4
             // 
             this.button_hColor4.BackColor = System.Drawing.Color.White;
             this.button_hColor4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor4.Location = new System.Drawing.Point(219, 255);
+            this.button_hColor4.Location = new System.Drawing.Point(219, 290);
             this.button_hColor4.Name = "button_hColor4";
             this.button_hColor4.Size = new System.Drawing.Size(25, 25);
             this.button_hColor4.TabIndex = 32;
@@ -2231,31 +2294,18 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 261);
+            this.label14.Location = new System.Drawing.Point(13, 296);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(199, 15);
             this.label14.TabIndex = 31;
             this.label14.Text = "Color - [Shift+Right-Click] Highlight";
-            // 
-            // button15
-            // 
-            this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button15.Location = new System.Drawing.Point(320, 5);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(25, 25);
-            this.button15.TabIndex = 30;
-            this.button15.Text = "x";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // button_setResponseTimePL
             // 
             this.button_setResponseTimePL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setResponseTimePL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setResponseTimePL.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setResponseTimePL.Location = new System.Drawing.Point(294, 352);
+            this.button_setResponseTimePL.Location = new System.Drawing.Point(294, 387);
             this.button_setResponseTimePL.Name = "button_setResponseTimePL";
             this.button_setResponseTimePL.Size = new System.Drawing.Size(45, 25);
             this.button_setResponseTimePL.TabIndex = 29;
@@ -2265,7 +2315,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(238, 352);
+            this.numericUpDown7.Location = new System.Drawing.Point(238, 387);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2288,7 +2338,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 354);
+            this.label13.Location = new System.Drawing.Point(14, 389);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(213, 15);
             this.label13.TabIndex = 27;
@@ -2299,7 +2349,7 @@
             this.button_setDefaultCountdown_Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setDefaultCountdown_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setDefaultCountdown_Panel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setDefaultCountdown_Panel.Location = new System.Drawing.Point(294, 320);
+            this.button_setDefaultCountdown_Panel.Location = new System.Drawing.Point(294, 355);
             this.button_setDefaultCountdown_Panel.Name = "button_setDefaultCountdown_Panel";
             this.button_setDefaultCountdown_Panel.Size = new System.Drawing.Size(45, 25);
             this.button_setDefaultCountdown_Panel.TabIndex = 26;
@@ -2311,7 +2361,7 @@
             this.button_SetCurrentCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_SetCurrentCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SetCurrentCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetCurrentCountdown.Location = new System.Drawing.Point(294, 289);
+            this.button_SetCurrentCountdown.Location = new System.Drawing.Point(294, 324);
             this.button_SetCurrentCountdown.Name = "button_SetCurrentCountdown";
             this.button_SetCurrentCountdown.Size = new System.Drawing.Size(45, 25);
             this.button_SetCurrentCountdown.TabIndex = 25;
@@ -2321,7 +2371,7 @@
             // 
             // numericUpDown4
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(238, 320);
+            this.numericUpDown4.Location = new System.Drawing.Point(238, 355);
             this.numericUpDown4.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2333,7 +2383,7 @@
             // 
             // numericUpDown5
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(182, 320);
+            this.numericUpDown5.Location = new System.Drawing.Point(182, 355);
             this.numericUpDown5.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2345,7 +2395,7 @@
             // 
             // numericUpDown6
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(126, 320);
+            this.numericUpDown6.Location = new System.Drawing.Point(126, 355);
             this.numericUpDown6.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2358,7 +2408,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 322);
+            this.label12.Location = new System.Drawing.Point(14, 357);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(111, 15);
             this.label12.TabIndex = 21;
@@ -2366,7 +2416,7 @@
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(238, 291);
+            this.numericUpDown3.Location = new System.Drawing.Point(238, 326);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2378,7 +2428,7 @@
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(182, 291);
+            this.numericUpDown2.Location = new System.Drawing.Point(182, 326);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2390,7 +2440,7 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(126, 291);
+            this.numericUpDown1.Location = new System.Drawing.Point(126, 326);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2403,7 +2453,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 293);
+            this.label11.Location = new System.Drawing.Point(14, 328);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 15);
             this.label11.TabIndex = 17;
@@ -2414,7 +2464,7 @@
             this.button_resetAllSettings_Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_resetAllSettings_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_resetAllSettings_Panel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(245, 407);
+            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(245, 473);
             this.button_resetAllSettings_Panel.Name = "button_resetAllSettings_Panel";
             this.button_resetAllSettings_Panel.Size = new System.Drawing.Size(94, 25);
             this.button_resetAllSettings_Panel.TabIndex = 16;
@@ -2427,7 +2477,7 @@
             this.button_hColor3.BackColor = System.Drawing.Color.White;
             this.button_hColor3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor3.Location = new System.Drawing.Point(219, 224);
+            this.button_hColor3.Location = new System.Drawing.Point(219, 259);
             this.button_hColor3.Name = "button_hColor3";
             this.button_hColor3.Size = new System.Drawing.Size(25, 25);
             this.button_hColor3.TabIndex = 15;
@@ -2437,7 +2487,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 230);
+            this.label8.Location = new System.Drawing.Point(13, 265);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(190, 15);
             this.label8.TabIndex = 14;
@@ -2448,7 +2498,7 @@
             this.button_hColor2.BackColor = System.Drawing.Color.White;
             this.button_hColor2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor2.Location = new System.Drawing.Point(219, 193);
+            this.button_hColor2.Location = new System.Drawing.Point(219, 228);
             this.button_hColor2.Name = "button_hColor2";
             this.button_hColor2.Size = new System.Drawing.Size(25, 25);
             this.button_hColor2.TabIndex = 13;
@@ -2458,7 +2508,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 200);
+            this.label9.Location = new System.Drawing.Point(13, 235);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(194, 15);
             this.label9.TabIndex = 12;
@@ -2469,7 +2519,7 @@
             this.button_hColor1.BackColor = System.Drawing.Color.White;
             this.button_hColor1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor1.Location = new System.Drawing.Point(219, 162);
+            this.button_hColor1.Location = new System.Drawing.Point(219, 197);
             this.button_hColor1.Name = "button_hColor1";
             this.button_hColor1.Size = new System.Drawing.Size(25, 25);
             this.button_hColor1.TabIndex = 11;
@@ -2479,7 +2529,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 169);
+            this.label10.Location = new System.Drawing.Point(12, 204);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(167, 15);
             this.label10.TabIndex = 10;
@@ -2490,7 +2540,7 @@
             this.button_stHoverColor.BackColor = System.Drawing.Color.White;
             this.button_stHoverColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_stHoverColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_stHoverColor.Location = new System.Drawing.Point(219, 131);
+            this.button_stHoverColor.Location = new System.Drawing.Point(219, 166);
             this.button_stHoverColor.Name = "button_stHoverColor";
             this.button_stHoverColor.Size = new System.Drawing.Size(25, 25);
             this.button_stHoverColor.TabIndex = 9;
@@ -2500,7 +2550,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 136);
+            this.label7.Location = new System.Drawing.Point(13, 171);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 8;
@@ -2511,7 +2561,7 @@
             this.button_setLastMoveColor.BackColor = System.Drawing.Color.White;
             this.button_setLastMoveColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setLastMoveColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setLastMoveColor.Location = new System.Drawing.Point(219, 101);
+            this.button_setLastMoveColor.Location = new System.Drawing.Point(219, 136);
             this.button_setLastMoveColor.Name = "button_setLastMoveColor";
             this.button_setLastMoveColor.Size = new System.Drawing.Size(25, 25);
             this.button_setLastMoveColor.TabIndex = 7;
@@ -2521,7 +2571,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 106);
+            this.label5.Location = new System.Drawing.Point(13, 141);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 6;
@@ -2532,7 +2582,7 @@
             this.button_setSElectedSquare.BackColor = System.Drawing.Color.White;
             this.button_setSElectedSquare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setSElectedSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setSElectedSquare.Location = new System.Drawing.Point(219, 70);
+            this.button_setSElectedSquare.Location = new System.Drawing.Point(219, 105);
             this.button_setSElectedSquare.Name = "button_setSElectedSquare";
             this.button_setSElectedSquare.Size = new System.Drawing.Size(25, 25);
             this.button_setSElectedSquare.TabIndex = 5;
@@ -2542,7 +2592,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 75);
+            this.label4.Location = new System.Drawing.Point(13, 110);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 15);
             this.label4.TabIndex = 4;
@@ -2553,7 +2603,7 @@
             this.button_blackSqSetColor.BackColor = System.Drawing.Color.White;
             this.button_blackSqSetColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_blackSqSetColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_blackSqSetColor.Location = new System.Drawing.Point(219, 39);
+            this.button_blackSqSetColor.Location = new System.Drawing.Point(219, 74);
             this.button_blackSqSetColor.Name = "button_blackSqSetColor";
             this.button_blackSqSetColor.Size = new System.Drawing.Size(25, 25);
             this.button_blackSqSetColor.TabIndex = 3;
@@ -2563,7 +2613,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 44);
+            this.label3.Location = new System.Drawing.Point(13, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 2;
@@ -2574,7 +2624,7 @@
             this.button_setwhiteSqColor.BackColor = System.Drawing.Color.White;
             this.button_setwhiteSqColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setwhiteSqColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setwhiteSqColor.Location = new System.Drawing.Point(219, 7);
+            this.button_setwhiteSqColor.Location = new System.Drawing.Point(219, 42);
             this.button_setwhiteSqColor.Name = "button_setwhiteSqColor";
             this.button_setwhiteSqColor.Size = new System.Drawing.Size(25, 25);
             this.button_setwhiteSqColor.TabIndex = 1;
@@ -2584,7 +2634,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 12);
+            this.label1.Location = new System.Drawing.Point(13, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 0;
@@ -2596,9 +2646,8 @@
             this.___LABEL_TOMOVE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.___LABEL_TOMOVE.Location = new System.Drawing.Point(547, 355);
             this.___LABEL_TOMOVE.Name = "___LABEL_TOMOVE";
-            this.___LABEL_TOMOVE.Size = new System.Drawing.Size(188, 21);
+            this.___LABEL_TOMOVE.Size = new System.Drawing.Size(0, 21);
             this.___LABEL_TOMOVE.TabIndex = 86;
-            this.___LABEL_TOMOVE.Text = "toMoveIndicatorLabel1";
             this.___LABEL_TOMOVE.ToMove = "None";
             // 
             // Form_base
@@ -2656,7 +2705,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.8";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.9";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -2909,5 +2958,9 @@
         private Button button_Autoplay;
         
         private ToMoveIndicatorLabel ___LABEL_TOMOVE;
+        private Label label15;
+        private Button button_SetPieceTheme;
+        private ComboBox comboBox_Psets;
+        private Label label_logo_settings;
     }
 }
