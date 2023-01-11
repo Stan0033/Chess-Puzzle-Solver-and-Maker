@@ -361,6 +361,9 @@ namespace Chezz_Puzzler
                                 tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
                                 settings.Color_Hover_Current = tempColor;
                                 button_stHoverColor.BackColor = tempColor;
+                                for (int rank=0; rank<8; rank++) { for (int file = 0; file < 8; file++) {
+                                        Board_Composer[rank][file].Color_Hover = tempColor; Board_Solver[rank][file].Color_Hover = tempColor;
+                                    } }
                                 break;
                             case "SelectedSquareColor":
                                 tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
