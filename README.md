@@ -10,7 +10,7 @@ WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute
 
 IMAGES:
 
-![Solve](https://i.ibb.co/DkFCMC3/scr1.png)
+![Solve](https://i.ibb.co/ZVd6txZ/scr1.png)
 ![Create](https://i.ibb.co/kXsD3Wn/scr2.png)
  ![Settings](https://i.ibb.co/XxRKJh2/scr3.png)
 
