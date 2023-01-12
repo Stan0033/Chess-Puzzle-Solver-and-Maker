@@ -151,3 +151,16 @@ Added a button "Reverse ranks"
 - Addded an option to change the piece set from settings. You can also make your own by creating a folder with the name of the set and putting the 12 required image files with their exact names.
 The image is recommended to be 150x150
 - The settings panel now has a header text
+-----------------------
+1.7.10
+-----------------------
+- Default countdown renamed to Puzzle Countdown and will as always only be shown for open puzzles
+- Current countdown renamed to Global Countdown and will be showed always.
+- Added buttons to stop and hide the timers
+- When time in the timers gets critical, the color changes to red
+- Warning sound now plays when you have 1/5 of your total time instead of 1/6
+- Reduced slightly the height of the app
+- The export buttons will now have their text color changed on mouse hover, to see them better.
+- two icons were changed
+- more code refactoring
+- Readjudted the position of the label the label "Solved!"

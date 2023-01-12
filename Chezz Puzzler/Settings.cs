@@ -10,26 +10,29 @@ namespace Chezz_Puzzler
     {
         public Settings() 
         {
-            DefaultWhiteSquareColor = Color.WhiteSmoke;
-            DefaultBlackSquareColor = Color.LightGray;
-            DefaultSquareHoverColor = Color.LightCyan;
-            DefaultSquareLastMoveColor = Color.FromArgb(223, 228, 235);
-            DefaultSelectSquareColor = Color.LightBlue;
             //-------------------------------------
-            Color_White_Current = DefaultWhiteSquareColor;
-            Color_Black_Current = DefaultBlackSquareColor;
-            Color_Selected_Current = DefaultSelectSquareColor;
-            Color_LastMove_Current = DefaultSquareLastMoveColor;
-            Color_Hover_Current = DefaultSquareHoverColor;
+            Default_WhiteSquareColor = Color.WhiteSmoke;
+            Default_BlackSquareColor = Color.LightGray;
+            Default_SquareHoverColor = Color.LightCyan;
+            Default_SquareLastMoveColor = Color.FromArgb(223, 228, 235);
+            Default_SelectSquareColor = Color.LightBlue;
+            //-------------------------------------
+            Color_White_Current = Default_WhiteSquareColor;
+            Color_Black_Current = Default_BlackSquareColor;
+            Color_Selected_Current = Default_SelectSquareColor;
+            Color_LastMove_Current = Default_SquareLastMoveColor;
+            Color_Hover_Current = Default_SquareHoverColor;
             //-------------------------------------
             Color_Hightlight_Normal = Color.Red;
             Color_Hightlight_Ctrl = Color.Orange;
             Color_Hightlight_Alt = Color.Blue;
             Color_Hightlight_Shift = Color.LightGreen;
-            Color_Hightlight_Normal_Default = Color.Red;
-            Color_Hightlight_Ctrl_Default = Color.Orange;
-            Color_Hightlight_Alt_Default = Color.Blue;
-            Color_Hightlight_Shift_Default = Color.LightGreen;
+            //-------------------------------------
+            Default_Color_Hightlight_Normal = Color.Red;
+            Default_Color_Hightlight_Ctrl = Color.Orange;
+            Default_Color_Hightlight_Alt = Color.Blue;
+            DefaultColor_Hightlight_Shift = Color.LightGreen;
+            //-------------------------------------
             Player2ResponseTime = 300;
             AutoCountdown = 0;
         }
@@ -39,20 +42,23 @@ namespace Chezz_Puzzler
         public Color Color_Selected_Current;
         public Color Color_LastMove_Current;
         public Color Color_Hover_Current;
+        //----------------------------------------------------------
         public Color Color_Hightlight_Normal;
         public Color Color_Hightlight_Ctrl;
         public Color Color_Hightlight_Alt;
         public Color Color_Hightlight_Shift;
-        public Color Color_Hightlight_Normal_Default;
-        public Color Color_Hightlight_Ctrl_Default;
-        public Color Color_Hightlight_Alt_Default;
-        public Color Color_Hightlight_Shift_Default;
         //----------------------------------------------------------
-        public Color DefaultWhiteSquareColor;
-        public Color DefaultBlackSquareColor;
-        public Color DefaultSquareHoverColor;
-        public Color DefaultSquareLastMoveColor;
-        public Color DefaultSelectSquareColor;
+        public readonly Color Default_Color_Hightlight_Normal;
+        public readonly Color Default_Color_Hightlight_Ctrl;
+        public readonly Color Default_Color_Hightlight_Alt;
+        public readonly Color DefaultColor_Hightlight_Shift;
+        //----------------------------------------------------------
+        public readonly Color Default_WhiteSquareColor;
+        public readonly Color Default_BlackSquareColor;
+        public readonly Color Default_SquareHoverColor;
+        public readonly Color Default_SquareLastMoveColor;
+        public readonly Color Default_SelectSquareColor;
+        //----------------------------------------------------------
         // other
         public int AutoCountdown;
         public int Player2ResponseTime;

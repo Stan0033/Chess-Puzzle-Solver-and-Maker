@@ -181,16 +181,22 @@
             this.label_2 = new System.Windows.Forms.Label();
             this.label_3 = new System.Windows.Forms.Label();
             this.label_4 = new System.Windows.Forms.Label();
-            this.label_Countdown = new System.Windows.Forms.Label();
-            this.contextMenuStripTimerLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menu_Timer_Puzzle = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.pauseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resumeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.restartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label_move_wrong = new System.Windows.Forms.Label();
             this.label_move_right = new System.Windows.Forms.Label();
+            this.panel_cd_event_toMove = new System.Windows.Forms.Panel();
             this.label_event = new System.Windows.Forms.Label();
-            this.panel_cd_event = new System.Windows.Forms.Panel();
+            this.label_Countdown_Puzzle = new System.Windows.Forms.Label();
+            this.label_Countdown_Global = new System.Windows.Forms.Label();
+            this.menu_global = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.button_GenerateStartingChessPosition = new System.Windows.Forms.Button();
             this.button_reset_puzzle = new System.Windows.Forms.Button();
             this.button_clear_Board = new System.Windows.Forms.Button();
@@ -203,6 +209,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PuzzlesDisplay = new System.Windows.Forms.Panel();
             this.panel_setttings = new System.Windows.Forms.Panel();
+            this.Button_StopPuzzleTimer = new System.Windows.Forms.Button();
+            this.Button_StopGlobalTimer = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.label_logo_settings = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -213,15 +221,15 @@
             this.button_setResponseTimePL = new System.Windows.Forms.Button();
             this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.button_setDefaultCountdown_Panel = new System.Windows.Forms.Button();
-            this.button_SetCurrentCountdown = new System.Windows.Forms.Button();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown5 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
+            this.button_setPuzzleCountdown = new System.Windows.Forms.Button();
+            this.button_SetGlobalCountdown = new System.Windows.Forms.Button();
+            this.numF_Sec_Puzzle = new System.Windows.Forms.NumericUpDown();
+            this.numF_Min_Puzzle = new System.Windows.Forms.NumericUpDown();
+            this.numF_Hour_Puzzle = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.numF_Sec_Global = new System.Windows.Forms.NumericUpDown();
+            this.numF_Min_Global = new System.Windows.Forms.NumericUpDown();
+            this.numF_Hour_Global = new System.Windows.Forms.NumericUpDown();
             this.label11 = new System.Windows.Forms.Label();
             this.button_resetAllSettings_Panel = new System.Windows.Forms.Button();
             this.button_hColor3 = new System.Windows.Forms.Button();
@@ -257,17 +265,18 @@
             this.panel_bottom.SuspendLayout();
             this.context_options.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.contextMenuStripTimerLabel.SuspendLayout();
-            this.panel_cd_event.SuspendLayout();
+            this.menu_Timer_Puzzle.SuspendLayout();
+            this.panel_cd_event_toMove.SuspendLayout();
+            this.menu_global.SuspendLayout();
             this.context_help.SuspendLayout();
             this.panel_setttings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Puzzle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Puzzle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Puzzle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).BeginInit();
             this.SuspendLayout();
             // 
             // icon_solved
@@ -317,7 +326,7 @@
             this.tabControl1.Location = new System.Drawing.Point(1031, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(373, 753);
+            this.tabControl1.Size = new System.Drawing.Size(373, 733);
             this.tabControl1.TabIndex = 38;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
@@ -330,7 +339,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(365, 725);
+            this.tabPage1.Size = new System.Drawing.Size(365, 705);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Solve";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -343,7 +352,7 @@
             this.panel_dummy_EL.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_dummy_EL.Location = new System.Drawing.Point(3, 54);
             this.panel_dummy_EL.Name = "panel_dummy_EL";
-            this.panel_dummy_EL.Size = new System.Drawing.Size(359, 613);
+            this.panel_dummy_EL.Size = new System.Drawing.Size(359, 593);
             this.panel_dummy_EL.TabIndex = 83;
             // 
             // menuPuzzles
@@ -397,7 +406,7 @@
             this.listofPuzzles.ItemHeight = 21;
             this.listofPuzzles.Location = new System.Drawing.Point(3, 54);
             this.listofPuzzles.Name = "listofPuzzles";
-            this.listofPuzzles.Size = new System.Drawing.Size(359, 613);
+            this.listofPuzzles.Size = new System.Drawing.Size(359, 593);
             this.listofPuzzles.TabIndex = 2;
             this.listofPuzzles.SelectedIndexChanged += new System.EventHandler(this.ListofPuzzles_SelectedIndexChanged);
             this.listofPuzzles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListofPuzzles_MouseDoubleClick);
@@ -422,7 +431,7 @@
             this.button_solve.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button_solve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_solve.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_solve.Location = new System.Drawing.Point(3, 667);
+            this.button_solve.Location = new System.Drawing.Point(3, 647);
             this.button_solve.Name = "button_solve";
             this.button_solve.Size = new System.Drawing.Size(359, 55);
             this.button_solve.TabIndex = 1;
@@ -438,7 +447,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(365, 725);
+            this.tabPage2.Size = new System.Drawing.Size(365, 705);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create";
             // 
@@ -448,7 +457,7 @@
             this.panel_PuzleEditContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_PuzleEditContainer.Location = new System.Drawing.Point(3, 3);
             this.panel_PuzleEditContainer.Name = "panel_PuzleEditContainer";
-            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(359, 619);
+            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(359, 599);
             this.panel_PuzleEditContainer.TabIndex = 102;
             // 
             // panel_ComposePuzzleContainer
@@ -505,7 +514,7 @@
             this.panel_ComposePuzzleContainer.Margin = new System.Windows.Forms.Padding(0);
             this.panel_ComposePuzzleContainer.Name = "panel_ComposePuzzleContainer";
             this.panel_ComposePuzzleContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
-            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(359, 619);
+            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(359, 599);
             this.panel_ComposePuzzleContainer.TabIndex = 103;
             // 
             // button2
@@ -1206,7 +1215,7 @@
             this.panel_generate.Controls.Add(this.button_Generate_P);
             this.panel_generate.Controls.Add(this.button_generate_PR);
             this.panel_generate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_generate.Location = new System.Drawing.Point(3, 622);
+            this.panel_generate.Location = new System.Drawing.Point(3, 602);
             this.panel_generate.Name = "panel_generate";
             this.panel_generate.Size = new System.Drawing.Size(359, 100);
             this.panel_generate.TabIndex = 101;
@@ -1473,7 +1482,7 @@
             // 
             this.thisIsAttackerToolStripMenuItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.thisIsAttackerToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.thisIsAttackerToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.attacker1;
+            this.thisIsAttackerToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.tosquare1;
             this.thisIsAttackerToolStripMenuItem.Name = "thisIsAttackerToolStripMenuItem";
             this.thisIsAttackerToolStripMenuItem.ShortcutKeyDisplayString = "1";
             this.thisIsAttackerToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
@@ -1483,7 +1492,7 @@
             // thisIsAttackedToolStripMenuItem
             // 
             this.thisIsAttackedToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.thisIsAttackedToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.attacked;
+            this.thisIsAttackedToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.tosquare1;
             this.thisIsAttackedToolStripMenuItem.Name = "thisIsAttackedToolStripMenuItem";
             this.thisIsAttackedToolStripMenuItem.ShortcutKeyDisplayString = "2";
             this.thisIsAttackedToolStripMenuItem.Size = new System.Drawing.Size(279, 26);
@@ -1515,13 +1524,13 @@
             // 
             // label_chapterCounter
             // 
-            this.label_chapterCounter.AutoSize = true;
             this.label_chapterCounter.BackColor = System.Drawing.Color.Transparent;
             this.label_chapterCounter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_chapterCounter.Location = new System.Drawing.Point(556, 310);
+            this.label_chapterCounter.Location = new System.Drawing.Point(547, 287);
             this.label_chapterCounter.Name = "label_chapterCounter";
-            this.label_chapterCounter.Size = new System.Drawing.Size(0, 21);
+            this.label_chapterCounter.Size = new System.Drawing.Size(67, 21);
             this.label_chapterCounter.TabIndex = 45;
+            this.label_chapterCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_chapterCounter.Visible = false;
             // 
             // label_hint
@@ -1549,14 +1558,15 @@
             // 
             // label_Action_Response
             // 
-            this.label_Action_Response.AutoSize = true;
             this.label_Action_Response.BackColor = System.Drawing.Color.Transparent;
+            this.label_Action_Response.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_Action_Response.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Action_Response.Location = new System.Drawing.Point(219, 653);
+            this.label_Action_Response.Location = new System.Drawing.Point(0, 95);
             this.label_Action_Response.Name = "label_Action_Response";
-            this.label_Action_Response.Size = new System.Drawing.Size(152, 25);
+            this.label_Action_Response.Size = new System.Drawing.Size(520, 25);
             this.label_Action_Response.TabIndex = 48;
             this.label_Action_Response.Text = "To move: player";
+            this.label_Action_Response.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_Action_Response.Visible = false;
             // 
             // panel_bottom
@@ -1569,7 +1579,7 @@
             this.panel_bottom.Controls.Add(this.button1);
             this.panel_bottom.Controls.Add(this.checkBox_hotkeys);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_bottom.Location = new System.Drawing.Point(0, 753);
+            this.panel_bottom.Location = new System.Drawing.Point(0, 733);
             this.panel_bottom.Name = "panel_bottom";
             this.panel_bottom.Size = new System.Drawing.Size(1404, 58);
             this.panel_bottom.TabIndex = 49;
@@ -1775,6 +1785,8 @@
             this.button_export_Local.Text = "Export position as SCN";
             this.button_export_Local.UseVisualStyleBackColor = true;
             this.button_export_Local.Click += new System.EventHandler(this.DisplaySCNCopyDialog);
+            this.button_export_Local.MouseEnter += new System.EventHandler(this.Button_export_Local_MouseEnter);
+            this.button_export_Local.MouseLeave += new System.EventHandler(this.Button_export_Local_MouseLeave);
             // 
             // button_export_FEN
             // 
@@ -1788,6 +1800,8 @@
             this.button_export_FEN.Text = "Export position as FEN";
             this.button_export_FEN.UseVisualStyleBackColor = true;
             this.button_export_FEN.Click += new System.EventHandler(this.ExportAsFEN_Click);
+            this.button_export_FEN.MouseEnter += new System.EventHandler(this.Button_export_FEN_MouseEnter);
+            this.button_export_FEN.MouseLeave += new System.EventHandler(this.Button_export_FEN_MouseLeave);
             // 
             // panel1
             // 
@@ -1795,7 +1809,7 @@
             this.panel1.Controls.Add(this.button_export_Local);
             this.panel1.Controls.Add(this.button_export_FEN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 700);
+            this.panel1.Location = new System.Drawing.Point(0, 680);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1031, 53);
             this.panel1.TabIndex = 54;
@@ -1960,26 +1974,15 @@
             this.label_4.Text = "4";
             this.label_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label_Countdown
+            // menu_Timer_Puzzle
             // 
-            this.label_Countdown.ContextMenuStrip = this.contextMenuStripTimerLabel;
-            this.label_Countdown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label_Countdown.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Countdown.Location = new System.Drawing.Point(0, 64);
-            this.label_Countdown.Name = "label_Countdown";
-            this.label_Countdown.Size = new System.Drawing.Size(520, 30);
-            this.label_Countdown.TabIndex = 72;
-            this.label_Countdown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // contextMenuStripTimerLabel
-            // 
-            this.contextMenuStripTimerLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_Timer_Puzzle.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pauseToolStripMenuItem,
             this.resumeToolStripMenuItem,
             this.stopToolStripMenuItem,
             this.restartToolStripMenuItem});
-            this.contextMenuStripTimerLabel.Name = "contextMenuStripTimerLabel";
-            this.contextMenuStripTimerLabel.Size = new System.Drawing.Size(134, 108);
+            this.menu_Timer_Puzzle.Name = "contextMenuStripTimerLabel";
+            this.menu_Timer_Puzzle.Size = new System.Drawing.Size(134, 108);
             // 
             // pauseToolStripMenuItem
             // 
@@ -2032,25 +2035,91 @@
             this.label_move_right.Size = new System.Drawing.Size(0, 15);
             this.label_move_right.TabIndex = 75;
             // 
+            // panel_cd_event_toMove
+            // 
+            this.panel_cd_event_toMove.BackColor = System.Drawing.Color.Transparent;
+            this.panel_cd_event_toMove.Controls.Add(this.label_event);
+            this.panel_cd_event_toMove.Controls.Add(this.label_Countdown_Puzzle);
+            this.panel_cd_event_toMove.Controls.Add(this.label_Countdown_Global);
+            this.panel_cd_event_toMove.Controls.Add(this.label_Action_Response);
+            this.panel_cd_event_toMove.Location = new System.Drawing.Point(27, 556);
+            this.panel_cd_event_toMove.Name = "panel_cd_event_toMove";
+            this.panel_cd_event_toMove.Size = new System.Drawing.Size(520, 120);
+            this.panel_cd_event_toMove.TabIndex = 78;
+            // 
             // label_event
             // 
-            this.label_event.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label_event.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_event.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_event.Location = new System.Drawing.Point(0, 0);
             this.label_event.Name = "label_event";
-            this.label_event.Size = new System.Drawing.Size(520, 30);
-            this.label_event.TabIndex = 77;
+            this.label_event.Size = new System.Drawing.Size(520, 35);
+            this.label_event.TabIndex = 80;
             this.label_event.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel_cd_event
+            // label_Countdown_Puzzle
             // 
-            this.panel_cd_event.BackColor = System.Drawing.Color.Transparent;
-            this.panel_cd_event.Controls.Add(this.label_event);
-            this.panel_cd_event.Controls.Add(this.label_Countdown);
-            this.panel_cd_event.Location = new System.Drawing.Point(21, 556);
-            this.panel_cd_event.Name = "panel_cd_event";
-            this.panel_cd_event.Size = new System.Drawing.Size(520, 94);
-            this.panel_cd_event.TabIndex = 78;
+            this.label_Countdown_Puzzle.ContextMenuStrip = this.menu_Timer_Puzzle;
+            this.label_Countdown_Puzzle.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Countdown_Puzzle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Countdown_Puzzle.Location = new System.Drawing.Point(0, 35);
+            this.label_Countdown_Puzzle.Name = "label_Countdown_Puzzle";
+            this.label_Countdown_Puzzle.Size = new System.Drawing.Size(520, 30);
+            this.label_Countdown_Puzzle.TabIndex = 79;
+            this.label_Countdown_Puzzle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label_Countdown_Global
+            // 
+            this.label_Countdown_Global.ContextMenuStrip = this.menu_global;
+            this.label_Countdown_Global.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label_Countdown_Global.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label_Countdown_Global.Location = new System.Drawing.Point(0, 65);
+            this.label_Countdown_Global.Name = "label_Countdown_Global";
+            this.label_Countdown_Global.Size = new System.Drawing.Size(520, 30);
+            this.label_Countdown_Global.TabIndex = 78;
+            this.label_Countdown_Global.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // menu_global
+            // 
+            this.menu_global.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem6,
+            this.toolStripMenuItem7});
+            this.menu_global.Name = "contextMenuStripTimerLabel";
+            this.menu_global.Size = new System.Drawing.Size(134, 108);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(133, 26);
+            this.toolStripMenuItem2.Text = "Pause";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(133, 26);
+            this.toolStripMenuItem3.Text = "Resume";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(133, 26);
+            this.toolStripMenuItem6.Text = "Stop";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.ToolStripMenuItem6_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(133, 26);
+            this.toolStripMenuItem7.Text = "Restart";
+            this.toolStripMenuItem7.Click += new System.EventHandler(this.ToolStripMenuItem7_Click);
             // 
             // button_GenerateStartingChessPosition
             // 
@@ -2171,7 +2240,7 @@
             // PuzzlesDisplay
             // 
             this.PuzzlesDisplay.BackColor = System.Drawing.Color.Transparent;
-            this.PuzzlesDisplay.Location = new System.Drawing.Point(627, 416);
+            this.PuzzlesDisplay.Location = new System.Drawing.Point(627, 413);
             this.PuzzlesDisplay.Name = "PuzzlesDisplay";
             this.PuzzlesDisplay.Size = new System.Drawing.Size(398, 319);
             this.PuzzlesDisplay.TabIndex = 82;
@@ -2180,6 +2249,8 @@
             // panel_setttings
             // 
             this.panel_setttings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_setttings.Controls.Add(this.Button_StopPuzzleTimer);
+            this.panel_setttings.Controls.Add(this.Button_StopGlobalTimer);
             this.panel_setttings.Controls.Add(this.button15);
             this.panel_setttings.Controls.Add(this.label_logo_settings);
             this.panel_setttings.Controls.Add(this.label15);
@@ -2190,15 +2261,15 @@
             this.panel_setttings.Controls.Add(this.button_setResponseTimePL);
             this.panel_setttings.Controls.Add(this.numericUpDown7);
             this.panel_setttings.Controls.Add(this.label13);
-            this.panel_setttings.Controls.Add(this.button_setDefaultCountdown_Panel);
-            this.panel_setttings.Controls.Add(this.button_SetCurrentCountdown);
-            this.panel_setttings.Controls.Add(this.numericUpDown4);
-            this.panel_setttings.Controls.Add(this.numericUpDown5);
-            this.panel_setttings.Controls.Add(this.numericUpDown6);
+            this.panel_setttings.Controls.Add(this.button_setPuzzleCountdown);
+            this.panel_setttings.Controls.Add(this.button_SetGlobalCountdown);
+            this.panel_setttings.Controls.Add(this.numF_Sec_Puzzle);
+            this.panel_setttings.Controls.Add(this.numF_Min_Puzzle);
+            this.panel_setttings.Controls.Add(this.numF_Hour_Puzzle);
             this.panel_setttings.Controls.Add(this.label12);
-            this.panel_setttings.Controls.Add(this.numericUpDown3);
-            this.panel_setttings.Controls.Add(this.numericUpDown2);
-            this.panel_setttings.Controls.Add(this.numericUpDown1);
+            this.panel_setttings.Controls.Add(this.numF_Sec_Global);
+            this.panel_setttings.Controls.Add(this.numF_Min_Global);
+            this.panel_setttings.Controls.Add(this.numF_Hour_Global);
             this.panel_setttings.Controls.Add(this.label11);
             this.panel_setttings.Controls.Add(this.button_resetAllSettings_Panel);
             this.panel_setttings.Controls.Add(this.button_hColor3);
@@ -2217,11 +2288,37 @@
             this.panel_setttings.Controls.Add(this.label3);
             this.panel_setttings.Controls.Add(this.button_setwhiteSqColor);
             this.panel_setttings.Controls.Add(this.label1);
-            this.panel_setttings.Location = new System.Drawing.Point(673, 249);
+            this.panel_setttings.Location = new System.Drawing.Point(673, 230);
             this.panel_setttings.Name = "panel_setttings";
             this.panel_setttings.Size = new System.Drawing.Size(352, 504);
             this.panel_setttings.TabIndex = 84;
             this.panel_setttings.Visible = false;
+            // 
+            // Button_StopPuzzleTimer
+            // 
+            this.Button_StopPuzzleTimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_StopPuzzleTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_StopPuzzleTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Button_StopPuzzleTimer.Location = new System.Drawing.Point(313, 352);
+            this.Button_StopPuzzleTimer.Name = "Button_StopPuzzleTimer";
+            this.Button_StopPuzzleTimer.Size = new System.Drawing.Size(26, 25);
+            this.Button_StopPuzzleTimer.TabIndex = 132;
+            this.Button_StopPuzzleTimer.Text = "⏹";
+            this.Button_StopPuzzleTimer.UseVisualStyleBackColor = false;
+            this.Button_StopPuzzleTimer.Click += new System.EventHandler(this.Button_StopPuzzleTimer_Click);
+            // 
+            // Button_StopGlobalTimer
+            // 
+            this.Button_StopGlobalTimer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_StopGlobalTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Button_StopGlobalTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Button_StopGlobalTimer.Location = new System.Drawing.Point(313, 324);
+            this.Button_StopGlobalTimer.Name = "Button_StopGlobalTimer";
+            this.Button_StopGlobalTimer.Size = new System.Drawing.Size(26, 25);
+            this.Button_StopGlobalTimer.TabIndex = 131;
+            this.Button_StopGlobalTimer.Text = "⏹";
+            this.Button_StopGlobalTimer.UseVisualStyleBackColor = false;
+            this.Button_StopGlobalTimer.Click += new System.EventHandler(this.Button_StopGlobalTimer_Click);
             // 
             // button15
             // 
@@ -2344,120 +2441,121 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "Response Time of Puzzle (milliseconds)";
             // 
-            // button_setDefaultCountdown_Panel
+            // button_setPuzzleCountdown
             // 
-            this.button_setDefaultCountdown_Panel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_setDefaultCountdown_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setDefaultCountdown_Panel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setDefaultCountdown_Panel.Location = new System.Drawing.Point(294, 355);
-            this.button_setDefaultCountdown_Panel.Name = "button_setDefaultCountdown_Panel";
-            this.button_setDefaultCountdown_Panel.Size = new System.Drawing.Size(45, 25);
-            this.button_setDefaultCountdown_Panel.TabIndex = 26;
-            this.button_setDefaultCountdown_Panel.Text = "Set";
-            this.button_setDefaultCountdown_Panel.UseVisualStyleBackColor = false;
+            this.button_setPuzzleCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_setPuzzleCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_setPuzzleCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_setPuzzleCountdown.Location = new System.Drawing.Point(264, 353);
+            this.button_setPuzzleCountdown.Name = "button_setPuzzleCountdown";
+            this.button_setPuzzleCountdown.Size = new System.Drawing.Size(45, 25);
+            this.button_setPuzzleCountdown.TabIndex = 26;
+            this.button_setPuzzleCountdown.Text = "Set";
+            this.button_setPuzzleCountdown.UseVisualStyleBackColor = false;
+            this.button_setPuzzleCountdown.Click += new System.EventHandler(this.Button_setDefaultCountdown_Panel_Click);
             // 
-            // button_SetCurrentCountdown
+            // button_SetGlobalCountdown
             // 
-            this.button_SetCurrentCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_SetCurrentCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_SetCurrentCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetCurrentCountdown.Location = new System.Drawing.Point(294, 324);
-            this.button_SetCurrentCountdown.Name = "button_SetCurrentCountdown";
-            this.button_SetCurrentCountdown.Size = new System.Drawing.Size(45, 25);
-            this.button_SetCurrentCountdown.TabIndex = 25;
-            this.button_SetCurrentCountdown.Text = "Set";
-            this.button_SetCurrentCountdown.UseVisualStyleBackColor = false;
-            this.button_SetCurrentCountdown.Click += new System.EventHandler(this.SetCurrentTimer);
+            this.button_SetGlobalCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_SetGlobalCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_SetGlobalCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_SetGlobalCountdown.Location = new System.Drawing.Point(264, 324);
+            this.button_SetGlobalCountdown.Name = "button_SetGlobalCountdown";
+            this.button_SetGlobalCountdown.Size = new System.Drawing.Size(45, 25);
+            this.button_SetGlobalCountdown.TabIndex = 25;
+            this.button_SetGlobalCountdown.Text = "Set";
+            this.button_SetGlobalCountdown.UseVisualStyleBackColor = false;
+            this.button_SetGlobalCountdown.Click += new System.EventHandler(this.SetGlobalTimer);
             // 
-            // numericUpDown4
+            // numF_Sec_Puzzle
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(238, 355);
-            this.numericUpDown4.Maximum = new decimal(new int[] {
+            this.numF_Sec_Puzzle.Location = new System.Drawing.Point(223, 355);
+            this.numF_Sec_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown4.TabIndex = 24;
+            this.numF_Sec_Puzzle.Name = "numF_Sec_Puzzle";
+            this.numF_Sec_Puzzle.Size = new System.Drawing.Size(35, 23);
+            this.numF_Sec_Puzzle.TabIndex = 24;
             // 
-            // numericUpDown5
+            // numF_Min_Puzzle
             // 
-            this.numericUpDown5.Location = new System.Drawing.Point(182, 355);
-            this.numericUpDown5.Maximum = new decimal(new int[] {
+            this.numF_Min_Puzzle.Location = new System.Drawing.Point(182, 355);
+            this.numF_Min_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-            this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown5.TabIndex = 23;
+            this.numF_Min_Puzzle.Name = "numF_Min_Puzzle";
+            this.numF_Min_Puzzle.Size = new System.Drawing.Size(35, 23);
+            this.numF_Min_Puzzle.TabIndex = 23;
             // 
-            // numericUpDown6
+            // numF_Hour_Puzzle
             // 
-            this.numericUpDown6.Location = new System.Drawing.Point(126, 355);
-            this.numericUpDown6.Maximum = new decimal(new int[] {
+            this.numF_Hour_Puzzle.Location = new System.Drawing.Point(126, 355);
+            this.numF_Hour_Puzzle.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown6.TabIndex = 22;
+            this.numF_Hour_Puzzle.Name = "numF_Hour_Puzzle";
+            this.numF_Hour_Puzzle.Size = new System.Drawing.Size(50, 23);
+            this.numF_Hour_Puzzle.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(14, 357);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 15);
+            this.label12.Size = new System.Drawing.Size(106, 15);
             this.label12.TabIndex = 21;
-            this.label12.Text = "Default Countdown";
+            this.label12.Text = "Puzzle Countdown";
             // 
-            // numericUpDown3
+            // numF_Sec_Global
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(238, 326);
-            this.numericUpDown3.Maximum = new decimal(new int[] {
+            this.numF_Sec_Global.Location = new System.Drawing.Point(223, 326);
+            this.numF_Sec_Global.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown3.TabIndex = 20;
+            this.numF_Sec_Global.Name = "numF_Sec_Global";
+            this.numF_Sec_Global.Size = new System.Drawing.Size(35, 23);
+            this.numF_Sec_Global.TabIndex = 20;
             // 
-            // numericUpDown2
+            // numF_Min_Global
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(182, 326);
-            this.numericUpDown2.Maximum = new decimal(new int[] {
+            this.numF_Min_Global.Location = new System.Drawing.Point(182, 326);
+            this.numF_Min_Global.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown2.TabIndex = 19;
+            this.numF_Min_Global.Name = "numF_Min_Global";
+            this.numF_Min_Global.Size = new System.Drawing.Size(35, 23);
+            this.numF_Min_Global.TabIndex = 19;
             // 
-            // numericUpDown1
+            // numF_Hour_Global
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(126, 326);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numF_Hour_Global.Location = new System.Drawing.Point(126, 326);
+            this.numF_Hour_Global.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(50, 23);
-            this.numericUpDown1.TabIndex = 18;
+            this.numF_Hour_Global.Name = "numF_Hour_Global";
+            this.numF_Hour_Global.Size = new System.Drawing.Size(50, 23);
+            this.numF_Hour_Global.TabIndex = 18;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(14, 328);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(113, 15);
+            this.label11.Size = new System.Drawing.Size(107, 15);
             this.label11.TabIndex = 17;
-            this.label11.Text = "Current Countdown";
+            this.label11.Text = "Global Countdown";
             // 
             // button_resetAllSettings_Panel
             // 
@@ -2656,17 +2754,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1404, 811);
+            this.ClientSize = new System.Drawing.Size(1404, 791);
             this.Controls.Add(this.___LABEL_TOMOVE);
             this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
             this.Controls.Add(this.button_gotoNextPuzzle);
-            this.Controls.Add(this.label_Action_Response);
             this.Controls.Add(this.button_clear_Board);
             this.Controls.Add(this.button_reset_puzzle);
             this.Controls.Add(this.button_GenerateStartingChessPosition);
-            this.Controls.Add(this.panel_cd_event);
+            this.Controls.Add(this.panel_cd_event_toMove);
             this.Controls.Add(this.label_move_right);
             this.Controls.Add(this.label_move_wrong);
             this.Controls.Add(this.label_1);
@@ -2705,7 +2802,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.9";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.10";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -2728,18 +2825,19 @@
             this.panel_bottom.PerformLayout();
             this.context_options.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.contextMenuStripTimerLabel.ResumeLayout(false);
-            this.panel_cd_event.ResumeLayout(false);
+            this.menu_Timer_Puzzle.ResumeLayout(false);
+            this.panel_cd_event_toMove.ResumeLayout(false);
+            this.menu_global.ResumeLayout(false);
             this.context_help.ResumeLayout(false);
             this.panel_setttings.ResumeLayout(false);
             this.panel_setttings.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Puzzle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Puzzle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Puzzle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2800,8 +2898,7 @@
         private Label label_4;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem setCountdownToolStripMenuItem;
-        private Label label_Countdown;
-        private ContextMenuStrip contextMenuStripTimerLabel;
+        private ContextMenuStrip menu_Timer_Puzzle;
         private ToolStripMenuItem pauseToolStripMenuItem;
         private ToolStripMenuItem resumeToolStripMenuItem;
         private ContextMenuStrip contextChaptersList;
@@ -2825,8 +2922,7 @@
         private ToolStripMenuItem clearPuzzleToolStripMenuItem;
         private ToolStripMenuItem changeHightlightedSquareColorToolStripMenuItem;
         private ToolStripMenuItem changeLastMoveHightlightColorToolStripMenuItem;
-        private Label label_event;
-        private Panel panel_cd_event;
+        private Panel panel_cd_event_toMove;
         private ToolStripMenuItem whiteToolStripMenuItem;
         private ToolStripMenuItem whitePawnToolStripMenuItem;
         private ToolStripMenuItem whiteRookToolStripMenuItem;
@@ -2921,15 +3017,15 @@
         
         private CheckBox checkBox_AU_Reset;
         private Panel panel_setttings;
-        private Button button_setDefaultCountdown_Panel;
-        private Button button_SetCurrentCountdown;
-        private NumericUpDown numericUpDown4;
-        private NumericUpDown numericUpDown5;
-        private NumericUpDown numericUpDown6;
+        private Button button_setPuzzleCountdown;
+        private Button button_SetGlobalCountdown;
+        private NumericUpDown numF_Sec_Puzzle;
+        private NumericUpDown numF_Min_Puzzle;
+        private NumericUpDown numF_Hour_Puzzle;
         private Label label12;
-        private NumericUpDown numericUpDown3;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown numF_Sec_Global;
+        private NumericUpDown numF_Min_Global;
+        private NumericUpDown numF_Hour_Global;
         private Label label11;
          
         private Button button_hColor3;
@@ -2962,5 +3058,15 @@
         private Button button_SetPieceTheme;
         private ComboBox comboBox_Psets;
         private Label label_logo_settings;
+        private Label label_Countdown_Puzzle;
+        private Label label_Countdown_Global;
+        private Button Button_StopGlobalTimer;
+        private Button Button_StopPuzzleTimer;
+        private Label label_event;
+        private ContextMenuStrip menu_global;
+        private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem toolStripMenuItem3;
+        private ToolStripMenuItem toolStripMenuItem6;
+        private ToolStripMenuItem toolStripMenuItem7;
     }
 }

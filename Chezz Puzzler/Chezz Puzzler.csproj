@@ -32,6 +32,7 @@
     <None Remove="Resources\chess_set2.png" />
     <None Remove="Resources\grab.ico" />
     <None Remove="Resources\grab.png" />
+    <None Remove="Resources\tosquare.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="chessB.ico" />
