@@ -8,6 +8,8 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 
 WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this project as your own.
 
+FOR any bugs -> report!
+
 IMAGES:
 
 ![Solve](https://i.ibb.co/ZVd6txZ/scr1.png)
