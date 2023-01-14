@@ -8,7 +8,7 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 + You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/Chess puzzler.exe]
 ```
 ```diff
--WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this project as your own.
+-WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this as your own.
 ```
 
 FOR any bugs -> report!
