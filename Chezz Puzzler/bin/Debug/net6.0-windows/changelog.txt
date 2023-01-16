@@ -164,3 +164,8 @@ The image is recommended to be 150x150
 - two icons were changed
 - more code refactoring
 - Readjudted the position of the label the label "Solved!"
+-----------------------
+1.7.11
+-----------------------
+- Fixed a bug where after a puzzle is finished, the cursor's appearance would not behave the same
+- The cursor now for empty squares is fixed to be arrow and it will be arrow after a puzzle is finished. That was because it was performing a check that always returned false.

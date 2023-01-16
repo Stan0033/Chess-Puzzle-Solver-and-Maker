@@ -78,16 +78,19 @@ namespace Chezz_Puzzler
         readonly Dictionary<char, string> PieceNameToImagePath;
         readonly List<string> DescriptionsForPR_Puzzles;
         readonly List<List<Color>> ColorsOfSquaresFilebyFile;
+        ToMoveIndicatorLabel ToMoveLabel;
         bool LastMoveWasDoneByClicks;
         readonly Image EmptySquare;
         public Form_base()
         {
+            
             try
             {
                 EmptySquare = Image.FromFile(Application.StartupPath + "Pieces\\Empty.png");
             }
             catch { MessageBox.Show("Missing 'pieces\\empty.png'");Environment.Exit(0); };
-            LastSelectedToMoveComposerSquare= new();
+            ToMoveLabel = new ToMoveIndicatorLabel();
+            LastSelectedToMoveComposerSquare = new();
             Currently_Hovered_Button = new();
             FocusedTextBox = new TextBox();
             CurrentlyOpenedPuzzleFilename = string.Empty;
@@ -171,6 +174,7 @@ namespace Chezz_Puzzler
             CurrentEvents = new List<string>();
             CurrentPuzzles_Lengths = new List<int>();
             InitializeComponent();
+            createToMoveLabel();
             Selected_A_Piece = false;
             colors = new List<Color>();
             //-----------------------
@@ -246,6 +250,15 @@ namespace Chezz_Puzzler
             PieceNameToImagePath.Add('r', "rook_black.png");
             PieceNameToImagePath.Add('P', "pawn_white.png");
             PieceNameToImagePath.Add('p', "pawn_black.png");
+        }
+        public void createToMoveLabel()
+        {
+            ToMoveLabel.Location = new Point(547, 359);
+            ToMoveLabel.Font = new Font("Arial", 12, FontStyle.Bold);
+            ToMoveLabel.AutoSize = true;
+            Controls.Add(ToMoveLabel);
+
+
         }
         public void AutoPlayCurrentGame(object? sender, EventArgs e)
         {
@@ -622,7 +635,8 @@ namespace Chezz_Puzzler
             Currently_Hovered_Button = ourB;
             ourB.IsHovered = true;
             if (ourB.belongsToWhichPanel == panel_composer) { label_square_displayer.Text = ourB.SquareName; }
-        }
+            //test
+          }
         public void HoverLEaveChessSquare(object? sender, EventArgs e)
         {
             if (sender==null) return;
@@ -641,7 +655,7 @@ namespace Chezz_Puzzler
             c_letter2.Text = "b";
             c_number1.Text = "1";
             c_number2.Text = "2";
-            ___LABEL_TOMOVE.ToMove = "None";
+            ToMoveLabel.ToMove = "None";
             //--------------------------------------------------
             //--------------------------------------------------
             RegisterWriteBoxesForHoverEvent();
@@ -776,14 +790,14 @@ namespace Chezz_Puzzler
         {
             if (tabControl1.SelectedIndex == 0) // if solving
             {
-                ShowSelectedControls(label_event, label_Countdown_Puzzle, label_Countdown_Global, label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, ___LABEL_TOMOVE, label_event);
+                ShowSelectedControls(label_event, label_Countdown_Puzzle, label_Countdown_Global, label_move_wrong, label_move_right, panel_solver, button_hint, label_chapterCounter, button_show_solution, ToMoveLabel, label_event);
                 HideSelectedControls(panel_composer, button_clear_Board, button_GenerateStartingChessPosition, icon_notSolved, icon_solved, label_square_displayer, label_Action_Response);
                 if (CurrentlySolvingAPuzzleRush) { PuzzlesDisplay.Visible = true; }
                 if (PR_Paused) { button_gotoNextPuzzle.Visible = true; }
             }
             else // if composing
             {
-                HideSelectedControls(button_Autoplay, button_gotoNextPuzzle, PuzzlesDisplay, label_event, label_Countdown_Puzzle, label_Countdown_Global, ___LABEL_TOMOVE, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
+                HideSelectedControls(button_Autoplay, button_gotoNextPuzzle, PuzzlesDisplay, label_event, label_Countdown_Puzzle, label_Countdown_Global, ToMoveLabel, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
                 ShowSelectedControls(panel_composer, button_clear_Board, label_square_displayer, label_Action_Response, button_GenerateStartingChessPosition);
                 Point BoardPoint = new(panel_solver.Location.X, panel_solver.Location.Y);
                 panel_composer.Location = BoardPoint;
@@ -1074,9 +1088,10 @@ namespace Chezz_Puzzler
                     APuzzleIsLoaded = true;
                     CurrentPuzzleIsSolved = false;
                     UserToMove = true;
-                    ___LABEL_TOMOVE.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                    ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
                     label_Countdown_Puzzle.ForeColor = Color.White;
                     if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
+                    EnableChessBoard();
                 }
                 else
                 {
@@ -1165,6 +1180,26 @@ namespace Chezz_Puzzler
                 }
             }
         }
+        public void DisableChessBoard()
+        {
+            for (int rank = 0; rank < 8; rank++)
+            {
+                for (int file=0; file<8; file++)
+                {
+                    Board_Solver[rank][file].CanInteract = false;
+                }
+            }
+        }
+        public void EnableChessBoard()
+        {
+            for (int rank = 0; rank < 8; rank++)
+            {
+                for (int file = 0; file < 8; file++)
+                {
+                    Board_Solver[rank][file].CanInteract = true;
+                }
+            }
+        }
         public void UserClicksSolverSquare(object? sender, MouseEventArgs e)
         {
             if (sender == null) {return; }
@@ -1187,8 +1222,8 @@ namespace Chezz_Puzzler
                         //----------------------------------------------------------------------
                         //// you cannot select a piece color that is NOT to move
                         //----------------------------------------------------------------------
-                        if (char.IsUpper(SelectedSquare_Start.PieceName[0]) && ___LABEL_TOMOVE.Text == "Black to move") { return; }
-                        if (char.IsLower(SelectedSquare_Start.PieceName[0]) && ___LABEL_TOMOVE.Text == "White to move") { return; }
+                        if (char.IsUpper(SelectedSquare_Start.PieceName[0]) && ToMoveLabel.Text == "Black to move") { return; }
+                        if (char.IsLower(SelectedSquare_Start.PieceName[0]) && ToMoveLabel.Text == "White to move") { return; }
                         //----------------------------------------------------------------------
                         Selected_A_Piece = true;
                         SelectedSquare_Start.IsSelected = true;
@@ -1222,14 +1257,15 @@ namespace Chezz_Puzzler
                                     CurrenlyOpenedPuzzle_ChaptersSolved++;
                                     PlaySoundFile("success.wav");
                                     label_chapterCounter.Text = "Solved!";
+                                 
                                     button_reset_puzzle.Visible = !CurrentlySolvingAPuzzleRush;
                                     TransitionToPositionFromGivenActionSquareXSquare(CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep - 1], panel_solver);
                                     label_move_right.Text = CurrentPuzzle_rightAnswers[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_event.Text = CurrentEvents[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_move_wrong.Text = string.Empty;
-                                    // UnhightlightAllSolverSqures();
+                                    
                                     HightlightLastMoveSquares(CurrentPuzzle_Solutions[^1]);
-                                    ___LABEL_TOMOVE.ToMove = "None"; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                                    ToMoveLabel.ToMove = "None"; SetToMoveInButtons(ToMoveLabel.Text);
                                     CurrenlyOpenedPuzzle_ChaptersSolved = 0;
                                     //------------------------------------------------------------------------------------------------------------------
                                     //------------------------------------------------------------------------------------------------------------------
@@ -1247,6 +1283,7 @@ namespace Chezz_Puzzler
                                         {
                                             CurrentPuzzleIsSolved = true;
                                             UserToMove = false;
+                                            DisableChessBoard();
                                         }
                                     }
                                     if (Time_Puzzle_SecondsLeft > 0) Timer_Puzzle.Stop();
@@ -1265,7 +1302,8 @@ namespace Chezz_Puzzler
                                                 CurrentPuzzleIsSolved = true;
                                                 UserToMove = false;
                                                 CurrentlySolvingAPuzzleRush = false;
-                                                ___LABEL_TOMOVE.ToMove = "None"; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                                                ToMoveLabel.ToMove = "None"; SetToMoveInButtons(ToMoveLabel.Text);
+                                                DisableChessBoard();
                                             }
                                         }
                                         else
@@ -1280,7 +1318,7 @@ namespace Chezz_Puzzler
                                             {
                                                 LightCurrentlySolvedPRPuzzle(CurrentlySolvedPuzzleNumber);
                                                 LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[CurrentlySolvedPuzzleNumber]);
-                                                ___LABEL_TOMOVE.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                                                ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(ToMoveLabel.Text);
                                             }
                                         }
                                     }
@@ -1288,14 +1326,14 @@ namespace Chezz_Puzzler
                                     //------------------------------------------------------------------------------------------------------------------
                                     else
                                     {
-                                        ___LABEL_TOMOVE.Text = "";
+                                        ToMoveLabel.Text = "";
                                     }
                                 }
                                 else // if the  the answer is correct
                                 {
                                     CurrenlyOpenedPuzzle_ChaptersSolved++;
                                     PlaySoundFile("correct.wav");
-                                    ___LABEL_TOMOVE.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep - 1]; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                                    ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep - 1]; SetToMoveInButtons(ToMoveLabel.Text);
                                     label_chapterCounter.Text = $"{CurrenlyOpenedPuzzle_ChaptersSolved}/{CountRealMoves(CurrentPuzzles_Lengths[CurrentlySolvedPuzzleNumber])}";
                                     RecreatePuzzleFromSCN(CurrentPuzzle_Positions[CurrentlySolvedPuzzleChapterStep], panel_solver);
                                     button_reset_puzzle.Visible = !CurrentlySolvingAPuzzleRush;
@@ -1377,7 +1415,7 @@ namespace Chezz_Puzzler
                 StartAutoCountdown();
                 PlaySoundFile("open.wav");
                 HightlightLastMoveSquares(LastMovePlayedBeforeThePuzzleStarts);
-                ___LABEL_TOMOVE.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(___LABEL_TOMOVE.Text);
+                ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
                 icon_notSolved.Visible = false;
                 icon_solved.Visible = false;
             }
@@ -1583,6 +1621,7 @@ namespace Chezz_Puzzler
                 APuzzleIsLoaded = true;
                 CurrentPuzzleIsSolved = false;
                 UserToMove = true;
+                EnableChessBoard();
             }
             else
             {
@@ -2515,7 +2554,7 @@ namespace Chezz_Puzzler
                                               //-------------------------------------------------------------------------------
                                               //whehn switching to tab hide what has to be hidden
                                               //-------------------------------------------------------------------------------
-                    HideSelectedControls(button_gotoNextPuzzle, panel_cd_event_toMove, ___LABEL_TOMOVE, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
+                    HideSelectedControls(button_gotoNextPuzzle, panel_cd_event_toMove, ToMoveLabel, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
                     ShowSelectedControls(panel_composer, button_clear_Board, label_square_displayer, label_Action_Response, button_GenerateStartingChessPosition);
                     Point BoardPoint = new(panel_solver.Location.X, panel_solver.Location.Y);
                     panel_composer.Location = BoardPoint;

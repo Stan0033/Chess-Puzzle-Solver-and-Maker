@@ -27,6 +27,9 @@ namespace Chezz_Puzzler
             AutoSize = false;
             FlatStyle = FlatStyle.Flat;
             PieceName = "-";
+            PlayertoMove = "None";
+
+
         }
         public Panel? belongsToWhichPanel;
         //----------------------------------------------------------
@@ -112,56 +115,81 @@ namespace Chezz_Puzzler
                 isHovered = value;
                 if (CanInteract == false)
                 {
-                    Cursor = Cursors.No;
+                    Cursor = Cursors.Arrow;
                 }
                 else
                 {
-                    if (value) { BackColor = color_hover; } else { if (isMarked) { BackColor = markColor; } else { SetDefaultBackColor(); } }
+
                     bool ThisPieceIs_White = char.IsUpper(pieceName[0]);
                     bool ThisPieceIs_Black = char.IsLower(pieceName[0]);
-                    bool izHovered = value;
-                    bool thisSquareHasImage = BackgroundImage != null;
-                    bool thisSquareHasNOImage = BackgroundImage == null;
-                    if (izHovered && waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Cross; return; }
-                    if (izHovered && !waitingPaste && thisSquareHasNOImage) { Cursor = Cursors.Arrow; return; }
-                    //-----------------------------------------------------
-                    // if hovered
-                    //-----------------------------------------------------
-                    if (izHovered && thisSquareHasImage)  // if hovered and has an image
+                    bool thisSquareHasImage = pieceName != "-";
+                     
+                    
+                    if (isHovered) // if hovered
                     {
-                        if (PlayertoMove == "White to move") // if white is to move 
+                        BackColor = color_hover;
+                        
+                        
+                        if (thisSquareHasImage)  // if hovered and has an image
                         {
-                            // if targeted a white piece
-                            if (ThisPieceIs_White && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (ThisPieceIs_White && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
-                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.Hand; return; }
-                            // if targeted a black piece
-                            if (ThisPieceIs_Black && waitingPaste) { Cursor = Cursors.Cross; return; }
-                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.No; return; }
+                            if (PlayertoMove == "None" || PlayertoMove== string.Empty)
+                            {
+                                if (waitingPaste && IsSelected) { Cursor = Cursors.Arrow; return; }
+                                if (waitingPaste && !IsSelected) { Cursor = Cursors.No; return; }
+                                if (!waitingPaste) { Cursor = Cursors.Hand; return; }
+
+                            }
+                            if (PlayertoMove == "Any" )
+                            {
+                                if (waitingPaste && IsSelected) { Cursor = Cursors.Hand; return; }
+                                if (waitingPaste && !IsSelected) { Cursor = Cursors.Cross; return; }
+                                if (!waitingPaste) { Cursor = Cursors.Hand; return; }
+
+                            }
+                            if (PlayertoMove == "White to move") // if white is to move 
+                            {
+                                // if targeted a white piece
+                                if (ThisPieceIs_White && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
+                                if (ThisPieceIs_White && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
+                                if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.Hand; return; }
+                                // if targeted a black piece
+                                if (ThisPieceIs_Black && waitingPaste) { Cursor = Cursors.Cross; return; }
+                                if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.No; return; }
+                            }
+                            else if (PlayertoMove == "Black to move") // if black is the move
+                            {
+                                // if targeted a black piece
+                                if (ThisPieceIs_Black && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
+                                if (ThisPieceIs_Black && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
+                                if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.Hand; return; }
+                                // if targeted a white piece
+                                if (ThisPieceIs_White && waitingPaste) { Cursor = Cursors.Cross; return; }
+                                if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.No; return; }
+                            }
+                            
+                             
+                            
                         }
-                        else if (PlayertoMove == "Black to move") // if black is the move
+                        else // if doesnt have an image
                         {
-                            // if targeted a black piece
-                            if (ThisPieceIs_Black && waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (ThisPieceIs_Black && waitingPaste && !isSelected) { Cursor = Cursor = Cursors.No; return; }
-                            if (ThisPieceIs_Black && !waitingPaste) { Cursor = Cursors.Hand; return; }
-                            // if targeted a white piece
-                            if (ThisPieceIs_White && waitingPaste) { Cursor = Cursors.Cross; return; }
-                            if (ThisPieceIs_White && !waitingPaste) { Cursor = Cursors.No; return; }
+                            if (waitingPaste) { Cursor = Cursors.Cross; return; } else { Cursor = Cursors.Arrow; return; }
                         }
-                        else if (PlayertoMove == "Any")
+                    }
+                    else // if it's not hovered
+                    {
+                        Cursor = Cursors.Arrow;
+                        if (isMarked)
                         {
-                            if (waitingPaste && isSelected) { Cursor = Cursors.Hand; return; }
-                            if (waitingPaste && !isSelected) { Cursor = Cursors.No; return; }
-                            if (!waitingPaste) { Cursor = Cursors.Hand; }
+                            BackColor = markColor;
                         }
                         else
                         {
-                            if (waitingPaste && IsSelected) { Cursor = Cursors.Hand; return; }
-                            if (waitingPaste && !IsSelected) { Cursor = Cursors.No; return; }
-                            if (!waitingPaste) { Cursor = Cursors.Hand; return; }
+                            SetDefaultBackColor();
+
                         }
                     }
+
+
                 }
             }
         }

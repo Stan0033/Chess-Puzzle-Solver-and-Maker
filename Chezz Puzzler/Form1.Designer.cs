@@ -248,7 +248,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.___LABEL_TOMOVE = new Chezz_Puzzler.ToMoveIndicatorLabel();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -2738,16 +2737,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
             // 
-            // ___LABEL_TOMOVE
-            // 
-            this.___LABEL_TOMOVE.AutoSize = true;
-            this.___LABEL_TOMOVE.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.___LABEL_TOMOVE.Location = new System.Drawing.Point(547, 355);
-            this.___LABEL_TOMOVE.Name = "___LABEL_TOMOVE";
-            this.___LABEL_TOMOVE.Size = new System.Drawing.Size(0, 21);
-            this.___LABEL_TOMOVE.TabIndex = 86;
-            this.___LABEL_TOMOVE.ToMove = "None";
-            // 
             // Form_base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2755,7 +2744,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 791);
-            this.Controls.Add(this.___LABEL_TOMOVE);
             this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
@@ -2802,7 +2790,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.10";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.11";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -3053,7 +3041,7 @@
         private Button button_resetAllSettings_Panel;
         private Button button_Autoplay;
         
-        private ToMoveIndicatorLabel ___LABEL_TOMOVE;
+         
         private Label label15;
         private Button button_SetPieceTheme;
         private ComboBox comboBox_Psets;
@@ -3068,5 +3056,6 @@
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
+         
     }
 }

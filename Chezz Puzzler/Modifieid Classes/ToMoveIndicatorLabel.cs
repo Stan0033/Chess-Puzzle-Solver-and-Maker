@@ -12,10 +12,11 @@ namespace Chezz_Puzzler
         {
             ToMove = "None";
         }
-        private string toMove;
+
+        private string? toMove;
         public string ToMove
         {
-            get => toMove;
+            get => toMove == null ? "None" : toMove;
             set
             {
                 toMove = value;
