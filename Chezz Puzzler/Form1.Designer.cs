@@ -594,6 +594,7 @@
     "g \"ctrl\"+\"alt\" while moving a piece will add\r\n it as a proposed solution and add" +
     " it as chapter";
             this.checkbox_smartAdd.UseVisualStyleBackColor = true;
+            this.checkbox_smartAdd.CheckedChanged += new System.EventHandler(this.Checkbox_smartAdd_CheckedChanged);
             // 
             // button_swapPlayers
             // 
@@ -2790,7 +2791,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.11";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.12";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

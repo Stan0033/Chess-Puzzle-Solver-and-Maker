@@ -169,3 +169,9 @@ The image is recommended to be 150x150
 -----------------------
 - Fixed a bug where after a puzzle is finished, the cursor's appearance would not behave the same
 - The cursor now for empty squares is fixed to be arrow and it will be arrow after a puzzle is finished. That was because it was performing a check that always returned false.
+-----------------------
+1.7.12
+-----------------------
+- Fixed the bug where when you are adding chapters to the composed puzzle, it would always be labeled as "Black to Move", therefore screwing the puzzle
+- Added error messages for when you havent selected anything and you click "delete" and "edit"
+- in the create tab, if the second checkbox is checked, the button "add" and "transition" will be disabled

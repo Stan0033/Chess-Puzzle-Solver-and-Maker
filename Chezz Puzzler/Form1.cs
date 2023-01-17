@@ -78,7 +78,7 @@ namespace Chezz_Puzzler
         readonly Dictionary<char, string> PieceNameToImagePath;
         readonly List<string> DescriptionsForPR_Puzzles;
         readonly List<List<Color>> ColorsOfSquaresFilebyFile;
-        ToMoveIndicatorLabel ToMoveLabel;
+        readonly ToMoveIndicatorLabel ToMoveLabel;
         bool LastMoveWasDoneByClicks;
         readonly Image EmptySquare;
         public Form_base()
@@ -174,7 +174,7 @@ namespace Chezz_Puzzler
             CurrentEvents = new List<string>();
             CurrentPuzzles_Lengths = new List<int>();
             InitializeComponent();
-            createToMoveLabel();
+            CreateToMoveLabel();
             Selected_A_Piece = false;
             colors = new List<Color>();
             //-----------------------
@@ -251,7 +251,7 @@ namespace Chezz_Puzzler
             PieceNameToImagePath.Add('P', "pawn_white.png");
             PieceNameToImagePath.Add('p', "pawn_black.png");
         }
-        public void createToMoveLabel()
+        public void CreateToMoveLabel()
         {
             ToMoveLabel.Location = new Point(547, 359);
             ToMoveLabel.Font = new Font("Arial", 12, FontStyle.Bold);
@@ -859,6 +859,25 @@ namespace Chezz_Puzzler
             }
             return result;
         }
+        public char GetPieceTypeOfSquare(string whichSquare)
+        {
+            _ = Convert.ToInt32(whichSquare[1]);
+            _ = whichSquare[0];
+
+            char result = 'k';
+            for (int rank=0; rank<8; rank++)
+            {
+                for (int file = 0; file < 8; file++)
+                {
+                    if (Board_Solver[rank][file].SquareName == whichSquare)
+                    {
+                        result = (Board_Composer[rank][file].PieceName[0]);
+                    }
+                }
+            }
+
+            return result;
+        }
         public void AddArrangedChapter()
         {
             string Proposed_solution = $"{c_letter1.Text}{c_number1.Text}x{c_letter2.Text}{c_number2.Text}";
@@ -870,13 +889,16 @@ namespace Chezz_Puzzler
             if (CurrentPuzzleComposition_List.Count > 0 && CurrentPuzzleComposition_List[^1][1] == Proposed_solution) { MessageBox.Show("the next move cannot be the same."); return; }
             //---------------------------------------------------------------------------------------------------------------------------
             string startSq = $"{c_letter1.Text}{c_number1.Text}";
-            char strtSqPieceLetter = startSq[0];
+             
+             
+            char PieceTypeOfAttackingSquare = GetPieceTypeOfSquare(startSq);
+          
             //---------------------------------------------------------------------------------------------------------------------------    
             string position = GeneratePositionAsString(Board_Composer);
             string hint = textBox_hint.Text.Trim() == string.Empty ? "No hints" : textBox_hint.Text;
             string wrong = textbox_Wrong.Text.Trim() == string.Empty ? " " : textbox_Wrong.Text;
             string right = textBox_Right.Text.Trim() == string.Empty ? " " : textBox_Right.Text;
-            string toMove = char.IsUpper(strtSqPieceLetter) ? "White to move" : "Black to move";
+            string toMove = char.IsUpper(PieceTypeOfAttackingSquare) ? "White to move" : "Black to move";
             string event_ = label_event.Text == string.Empty ? " " : label_event.Text;
             //---------------------------------------------------------------------------------------------------------------------------
             //---------------------------------------------------------------------------------------------------------------------------
@@ -1696,6 +1718,7 @@ namespace Chezz_Puzzler
                 }
                 RefreshPuzzleList();
             }
+            else { MessageBox.Show("Nothing is selected."); }
         }
         private void ThisIsAttackerToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -2564,6 +2587,7 @@ namespace Chezz_Puzzler
                     MessageBox.Show("The selected puzzle no longer exists.");
                 }
             }
+            else { MessageBox.Show("Nothing is selected."); }
         }
         public void FillSolutionFromRawString(string raw)
         {
@@ -3178,6 +3202,13 @@ namespace Chezz_Puzzler
                 Timer_Global.Stop();
                 Timer_Global.Start();
             }
+        }
+
+        private void Checkbox_smartAdd_CheckedChanged(object sender, EventArgs e)
+        {
+            button_Add.Enabled = !checkbox_smartAdd.Checked;
+            button_Transition.Enabled = !checkbox_smartAdd.Checked;
+            
         }
     }
 }
