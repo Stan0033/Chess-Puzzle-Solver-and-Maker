@@ -175,3 +175,8 @@ The image is recommended to be 150x150
 - Fixed the bug where when you are adding chapters to the composed puzzle, it would always be labeled as "Black to Move", therefore screwing the puzzle
 - Added error messages for when you havent selected anything and you click "delete" and "edit"
 - in the create tab, if the second checkbox is checked, the button "add" and "transition" will be disabled
+-----------------------
+1.7.13
+-----------------------
+- When you open or solve a puzzle, or a puzzle rush, now the button "go to next puzzle in puzzle rush" will be hidden, as it should be. 
+- Fixed a typo in a tooltip

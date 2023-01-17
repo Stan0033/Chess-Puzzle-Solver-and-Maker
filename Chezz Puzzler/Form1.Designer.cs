@@ -792,7 +792,7 @@
             this.labelTXB_Event.Size = new System.Drawing.Size(36, 15);
             this.labelTXB_Event.TabIndex = 109;
             this.labelTXB_Event.Text = "Event";
-            this.toolTip1.SetToolTip(this.labelTXB_Event, "Applied to the whole puxzle");
+            this.toolTip1.SetToolTip(this.labelTXB_Event, "Applied to the whole puzzle");
             // 
             // textBox_event
             // 
@@ -2791,7 +2791,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.12";
+            this.Text = "Chess Puzzle Maker And Solver 1.7.13";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

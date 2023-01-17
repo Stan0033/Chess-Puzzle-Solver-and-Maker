@@ -1114,6 +1114,7 @@ namespace Chezz_Puzzler
                     label_Countdown_Puzzle.ForeColor = Color.White;
                     if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
                     EnableChessBoard();
+                    button_gotoNextPuzzle.Visible = false;
                 }
                 else
                 {
@@ -1306,6 +1307,7 @@ namespace Chezz_Puzzler
                                             CurrentPuzzleIsSolved = true;
                                             UserToMove = false;
                                             DisableChessBoard();
+                                            button_gotoNextPuzzle.Visible = false;
                                         }
                                     }
                                     if (Time_Puzzle_SecondsLeft > 0) Timer_Puzzle.Stop();
@@ -1326,6 +1328,7 @@ namespace Chezz_Puzzler
                                                 CurrentlySolvingAPuzzleRush = false;
                                                 ToMoveLabel.ToMove = "None"; SetToMoveInButtons(ToMoveLabel.Text);
                                                 DisableChessBoard();
+                                                button_gotoNextPuzzle.Visible = false;
                                             }
                                         }
                                         else

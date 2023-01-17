@@ -6,3 +6,7 @@
 [---------Q-K-P-r-pP-BqP----P--p--b-p----R---p----pp---p----k----][f6xe7][No hints][ ][ ][Black to move][ ][]
 [---------Q-KqP-r-pP-B-P----P--p--b-p----R---p----pp---p----k----][d7xc8][No hints][ ][ ][White to move][ ][]
 [--K------Q--qP-r-pP-B-P----P--p--b-p----R---p----pp---p----k----][h7xh8][No hints][ ][ ][Black to move][ ][]
+<No description.>
+[----B-----R----pkp-rp---p--p-p-----P----------PPPP---P---K------][a2xa4][No hints][ ][ ][White to move][ ][]
+[----B-----R----pkp-rp---p--p-p--P--P----------PP-P---P---K------][h7xh5][No hints][ ][ ][Black to move][ ][]
+[----B-----R-----kp-rp---p--p-p-pP--P----------PP-P---P---K------][e8xb5][No hints][ ][ ][White to move][ ][]
