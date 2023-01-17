@@ -6,6 +6,7 @@ With this app you can solve, create puzzles, and puzzle rushes! You can also cha
 Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.  
 ```diff
 + You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/Chess puzzler.exe]
++ Changelog.txt is also there
 ```
 ```diff
 -WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this as your own.
