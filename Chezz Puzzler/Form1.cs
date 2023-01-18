@@ -489,6 +489,16 @@ namespace Chezz_Puzzler
                 SetInitialColorsToButtons();
             }
         }
+        public void UnhightlightAllSquares()
+        {
+            for (int rank=0; rank<8; rank++)
+            {
+                for (int file=0; file<8; file++)
+                {
+                    Board_Solver[rank][file].BelongsToLastMove=false;
+                }
+            }
+        }
         public void SetInitialColorsToButtons()
         {
             button_setwhiteSqColor.BackColor = settings.Color_White_Current;
@@ -1119,6 +1129,7 @@ namespace Chezz_Puzzler
                         label_Countdown_Puzzle.ForeColor = Color.White;
                         if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
                         EnableChessBoard();
+                        UnhightlightAllSquares();
                         button_gotoNextPuzzle.Visible = false;
                     }
                     else
@@ -1657,6 +1668,7 @@ namespace Chezz_Puzzler
                 CurrentPuzzleIsSolved = false;
                 UserToMove = true;
                 EnableChessBoard();
+                UnhightlightAllSquares();
             }
             else
             {
