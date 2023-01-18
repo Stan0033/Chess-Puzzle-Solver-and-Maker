@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Linq.Expressions;
 using System.Media;
 using System.Text.RegularExpressions;
 using Application = System.Windows.Forms.Application;
@@ -480,7 +481,7 @@ namespace Chezz_Puzzler
                 }
                 catch
                 {
-                    MessageBox.Show("Error reading the settings file. One or more of the values are not in the accepted range, missing, or not properly formatted."); SetInitialColorsToButtons();
+                    MessageBox.Show("Error parsing the settings file. One or more of the values are not in the accepted range, missing, or not properly formatted."); SetInitialColorsToButtons();
                 }
             }
             else
@@ -743,6 +744,8 @@ namespace Chezz_Puzzler
                     string LastMoveBeforePuzzleStarts = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}";
                     CurrentPuzzleComposition_List[0][7] = LastMoveBeforePuzzleStarts;
                 }
+               
+                
                 string savePath = $"{path_puzzles}\\{name}.txt";
                 List<string> composedLines = new()
                 {
@@ -903,7 +906,7 @@ namespace Chezz_Puzzler
             //---------------------------------------------------------------------------------------------------------------------------
             //---------------------------------------------------------------------------------------------------------------------------
             if (PuzzleRushPuzzles_Composed.Count < CurrentlyEditedPuzzleNumber) { PuzzleRushPuzzles_Composed.Add(new List<string[]>()); }
-            string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_, "" };
+            string[] ChapterData = { position, Proposed_solution, hint, wrong, right, toMove, event_, " " };
             CurrentPuzzleComposition_List.Add(ChapterData);
             listbox_Puzzle_Fragments.Items.Add(Proposed_solution);
             ClearTextBoxes(textBox_hint, textbox_Wrong, textBox_Right, textBox_event);
@@ -1064,64 +1067,71 @@ namespace Chezz_Puzzler
         }
         public void SolveSelectedPuzzle()
         {
-            if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
+            try
             {
-                string name = (string)listofPuzzles.SelectedItems[0] + ".txt";
-                CurrentlyOpenedPuzzleFilename = $"{path_puzzles}\\{name}";
-                if (File.Exists(CurrentlyOpenedPuzzleFilename))
+                if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
                 {
-                    MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
-                    CurrentPuzzles_Lengths.Clear();
-                    CurrentlySolvedPuzzleNumber = 0;
-                    HideSelectedControls(button_reset_puzzle, icon_solved, icon_notSolved);
-                    CurrentPuzzleIsSolved = false;
-                    CurrenltOpenedPuzzleChaptersCount = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).Length;
-                    CurrenlyOpenedPuzzle_ChaptersSolved = 0;
-                    CurrentlySolvedPuzzleChapterStep = 0;
-                    ClearLists(CurrentPuzzle_Hints, CurrentPuzzle_Positions, CurrentPuzzle_Solutions, CurrentPuzzle_ToMove);
-                    //------------------------------------------------------------------------
-                    int countPuzzles = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).Count(f => f.Contains('<'));
-                    //-----------------------
-                    // if it's a puzzle rush
-                    //-----------------------
-                    if (countPuzzles > 1)
+                    string name = (string)listofPuzzles.SelectedItems[0] + ".txt";
+                    CurrentlyOpenedPuzzleFilename = $"{path_puzzles}\\{name}";
+                    if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
-                        List<string> fileLines = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).ToList();
-                        LoadPuzzleRush(fileLines);
-                        if (AllPuzzles_of_PuzzleRush.Count <= 1) { MessageBox.Show("The selected puzzle rush file contains less than 2 puzzles."); return; }
-                        // after adding all puzzles to the puzzle collection, load the first */
-                        LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[0]);
-                        // feed the puzzles to the listview
-                        GenerateRightWrongLabelsForPRDisplay(AllPuzzles_of_PuzzleRush.Count);
-                        PuzzlesDisplay.Visible = true;
-                        LightCurrentlySolvedPRPuzzle(0);
-                        CurrentlySolvingAPuzzleRush = true;
+                        MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
+                        CurrentPuzzles_Lengths.Clear();
+                        CurrentlySolvedPuzzleNumber = 0;
+                        HideSelectedControls(button_reset_puzzle, icon_solved, icon_notSolved);
+                        CurrentPuzzleIsSolved = false;
+                        CurrenltOpenedPuzzleChaptersCount = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).Length;
+                        CurrenlyOpenedPuzzle_ChaptersSolved = 0;
+                        CurrentlySolvedPuzzleChapterStep = 0;
+                        ClearLists(CurrentPuzzle_Hints, CurrentPuzzle_Positions, CurrentPuzzle_Solutions, CurrentPuzzle_ToMove);
+                        //------------------------------------------------------------------------
+                        int countPuzzles = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).Count(f => f.Contains('<'));
+                        //-----------------------
+                        // if it's a puzzle rush
+                        //-----------------------
+                        if (countPuzzles > 1)
+                        {
+                            List<string> fileLines = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).ToList();
+                            LoadPuzzleRush(fileLines);
+                            if (AllPuzzles_of_PuzzleRush.Count <= 1) { MessageBox.Show("The selected puzzle rush file contains less than 2 puzzles."); return; }
+                            // after adding all puzzles to the puzzle collection, load the first */
+                            LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[0]);
+                            // feed the puzzles to the listview
+                            GenerateRightWrongLabelsForPRDisplay(AllPuzzles_of_PuzzleRush.Count);
+                            PuzzlesDisplay.Visible = true;
+                            LightCurrentlySolvedPRPuzzle(0);
+                            CurrentlySolvingAPuzzleRush = true;
+                        }
+                        //-----------------------
+                        // if it's a NOT puzzle rush
+                        //-----------------------
+                        if (countPuzzles <= 1)
+                        {
+                            ClearPRDisplay(true);
+                            List<string> PuzzleFileName = File.ReadLines(CurrentlyOpenedPuzzleFilename).ToList();
+                            LoadTargetPuzzle(PuzzleFileName);
+                            PuzzlesDisplay.Visible = false;
+                        }
+                        APuzzleIsLoaded = true;
+                        CurrentPuzzleIsSolved = false;
+                        UserToMove = true;
+                        ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
+                        label_Countdown_Puzzle.ForeColor = Color.White;
+                        if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
+                        EnableChessBoard();
+                        button_gotoNextPuzzle.Visible = false;
                     }
-                    //-----------------------
-                    // if it's a NOT puzzle rush
-                    //-----------------------
-                    if (countPuzzles <= 1)
+                    else
                     {
-                        ClearPRDisplay(true);
-                        List<string> PuzzleFileName = File.ReadLines(CurrentlyOpenedPuzzleFilename).ToList();
-                        LoadTargetPuzzle(PuzzleFileName);
-                        PuzzlesDisplay.Visible = false;
+                        MessageBox.Show("The selected puzzle no longer exists.");
+                        RefreshPuzzleList();
+                        CurrentlyOpenedPuzzleFilename = "";
                     }
-                    APuzzleIsLoaded = true;
-                    CurrentPuzzleIsSolved = false;
-                    UserToMove = true;
-                    ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
-                    label_Countdown_Puzzle.ForeColor = Color.White;
-                    if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
-                    EnableChessBoard();
-                    button_gotoNextPuzzle.Visible = false;
                 }
-                else
-                {
-                    MessageBox.Show("The selected puzzle no longer exists.");
-                    RefreshPuzzleList();
-                    CurrentlyOpenedPuzzleFilename = "";
-                }
+            }
+            catch
+            {
+                MessageBox.Show("Error parsing the puzzle. Have you modified the file?");
             }
         }
         public void ClearPRDisplay(bool ifFilled)
@@ -2503,94 +2513,105 @@ namespace Chezz_Puzzler
         }
         private void EditToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
+            try
             {
-                //------------------------------------------------------------------
-                ClearTextBoxes(textBox_name, textBox_hint, textbox_Wrong, textBox_Right, textBox_event);
-                listbox_Puzzles_Rush.Items.Clear();
-                listbox_Puzzle_Fragments.Items.Clear();
-                CurrentPuzzleComposition_List.Clear();
-                string? name = listofPuzzles.SelectedItems[0].ToString();
-                string nameFile = name + ".txt";
-                CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
-                //------------------------------------------------------------------
-                if (File.Exists(CurrentlyOpenedPuzzleFilename))
+                if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
                 {
-                    List<string> fileLines = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).ToList();
-                    int namesCount = File.ReadAllText(CurrentlyOpenedPuzzleFilename).Count(x => x == '>');
-                    if (namesCount > 1) // if it's a puzzle rush
+                    //------------------------------------------------------------------
+                    ClearTextBoxes(textBox_name, textBox_hint, textbox_Wrong, textBox_Right, textBox_event);
+                    listbox_Puzzles_Rush.Items.Clear();
+                    listbox_Puzzle_Fragments.Items.Clear();
+                    CurrentPuzzleComposition_List.Clear();
+                    string? name = listofPuzzles.SelectedItems[0].ToString();
+                    string nameFile = name + ".txt";
+                    CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
+                    //------------------------------------------------------------------
+                    if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
-                        List<string[]> CurrentlyFilledPuzzle = new();
-                        // puzzle>chapters
-                        for (int i = 0; i < fileLines.Count; i++)
+                        List<string> fileLines = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).ToList();
+                        int namesCount = File.ReadAllText(CurrentlyOpenedPuzzleFilename).Count(x => x == '>');
+                        if (namesCount > 1) // if it's a puzzle rush
                         {
-                            if (fileLines[i].Contains('<'))
+                            List<string[]> CurrentlyFilledPuzzle = new();
+                            // puzzle>chapters
+                            for (int i = 0; i < fileLines.Count; i++)
                             {
-                                PuzzleRushPuzzles_Composed.Add(CurrentlyFilledPuzzle); // if the tag is met, skip and go to adding the next puzzle
-                                CurrentlyFilledPuzzle.Clear();
-                                listbox_Puzzles_Rush.Items.Add(fileLines[i]);
+                                if (fileLines[i].Contains('<'))
+                                {
+                                    PuzzleRushPuzzles_Composed.Add(CurrentlyFilledPuzzle); // if the tag is met, skip and go to adding the next puzzle
+                                    CurrentlyFilledPuzzle.Clear();
+                                    listbox_Puzzles_Rush.Items.Add(fileLines[i]);
+                                }
+                                else
+                                {
+                                    // take the whole line and make it into a string[]
+                                    //add the string to CurrentlyFilledPuzzle
+                                    Regex pattern = new(@"(?<=\[)[^\[\]]+(?=\])", // Define a regular expression for content in brackets
+                                    RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                    MatchCollection matches = pattern.Matches(fileLines[i]);
+                                    List<string> data = new();
+                                    data.AddRange(from Match m in matches
+                                                  select m.Value);
+                                    CurrentlyFilledPuzzle.Add(data.ToArray());
+                                }
                             }
-                            else
+                        }
+                        else// if it is not a puzzle rush
+                        {
+                            if (fileLines[0].Contains('<')) { fileLines.RemoveAt(0); }
+                            // have to convert every line into string[] and add it to currenly composed puzzle list
+                            foreach (string line in fileLines)
                             {
-                                // take the whole line and make it into a string[]
-                                //add the string to CurrentlyFilledPuzzle
                                 Regex pattern = new(@"(?<=\[)[^\[\]]+(?=\])", // Define a regular expression for content in brackets
-                                RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                                MatchCollection matches = pattern.Matches(fileLines[i]);
-                                List<string> data = new();
+                                 RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                                MatchCollection matches = pattern.Matches(line);
+                                List<string> data = new(); ;
                                 data.AddRange(from Match m in matches
                                               select m.Value);
-                                CurrentlyFilledPuzzle.Add(data.ToArray());
+                                CurrentPuzzleComposition_List.Add(data.ToArray());
                             }
+                            // then fill all chapters by solution in the list of chapters
+                            foreach (string[] data in CurrentPuzzleComposition_List)
+                            {
+                                string solution = data[1];
+                                listbox_Puzzle_Fragments.Items.Add(solution);
+                            }
+                            // then load the LAST chapter with its fields and SELECT IT
+                            string[] lastChapter = CurrentPuzzleComposition_List[^1];
+                            RecreatePuzzleFromSCN(lastChapter[0], panel_composer);
+                            FillSolutionFromRawString(lastChapter[1]);
+                            textBox_hint.Text = lastChapter[2];
+                            textbox_Wrong.Text = lastChapter[3];
+                            textBox_Right.Text = lastChapter[4];
+                            textBox_event.Text = lastChapter[6];
+
+                            if (CurrentPuzzleComposition_List[0][7].Length == 5) FillFirstMoveromRawString(CurrentPuzzleComposition_List[0][7]);
+
+                            listbox_Puzzle_Fragments.SelectedIndex = listbox_Puzzle_Fragments.Items.Count - 1;
                         }
+                        tabControl1.SelectedIndex = 1; // swutch to tab
+                        textBox_name.Text = name; // enter the name
+                                                  //-------------------------------------------------------------------------------
+                                                  //whehn switching to tab hide what has to be hidden
+                                                  //-------------------------------------------------------------------------------
+                        HideSelectedControls(button_gotoNextPuzzle, panel_cd_event_toMove, ToMoveLabel, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
+                        ShowSelectedControls(panel_composer, button_clear_Board, label_square_displayer, label_Action_Response, button_GenerateStartingChessPosition);
+                        Point BoardPoint = new(panel_solver.Location.X, panel_solver.Location.Y);
+                        panel_composer.Location = BoardPoint;
                     }
-                    else// if it is not a puzzle rush
+                    else
                     {
-                        if (fileLines[0].Contains('<')) { fileLines.RemoveAt(0); }
-                        // have to convert every line into string[] and add it to currenly composed puzzle list
-                        foreach (string line in fileLines)
-                        {
-                            Regex pattern = new(@"(?<=\[)[^\[\]]+(?=\])", // Define a regular expression for content in brackets
-                             RegexOptions.Compiled | RegexOptions.IgnoreCase);
-                            MatchCollection matches = pattern.Matches(line);
-                            List<string> data = new(); ;
-                            data.AddRange(from Match m in matches
-                                          select m.Value);
-                            CurrentPuzzleComposition_List.Add(data.ToArray());
-                        }
-                        // then fill all chapters by solution in the list of chapters
-                        foreach (string[] data in CurrentPuzzleComposition_List)
-                        {
-                            string solution = data[1];
-                            listbox_Puzzle_Fragments.Items.Add(solution);
-                        }
-                        // then load the LAST chapter with its fields and SELECT IT
-                        string[] lastChapter = CurrentPuzzleComposition_List[^1];
-                        RecreatePuzzleFromSCN(lastChapter[0], panel_composer);
-                        FillSolutionFromRawString(lastChapter[1]);
-                        textBox_hint.Text = lastChapter[2];
-                        textbox_Wrong.Text = lastChapter[3];
-                        textBox_Right.Text = lastChapter[4];
-                        textBox_event.Text = lastChapter[6];
-                        if (CurrentPuzzleComposition_List[0][7].Length == 5) FillFirstMoveromRawString(CurrentPuzzleComposition_List[0][7]);
-                        listbox_Puzzle_Fragments.SelectedIndex = listbox_Puzzle_Fragments.Items.Count - 1;
+                        MessageBox.Show("The selected puzzle no longer exists.");
                     }
-                    tabControl1.SelectedIndex = 1; // swutch to tab
-                    textBox_name.Text = name; // enter the name
-                                              //-------------------------------------------------------------------------------
-                                              //whehn switching to tab hide what has to be hidden
-                                              //-------------------------------------------------------------------------------
-                    HideSelectedControls(button_gotoNextPuzzle, panel_cd_event_toMove, ToMoveLabel, label_move_wrong, label_move_right, label_hint, button_reset_puzzle, button_show_solution, label_show_solution, label_event, panel_solver, button_hint, icon_notSolved, icon_solved, label_chapterCounter);
-                    ShowSelectedControls(panel_composer, button_clear_Board, label_square_displayer, label_Action_Response, button_GenerateStartingChessPosition);
-                    Point BoardPoint = new(panel_solver.Location.X, panel_solver.Location.Y);
-                    panel_composer.Location = BoardPoint;
                 }
-                else
-                {
-                    MessageBox.Show("The selected puzzle no longer exists.");
-                }
+
+
+                else { MessageBox.Show("Nothing is selected."); }
             }
-            else { MessageBox.Show("Nothing is selected."); }
+            catch
+            {
+                MessageBox.Show("Error parsing the puzzle. Have you modified the file manually?");
+            }
         }
         public void FillSolutionFromRawString(string raw)
         {

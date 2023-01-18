@@ -180,3 +180,8 @@ The image is recommended to be 150x150
 -----------------------
 - When you open or solve a puzzle, or a puzzle rush, now the button "go to next puzzle in puzzle rush" will be hidden, as it should be. 
 - Fixed a typo in a tooltip
+-----------------------
+1.7.14
+-----------------------
+- Fixed a logical writing and reading error where when you click "edit" on a puzzle it will display exception. This was because the 8-th string in a a line of the puzzle's file had to be " " instead of ""
+- Added an additional error check for reading a puzzle file
