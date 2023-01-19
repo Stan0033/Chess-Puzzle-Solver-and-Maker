@@ -1157,6 +1157,7 @@ namespace Chezz_Puzzler
                             PuzzlesDisplay.Visible = true;
                             LightCurrentlySolvedPRPuzzle(PR_SolveOrder[0]);
                             CurrentlySolvingAPuzzleRush = true;
+
                         }
                         //-----------------------
                         // if it's a NOT puzzle rush
@@ -1177,6 +1178,7 @@ namespace Chezz_Puzzler
                         EnableChessBoard();
                         UnhightlightAllSquares();
                         button_gotoNextPuzzle.Visible = false;
+                        CurrentlySolvingAPuzzleRush = false;
                     }
                     else
                     {

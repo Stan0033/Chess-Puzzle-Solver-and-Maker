@@ -195,3 +195,4 @@ The image is recommended to be 150x150
 - Added a checkbox "shuffle puzzle rush" that allows you to solve the puzzle rush in random order
 - In the list of puzzles, thosee that are puzzle rushes will now have a (number of puzzles) next to their name
 - Changed the icon of the app... again!
+- fixed the exeption throw, where when you select a puzzle rush and then a normal puzzle and solve it, it will throw an exception. This was because opening a puzzle did not mark it as non-PR. Only opening PR did.
