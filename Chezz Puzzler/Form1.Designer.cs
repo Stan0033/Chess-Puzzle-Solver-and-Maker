@@ -143,6 +143,7 @@
             this.label_square_displayer = new System.Windows.Forms.Label();
             this.label_Action_Response = new System.Windows.Forms.Label();
             this.panel_bottom = new System.Windows.Forms.Panel();
+            this.checkBox_shuffle_PR = new System.Windows.Forms.CheckBox();
             this.button_settings = new System.Windows.Forms.Button();
             this.checkBox_AU_Reset = new System.Windows.Forms.CheckBox();
             this.checkBox_UseBG = new System.Windows.Forms.CheckBox();
@@ -1572,6 +1573,7 @@
             // panel_bottom
             // 
             this.panel_bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_bottom.Controls.Add(this.checkBox_shuffle_PR);
             this.panel_bottom.Controls.Add(this.button_settings);
             this.panel_bottom.Controls.Add(this.checkBox_AU_Reset);
             this.panel_bottom.Controls.Add(this.checkBox_UseBG);
@@ -1583,6 +1585,18 @@
             this.panel_bottom.Name = "panel_bottom";
             this.panel_bottom.Size = new System.Drawing.Size(1404, 58);
             this.panel_bottom.TabIndex = 49;
+            // 
+            // checkBox_shuffle_PR
+            // 
+            this.checkBox_shuffle_PR.AutoSize = true;
+            this.checkBox_shuffle_PR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox_shuffle_PR.Location = new System.Drawing.Point(321, 5);
+            this.checkBox_shuffle_PR.Name = "checkBox_shuffle_PR";
+            this.checkBox_shuffle_PR.Size = new System.Drawing.Size(208, 19);
+            this.checkBox_shuffle_PR.TabIndex = 59;
+            this.checkBox_shuffle_PR.Text = "Shuffle the puzzles in a puzzle rush";
+            this.checkBox_shuffle_PR.UseVisualStyleBackColor = true;
+            this.checkBox_shuffle_PR.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
             // 
             // button_settings
             // 
@@ -2791,7 +2805,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.7.15";
+            this.Text = "Chess Puzzle Maker And Solver 1.8";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -3057,6 +3071,6 @@
         private ToolStripMenuItem toolStripMenuItem3;
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
-         
+        private CheckBox checkBox_shuffle_PR;
     }
 }

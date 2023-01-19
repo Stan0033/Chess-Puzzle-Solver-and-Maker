@@ -51,12 +51,13 @@ namespace Chezz_Puzzler
         int CurrentlySolvedPuzzleNumber;
         bool CurrentlySolvingAPuzzleRush;
         bool Composer_Mode_Select;
-        ChessButton  LastSelectedToMoveComposerSquare;
+        ChessButton LastSelectedToMoveComposerSquare;
         bool CurrentPuzzleIsSolved;
         string CurrentlyOpenedPuzzleFilename;
-        ChessButton  SelectedSquare_Start;
-        ChessButton  SelectedSquare_End;
+        ChessButton SelectedSquare_Start;
+        ChessButton SelectedSquare_End;
         int CurrentlySolvedPuzzleChapterStep;
+        List<int> PR_SolveOrder;
         ChessButton Currently_Hovered_Button;
         readonly List<string> CurrentPuzzle_Hints;
         readonly List<string> CurrentPuzzle_Solutions;
@@ -84,22 +85,23 @@ namespace Chezz_Puzzler
         readonly Image EmptySquare;
         public Form_base()
         {
-            
+
             try
             {
                 EmptySquare = Image.FromFile(Application.StartupPath + "Pieces\\Empty.png");
             }
-            catch { MessageBox.Show("Missing 'pieces\\empty.png'");Environment.Exit(0); };
+            catch { MessageBox.Show("Missing 'pieces\\empty.png'"); Environment.Exit(0); };
             ToMoveLabel = new ToMoveIndicatorLabel();
             LastSelectedToMoveComposerSquare = new();
             Currently_Hovered_Button = new();
+            PR_SolveOrder = new();
             FocusedTextBox = new TextBox();
             CurrentlyOpenedPuzzleFilename = string.Empty;
             fix_one = string.Empty;
-            fix_two= string.Empty;
+            fix_two = string.Empty;
             SelectedSquare_Start = new();
             SelectedSquare_End = new();
-             Time_Puzzle_SecondsTotal = 0;
+            Time_Puzzle_SecondsTotal = 0;
             Time_Global_SecondsLeft = 0;
             pieces_pics = new();
             settings = new Settings();
@@ -339,7 +341,8 @@ namespace Chezz_Puzzler
                 $"AutoNextPuzzle={checkBox_autoPR.Checked}",
                 $"UseBackgroundImage={checkBox_UseBG.Checked}",
                 $"AutomaticallyRestartSolvedPuzzle={checkBox_AU_Reset.Checked}",
-                $"PathOfCurrentlyUsedChessSet={FolderOfCurrentlyUsedChessSet}"
+                $"PathOfCurrentlyUsedChessSet={FolderOfCurrentlyUsedChessSet}",
+                $"PR_Shuffle={checkBox_shuffle_PR.Checked}"
             };
             File.WriteAllLines(SettingsPath, settingsData);
         }
@@ -464,6 +467,10 @@ namespace Chezz_Puzzler
                                 }
                                 LoadRequiredPieceImages();
                                 break;
+                            case "PR_Shuffle":
+                                bool shuffle_state = bool.Parse(value);
+                                checkBox_shuffle_PR.Checked = shuffle_state;
+                                break;
                         }
                         if (lines.Contains("PathOfCurrentlyUsedChessSet") == false)
                         {
@@ -491,11 +498,11 @@ namespace Chezz_Puzzler
         }
         public void UnhightlightAllSquares()
         {
-            for (int rank=0; rank<8; rank++)
+            for (int rank = 0; rank < 8; rank++)
             {
-                for (int file=0; file<8; file++)
+                for (int file = 0; file < 8; file++)
                 {
-                    Board_Solver[rank][file].BelongsToLastMove=false;
+                    Board_Solver[rank][file].BelongsToLastMove = false;
                 }
             }
         }
@@ -641,16 +648,16 @@ namespace Chezz_Puzzler
         }
         public void HoverEnterChessSquare(object? sender, EventArgs e)
         {
-            if (sender == null){ return; }
+            if (sender == null) { return; }
             ChessButton ourB = (ChessButton)sender;
             Currently_Hovered_Button = ourB;
             ourB.IsHovered = true;
             if (ourB.belongsToWhichPanel == panel_composer) { label_square_displayer.Text = ourB.SquareName; }
             //test
-          }
+        }
         public void HoverLEaveChessSquare(object? sender, EventArgs e)
         {
-            if (sender==null) return;
+            if (sender == null) return;
             ChessButton ourB = (ChessButton)sender;
             ourB.IsHovered = false;
             if (ourB.belongsToWhichPanel == panel_composer) { label_square_displayer.Text = ""; }
@@ -754,8 +761,8 @@ namespace Chezz_Puzzler
                     string LastMoveBeforePuzzleStarts = $"{comboBox_letter1_om.Text}{comboBox_num1_om.Text}x{comboBox_letter2_om.Text}{comboBox_num2_om.Text}";
                     CurrentPuzzleComposition_List[0][7] = LastMoveBeforePuzzleStarts;
                 }
-               
-                
+
+
                 string savePath = $"{path_puzzles}\\{name}.txt";
                 List<string> composedLines = new()
                 {
@@ -878,7 +885,7 @@ namespace Chezz_Puzzler
             _ = whichSquare[0];
 
             char result = 'k';
-            for (int rank=0; rank<8; rank++)
+            for (int rank = 0; rank < 8; rank++)
             {
                 for (int file = 0; file < 8; file++)
                 {
@@ -902,10 +909,10 @@ namespace Chezz_Puzzler
             if (CurrentPuzzleComposition_List.Count > 0 && CurrentPuzzleComposition_List[^1][1] == Proposed_solution) { MessageBox.Show("the next move cannot be the same."); return; }
             //---------------------------------------------------------------------------------------------------------------------------
             string startSq = $"{c_letter1.Text}{c_number1.Text}";
-             
-             
+
+
             char PieceTypeOfAttackingSquare = GetPieceTypeOfSquare(startSq);
-          
+
             //---------------------------------------------------------------------------------------------------------------------------    
             string position = GeneratePositionAsString(Board_Composer);
             string hint = textBox_hint.Text.Trim() == string.Empty ? "No hints" : textBox_hint.Text;
@@ -1075,13 +1082,50 @@ namespace Chezz_Puzzler
                 all += "\n";
             }
         }
+        public void HandlePR_Order()
+        {
+            PR_SolveOrder.Clear();
+           int len = AllPuzzles_of_PuzzleRush.Count-1;
+             
+            for (int i = 0; i <= len; i++)
+            {
+                PR_SolveOrder.Add(i);
+            }
+            if (checkBox_shuffle_PR.Checked)
+            {
+                List<int> shuffledList = new();
+                for (int numOfPuzzles = 0; numOfPuzzles <= len ; numOfPuzzles++)
+                {
+                    Random r = new Random();
+                     int randomN = r.Next(0,PR_SolveOrder.Count - 1);
+                    int targetNumInList = PR_SolveOrder[randomN];
+                    
+                    PR_SolveOrder.RemoveAt(randomN);
+
+                    PR_SolveOrder.Add(targetNumInList);
+
+                }
+               // MessageBox.Show(string.Join(", ", PR_SolveOrder));
+
+            }
+        }
         public void SolveSelectedPuzzle()
         {
             try
             {
                 if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
                 {
-                    string name = (string)listofPuzzles.SelectedItems[0] + ".txt";
+                    string name = string.Empty;
+                    name = (string)listofPuzzles.SelectedItems[0];
+                    if (listofPuzzles.SelectedItems[0].ToString().Contains("<"))
+                    {
+                        
+                        name = name.Split("<")[0].Trim(); ; 
+
+
+                    }
+                    name+= ".txt";
+                   // MessageBox.Show(name);
                     CurrentlyOpenedPuzzleFilename = $"{path_puzzles}\\{name}";
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
@@ -1101,15 +1145,17 @@ namespace Chezz_Puzzler
                         //-----------------------
                         if (countPuzzles > 1)
                         {
+                            PR_SolveOrder.Clear();
                             List<string> fileLines = File.ReadAllLines(CurrentlyOpenedPuzzleFilename).ToList();
                             LoadPuzzleRush(fileLines);
                             if (AllPuzzles_of_PuzzleRush.Count <= 1) { MessageBox.Show("The selected puzzle rush file contains less than 2 puzzles."); return; }
                             // after adding all puzzles to the puzzle collection, load the first */
-                            LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[0]);
+                            HandlePR_Order();
+                            LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[0]]);
                             // feed the puzzles to the listview
                             GenerateRightWrongLabelsForPRDisplay(AllPuzzles_of_PuzzleRush.Count);
                             PuzzlesDisplay.Visible = true;
-                            LightCurrentlySolvedPRPuzzle(0);
+                            LightCurrentlySolvedPRPuzzle(PR_SolveOrder[0]);
                             CurrentlySolvingAPuzzleRush = true;
                         }
                         //-----------------------
@@ -1228,7 +1274,7 @@ namespace Chezz_Puzzler
         {
             for (int rank = 0; rank < 8; rank++)
             {
-                for (int file=0; file<8; file++)
+                for (int file = 0; file < 8; file++)
                 {
                     Board_Solver[rank][file].CanInteract = false;
                 }
@@ -1246,7 +1292,7 @@ namespace Chezz_Puzzler
         }
         public void UserClicksSolverSquare(object? sender, MouseEventArgs e)
         {
-            if (sender == null) {return; }
+            if (sender == null) { return; }
             ChessButton thisButton = (ChessButton)sender;
             if (thisButton.CanInteract == false) { return; }
             if (e.Button.ToString() == "Left")
@@ -1276,8 +1322,8 @@ namespace Chezz_Puzzler
                     else // if you click the ending square
                     {
                         SelectedSquare_End = (ChessButton)sender;
-                        string  sqname1 = SelectedSquare_Start.SquareName;
-                        string  sqname2 = SelectedSquare_End.SquareName;
+                        string sqname1 = SelectedSquare_Start.SquareName;
+                        string sqname2 = SelectedSquare_End.SquareName;
                         ProposedSolution = sqname1 + "x" + sqname2;
                         //----------------------------------------------------------------------
                         // if starting square's color is the ending square's color (the same!), deselect the square
@@ -1301,21 +1347,21 @@ namespace Chezz_Puzzler
                                     CurrenlyOpenedPuzzle_ChaptersSolved++;
                                     PlaySoundFile("success.wav");
                                     label_chapterCounter.Text = "Solved!";
-                                 
+
                                     button_reset_puzzle.Visible = !CurrentlySolvingAPuzzleRush;
                                     TransitionToPositionFromGivenActionSquareXSquare(CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep - 1], panel_solver);
                                     label_move_right.Text = CurrentPuzzle_rightAnswers[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_event.Text = CurrentEvents[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_move_wrong.Text = string.Empty;
-                                    
+
                                     HightlightLastMoveSquares(CurrentPuzzle_Solutions[^1]);
                                     ToMoveLabel.ToMove = "None"; SetToMoveInButtons(ToMoveLabel.Text);
                                     CurrenlyOpenedPuzzle_ChaptersSolved = 0;
                                     //------------------------------------------------------------------------------------------------------------------
                                     //------------------------------------------------------------------------------------------------------------------
-                                    if (AllPuzzles_of_PuzzleRush.Count > 0)
+                                    if (AllPuzzles_of_PuzzleRush.Count > 0) // here highlight the solver puzzle in pr
                                     {
-                                        ChangeColorForTargetPuzzleRush_InList(CurrentlySolvedPuzzleNumber, Color.Green);
+                                        ChangeColorForTargetPuzzleRush_InList(PR_SolveOrder[CurrentlySolvedPuzzleNumber], Color.Green);
                                     }
                                     else
                                     {
@@ -1362,8 +1408,9 @@ namespace Chezz_Puzzler
                                             }
                                             else
                                             {
-                                                LightCurrentlySolvedPRPuzzle(CurrentlySolvedPuzzleNumber);
-                                                LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[CurrentlySolvedPuzzleNumber]);
+                                                //MessageBox.Show($"nåxt: {PR_SolveOrder[CurrentlySolvedPuzzleNumber]}");
+                                                LightCurrentlySolvedPRPuzzle(PR_SolveOrder[CurrentlySolvedPuzzleNumber]);
+                                                LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[CurrentlySolvedPuzzleNumber]]);
                                                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(ToMoveLabel.Text);
                                             }
                                         }
@@ -1395,7 +1442,7 @@ namespace Chezz_Puzzler
                                 icon_notSolved.Visible = true;
                                 icon_solved.Visible = false;
                                 label_move_wrong.Text = CurrentPuzzle_wrongAnswers[CurrentlySolvedPuzzleChapterStep];
-                                if (AllPuzzles_of_PuzzleRush.Count > 0) ChangeColorForTargetPuzzleRush_InList(CurrentlySolvedPuzzleNumber, Color.Red);
+                                if (AllPuzzles_of_PuzzleRush.Count > 0) ChangeColorForTargetPuzzleRush_InList(PR_SolveOrder[CurrentlySolvedPuzzleNumber], Color.Red);
                             }
                             ProposedSolution = string.Empty;
                             SelectedSquare_End.IsHovered = true;
@@ -1512,7 +1559,7 @@ namespace Chezz_Puzzler
         }
         public void UserClicksComposerSquare(object? sender, MouseEventArgs e)
         {
-            if (sender == null){ return; }
+            if (sender == null) { return; }
             ChessButton TargetButton = (ChessButton)sender;
             if (e.Button.ToString() == "Left")
             {
@@ -1573,7 +1620,7 @@ namespace Chezz_Puzzler
         }
         public void RefreshPuzzleList()
         {
-            string?  lastSelectedPuzzleName = listofPuzzles.SelectedItems.Count == 1 ? listofPuzzles.SelectedItems[0].ToString() : string.Empty;
+            string? lastSelectedPuzzleName = listofPuzzles.SelectedItems.Count == 1 ? listofPuzzles.SelectedItems[0].ToString() : string.Empty;
             int currentlySelectedIndex = listofPuzzles.SelectedIndex;
             listofPuzzles.Items.Clear();
             // refres hthe list of local puzzles;
@@ -1588,7 +1635,10 @@ namespace Chezz_Puzzler
                         string ext = Path.GetExtension(filename);
                         if (ext == ".txt")
                         {
-                            listofPuzzles.Items.Add(Path.GetFileNameWithoutExtension(filename));
+                            
+                            int descriptionCount = File.ReadAllLines( filename).Count(x => x.Contains('<')); 
+                            string fName = Path.GetFileNameWithoutExtension(filename);
+                            listofPuzzles.Items.Add(descriptionCount == 1 ? fName : $"{fName} <{descriptionCount}>");
                         }
                     }
                 }
@@ -1596,7 +1646,7 @@ namespace Chezz_Puzzler
                 {
                     panel_dummy_EL.Visible = true;
                 }
-                if (listofPuzzles.Items.Contains(lastSelectedPuzzleName??"/898")) { listofPuzzles.SetSelected(currentlySelectedIndex, true); }
+                if (listofPuzzles.Items.Contains(lastSelectedPuzzleName ?? "/898")) { listofPuzzles.SetSelected(currentlySelectedIndex, true); }
                 if (listofPuzzles.Items.Count > 0) { PlaySoundFile("open_files.wav"); }
             }
             else
@@ -1648,7 +1698,8 @@ namespace Chezz_Puzzler
                     LoadPuzzleRush(fileLines);
                     if (AllPuzzles_of_PuzzleRush.Count <= 1) { MessageBox.Show("The selected puzzle rush file contains less than 2 puzzles."); return; }
                     // after adding all puzzles to the puzzle collection, load the first */
-                    LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[0]);
+                    HandlePR_Order();
+                    LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[0]]);
                     // feed the puzzles to the listview
                     GenerateRightWrongLabelsForPRDisplay(AllPuzzles_of_PuzzleRush.Count);
                     LightCurrentlySolvedPRPuzzle(0);
@@ -2329,7 +2380,7 @@ namespace Chezz_Puzzler
                     Board_Composer[rank][file].SetDefaultBackColor();
                 }
             }
-            
+
             WriteSettingsFile();
         }
         private void Textbox_Warning_MouseEnter(object sender, EventArgs e) { FocusedTextBox = textBox_name; }
@@ -2709,6 +2760,7 @@ namespace Chezz_Puzzler
             try
             {
                 string? selectedName = listofPuzzles.SelectedItems[0].ToString();
+                if (selectedName.Contains("<") ){ selectedName = selectedName.Split("<")[0].Trim(); ; }
                 string path = path_puzzles + "\\" + selectedName + ".txt";
                 if (File.ReadAllLines(path)[0].Contains('<'))
                 {
@@ -2765,9 +2817,9 @@ namespace Chezz_Puzzler
             {
                 Image? topRankImage = Board_Composer[topRank][file].BackgroundImage;
                 string? topRankPName = Board_Composer[topRank][file].PieceName;
-                TopPieceImages.Add(topRankImage?? EmptySquare);
+                TopPieceImages.Add(topRankImage ?? EmptySquare);
                 TopPieceNames.Add(topRankPName);
-                 
+
             }
             for (int file = 0; file < 8; file++) // change bottom with unchanged top
             {
@@ -3199,10 +3251,10 @@ namespace Chezz_Puzzler
             Timer_Puzzle.Stop();
             label_Countdown_Puzzle.Text = "";
         }
-        private void Button_export_FEN_MouseEnter(object sender, EventArgs e)  { button_export_FEN.ForeColor = Color.Black; }
-        private void Button_export_FEN_MouseLeave(object sender, EventArgs e)  {  button_export_FEN.ForeColor = Color.White; }
+        private void Button_export_FEN_MouseEnter(object sender, EventArgs e) { button_export_FEN.ForeColor = Color.Black; }
+        private void Button_export_FEN_MouseLeave(object sender, EventArgs e) { button_export_FEN.ForeColor = Color.White; }
         private void Button_export_Local_MouseEnter(object sender, EventArgs e) { button_export_Local.ForeColor = Color.Black; }
-         private void Button_export_Local_MouseLeave(object sender, EventArgs e)  {  button_export_Local.ForeColor = Color.White;  }
+        private void Button_export_Local_MouseLeave(object sender, EventArgs e) { button_export_Local.ForeColor = Color.White; }
 
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
@@ -3222,18 +3274,19 @@ namespace Chezz_Puzzler
 
         private void ToolStripMenuItem6_Click(object sender, EventArgs e)
         {
-            if (Time_Global_SecondsLeft > 0  )
+            if (Time_Global_SecondsLeft > 0)
             {
                 Timer_Global.Stop();
                 Time_Global_SecondsLeft = 0;
                 label_Countdown_Global.Text = "";
-                
+
             }
         }
 
         private void ToolStripMenuItem7_Click(object sender, EventArgs e)
         {
-            if (Time_Puzzle_SecondsTotal >0 && label_Countdown_Global.Text != "") {
+            if (Time_Puzzle_SecondsTotal > 0 && label_Countdown_Global.Text != "")
+            {
                 Time_Global_SecondsLeft = Time_Puzzle_SecondsTotal;
                 Timer_Global.Stop();
                 Timer_Global.Start();
@@ -3244,7 +3297,12 @@ namespace Chezz_Puzzler
         {
             button_Add.Enabled = !checkbox_smartAdd.Checked;
             button_Transition.Enabled = !checkbox_smartAdd.Checked;
-            
+
+        }
+
+        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        {
+            WriteSettingsFile();
         }
     }
 }

@@ -189,3 +189,9 @@ The image is recommended to be 150x150
 1.7.15
 -----------------------
 - Last move is un-hightlithed when start/restart a puzzle
+-----------------------
+1.8
+-----------------------
+- Added a checkbox "shuffle puzzle rush" that allows you to solve the puzzle rush in random order
+- In the list of puzzles, thosee that are puzzle rushes will now have a (number of puzzles) next to their name
+- Changed the icon of the app... again!

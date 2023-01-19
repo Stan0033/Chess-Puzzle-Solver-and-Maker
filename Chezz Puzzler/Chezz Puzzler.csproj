@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>chessB.ico</ApplicationIcon>
+    <ApplicationIcon>chessicon.ico</ApplicationIcon>
     <PackageTags>chess; chess puzzle;</PackageTags>
     <AssemblyVersion>1.6.2</AssemblyVersion>
     <FileVersion>1.6.2</FileVersion>
@@ -35,7 +35,7 @@
     <None Remove="Resources\tosquare.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="chessB.ico" />
+    <Content Include="chessicon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
