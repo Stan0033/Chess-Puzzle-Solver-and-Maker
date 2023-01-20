@@ -196,3 +196,7 @@ The image is recommended to be 150x150
 - In the list of puzzles, thosee that are puzzle rushes will now have a (number of puzzles) next to their name
 - Changed the icon of the app... again!
 - fixed the exeption throw, where when you select a puzzle rush and then a normal puzzle and solve it, it will throw an exception. This was because opening a puzzle did not mark it as non-PR. Only opening PR did.
+-----------------------
+1.8.1
+-----------------------
+- Fixed a recently caused bug where in a puzzle rush, it wouldn't automatically go to the next or display the button for going to the next

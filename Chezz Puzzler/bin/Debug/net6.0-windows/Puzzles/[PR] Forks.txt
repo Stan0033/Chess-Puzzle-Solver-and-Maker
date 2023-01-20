@@ -12,3 +12,11 @@
 [-k-r--r-ppq--pPp-npbp--------------P-B---BN--QPPPP---P---K-RR---][f4xd6][No hints][ ][ ][White to move][ ][]
 [-k-r--r-ppq--pPp-npBp--------------P-----BN--QPPPP---P---K-RR---][c7xd6][No hints][ ][ ][Black to move][ ][]
 [-k-r--r-pp---pPp-npqp--------------P-----BN--QPPPP---P---K-RR---][f3xf7][No hints][ ][ ][White to move][ ][]
+<No description.>
+[-----rk-------bp--Np--p---pPp---PP--Bq-----Q-P--------KP-R------][c6xe7][No hints][ ][ ][White to move][ ][ ]
+[-----rk-----N-bp---p--p---pPp---PP--Bq-----Q-P--------KP-R------][g8xh8][No hints][ ][ ][Black to move][ ][ ]
+[-----r-k----N-bp---p--p---pPp---PP--Bq-----Q-P--------KP-R------][e4xg6][No hints][ ][ ][White to move][ ][ ]
+[-----r-k----N-bp---p--B---pPp---PP---q-----Q-P--------KP-R------][h7xg6][No hints][ ][ ][Black to move][ ][ ]
+[-----r-k----N-b----p--p---pPp---PP---q-----Q-P--------KP-R------][e7xg6][No hints][ ][ ][White to move][ ][ ]
+[-----r-k------b----p--N---pPp---PP---q-----Q-P--------KP-R------][h8xg8][No hints][ ][ ][Black to move][ ][ ]
+[-----rk-------b----p--N---pPp---PP---q-----Q-P--------KP-R------][g6xf4][No hints][ ][ ][White to move][ ][ ]

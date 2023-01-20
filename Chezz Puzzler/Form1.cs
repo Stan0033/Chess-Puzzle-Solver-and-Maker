@@ -1085,8 +1085,8 @@ namespace Chezz_Puzzler
         public void HandlePR_Order()
         {
             PR_SolveOrder.Clear();
-           int len = AllPuzzles_of_PuzzleRush.Count-1;
-             
+            int len = AllPuzzles_of_PuzzleRush.Count - 1;
+
             for (int i = 0; i <= len; i++)
             {
                 PR_SolveOrder.Add(i);
@@ -1094,18 +1094,18 @@ namespace Chezz_Puzzler
             if (checkBox_shuffle_PR.Checked)
             {
                 List<int> shuffledList = new();
-                for (int numOfPuzzles = 0; numOfPuzzles <= len ; numOfPuzzles++)
+                for (int numOfPuzzles = 0; numOfPuzzles <= len; numOfPuzzles++)
                 {
                     Random r = new Random();
-                     int randomN = r.Next(0,PR_SolveOrder.Count - 1);
+                    int randomN = r.Next(0, PR_SolveOrder.Count - 1);
                     int targetNumInList = PR_SolveOrder[randomN];
-                    
+
                     PR_SolveOrder.RemoveAt(randomN);
 
                     PR_SolveOrder.Add(targetNumInList);
 
                 }
-               // MessageBox.Show(string.Join(", ", PR_SolveOrder));
+                // MessageBox.Show(string.Join(", ", PR_SolveOrder));
 
             }
         }
@@ -1119,13 +1119,13 @@ namespace Chezz_Puzzler
                     name = (string)listofPuzzles.SelectedItems[0];
                     if (listofPuzzles.SelectedItems[0].ToString().Contains("<"))
                     {
-                        
-                        name = name.Split("<")[0].Trim(); ; 
+
+                        name = name.Split("<")[0].Trim(); ;
 
 
                     }
-                    name+= ".txt";
-                   // MessageBox.Show(name);
+                    name += ".txt";
+                    // MessageBox.Show(name);
                     CurrentlyOpenedPuzzleFilename = $"{path_puzzles}\\{name}";
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
@@ -1162,12 +1162,13 @@ namespace Chezz_Puzzler
                         //-----------------------
                         // if it's a NOT puzzle rush
                         //-----------------------
-                        if (countPuzzles <= 1)
+                        else
                         {
                             ClearPRDisplay(true);
                             List<string> PuzzleFileName = File.ReadLines(CurrentlyOpenedPuzzleFilename).ToList();
                             LoadTargetPuzzle(PuzzleFileName);
                             PuzzlesDisplay.Visible = false;
+                            CurrentlySolvingAPuzzleRush = false;
                         }
                         APuzzleIsLoaded = true;
                         CurrentPuzzleIsSolved = false;
@@ -1178,7 +1179,7 @@ namespace Chezz_Puzzler
                         EnableChessBoard();
                         UnhightlightAllSquares();
                         button_gotoNextPuzzle.Visible = false;
-                        CurrentlySolvingAPuzzleRush = false;
+
                     }
                     else
                     {
@@ -1361,6 +1362,7 @@ namespace Chezz_Puzzler
                                     CurrenlyOpenedPuzzle_ChaptersSolved = 0;
                                     //------------------------------------------------------------------------------------------------------------------
                                     //------------------------------------------------------------------------------------------------------------------
+
                                     if (AllPuzzles_of_PuzzleRush.Count > 0) // here highlight the solver puzzle in pr
                                     {
                                         ChangeColorForTargetPuzzleRush_InList(PR_SolveOrder[CurrentlySolvedPuzzleNumber], Color.Green);
@@ -1379,11 +1381,16 @@ namespace Chezz_Puzzler
                                             button_gotoNextPuzzle.Visible = false;
                                         }
                                     }
+
                                     if (Time_Puzzle_SecondsLeft > 0) Timer_Puzzle.Stop();
+
                                     if (CurrentlySolvingAPuzzleRush)
                                     {
                                         CurrentlySolvedPuzzleNumber++;
                                         CurrenlyOpenedPuzzle_ChaptersSolved = 0;
+                                        //-----------------------------------------------------------
+
+                                        //-----------------------------------------------------------
                                         if (CurrentlySolvedPuzzleNumber == AllPuzzles_of_PuzzleRush.Count) // if all puzzles are solved in a puzzle rush
                                         {
                                             if (checkBox_AU_Reset.Checked)
@@ -1410,7 +1417,7 @@ namespace Chezz_Puzzler
                                             }
                                             else
                                             {
-                                                //MessageBox.Show($"nåxt: {PR_SolveOrder[CurrentlySolvedPuzzleNumber]}");
+                                                // MessageBox.Show($"nåxt: {PR_SolveOrder[CurrentlySolvedPuzzleNumber]}");
                                                 LightCurrentlySolvedPRPuzzle(PR_SolveOrder[CurrentlySolvedPuzzleNumber]);
                                                 LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[CurrentlySolvedPuzzleNumber]]);
                                                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(ToMoveLabel.Text);
@@ -1637,8 +1644,8 @@ namespace Chezz_Puzzler
                         string ext = Path.GetExtension(filename);
                         if (ext == ".txt")
                         {
-                            
-                            int descriptionCount = File.ReadAllLines( filename).Count(x => x.Contains('<')); 
+
+                            int descriptionCount = File.ReadAllLines(filename).Count(x => x.Contains('<'));
                             string fName = Path.GetFileNameWithoutExtension(filename);
                             listofPuzzles.Items.Add(descriptionCount == 1 ? fName : $"{fName} <{descriptionCount}>");
                         }
@@ -2762,7 +2769,7 @@ namespace Chezz_Puzzler
             try
             {
                 string? selectedName = listofPuzzles.SelectedItems[0].ToString();
-                if (selectedName.Contains("<") ){ selectedName = selectedName.Split("<")[0].Trim(); ; }
+                if (selectedName.Contains("<")) { selectedName = selectedName.Split("<")[0].Trim(); ; }
                 string path = path_puzzles + "\\" + selectedName + ".txt";
                 if (File.ReadAllLines(path)[0].Contains('<'))
                 {

@@ -2194,7 +2194,7 @@
             this.button_gotoNextPuzzle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_gotoNextPuzzle.FlatAppearance.BorderSize = 0;
             this.button_gotoNextPuzzle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_gotoNextPuzzle.Location = new System.Drawing.Point(549, 392);
+            this.button_gotoNextPuzzle.Location = new System.Drawing.Point(549, 391);
             this.button_gotoNextPuzzle.Name = "button_gotoNextPuzzle";
             this.button_gotoNextPuzzle.Size = new System.Drawing.Size(50, 50);
             this.button_gotoNextPuzzle.TabIndex = 81;
@@ -2805,7 +2805,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.8";
+            this.Text = "Chess Puzzle Maker And Solver 1.8.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
