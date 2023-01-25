@@ -11,4 +11,4 @@
 [--R-Q--RKrP-----B-p-----q--p-PP-P------Pp---P--p-p---ppb-k-r----][a7xa8][No hints][ ][ ][White to move][ ][ ]
 [K-R-Q--R-rP-----B-p-----q--p-PP-P------Pp---P--p-p---ppb-k-r----][a5xa6][No hints][ ][ ][Black to move][ ][ ]
 <No description.>
-[-KR-----P----PPPP----p--qB-----------------p--pp---k-pb--r------][a5xa6][No hints][ ][ ][Black to move][ ][]
+[-KR-----P----PPPP----p--qB-----------------p--pp---k-pb--r------][a5xa6][No hints][ ][ ][Black to move][ ][ ]

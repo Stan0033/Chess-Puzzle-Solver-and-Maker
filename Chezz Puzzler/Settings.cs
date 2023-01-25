@@ -32,6 +32,7 @@ namespace Chezz_Puzzler
             Default_Color_Hightlight_Ctrl = Color.Orange;
             Default_Color_Hightlight_Alt = Color.Blue;
             DefaultColor_Hightlight_Shift = Color.LightGreen;
+            DefaultColor_Solution = Color.LawnGreen;
             //-------------------------------------
             Player2ResponseTime = 300;
             AutoCountdown = 0;
@@ -42,6 +43,7 @@ namespace Chezz_Puzzler
         public Color Color_Selected_Current;
         public Color Color_LastMove_Current;
         public Color Color_Hover_Current;
+        public Color DefaultColor_Solution;
         //----------------------------------------------------------
         public Color Color_Hightlight_Normal;
         public Color Color_Hightlight_Ctrl;

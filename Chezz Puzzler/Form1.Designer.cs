@@ -249,6 +249,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button_ColorSolution = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -277,6 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // icon_solved
@@ -1596,7 +1600,7 @@
             this.checkBox_shuffle_PR.TabIndex = 59;
             this.checkBox_shuffle_PR.Text = "Shuffle the puzzles in a puzzle rush";
             this.checkBox_shuffle_PR.UseVisualStyleBackColor = true;
-            this.checkBox_shuffle_PR.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_1);
+            this.checkBox_shuffle_PR.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged_1);
             // 
             // button_settings
             // 
@@ -2263,6 +2267,8 @@
             // panel_setttings
             // 
             this.panel_setttings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_setttings.Controls.Add(this.label16);
+            this.panel_setttings.Controls.Add(this.button_ColorSolution);
             this.panel_setttings.Controls.Add(this.Button_StopPuzzleTimer);
             this.panel_setttings.Controls.Add(this.Button_StopGlobalTimer);
             this.panel_setttings.Controls.Add(this.button15);
@@ -2302,9 +2308,9 @@
             this.panel_setttings.Controls.Add(this.label3);
             this.panel_setttings.Controls.Add(this.button_setwhiteSqColor);
             this.panel_setttings.Controls.Add(this.label1);
-            this.panel_setttings.Location = new System.Drawing.Point(673, 230);
+            this.panel_setttings.Location = new System.Drawing.Point(673, 176);
             this.panel_setttings.Name = "panel_setttings";
-            this.panel_setttings.Size = new System.Drawing.Size(352, 504);
+            this.panel_setttings.Size = new System.Drawing.Size(352, 558);
             this.panel_setttings.TabIndex = 84;
             this.panel_setttings.Visible = false;
             // 
@@ -2313,7 +2319,7 @@
             this.Button_StopPuzzleTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_StopPuzzleTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_StopPuzzleTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Button_StopPuzzleTimer.Location = new System.Drawing.Point(313, 352);
+            this.Button_StopPuzzleTimer.Location = new System.Drawing.Point(313, 393);
             this.Button_StopPuzzleTimer.Name = "Button_StopPuzzleTimer";
             this.Button_StopPuzzleTimer.Size = new System.Drawing.Size(26, 25);
             this.Button_StopPuzzleTimer.TabIndex = 132;
@@ -2326,7 +2332,7 @@
             this.Button_StopGlobalTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_StopGlobalTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_StopGlobalTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Button_StopGlobalTimer.Location = new System.Drawing.Point(313, 324);
+            this.Button_StopGlobalTimer.Location = new System.Drawing.Point(313, 365);
             this.Button_StopGlobalTimer.Name = "Button_StopGlobalTimer";
             this.Button_StopGlobalTimer.Size = new System.Drawing.Size(26, 25);
             this.Button_StopGlobalTimer.TabIndex = 131;
@@ -2361,7 +2367,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 423);
+            this.label15.Location = new System.Drawing.Point(12, 449);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(57, 15);
             this.label15.TabIndex = 129;
@@ -2372,7 +2378,7 @@
             this.button_SetPieceTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_SetPieceTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SetPieceTheme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetPieceTheme.Location = new System.Drawing.Point(294, 418);
+            this.button_SetPieceTheme.Location = new System.Drawing.Point(294, 459);
             this.button_SetPieceTheme.Name = "button_SetPieceTheme";
             this.button_SetPieceTheme.Size = new System.Drawing.Size(45, 25);
             this.button_SetPieceTheme.TabIndex = 128;
@@ -2385,7 +2391,7 @@
             this.comboBox_Psets.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox_Psets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Psets.FormattingEnabled = true;
-            this.comboBox_Psets.Location = new System.Drawing.Point(76, 418);
+            this.comboBox_Psets.Location = new System.Drawing.Point(76, 459);
             this.comboBox_Psets.Name = "comboBox_Psets";
             this.comboBox_Psets.Size = new System.Drawing.Size(212, 23);
             this.comboBox_Psets.TabIndex = 127;
@@ -2395,7 +2401,7 @@
             this.button_hColor4.BackColor = System.Drawing.Color.White;
             this.button_hColor4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor4.Location = new System.Drawing.Point(219, 290);
+            this.button_hColor4.Location = new System.Drawing.Point(219, 297);
             this.button_hColor4.Name = "button_hColor4";
             this.button_hColor4.Size = new System.Drawing.Size(25, 25);
             this.button_hColor4.TabIndex = 32;
@@ -2405,7 +2411,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 296);
+            this.label14.Location = new System.Drawing.Point(13, 303);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(199, 15);
             this.label14.TabIndex = 31;
@@ -2416,7 +2422,7 @@
             this.button_setResponseTimePL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setResponseTimePL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setResponseTimePL.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setResponseTimePL.Location = new System.Drawing.Point(294, 387);
+            this.button_setResponseTimePL.Location = new System.Drawing.Point(294, 428);
             this.button_setResponseTimePL.Name = "button_setResponseTimePL";
             this.button_setResponseTimePL.Size = new System.Drawing.Size(45, 25);
             this.button_setResponseTimePL.TabIndex = 29;
@@ -2426,7 +2432,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(238, 387);
+            this.numericUpDown7.Location = new System.Drawing.Point(238, 428);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2449,7 +2455,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(14, 389);
+            this.label13.Location = new System.Drawing.Point(14, 430);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(213, 15);
             this.label13.TabIndex = 27;
@@ -2460,7 +2466,7 @@
             this.button_setPuzzleCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setPuzzleCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setPuzzleCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setPuzzleCountdown.Location = new System.Drawing.Point(264, 353);
+            this.button_setPuzzleCountdown.Location = new System.Drawing.Point(264, 394);
             this.button_setPuzzleCountdown.Name = "button_setPuzzleCountdown";
             this.button_setPuzzleCountdown.Size = new System.Drawing.Size(45, 25);
             this.button_setPuzzleCountdown.TabIndex = 26;
@@ -2473,7 +2479,7 @@
             this.button_SetGlobalCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_SetGlobalCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SetGlobalCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetGlobalCountdown.Location = new System.Drawing.Point(264, 324);
+            this.button_SetGlobalCountdown.Location = new System.Drawing.Point(264, 365);
             this.button_SetGlobalCountdown.Name = "button_SetGlobalCountdown";
             this.button_SetGlobalCountdown.Size = new System.Drawing.Size(45, 25);
             this.button_SetGlobalCountdown.TabIndex = 25;
@@ -2483,7 +2489,7 @@
             // 
             // numF_Sec_Puzzle
             // 
-            this.numF_Sec_Puzzle.Location = new System.Drawing.Point(223, 355);
+            this.numF_Sec_Puzzle.Location = new System.Drawing.Point(223, 396);
             this.numF_Sec_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2495,7 +2501,7 @@
             // 
             // numF_Min_Puzzle
             // 
-            this.numF_Min_Puzzle.Location = new System.Drawing.Point(182, 355);
+            this.numF_Min_Puzzle.Location = new System.Drawing.Point(182, 396);
             this.numF_Min_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2507,7 +2513,7 @@
             // 
             // numF_Hour_Puzzle
             // 
-            this.numF_Hour_Puzzle.Location = new System.Drawing.Point(126, 355);
+            this.numF_Hour_Puzzle.Location = new System.Drawing.Point(126, 396);
             this.numF_Hour_Puzzle.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2520,7 +2526,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(14, 357);
+            this.label12.Location = new System.Drawing.Point(14, 398);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(106, 15);
             this.label12.TabIndex = 21;
@@ -2528,7 +2534,7 @@
             // 
             // numF_Sec_Global
             // 
-            this.numF_Sec_Global.Location = new System.Drawing.Point(223, 326);
+            this.numF_Sec_Global.Location = new System.Drawing.Point(223, 367);
             this.numF_Sec_Global.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2540,7 +2546,7 @@
             // 
             // numF_Min_Global
             // 
-            this.numF_Min_Global.Location = new System.Drawing.Point(182, 326);
+            this.numF_Min_Global.Location = new System.Drawing.Point(182, 367);
             this.numF_Min_Global.Maximum = new decimal(new int[] {
             59,
             0,
@@ -2552,7 +2558,7 @@
             // 
             // numF_Hour_Global
             // 
-            this.numF_Hour_Global.Location = new System.Drawing.Point(126, 326);
+            this.numF_Hour_Global.Location = new System.Drawing.Point(126, 367);
             this.numF_Hour_Global.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2565,7 +2571,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 328);
+            this.label11.Location = new System.Drawing.Point(14, 369);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(107, 15);
             this.label11.TabIndex = 17;
@@ -2576,7 +2582,7 @@
             this.button_resetAllSettings_Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_resetAllSettings_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_resetAllSettings_Panel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(245, 473);
+            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(245, 514);
             this.button_resetAllSettings_Panel.Name = "button_resetAllSettings_Panel";
             this.button_resetAllSettings_Panel.Size = new System.Drawing.Size(94, 25);
             this.button_resetAllSettings_Panel.TabIndex = 16;
@@ -2589,7 +2595,7 @@
             this.button_hColor3.BackColor = System.Drawing.Color.White;
             this.button_hColor3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor3.Location = new System.Drawing.Point(219, 259);
+            this.button_hColor3.Location = new System.Drawing.Point(219, 266);
             this.button_hColor3.Name = "button_hColor3";
             this.button_hColor3.Size = new System.Drawing.Size(25, 25);
             this.button_hColor3.TabIndex = 15;
@@ -2599,7 +2605,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 265);
+            this.label8.Location = new System.Drawing.Point(13, 272);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(190, 15);
             this.label8.TabIndex = 14;
@@ -2610,7 +2616,7 @@
             this.button_hColor2.BackColor = System.Drawing.Color.White;
             this.button_hColor2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor2.Location = new System.Drawing.Point(219, 228);
+            this.button_hColor2.Location = new System.Drawing.Point(219, 235);
             this.button_hColor2.Name = "button_hColor2";
             this.button_hColor2.Size = new System.Drawing.Size(25, 25);
             this.button_hColor2.TabIndex = 13;
@@ -2620,7 +2626,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 235);
+            this.label9.Location = new System.Drawing.Point(13, 242);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(194, 15);
             this.label9.TabIndex = 12;
@@ -2631,7 +2637,7 @@
             this.button_hColor1.BackColor = System.Drawing.Color.White;
             this.button_hColor1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor1.Location = new System.Drawing.Point(219, 197);
+            this.button_hColor1.Location = new System.Drawing.Point(219, 204);
             this.button_hColor1.Name = "button_hColor1";
             this.button_hColor1.Size = new System.Drawing.Size(25, 25);
             this.button_hColor1.TabIndex = 11;
@@ -2641,7 +2647,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 204);
+            this.label10.Location = new System.Drawing.Point(12, 211);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(167, 15);
             this.label10.TabIndex = 10;
@@ -2652,7 +2658,7 @@
             this.button_stHoverColor.BackColor = System.Drawing.Color.White;
             this.button_stHoverColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_stHoverColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_stHoverColor.Location = new System.Drawing.Point(219, 166);
+            this.button_stHoverColor.Location = new System.Drawing.Point(219, 173);
             this.button_stHoverColor.Name = "button_stHoverColor";
             this.button_stHoverColor.Size = new System.Drawing.Size(25, 25);
             this.button_stHoverColor.TabIndex = 9;
@@ -2662,7 +2668,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(13, 171);
+            this.label7.Location = new System.Drawing.Point(13, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 8;
@@ -2673,7 +2679,7 @@
             this.button_setLastMoveColor.BackColor = System.Drawing.Color.White;
             this.button_setLastMoveColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setLastMoveColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setLastMoveColor.Location = new System.Drawing.Point(219, 136);
+            this.button_setLastMoveColor.Location = new System.Drawing.Point(219, 143);
             this.button_setLastMoveColor.Name = "button_setLastMoveColor";
             this.button_setLastMoveColor.Size = new System.Drawing.Size(25, 25);
             this.button_setLastMoveColor.TabIndex = 7;
@@ -2683,7 +2689,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 141);
+            this.label5.Location = new System.Drawing.Point(13, 148);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 6;
@@ -2694,7 +2700,7 @@
             this.button_setSElectedSquare.BackColor = System.Drawing.Color.White;
             this.button_setSElectedSquare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setSElectedSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setSElectedSquare.Location = new System.Drawing.Point(219, 105);
+            this.button_setSElectedSquare.Location = new System.Drawing.Point(219, 112);
             this.button_setSElectedSquare.Name = "button_setSElectedSquare";
             this.button_setSElectedSquare.Size = new System.Drawing.Size(25, 25);
             this.button_setSElectedSquare.TabIndex = 5;
@@ -2704,7 +2710,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 110);
+            this.label4.Location = new System.Drawing.Point(13, 117);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 15);
             this.label4.TabIndex = 4;
@@ -2715,7 +2721,7 @@
             this.button_blackSqSetColor.BackColor = System.Drawing.Color.White;
             this.button_blackSqSetColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_blackSqSetColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_blackSqSetColor.Location = new System.Drawing.Point(219, 74);
+            this.button_blackSqSetColor.Location = new System.Drawing.Point(219, 81);
             this.button_blackSqSetColor.Name = "button_blackSqSetColor";
             this.button_blackSqSetColor.Size = new System.Drawing.Size(25, 25);
             this.button_blackSqSetColor.TabIndex = 3;
@@ -2725,7 +2731,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 79);
+            this.label3.Location = new System.Drawing.Point(13, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 2;
@@ -2736,7 +2742,7 @@
             this.button_setwhiteSqColor.BackColor = System.Drawing.Color.White;
             this.button_setwhiteSqColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setwhiteSqColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setwhiteSqColor.Location = new System.Drawing.Point(219, 42);
+            this.button_setwhiteSqColor.Location = new System.Drawing.Point(219, 49);
             this.button_setwhiteSqColor.Name = "button_setwhiteSqColor";
             this.button_setwhiteSqColor.Size = new System.Drawing.Size(25, 25);
             this.button_setwhiteSqColor.TabIndex = 1;
@@ -2746,11 +2752,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 47);
+            this.label1.Location = new System.Drawing.Point(13, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(643, 112);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.TabIndex = 86;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button_ColorSolution
+            // 
+            this.button_ColorSolution.BackColor = System.Drawing.Color.White;
+            this.button_ColorSolution.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_ColorSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ColorSolution.Location = new System.Drawing.Point(219, 328);
+            this.button_ColorSolution.Name = "button_ColorSolution";
+            this.button_ColorSolution.Size = new System.Drawing.Size(25, 25);
+            this.button_ColorSolution.TabIndex = 133;
+            this.button_ColorSolution.UseVisualStyleBackColor = false;
+            this.button_ColorSolution.Click += new System.EventHandler(this.Button_ColorSolution_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 333);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(148, 15);
+            this.label16.TabIndex = 134;
+            this.label16.Text = "Color - Requested solution";
             // 
             // Form_base
             // 
@@ -2759,6 +2794,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1404, 791);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
@@ -2805,7 +2841,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.8.1";
+            this.Text = "Chess Puzzle Maker And Solver 1.8.2";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -2841,6 +2877,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3072,5 +3109,8 @@
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
         private CheckBox checkBox_shuffle_PR;
+        private PictureBox pictureBox1;
+        private Label label16;
+        private Button button_ColorSolution;
     }
 }

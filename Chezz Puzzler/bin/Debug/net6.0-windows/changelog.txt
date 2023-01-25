@@ -200,3 +200,12 @@ The image is recommended to be 150x150
 1.8.1
 -----------------------
 - Fixed a recently caused bug where in a puzzle rush, it wouldn't automatically go to the next or display the button for going to the next
+-----------------------
+1.8.2
+-----------------------
+- when you right-click on the "solution" button, it will also light up the squares of the start and end of the given solution
+- added in settings an option to  change that color
+- fixed the bug where last move when opening a puzzle would not be highligthed. This was because of wrong order of operations
+- after each correct move in a puzzle all types of highlights will be cleared from the board
+
+

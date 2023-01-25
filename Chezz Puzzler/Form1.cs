@@ -288,7 +288,9 @@ namespace Chezz_Puzzler
             {
                 for (int x = 0; x < whichBoard[i].Count; x++)
                 {
+                    whichBoard[i][x].IsMarkedAsSolution = false;
                     whichBoard[i][x].BelongsToLastMove = false;
+                    
                 }
             }
         }
@@ -335,6 +337,7 @@ namespace Chezz_Puzzler
                 $"MarkColor_Ctrl={settings.Color_Hightlight_Ctrl.R},{settings.Color_Hightlight_Ctrl.G},{settings.Color_Hightlight_Ctrl.B}",
                 $"MarkColor_Alt={settings.Color_Hightlight_Alt.R} , {settings.Color_Hightlight_Alt.G},{ settings.Color_Hightlight_Alt.B}",
                 $"MarkColor_Shift={settings.Color_Hightlight_Shift.R},{settings.Color_Hightlight_Shift.G},{settings.Color_Hightlight_Shift.B}",
+                $"SolutionMarkColor={settings.DefaultColor_Solution.R},{settings.DefaultColor_Solution.G},{settings.DefaultColor_Solution.B}",
                 $"AutoCountdown={settings.AutoCountdown}",
                 $"HotkeysOn={checkBox_hotkeys.Checked}",
                 $"Player2ResponseTime={settings.Player2ResponseTime}",
@@ -471,6 +474,20 @@ namespace Chezz_Puzzler
                                 bool shuffle_state = bool.Parse(value);
                                 checkBox_shuffle_PR.Checked = shuffle_state;
                                 break;
+                            case $"SolutionMarkColor":
+                                tempColor = Color.FromArgb(int.Parse(rgb[0]), int.Parse(rgb[1]), int.Parse(rgb[2]));
+                                settings.DefaultColor_Solution = tempColor;
+                                button_ColorSolution.BackColor = tempColor;
+                                for (int rank = 0; rank < 8; rank++)
+                                {
+                                    for (int file = 0; file < 8; file++)
+                                    {
+                                        Board_Solver[rank][file].SolutionMarkColor = tempColor;  
+                                    }
+                                }
+
+                                break;
+                                
                         }
                         if (lines.Contains("PathOfCurrentlyUsedChessSet") == false)
                         {
@@ -503,6 +520,7 @@ namespace Chezz_Puzzler
                 for (int file = 0; file < 8; file++)
                 {
                     Board_Solver[rank][file].BelongsToLastMove = false;
+                    Board_Solver[rank][file].IsMarkedAsSolution = false;
                 }
             }
         }
@@ -517,6 +535,7 @@ namespace Chezz_Puzzler
             button_hColor2.BackColor = settings.Color_Hightlight_Ctrl;
             button_hColor3.BackColor = settings.Color_Hightlight_Alt;
             button_hColor4.BackColor = settings.Color_Hightlight_Shift;
+            button_ColorSolution.BackColor = settings.DefaultColor_Solution;
         }
         public void SetPuzzleCountdownLabelTexts(object? sender, EventArgs e)
         {
@@ -585,6 +604,10 @@ namespace Chezz_Puzzler
                 for (int x = 0; x < 8; x++)
                 {
                     Board_Solver[i][x].BelongsToLastMove = false;
+                    Board_Solver[i][x].IsMarkedAsSolution = false;
+                    Board_Solver[i][x].IsMarked = false;
+                   
+                    
                 }
             }
         }
@@ -593,13 +616,7 @@ namespace Chezz_Puzzler
             if (solution.Length != 5) { return; }
             string square1 = solution.Split("x")[0];
             string square2 = solution.Split("x")[1];
-            for (int i = 0; i < 8; i++)//clear last
-            {
-                for (int x = 0; x < 8; x++)
-                {
-                    Board_Solver[i][x].BelongsToLastMove = false;
-                }
-            }
+            
             for (int i = 0; i < 8; i++)//hightlight new
             {
                 for (int x = 0; x < 8; x++)
@@ -607,7 +624,13 @@ namespace Chezz_Puzzler
                     if (Board_Solver[i][x].SquareName == square1 || Board_Solver[i][x].SquareName == square2)
                     {
                         Board_Solver[i][x].BelongsToLastMove = true;
+                      //  MessageBox.Show(Board_Solver[i][x].BackColor.ToString());
                     }
+                    else
+                    {
+                        Board_Solver[i][x].BelongsToLastMove = false;
+                    }
+                   
                 }
             }
         }
@@ -667,6 +690,7 @@ namespace Chezz_Puzzler
             string vs = Environment.Version.ToString().Split(".")[0];
             double versionofApp = double.Parse(vs);
             if (versionofApp < 6) { MessageBox.Show("Sorry, you need .NET version 6 or above to run this app."); Environment.Exit(0); }
+            LoadRequiredPieceImages();
             //--------------------------------------------------
             label_square_displayer.Text = "";
             c_letter1.Text = "a";
@@ -1096,7 +1120,7 @@ namespace Chezz_Puzzler
                 List<int> shuffledList = new();
                 for (int numOfPuzzles = 0; numOfPuzzles <= len; numOfPuzzles++)
                 {
-                    Random r = new Random();
+                    Random r = new();
                     int randomN = r.Next(0, PR_SolveOrder.Count - 1);
                     int targetNumInList = PR_SolveOrder[randomN];
 
@@ -1113,11 +1137,12 @@ namespace Chezz_Puzzler
         {
             try
             {
+                UnhightlightAllSquares();
                 if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
                 {
                     string name = string.Empty;
                     name = (string)listofPuzzles.SelectedItems[0];
-                    if (listofPuzzles.SelectedItems[0].ToString().Contains("<"))
+                    if (listofPuzzles.SelectedItems[0].ToString().Contains('<'))
                     {
 
                         name = name.Split("<")[0].Trim(); ;
@@ -1177,7 +1202,7 @@ namespace Chezz_Puzzler
                         label_Countdown_Puzzle.ForeColor = Color.White;
                         if (settings.AutoCountdown > 0) { Time_Puzzle_SecondsLeft = settings.AutoCountdown; Timer_Puzzle.Start(); }
                         EnableChessBoard();
-                        UnhightlightAllSquares();
+
                         button_gotoNextPuzzle.Visible = false;
 
                     }
@@ -1417,7 +1442,7 @@ namespace Chezz_Puzzler
                                             }
                                             else
                                             {
-                                                // MessageBox.Show($"nåxt: {PR_SolveOrder[CurrentlySolvedPuzzleNumber]}");
+                                                 
                                                 LightCurrentlySolvedPRPuzzle(PR_SolveOrder[CurrentlySolvedPuzzleNumber]);
                                                 LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[CurrentlySolvedPuzzleNumber]]);
                                                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(ToMoveLabel.Text);
@@ -1439,6 +1464,7 @@ namespace Chezz_Puzzler
                                     label_chapterCounter.Text = $"{CurrenlyOpenedPuzzle_ChaptersSolved}/{CountRealMoves(CurrentPuzzles_Lengths[CurrentlySolvedPuzzleNumber])}";
                                     RecreatePuzzleFromSCN(CurrentPuzzle_Positions[CurrentlySolvedPuzzleChapterStep], panel_solver);
                                     button_reset_puzzle.Visible = !CurrentlySolvingAPuzzleRush;
+                                    UnhightlightAllSolverSqures();
                                     UserToMove = false; MoveAutomaticallyResponseMove();
                                     label_move_right.Text = CurrentPuzzle_rightAnswers[CurrenlyOpenedPuzzle_ChaptersSolved - 1];
                                     label_move_wrong.Text = string.Empty;
@@ -1488,6 +1514,7 @@ namespace Chezz_Puzzler
         {
             try
             {
+                UnhightlightAllSolverSqures();
                 LastMovePlayedBeforeThePuzzleStarts = string.Empty;
                 // clear before re-doing
                 ClearLists(CurrentPuzzle_wrongAnswers, CurrentPuzzle_rightAnswers, CurrentPuzzle_Positions, CurrentPuzzle_Solutions, CurrentPuzzle_Hints, CurrentPuzzle_ToMove);
@@ -1508,6 +1535,7 @@ namespace Chezz_Puzzler
                     CurrentEvents.Add(matches.Count >= 7 ? matches[6].Value : "");//event
                     LastMovePlayedBeforeThePuzzleStarts = LastMovePlayedBeforeThePuzzleStarts == string.Empty ? matches.Count >= 8 ? matches[7].Value : "" : LastMovePlayedBeforeThePuzzleStarts; //last played move
                 }
+                // MessageBox.Show(LastMovePlayedBeforeThePuzzleStarts);
                 CurrentPuzzles_Lengths.Add(PuzzleData.Count);
                 //--------------------------------------------
                 CurrentlySolvedPuzzleChapterStep = 0;
@@ -1516,10 +1544,11 @@ namespace Chezz_Puzzler
                 label_chapterCounter.Text = $"0/{CountRealMoves(PuzzleData.Count)}";
                 StartAutoCountdown();
                 PlaySoundFile("open.wav");
-                HightlightLastMoveSquares(LastMovePlayedBeforeThePuzzleStarts);
+              
                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
                 icon_notSolved.Visible = false;
                 icon_solved.Visible = false;
+                HightlightLastMoveSquares(LastMovePlayedBeforeThePuzzleStarts);
             }
             catch
             {
@@ -1685,6 +1714,7 @@ namespace Chezz_Puzzler
         public static void MakeLabelsEmpty(params Label[] labels) { foreach (Label label in labels) label.Text = string.Empty; }
         public void RestartCurrentPuzzle()
         {
+            UnhightlightAllSquares();
             if (File.Exists(CurrentlyOpenedPuzzleFilename))
             {
                 MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
@@ -1728,7 +1758,7 @@ namespace Chezz_Puzzler
                 CurrentPuzzleIsSolved = false;
                 UserToMove = true;
                 EnableChessBoard();
-                UnhightlightAllSquares();
+               
             }
             else
             {
@@ -1975,12 +2005,41 @@ namespace Chezz_Puzzler
         }
         public void ShowSolution()
         {
+            
             label_show_solution.Visible = true;
             if (CurrentlySolvedPuzzleChapterStep >= CurrentPuzzle_Solutions.Count) { return; }
             if (CurrentPuzzle_Solutions.Count == 0) { MessageBox.Show("Empty solution list"); return; }
             label_show_solution.Text = CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep];
+            MarkSolutionSquares(CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep]);
+
+
             if (AllPuzzles_of_PuzzleRush.Count > 0) { ChangeColorForTargetPuzzleRush_InList(CurrentlySolvedPuzzleNumber, Color.Red); }
         }
+        public void MarkSolutionSquares(string solution)
+        {
+            if (solution.Length != 5) { return; }
+            string square1 = solution.Split("x")[0];
+            string square2 = solution.Split("x")[1];
+
+            for (int i = 0; i < 8; i++)//hightlight new
+            {
+                for (int x = 0; x < 8; x++)
+                {
+                    if (Board_Solver[i][x].SquareName == square1 || Board_Solver[i][x].SquareName == square2)
+                    {
+                        Board_Solver[i][x].IsMarkedAsSolution = true;
+                        
+                    }
+                    else
+                    {
+                        Board_Solver[i][x].IsMarkedAsSolution = false;
+                    }
+
+                }
+            }
+        }
+
+
         private void Showsolution_Click(object sender, EventArgs e) { ShowSolution(); }
         public bool CheckForKings()
         {
@@ -2022,7 +2081,11 @@ namespace Chezz_Puzzler
         {
             CharactersAsPieceImages.Clear();
             pieces_pics.Clear();
-            CharactersAsPieceImages = new Dictionary<char, Image>();
+            CharactersAsPieceImages = new Dictionary<char, Image>
+            {
+                { '-', Image.FromFile(Application.StartupPath + "Pieces\\Empty.png") }
+            };
+
             Image WhiteKing = Image.FromFile(PathOfCurrentlyUsedChessSet + "\\" + "king_white.png");
             CharactersAsPieceImages.Add('K', WhiteKing);
             pieces_pics.Add("king_white", WhiteKing);
@@ -2059,7 +2122,7 @@ namespace Chezz_Puzzler
             Image BlackPawn = Image.FromFile(PathOfCurrentlyUsedChessSet + "\\" + "pawn_black.png");
             CharactersAsPieceImages.Add('p', BlackPawn);
             pieces_pics.Add("pawn_black", BlackPawn);
-            CharactersAsPieceImages.Add('-', EmptySquare);
+
         }
         public void CheckAndLoadAllPieceImages()
         {
@@ -2769,7 +2832,7 @@ namespace Chezz_Puzzler
             try
             {
                 string? selectedName = listofPuzzles.SelectedItems[0].ToString();
-                if (selectedName.Contains("<")) { selectedName = selectedName.Split("<")[0].Trim(); ; }
+                if (selectedName.Contains('<')) { selectedName = selectedName.Split("<")[0].Trim(); ; }
                 string path = path_puzzles + "\\" + selectedName + ".txt";
                 if (File.ReadAllLines(path)[0].Contains('<'))
                 {
@@ -3309,9 +3372,33 @@ namespace Chezz_Puzzler
 
         }
 
-        private void checkBox1_CheckedChanged_1(object sender, EventArgs e)
+        private void CheckBox1_CheckedChanged_1(object sender, EventArgs e)
         {
             WriteSettingsFile();
+        }
+
+        private void Button_ColorSolution_Click(object sender, EventArgs e)
+        {
+            if (colorDialog_decideColorSquares.ShowDialog() == DialogResult.OK)
+            {
+                Color takenColor = colorDialog_decideColorSquares.Color;
+                for (int i = 0; i <= 7; i++)
+                {
+                    for (int x = 0; x <= 7; x++)
+                    {
+                        
+                        Board_Solver[i][x].SolutionMarkColor = takenColor;
+                        if (Board_Solver[i][x].IsMarkedAsSolution)
+                        {
+                            Board_Solver[i][x].IsMarkedAsSolution = false;
+                            Board_Solver[i][x].IsMarkedAsSolution = true;
+                        }
+                    }
+                }
+                settings.DefaultColor_Solution = takenColor;
+                button_ColorSolution.BackColor = takenColor;
+                WriteSettingsFile();
+            }
         }
     }
 }
