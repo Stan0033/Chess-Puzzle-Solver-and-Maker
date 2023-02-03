@@ -13,7 +13,7 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 ```
 FOR any bugs -> report!
 ```diff
-If the board's size is smaller than usual this is because the display sclaling of your Windows OS is more than 100%.
+-If the board's size is smaller than usual this is because the display sclaling of your Windows OS is more than 100%.
 ```
 
 IMAGES:
