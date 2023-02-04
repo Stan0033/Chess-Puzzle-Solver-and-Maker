@@ -1,11 +1,11 @@
 using System.Diagnostics;
-using System.Linq.Expressions;
 using System.Media;
 using System.Text.RegularExpressions;
 using Application = System.Windows.Forms.Application;
 using Image = System.Drawing.Image;
 using TextBox = System.Windows.Forms.TextBox;
 using Timer = System.Windows.Forms.Timer;
+ 
 namespace Chezz_Puzzler
 {
     public partial class Form_base : Form
@@ -290,7 +290,7 @@ namespace Chezz_Puzzler
                 {
                     whichBoard[i][x].IsMarkedAsSolution = false;
                     whichBoard[i][x].BelongsToLastMove = false;
-                    
+
                 }
             }
         }
@@ -345,7 +345,8 @@ namespace Chezz_Puzzler
                 $"UseBackgroundImage={checkBox_UseBG.Checked}",
                 $"AutomaticallyRestartSolvedPuzzle={checkBox_AU_Reset.Checked}",
                 $"PathOfCurrentlyUsedChessSet={FolderOfCurrentlyUsedChessSet}",
-                $"PR_Shuffle={checkBox_shuffle_PR.Checked}"
+                $"PR_Shuffle={checkBox_shuffle_PR.Checked}",
+                $"PlaySounds={checkBox_sounds.Checked}"
             };
             File.WriteAllLines(SettingsPath, settingsData);
         }
@@ -482,12 +483,15 @@ namespace Chezz_Puzzler
                                 {
                                     for (int file = 0; file < 8; file++)
                                     {
-                                        Board_Solver[rank][file].SolutionMarkColor = tempColor;  
+                                        Board_Solver[rank][file].SolutionMarkColor = tempColor;
                                     }
                                 }
 
                                 break;
-                                
+                            case "PlaySounds":
+                                checkBox_sounds.Checked = bool.Parse(value) ? true : false;
+                                break;
+
                         }
                         if (lines.Contains("PathOfCurrentlyUsedChessSet") == false)
                         {
@@ -606,8 +610,8 @@ namespace Chezz_Puzzler
                     Board_Solver[i][x].BelongsToLastMove = false;
                     Board_Solver[i][x].IsMarkedAsSolution = false;
                     Board_Solver[i][x].IsMarked = false;
-                   
-                    
+
+
                 }
             }
         }
@@ -616,7 +620,7 @@ namespace Chezz_Puzzler
             if (solution.Length != 5) { return; }
             string square1 = solution.Split("x")[0];
             string square2 = solution.Split("x")[1];
-            
+
             for (int i = 0; i < 8; i++)//hightlight new
             {
                 for (int x = 0; x < 8; x++)
@@ -624,13 +628,13 @@ namespace Chezz_Puzzler
                     if (Board_Solver[i][x].SquareName == square1 || Board_Solver[i][x].SquareName == square2)
                     {
                         Board_Solver[i][x].BelongsToLastMove = true;
-                      //  MessageBox.Show(Board_Solver[i][x].BackColor.ToString());
+                        //  MessageBox.Show(Board_Solver[i][x].BackColor.ToString());
                     }
                     else
                     {
                         Board_Solver[i][x].BelongsToLastMove = false;
                     }
-                   
+
                 }
             }
         }
@@ -1133,6 +1137,7 @@ namespace Chezz_Puzzler
 
             }
         }
+         
         public void SolveSelectedPuzzle()
         {
             try
@@ -1442,7 +1447,7 @@ namespace Chezz_Puzzler
                                             }
                                             else
                                             {
-                                                 
+
                                                 LightCurrentlySolvedPRPuzzle(PR_SolveOrder[CurrentlySolvedPuzzleNumber]);
                                                 LoadTargetPuzzle(AllPuzzles_of_PuzzleRush[PR_SolveOrder[CurrentlySolvedPuzzleNumber]]);
                                                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[CurrentlySolvedPuzzleChapterStep]; SetToMoveInButtons(ToMoveLabel.Text);
@@ -1544,7 +1549,7 @@ namespace Chezz_Puzzler
                 label_chapterCounter.Text = $"0/{CountRealMoves(PuzzleData.Count)}";
                 StartAutoCountdown();
                 PlaySoundFile("open.wav");
-              
+
                 ToMoveLabel.ToMove = CurrentPuzzle_ToMove[0]; SetToMoveInButtons(ToMoveLabel.Text);
                 icon_notSolved.Visible = false;
                 icon_solved.Visible = false;
@@ -1585,15 +1590,19 @@ namespace Chezz_Puzzler
             CurrentlySolvedPuzzleChapterStep++;
             PuzzleResponse.Enabled = true;
         }
-        public static void PlaySoundFile(string name)
+        public  void PlaySoundFile(string name)
         {
-            string path_sounds = Application.StartupPath + "Sounds\\";
-            string fullName = path_sounds + name;
-            if (File.Exists(fullName) == true)
+            if (checkBox_sounds.Checked)
             {
-                using var soundPlayer = new SoundPlayer(fullName);
-                soundPlayer.Play(); // can also use soundPlayer.PlaySync()
+                string path_sounds = Application.StartupPath + "Sounds\\";
+                string fullName = path_sounds + name;
+                if (File.Exists(fullName) == true)
+                {
+                    using var soundPlayer = new SoundPlayer(fullName);
+                    soundPlayer.Play(); // can also use soundPlayer.PlaySync()
+                }
             }
+
         }
         public void UserClicksComposerSquare(object? sender, MouseEventArgs e)
         {
@@ -1758,7 +1767,7 @@ namespace Chezz_Puzzler
                 CurrentPuzzleIsSolved = false;
                 UserToMove = true;
                 EnableChessBoard();
-               
+
             }
             else
             {
@@ -2005,7 +2014,7 @@ namespace Chezz_Puzzler
         }
         public void ShowSolution()
         {
-            
+
             label_show_solution.Visible = true;
             if (CurrentlySolvedPuzzleChapterStep >= CurrentPuzzle_Solutions.Count) { return; }
             if (CurrentPuzzle_Solutions.Count == 0) { MessageBox.Show("Empty solution list"); return; }
@@ -2028,7 +2037,7 @@ namespace Chezz_Puzzler
                     if (Board_Solver[i][x].SquareName == square1 || Board_Solver[i][x].SquareName == square2)
                     {
                         Board_Solver[i][x].IsMarkedAsSolution = true;
-                        
+
                     }
                     else
                     {
@@ -3386,7 +3395,7 @@ namespace Chezz_Puzzler
                 {
                     for (int x = 0; x <= 7; x++)
                     {
-                        
+
                         Board_Solver[i][x].SolutionMarkColor = takenColor;
                         if (Board_Solver[i][x].IsMarkedAsSolution)
                         {
@@ -3399,6 +3408,16 @@ namespace Chezz_Puzzler
                 button_ColorSolution.BackColor = takenColor;
                 WriteSettingsFile();
             }
+        }
+
+        private void mYBoardsSizeIsSmallerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Go to display settings > scaling. This bug appears if your scaling is not 100%. Change it to 100% and restart the app");
+        }
+
+        private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
+        {
+            WriteSettingsFile();
         }
     }
 }

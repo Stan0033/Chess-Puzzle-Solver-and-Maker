@@ -11,10 +11,8 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 ```diff
 -WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this as your own.
 ```
+
 FOR any bugs -> report!
-```diff
--If the board's size is smaller than usual this is because the display sclaling of your Windows OS is more than 100%.
-```
 
 IMAGES:
 

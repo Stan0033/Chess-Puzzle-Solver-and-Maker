@@ -1,5 +1,5 @@
 <No description.>
-[-K-R----PPP---PP--N---------P-------Q-----bn-----p-q-Bpp--kr----][d2xf2][No hints][ ][ ][Black to move][ ][c5xa2]
+[-K-R----PPP---PP--N---------P-------Q-----bn-----p-q-Bpp--kr----][d2xf2][No hints][ ][ ][Black to move][ ]
 [-K-R----PPP---PP--N---------P-------Q-----bn-----p---qpp--kr----][d8xd3][No hints][ ][ ][White to move][ ][ ]
 [-K------PPP---PP--N---------P-------Q-----bR-----p---qpp--kr----][f2xf8][No hints][ ][ ][Black to move][ ][ ]
 [-K---q--PPP---PP--N---------P-------Q-----bR-----p----pp--kr----][c6xd8][No hints][ ][ ][White to move][ ][ ]

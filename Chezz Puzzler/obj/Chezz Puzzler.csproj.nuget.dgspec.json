@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {}
+    "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {
+    "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+        "projectUniqueName": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
         "projectName": "Chezz Puzzler",
-        "projectPath": "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
-        "packagesPath": "C:\\Users\\Stan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Stan\\source\\repos\\Chezz Puzzler\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\obj\\",
+        "projectPath": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+        "packagesPath": "C:\\Users\\35987\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Stan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\35987\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

@@ -207,5 +207,8 @@ The image is recommended to be 150x150
 - added in settings an option to  change that color
 - fixed the bug where last move when opening a puzzle would not be highligthed. This was because of wrong order of operations
 - after each correct move in a puzzle all types of highlights will be cleared from the board
-
-
+-----------------------
+1.8.3
+-----------------------
+- I figuired out why some people have a size problem with the board. It's because of your display scaling settings of your Windows OS are not 100%. Added under help menu this information.
+- Added a checkbox "play sounds" and it's included in the settings file.

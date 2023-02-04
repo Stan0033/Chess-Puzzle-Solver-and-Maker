@@ -207,9 +207,12 @@
             this.imageList_ForPRList = new System.Windows.Forms.ImageList(this.components);
             this.context_help = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.howToSolvePuzzlesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mYBoardsSizeIsSmallerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PuzzlesDisplay = new System.Windows.Forms.Panel();
             this.panel_setttings = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.button_ColorSolution = new System.Windows.Forms.Button();
             this.Button_StopPuzzleTimer = new System.Windows.Forms.Button();
             this.Button_StopGlobalTimer = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
@@ -250,8 +253,7 @@
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button_ColorSolution = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
+            this.checkBox_sounds = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -1577,6 +1579,7 @@
             // panel_bottom
             // 
             this.panel_bottom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_bottom.Controls.Add(this.checkBox_sounds);
             this.panel_bottom.Controls.Add(this.checkBox_shuffle_PR);
             this.panel_bottom.Controls.Add(this.button_settings);
             this.panel_bottom.Controls.Add(this.checkBox_AU_Reset);
@@ -1594,7 +1597,7 @@
             // 
             this.checkBox_shuffle_PR.AutoSize = true;
             this.checkBox_shuffle_PR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_shuffle_PR.Location = new System.Drawing.Point(321, 5);
+            this.checkBox_shuffle_PR.Location = new System.Drawing.Point(266, 5);
             this.checkBox_shuffle_PR.Name = "checkBox_shuffle_PR";
             this.checkBox_shuffle_PR.Size = new System.Drawing.Size(208, 19);
             this.checkBox_shuffle_PR.TabIndex = 59;
@@ -1609,7 +1612,7 @@
             this.button_settings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_settings.FlatAppearance.BorderSize = 0;
             this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_settings.Location = new System.Drawing.Point(617, 15);
+            this.button_settings.Location = new System.Drawing.Point(613, 15);
             this.button_settings.Name = "button_settings";
             this.button_settings.Size = new System.Drawing.Size(30, 30);
             this.button_settings.TabIndex = 54;
@@ -2237,21 +2240,29 @@
             // 
             this.context_help.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.howToSolvePuzzlesToolStripMenuItem,
+            this.mYBoardsSizeIsSmallerToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.context_help.Name = "contextMenu_help";
-            this.context_help.Size = new System.Drawing.Size(151, 48);
+            this.context_help.Size = new System.Drawing.Size(217, 70);
             // 
             // howToSolvePuzzlesToolStripMenuItem
             // 
             this.howToSolvePuzzlesToolStripMenuItem.Name = "howToSolvePuzzlesToolStripMenuItem";
-            this.howToSolvePuzzlesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.howToSolvePuzzlesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.howToSolvePuzzlesToolStripMenuItem.Text = "Tutorials";
             this.howToSolvePuzzlesToolStripMenuItem.Click += new System.EventHandler(this.HowToSolvePuzzlesToolStripMenuItem_Click);
+            // 
+            // mYBoardsSizeIsSmallerToolStripMenuItem
+            // 
+            this.mYBoardsSizeIsSmallerToolStripMenuItem.Name = "mYBoardsSizeIsSmallerToolStripMenuItem";
+            this.mYBoardsSizeIsSmallerToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
+            this.mYBoardsSizeIsSmallerToolStripMenuItem.Text = "My board\'s size is smaller...";
+            this.mYBoardsSizeIsSmallerToolStripMenuItem.Click += new System.EventHandler(this.mYBoardsSizeIsSmallerToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.aboutToolStripMenuItem.Text = "About the app";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -2313,6 +2324,27 @@
             this.panel_setttings.Size = new System.Drawing.Size(352, 558);
             this.panel_setttings.TabIndex = 84;
             this.panel_setttings.Visible = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(12, 333);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(148, 15);
+            this.label16.TabIndex = 134;
+            this.label16.Text = "Color - Requested solution";
+            // 
+            // button_ColorSolution
+            // 
+            this.button_ColorSolution.BackColor = System.Drawing.Color.White;
+            this.button_ColorSolution.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_ColorSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_ColorSolution.Location = new System.Drawing.Point(219, 328);
+            this.button_ColorSolution.Name = "button_ColorSolution";
+            this.button_ColorSolution.Size = new System.Drawing.Size(25, 25);
+            this.button_ColorSolution.TabIndex = 133;
+            this.button_ColorSolution.UseVisualStyleBackColor = false;
+            this.button_ColorSolution.Click += new System.EventHandler(this.Button_ColorSolution_Click);
             // 
             // Button_StopPuzzleTimer
             // 
@@ -2766,26 +2798,19 @@
             this.pictureBox1.TabIndex = 86;
             this.pictureBox1.TabStop = false;
             // 
-            // button_ColorSolution
+            // checkBox_sounds
             // 
-            this.button_ColorSolution.BackColor = System.Drawing.Color.White;
-            this.button_ColorSolution.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_ColorSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ColorSolution.Location = new System.Drawing.Point(219, 328);
-            this.button_ColorSolution.Name = "button_ColorSolution";
-            this.button_ColorSolution.Size = new System.Drawing.Size(25, 25);
-            this.button_ColorSolution.TabIndex = 133;
-            this.button_ColorSolution.UseVisualStyleBackColor = false;
-            this.button_ColorSolution.Click += new System.EventHandler(this.Button_ColorSolution_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 333);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(148, 15);
-            this.label16.TabIndex = 134;
-            this.label16.Text = "Color - Requested solution";
+            this.checkBox_sounds.AutoSize = true;
+            this.checkBox_sounds.Checked = true;
+            this.checkBox_sounds.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_sounds.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox_sounds.Location = new System.Drawing.Point(482, 5);
+            this.checkBox_sounds.Name = "checkBox_sounds";
+            this.checkBox_sounds.Size = new System.Drawing.Size(89, 19);
+            this.checkBox_sounds.TabIndex = 60;
+            this.checkBox_sounds.Text = "Play sounds";
+            this.checkBox_sounds.UseVisualStyleBackColor = true;
+            this.checkBox_sounds.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged_2);
             // 
             // Form_base
             // 
@@ -2841,7 +2866,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.8.2";
+            this.Text = "Chess Puzzle Maker And Solver 1.8.3";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
@@ -3112,5 +3137,7 @@
         private PictureBox pictureBox1;
         private Label label16;
         private Button button_ColorSolution;
+        private ToolStripMenuItem mYBoardsSizeIsSmallerToolStripMenuItem;
+        private CheckBox checkBox_sounds;
     }
 }
