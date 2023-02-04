@@ -11,6 +11,10 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 ```diff
 -WARNING: Respect the developer. DO NOT try to modify,publish, sell or distribute this as your own.
 ```
+```diff
+-If the board is smalelr than expected on your PC
+-go to Windows display settings<scaling and sst it to 100%
+```
 
 FOR any bugs -> report!
 
