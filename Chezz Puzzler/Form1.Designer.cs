@@ -377,26 +377,26 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.menuPuzzles.Name = "menuPuzzles";
-            this.menuPuzzles.Size = new System.Drawing.Size(211, 134);
+            this.menuPuzzles.Size = new System.Drawing.Size(145, 106);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(210, 32);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(210, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
@@ -404,7 +404,7 @@
             // 
             this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(210, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -465,7 +465,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(418, 944);
+            this.tabPage2.Size = new System.Drawing.Size(418, 945);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create";
             // 
@@ -476,7 +476,7 @@
             this.panel_PuzleEditContainer.Location = new System.Drawing.Point(3, 4);
             this.panel_PuzleEditContainer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_PuzleEditContainer.Name = "panel_PuzleEditContainer";
-            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(412, 803);
+            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(412, 804);
             this.panel_PuzleEditContainer.TabIndex = 102;
             // 
             // panel_ComposePuzzleContainer
@@ -533,7 +533,7 @@
             this.panel_ComposePuzzleContainer.Margin = new System.Windows.Forms.Padding(0);
             this.panel_ComposePuzzleContainer.Name = "panel_ComposePuzzleContainer";
             this.panel_ComposePuzzleContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 27);
-            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(412, 803);
+            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(412, 804);
             this.panel_ComposePuzzleContainer.TabIndex = 103;
             // 
             // button2
@@ -1267,7 +1267,7 @@
             this.panel_generate.Controls.Add(this.button_Generate_P);
             this.panel_generate.Controls.Add(this.button_generate_PR);
             this.panel_generate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_generate.Location = new System.Drawing.Point(3, 807);
+            this.panel_generate.Location = new System.Drawing.Point(3, 808);
             this.panel_generate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel_generate.Name = "panel_generate";
             this.panel_generate.Size = new System.Drawing.Size(412, 133);
@@ -2970,7 +2970,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.8.3";
+            this.Text = "Chess Puzzle Maker And Solver 1.8.4";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
