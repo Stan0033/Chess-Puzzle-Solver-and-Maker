@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Media;
 using System.Text.RegularExpressions;
+using static System.Net.Mime.MediaTypeNames;
 using Application = System.Windows.Forms.Application;
 using Image = System.Drawing.Image;
 using TextBox = System.Windows.Forms.TextBox;
@@ -325,7 +326,7 @@ namespace Chezz_Puzzler
         }
         public void WriteSettingsFile()
         {
-            string SettingsPath = Application.StartupPath + "settings.txt";
+            string SettingsPath = Application.StartupPath + "settings.ini";
             List<string> settingsData = new()
             {
                 $"ColorWhite={settings.Color_White_Current.R},{settings.Color_White_Current.G},{settings.Color_White_Current.B}",
@@ -352,7 +353,7 @@ namespace Chezz_Puzzler
         }
         public void ReadSettingsFile()
         {
-            string SettingsPath = Application.StartupPath + "settings.txt";
+            string SettingsPath = Application.StartupPath + "settings.ini";
             if (File.Exists(SettingsPath))
             {
                 try
@@ -769,7 +770,7 @@ namespace Chezz_Puzzler
             //--------------------------------------------------------------------------
             string description = textBox_description.Text.Trim() == string.Empty ? "No description." : textBox_description.Text;
             if (errors.Length > 0) { MessageBox.Show(errors); return; }
-            if (File.Exists(path_puzzles + name + ".txt"))
+            if (File.Exists(path_puzzles + name + ".pzq"))
             {
                 DialogResult dr = MessageBox.Show($"{path_puzzles} already exists. Overwrite?",
                   $"Existing puzzle", MessageBoxButtons.YesNo);
@@ -791,7 +792,7 @@ namespace Chezz_Puzzler
                 }
 
 
-                string savePath = $"{path_puzzles}\\{name}.txt";
+                string savePath = path_puzzles + name + ".pzq";
                 List<string> composedLines = new()
                 {
                     $"<{description}>"
@@ -1138,6 +1139,68 @@ namespace Chezz_Puzzler
             }
         }
          
+        public string findFileWithCorrectExtension(string name, bool FullPath)
+        {
+            string ext = string.Empty;
+            string outputName = string.Empty;
+            if (Directory.Exists(path_puzzles))
+            {
+               
+                List<string> filenames = Directory.GetFiles(path_puzzles, "*.txt").ToList();
+                List<string> filenames2 = Directory.GetFiles(path_puzzles, "*.pzq").ToList();
+                filenames.AddRange(filenames2);
+                 
+                foreach (string fileName in filenames)
+                {
+                     
+                    if (Path.GetFileNameWithoutExtension(fileName) == name)
+                    {
+                        if (FullPath)
+                        {
+                            outputName = path_puzzles + Path.GetFileNameWithoutExtension(fileName);
+                        }
+                        else
+                        {
+                            outputName =  Path.GetFileNameWithoutExtension(fileName);
+                        }
+                        
+                        ext = Path.GetExtension( fileName);
+                        
+                        break;
+                    }
+                }
+            }
+            string result =  outputName +  ext;
+            
+            return result;
+        }
+        public string findFileNameWithCorrectExtension(string name)
+        {
+            string ext = string.Empty;
+            string outputName = string.Empty;
+            if (Directory.Exists(path_puzzles))
+            {
+
+                List<string> filenames = Directory.GetFiles(path_puzzles, "*.txt").ToList();
+                List<string> filenames2 = Directory.GetFiles(path_puzzles, "*.pzq").ToList();
+                filenames.AddRange(filenames2);
+
+                foreach (string fileName in filenames)
+                {
+
+                    if (Path.GetFileNameWithoutExtension(fileName) == name)
+                    {
+                        outputName = Path.GetFileNameWithoutExtension(fileName);
+                        ext = Path.GetExtension(fileName);
+
+                        break;
+                    }
+                }
+            }
+            string result = name + ext;
+
+            return result;
+        }
         public void SolveSelectedPuzzle()
         {
             try
@@ -1154,9 +1217,9 @@ namespace Chezz_Puzzler
 
 
                     }
-                    name += ".txt";
+                    name = findFileWithCorrectExtension(name,true);
                     // MessageBox.Show(name);
-                    CurrentlyOpenedPuzzleFilename = $"{path_puzzles}\\{name}";
+                    CurrentlyOpenedPuzzleFilename = name;
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
                         MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
@@ -1674,13 +1737,16 @@ namespace Chezz_Puzzler
             if (Directory.Exists(path_puzzles))
             {
                 List<string> filenames = Directory.GetFiles(path_puzzles, "*.txt").ToList();
+                List<string> filenames2 = Directory.GetFiles(path_puzzles, "*.pzq").ToList();
+                filenames.AddRange(filenames2);
+                
                 if (filenames.Count > 0)
                 {
                     panel_dummy_EL.Visible = false;
                     foreach (string filename in Directory.GetFiles(path_puzzles))
                     {
                         string ext = Path.GetExtension(filename);
-                        if (ext == ".txt")
+                        if (ext == ".txt" || ext==".pzq")
                         {
 
                             int descriptionCount = File.ReadAllLines(filename).Count(x => x.Contains('<'));
@@ -2667,7 +2733,7 @@ namespace Chezz_Puzzler
                     listbox_Puzzle_Fragments.Items.Clear();
                     CurrentPuzzleComposition_List.Clear();
                     string? name = listofPuzzles.SelectedItems[0].ToString();
-                    string nameFile = name + ".txt";
+                    string nameFile = findFileWithCorrectExtension(name,false);
                     CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
                     //------------------------------------------------------------------
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
@@ -2842,7 +2908,7 @@ namespace Chezz_Puzzler
             {
                 string? selectedName = listofPuzzles.SelectedItems[0].ToString();
                 if (selectedName.Contains('<')) { selectedName = selectedName.Split("<")[0].Trim(); ; }
-                string path = path_puzzles + "\\" + selectedName + ".txt";
+                string path = findFileWithCorrectExtension(selectedName,true);
                 if (File.ReadAllLines(path)[0].Contains('<'))
                 {
                     richTextBox_description.Text = File.ReadAllLines(path)[0].Replace("<", "").Replace(">", "");
