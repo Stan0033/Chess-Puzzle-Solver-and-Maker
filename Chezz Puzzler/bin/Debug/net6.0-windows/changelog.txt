@@ -212,9 +212,14 @@ The image is recommended to be 150x150
 -----------------------
 - I figuired out why some people have a size problem with the board. It's because of your display scaling settings of your Windows OS are not 100%. Added under help menu this information.
 - Added a checkbox "play sounds" and it's included in the settings file.
+-----------------------
 1.8.4
 -----------------------
-- The file extension of puzzle file ahs been changed
-- you can now associate the file extension with the program
-- you can now drag and drop a puzzle file onto one of th two boards
+- The file extension of puzzle file has been changed
+-----------------------
+1.8.5
+-----------------------
+- you can now drag and drop a puzzle file onto the program, and it will load as a solveable puzzle or editable puzzle depending on which tab is opened
+- Added an option to make the moving piece result in promotion, when creating a puzzle
+- now when you open a puzzle from the list or by dragging, its name will also be in the name of the app window
 -----------------------

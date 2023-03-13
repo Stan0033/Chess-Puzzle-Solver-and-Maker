@@ -19,6 +19,7 @@ namespace Chezz_Puzzler
         readonly string path_tutorials;
         readonly string path_pieces;
         TextBox FocusedTextBox;
+        string AppTitle;
         readonly List<Color> colors;
         const int sizeOfSquare = 65;//px
         readonly Settings settings;
@@ -41,9 +42,12 @@ namespace Chezz_Puzzler
         string fix_two;
         readonly List<char> InvalidWindowsFilenameCharactes;
         readonly Timer Fixer_q;
+        bool DraggedFileSuccessfully;
         //----------------------------------------------------------
         readonly List<Color> DefaultButtonColors;
         Dictionary<char, Image> CharactersAsPieceImages;
+        Dictionary<string, string> PromotionFullNameToString;
+        Dictionary<char, string> charToPieceName;
         //currently
         string currentProposedSquareStart;
         string currentProposedSquareEnd;
@@ -84,9 +88,33 @@ namespace Chezz_Puzzler
         readonly ToMoveIndicatorLabel ToMoveLabel;
         bool LastMoveWasDoneByClicks;
         readonly Image EmptySquare;
-        public Form_base()
+        public Form_base(string input)
         {
+            PromotionFullNameToString = new Dictionary<string, string>
+            {
+                { "White Knight", "=N" },
+                { "White Bishop", "=B" },
+                { "White Rook", "=R" },
+                { "White Queen", "=Q" },
+                { "Black Knight", "=n" },
+                { "Black Bishop", "=b" },
+                { "Black Rook", "=r" },
+                { "Black Queen", "=q" },
 
+            };
+            charToPieceName = new Dictionary<char, string>
+            {
+                 { 'Q', "Queen" },
+                 { 'N', "Knight" },
+                 { 'K', "King" },
+                 { 'B', "Bishop" },
+                 { 'R', "Rook" },
+                  { 'q', "Queen" },
+                 { 'n', "Knight" },
+                 { 'k', "King" },
+                 { 'b', "Bishop" },
+                 { 'r', "Rook" }
+            };
             try
             {
                 EmptySquare = Image.FromFile(Application.StartupPath + "Pieces\\Empty.png");
@@ -168,6 +196,7 @@ namespace Chezz_Puzzler
             ProposedSolution = string.Empty;
             CurrenlyOpenedPuzzle_ChaptersSolved = 0;
             //-------------------------------------
+            DraggedFileSuccessfully = false;
             CurrentPuzzle_Hints = new List<string>();
             CurrentPuzzle_Solutions = new List<string>();
             CurrentPuzzle_Positions = new List<string>();
@@ -692,10 +721,13 @@ namespace Chezz_Puzzler
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+             
             string vs = Environment.Version.ToString().Split(".")[0];
             double versionofApp = double.Parse(vs);
+            AppTitle = Text;
             if (versionofApp < 6) { MessageBox.Show("Sorry, you need .NET version 6 or above to run this app."); Environment.Exit(0); }
             LoadRequiredPieceImages();
+            combo_promotion.Text = combo_promotion.Items[0].ToString();
             //--------------------------------------------------
             label_square_displayer.Text = "";
             c_letter1.Text = "a";
@@ -930,6 +962,7 @@ namespace Chezz_Puzzler
         public void AddArrangedChapter()
         {
             string Proposed_solution = $"{c_letter1.Text}{c_number1.Text}x{c_letter2.Text}{c_number2.Text}";
+            if (checkBox_Promotion.Checked) { Proposed_solution += PromotionFullNameToString[combo_promotion.Text]; checkBox_Promotion.Checked = false; }
             //---------------------------------------------------------------------------------------------------------------------------
             if ($"{c_letter1.Text}{c_number1.Text}" == $"{c_letter2.Text}{c_number2.Text}") { MessageBox.Show("The starting square and the ending square cannot be the same."); return; }
             //---------------------------------------------------------------------------------------------------------------------------
@@ -1203,23 +1236,31 @@ namespace Chezz_Puzzler
         }
         public void SolveSelectedPuzzle()
         {
+            
             try
             {
                 UnhightlightAllSquares();
-                if (listofPuzzles.SelectedItems.Count == 1) // if an item is selected
+                if (listofPuzzles.SelectedItems.Count == 1 || DraggedFileSuccessfully==true) // if an item is selected or a file is dragged
                 {
-                    string name = string.Empty;
-                    name = (string)listofPuzzles.SelectedItems[0];
-                    if (listofPuzzles.SelectedItems[0].ToString().Contains('<'))
+                    string nameOfSelectedPuzzle = string.Empty;
+                    if (DraggedFileSuccessfully == false)
                     {
 
-                        name = name.Split("<")[0].Trim(); ;
+                     
+                        nameOfSelectedPuzzle = (string)listofPuzzles.SelectedItems[0];
+                        if (listofPuzzles.SelectedItems[0].ToString().Contains('<'))
+                        {
+
+                            nameOfSelectedPuzzle = nameOfSelectedPuzzle.Split("<")[0].Trim(); ;
 
 
+                        }
+                        nameOfSelectedPuzzle = findFileWithCorrectExtension(nameOfSelectedPuzzle, true);
+                        CurrentlyOpenedPuzzleFilename = nameOfSelectedPuzzle;
                     }
-                    name = findFileWithCorrectExtension(name,true);
-                    // MessageBox.Show(name);
-                    CurrentlyOpenedPuzzleFilename = name;
+                    
+                  
+                    
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
                         MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
@@ -1276,16 +1317,19 @@ namespace Chezz_Puzzler
                     }
                     else
                     {
+ 
                         MessageBox.Show("The selected puzzle no longer exists.");
                         RefreshPuzzleList();
                         CurrentlyOpenedPuzzleFilename = "";
                     }
                 }
+                Text = AppTitle  + " - "+ Path.GetFileNameWithoutExtension(CurrentlyOpenedPuzzleFilename);
             }
             catch
             {
                 MessageBox.Show("Error parsing the puzzle. Have you modified the file?");
             }
+            DraggedFileSuccessfully = false;
         }
         public void ClearPRDisplay(bool ifFilled)
         {
@@ -1435,7 +1479,7 @@ namespace Chezz_Puzzler
                             if (CurrentlySolvedPuzzleChapterStep == CurrentPuzzle_Solutions.Count) { MessageBox.Show("Error with the puzzle."); return; }
                             icon_solved.Visible = true;
                             icon_notSolved.Visible = false;
-                            if (ProposedSolution == CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep])
+                            if (ProposedSolution == CurrentPuzzle_Solutions[CurrentlySolvedPuzzleChapterStep].Split('=')[0])
                             {
                                 CurrentlySolvedPuzzleChapterStep++;
                                 if (CurrentlySolvedPuzzleChapterStep == CurrentPuzzle_Solutions.Count) // if the puzzle is completed
@@ -1845,8 +1889,15 @@ namespace Chezz_Puzzler
         private void Button_reset_puzzle_click(object sender, EventArgs e) { RestartCurrentPuzzle(); }
         public void TransitionToPositionFromGivenActionSquareXSquare(string action_SquareXSquare, Panel WhichPanel)
         {
-            string from = action_SquareXSquare.Split("x")[0];
-            string to = action_SquareXSquare.Split("x")[1];
+            string inpuSq = action_SquareXSquare;
+            string promotionPiece = string.Empty;
+            if (action_SquareXSquare.Length==7 && action_SquareXSquare.Contains('='))
+            {
+                promotionPiece = action_SquareXSquare.Split('=')[1];
+                inpuSq = action_SquareXSquare.Split('=')[0];
+            }
+            string from = inpuSq.Split("x")[0];
+            string to = inpuSq.Split("x")[1];
             Image? transferedImage = null;
             string transferedPieceName = "";
             List<List<ChessButton>> tempList = WhichPanel == panel_solver ? Board_Solver : Board_Composer;
@@ -1884,8 +1935,17 @@ namespace Chezz_Puzzler
                                 PlaySoundFile("CAPTURE.wav");
                             }
                         }
-                        tempList[x][i].BackgroundImage = transferedImage;
-                        tempList[x][i].PieceName = transferedPieceName;
+                        if (promotionPiece == string.Empty)
+                        {
+                            tempList[x][i].BackgroundImage = transferedImage;
+                            tempList[x][i].PieceName = transferedPieceName;
+                        }
+                        else
+                        {
+                            char name = promotionPiece.ToCharArray()[0];
+                            tempList[x][i].BackgroundImage = CharactersAsPieceImages[name];
+                            tempList[x][i].PieceName = name.ToString() ;
+                        }
                         break;
                     }
                 }
@@ -1900,7 +1960,7 @@ namespace Chezz_Puzzler
             if (listofPuzzles.SelectedItems.Count == 1)
             {
                 string filename = (string)listofPuzzles.SelectedItems[0];
-                filename += ".txt";
+                filename += ".pzq";
                 string pathh = $"{path_puzzles}\\{filename}";
                 if (File.Exists(pathh))
                 {
@@ -2721,7 +2781,8 @@ namespace Chezz_Puzzler
             ContextMenuStrip m = context_help;
             m.Show(Cursor.Position.X, Cursor.Position.Y);
         }
-        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+
+        public void EditPuzzleFile()
         {
             try
             {
@@ -2732,9 +2793,20 @@ namespace Chezz_Puzzler
                     listbox_Puzzles_Rush.Items.Clear();
                     listbox_Puzzle_Fragments.Items.Clear();
                     CurrentPuzzleComposition_List.Clear();
-                    string? name = listofPuzzles.SelectedItems[0].ToString();
-                    string nameFile = findFileWithCorrectExtension(name,false);
-                    CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
+                    string? name = string.Empty;
+                    if (DraggedFileSuccessfully)
+                    {
+                        name = CurrentlyOpenedPuzzleFilename;
+                    }
+                    else
+                    {
+
+                    
+                        name = listofPuzzles.SelectedItems[0].ToString();
+                        string nameFile = findFileWithCorrectExtension(name, false);
+                        CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
+                    }
+                    
                     //------------------------------------------------------------------
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
@@ -2822,6 +2894,10 @@ namespace Chezz_Puzzler
             {
                 MessageBox.Show("Error parsing the puzzle. Have you modified the file manually?");
             }
+        }
+        private void EditToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditPuzzleFile();
         }
         public void FillSolutionFromRawString(string raw)
         {
@@ -3484,6 +3560,63 @@ namespace Chezz_Puzzler
         private void checkBox1_CheckedChanged_2(object sender, EventArgs e)
         {
             WriteSettingsFile();
+        }
+
+        private void panel_solver_DragDrop(object sender, DragEventArgs e)
+        {
+            string pathOfDraggedFile = e.Data.GetData(DataFormats.FileDrop, false).ToString();
+            MessageBox.Show(pathOfDraggedFile);
+        }
+
+        private void label_h_DragDrop(object sender, DragEventArgs e)
+        {
+            string pathOfDraggedFile = e.Data.GetData(DataFormats.FileDrop, false).ToString();
+            MessageBox.Show(pathOfDraggedFile);
+        }
+
+        private void panel2_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            MessageBox.Show(fileList.ToString()); ;
+        }
+
+        private void Form_base_DragDrop(object sender, DragEventArgs e)
+        {
+            // drag and drop a file
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string firstFile = fileList[0];
+            if(Path.GetExtension(firstFile) == ".pzq")
+            {
+                DraggedFileSuccessfully = true;
+                CurrentlyOpenedPuzzleFilename = firstFile;
+                if (tabControl1.SelectedIndex == 0)
+                {
+                    SolveSelectedPuzzle();
+                }
+                else
+                {
+                    EditPuzzleFile();
+                }
+               
+                
+                                   
+            }
+            else { MessageBox.Show("the dropped file must have an extension .pzq"); }    
+        }
+
+        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
+        {
+            
+        }
+
+        private void panel2_DragDrop_1(object sender, DragEventArgs e)
+        {
+            
+        }
+
+        private void Form_base_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
         }
     }
 }

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+      "projectUniqueName": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
       "projectName": "Chezz Puzzler",
-      "projectPath": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+      "projectPath": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
       "packagesPath": "C:\\Users\\35987\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\35987\\Documents\\GitHub\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\obj\\",
+      "outputPath": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\35987\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -45,6 +45,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel_PuzleEditContainer = new System.Windows.Forms.Panel();
             this.panel_ComposePuzzleContainer = new System.Windows.Forms.Panel();
+            this.checkBox_Promotion = new System.Windows.Forms.CheckBox();
+            this.combo_promotion = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.btn_reverseFiles = new System.Windows.Forms.Button();
             this.labelTBOX_Name = new System.Windows.Forms.Label();
@@ -253,7 +255,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button_setwhiteSqColor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.icon_notSolved)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -282,7 +283,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // icon_solved
@@ -290,10 +290,9 @@
             this.icon_solved.BackColor = System.Drawing.Color.Transparent;
             this.icon_solved.BackgroundImage = global::Chezz_Puzzler.Properties.Resources.tick;
             this.icon_solved.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.icon_solved.Location = new System.Drawing.Point(632, 309);
-            this.icon_solved.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.icon_solved.Location = new System.Drawing.Point(553, 232);
             this.icon_solved.Name = "icon_solved";
-            this.icon_solved.Size = new System.Drawing.Size(57, 67);
+            this.icon_solved.Size = new System.Drawing.Size(50, 50);
             this.icon_solved.TabIndex = 34;
             this.icon_solved.TabStop = false;
             this.icon_solved.Visible = false;
@@ -303,28 +302,27 @@
             this.icon_notSolved.BackColor = System.Drawing.Color.Transparent;
             this.icon_notSolved.BackgroundImage = global::Chezz_Puzzler.Properties.Resources.cross;
             this.icon_notSolved.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.icon_notSolved.Location = new System.Drawing.Point(632, 235);
-            this.icon_notSolved.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.icon_notSolved.Location = new System.Drawing.Point(553, 176);
             this.icon_notSolved.Name = "icon_notSolved";
-            this.icon_notSolved.Size = new System.Drawing.Size(57, 67);
+            this.icon_notSolved.Size = new System.Drawing.Size(50, 50);
             this.icon_notSolved.TabIndex = 35;
             this.icon_notSolved.TabStop = false;
             this.icon_notSolved.Visible = false;
             // 
             // panel_solver
             // 
-            this.panel_solver.Location = new System.Drawing.Point(24, 16);
-            this.panel_solver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_solver.AllowDrop = true;
+            this.panel_solver.Location = new System.Drawing.Point(21, 12);
             this.panel_solver.Name = "panel_solver";
-            this.panel_solver.Size = new System.Drawing.Size(594, 693);
+            this.panel_solver.Size = new System.Drawing.Size(520, 520);
             this.panel_solver.TabIndex = 37;
+            this.panel_solver.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_solver_DragDrop);
             // 
             // panel_composer
             // 
-            this.panel_composer.Location = new System.Drawing.Point(963, 15);
-            this.panel_composer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_composer.Location = new System.Drawing.Point(843, 11);
             this.panel_composer.Name = "panel_composer";
-            this.panel_composer.Size = new System.Drawing.Size(594, 693);
+            this.panel_composer.Size = new System.Drawing.Size(520, 520);
             this.panel_composer.TabIndex = 38;
             this.panel_composer.Visible = false;
             // 
@@ -333,11 +331,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tabControl1.Location = new System.Drawing.Point(1179, 0);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabControl1.Location = new System.Drawing.Point(1031, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(426, 978);
+            this.tabControl1.Size = new System.Drawing.Size(373, 733);
             this.tabControl1.TabIndex = 38;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.TabControl1_SelectedIndexChanged);
             // 
@@ -347,11 +344,10 @@
             this.tabPage1.Controls.Add(this.listofPuzzles);
             this.tabPage1.Controls.Add(this.richTextBox_description);
             this.tabPage1.Controls.Add(this.button_solve);
-            this.tabPage1.Location = new System.Drawing.Point(4, 29);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage1.Size = new System.Drawing.Size(418, 945);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(365, 705);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Solve";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -362,10 +358,9 @@
             this.panel_dummy_EL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel_dummy_EL.ContextMenuStrip = this.menuPuzzles;
             this.panel_dummy_EL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_dummy_EL.Location = new System.Drawing.Point(3, 71);
-            this.panel_dummy_EL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_dummy_EL.Location = new System.Drawing.Point(3, 54);
             this.panel_dummy_EL.Name = "panel_dummy_EL";
-            this.panel_dummy_EL.Size = new System.Drawing.Size(412, 797);
+            this.panel_dummy_EL.Size = new System.Drawing.Size(359, 593);
             this.panel_dummy_EL.TabIndex = 83;
             // 
             // menuPuzzles
@@ -377,26 +372,26 @@
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
             this.menuPuzzles.Name = "menuPuzzles";
-            this.menuPuzzles.Size = new System.Drawing.Size(145, 106);
+            this.menuPuzzles.Size = new System.Drawing.Size(131, 88);
             // 
             // refreshToolStripMenuItem
             // 
             this.refreshToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.refreshToolStripMenuItem.Name = "refreshToolStripMenuItem";
-            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
+            this.refreshToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.refreshToolStripMenuItem.Text = "Refresh";
             this.refreshToolStripMenuItem.Click += new System.EventHandler(this.RefreshToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(127, 6);
             // 
             // editToolStripMenuItem
             // 
             this.editToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.EditToolStripMenuItem_Click);
             // 
@@ -404,7 +399,7 @@
             // 
             this.deleteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(144, 32);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteToolStripMenuItem_Click);
             // 
@@ -417,11 +412,10 @@
             this.listofPuzzles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listofPuzzles.ForeColor = System.Drawing.Color.White;
             this.listofPuzzles.FormattingEnabled = true;
-            this.listofPuzzles.ItemHeight = 28;
-            this.listofPuzzles.Location = new System.Drawing.Point(3, 71);
-            this.listofPuzzles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listofPuzzles.ItemHeight = 21;
+            this.listofPuzzles.Location = new System.Drawing.Point(3, 54);
             this.listofPuzzles.Name = "listofPuzzles";
-            this.listofPuzzles.Size = new System.Drawing.Size(412, 797);
+            this.listofPuzzles.Size = new System.Drawing.Size(359, 593);
             this.listofPuzzles.TabIndex = 2;
             this.listofPuzzles.SelectedIndexChanged += new System.EventHandler(this.ListofPuzzles_SelectedIndexChanged);
             this.listofPuzzles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.ListofPuzzles_MouseDoubleClick);
@@ -432,11 +426,10 @@
             this.richTextBox_description.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.richTextBox_description.Dock = System.Windows.Forms.DockStyle.Top;
             this.richTextBox_description.ForeColor = System.Drawing.Color.White;
-            this.richTextBox_description.Location = new System.Drawing.Point(3, 4);
-            this.richTextBox_description.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.richTextBox_description.Location = new System.Drawing.Point(3, 3);
             this.richTextBox_description.Name = "richTextBox_description";
             this.richTextBox_description.ReadOnly = true;
-            this.richTextBox_description.Size = new System.Drawing.Size(412, 67);
+            this.richTextBox_description.Size = new System.Drawing.Size(359, 51);
             this.richTextBox_description.TabIndex = 0;
             this.richTextBox_description.Text = "";
             // 
@@ -447,10 +440,9 @@
             this.button_solve.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button_solve.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_solve.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_solve.Location = new System.Drawing.Point(3, 868);
-            this.button_solve.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_solve.Location = new System.Drawing.Point(3, 647);
             this.button_solve.Name = "button_solve";
-            this.button_solve.Size = new System.Drawing.Size(412, 73);
+            this.button_solve.Size = new System.Drawing.Size(359, 55);
             this.button_solve.TabIndex = 1;
             this.button_solve.Text = "(S)olve";
             this.button_solve.UseVisualStyleBackColor = false;
@@ -461,11 +453,10 @@
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tabPage2.Controls.Add(this.panel_PuzleEditContainer);
             this.tabPage2.Controls.Add(this.panel_generate);
-            this.tabPage2.Location = new System.Drawing.Point(4, 29);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(418, 945);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(365, 705);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Create";
             // 
@@ -473,15 +464,16 @@
             // 
             this.panel_PuzleEditContainer.Controls.Add(this.panel_ComposePuzzleContainer);
             this.panel_PuzleEditContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_PuzleEditContainer.Location = new System.Drawing.Point(3, 4);
-            this.panel_PuzleEditContainer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_PuzleEditContainer.Location = new System.Drawing.Point(3, 3);
             this.panel_PuzleEditContainer.Name = "panel_PuzleEditContainer";
-            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(412, 804);
+            this.panel_PuzleEditContainer.Size = new System.Drawing.Size(359, 599);
             this.panel_PuzleEditContainer.TabIndex = 102;
             // 
             // panel_ComposePuzzleContainer
             // 
             this.panel_ComposePuzzleContainer.AutoScroll = true;
+            this.panel_ComposePuzzleContainer.Controls.Add(this.checkBox_Promotion);
+            this.panel_ComposePuzzleContainer.Controls.Add(this.combo_promotion);
             this.panel_ComposePuzzleContainer.Controls.Add(this.button2);
             this.panel_ComposePuzzleContainer.Controls.Add(this.btn_reverseFiles);
             this.panel_ComposePuzzleContainer.Controls.Add(this.labelTBOX_Name);
@@ -532,19 +524,49 @@
             this.panel_ComposePuzzleContainer.Location = new System.Drawing.Point(0, 0);
             this.panel_ComposePuzzleContainer.Margin = new System.Windows.Forms.Padding(0);
             this.panel_ComposePuzzleContainer.Name = "panel_ComposePuzzleContainer";
-            this.panel_ComposePuzzleContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 27);
-            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(412, 804);
+            this.panel_ComposePuzzleContainer.Padding = new System.Windows.Forms.Padding(0, 0, 0, 20);
+            this.panel_ComposePuzzleContainer.Size = new System.Drawing.Size(359, 599);
             this.panel_ComposePuzzleContainer.TabIndex = 103;
+            // 
+            // checkBox_Promotion
+            // 
+            this.checkBox_Promotion.AutoSize = true;
+            this.checkBox_Promotion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.checkBox_Promotion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_Promotion.Location = new System.Drawing.Point(4, 420);
+            this.checkBox_Promotion.Name = "checkBox_Promotion";
+            this.checkBox_Promotion.Size = new System.Drawing.Size(97, 19);
+            this.checkBox_Promotion.TabIndex = 128;
+            this.checkBox_Promotion.Text = "Promotes to: ";
+            this.checkBox_Promotion.UseVisualStyleBackColor = true;
+            // 
+            // combo_promotion
+            // 
+            this.combo_promotion.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.combo_promotion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combo_promotion.FormattingEnabled = true;
+            this.combo_promotion.Items.AddRange(new object[] {
+            "White Knight",
+            "White Rook",
+            "White Bishop",
+            "White Queen",
+            "Black Knight",
+            "Black Rook",
+            "Black Bishop",
+            "Black Queen"});
+            this.combo_promotion.Location = new System.Drawing.Point(107, 414);
+            this.combo_promotion.Name = "combo_promotion";
+            this.combo_promotion.Size = new System.Drawing.Size(218, 23);
+            this.combo_promotion.TabIndex = 127;
             // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(14, 1167);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button2.Location = new System.Drawing.Point(12, 923);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(270, 43);
+            this.button2.Size = new System.Drawing.Size(236, 32);
             this.button2.TabIndex = 126;
             this.button2.Text = "Reverse Ranks";
             this.button2.UseVisualStyleBackColor = true;
@@ -555,10 +577,9 @@
             this.btn_reverseFiles.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btn_reverseFiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_reverseFiles.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btn_reverseFiles.Location = new System.Drawing.Point(14, 1117);
-            this.btn_reverseFiles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btn_reverseFiles.Location = new System.Drawing.Point(12, 886);
             this.btn_reverseFiles.Name = "btn_reverseFiles";
-            this.btn_reverseFiles.Size = new System.Drawing.Size(270, 43);
+            this.btn_reverseFiles.Size = new System.Drawing.Size(236, 32);
             this.btn_reverseFiles.TabIndex = 125;
             this.btn_reverseFiles.Text = "Reverse Files";
             this.btn_reverseFiles.UseVisualStyleBackColor = true;
@@ -567,9 +588,9 @@
             // labelTBOX_Name
             // 
             this.labelTBOX_Name.AutoSize = true;
-            this.labelTBOX_Name.Location = new System.Drawing.Point(11, 25);
+            this.labelTBOX_Name.Location = new System.Drawing.Point(10, 19);
             this.labelTBOX_Name.Name = "labelTBOX_Name";
-            this.labelTBOX_Name.Size = new System.Drawing.Size(49, 20);
+            this.labelTBOX_Name.Size = new System.Drawing.Size(39, 15);
             this.labelTBOX_Name.TabIndex = 124;
             this.labelTBOX_Name.Text = "Name";
             this.toolTip1.SetToolTip(this.labelTBOX_Name, "Applied to the whole puzzle or PR");
@@ -577,9 +598,9 @@
             // labelTBOX_Hint
             // 
             this.labelTBOX_Hint.AutoSize = true;
-            this.labelTBOX_Hint.Location = new System.Drawing.Point(15, 72);
+            this.labelTBOX_Hint.Location = new System.Drawing.Point(13, 54);
             this.labelTBOX_Hint.Name = "labelTBOX_Hint";
-            this.labelTBOX_Hint.Size = new System.Drawing.Size(37, 20);
+            this.labelTBOX_Hint.Size = new System.Drawing.Size(30, 15);
             this.labelTBOX_Hint.TabIndex = 123;
             this.labelTBOX_Hint.Text = "Hint";
             this.toolTip1.SetToolTip(this.labelTBOX_Hint, "Applieed to a single chapter");
@@ -587,9 +608,9 @@
             // labelTBOX_Wrong
             // 
             this.labelTBOX_Wrong.AutoSize = true;
-            this.labelTBOX_Wrong.Location = new System.Drawing.Point(6, 119);
+            this.labelTBOX_Wrong.Location = new System.Drawing.Point(5, 89);
             this.labelTBOX_Wrong.Name = "labelTBOX_Wrong";
-            this.labelTBOX_Wrong.Size = new System.Drawing.Size(54, 20);
+            this.labelTBOX_Wrong.Size = new System.Drawing.Size(43, 15);
             this.labelTBOX_Wrong.TabIndex = 122;
             this.labelTBOX_Wrong.Text = "Wrong";
             this.toolTip1.SetToolTip(this.labelTBOX_Wrong, "Applieed to a single chapter");
@@ -597,9 +618,9 @@
             // labelTBOX_Righht
             // 
             this.labelTBOX_Righht.AutoSize = true;
-            this.labelTBOX_Righht.Location = new System.Drawing.Point(11, 165);
+            this.labelTBOX_Righht.Location = new System.Drawing.Point(10, 124);
             this.labelTBOX_Righht.Name = "labelTBOX_Righht";
-            this.labelTBOX_Righht.Size = new System.Drawing.Size(44, 20);
+            this.labelTBOX_Righht.Size = new System.Drawing.Size(35, 15);
             this.labelTBOX_Righht.TabIndex = 121;
             this.labelTBOX_Righht.Text = "Right";
             this.toolTip1.SetToolTip(this.labelTBOX_Righht, "Applieed to a single chapter");
@@ -608,10 +629,9 @@
             // 
             this.checkbox_smartAdd.AutoSize = true;
             this.checkbox_smartAdd.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkbox_smartAdd.Location = new System.Drawing.Point(3, 607);
-            this.checkbox_smartAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkbox_smartAdd.Location = new System.Drawing.Point(3, 503);
             this.checkbox_smartAdd.Name = "checkbox_smartAdd";
-            this.checkbox_smartAdd.Size = new System.Drawing.Size(367, 84);
+            this.checkbox_smartAdd.Size = new System.Drawing.Size(291, 64);
             this.checkbox_smartAdd.TabIndex = 120;
             this.checkbox_smartAdd.Text = "Holding \"ctrl\" while moving a piece will add it as a\r\n proposed solution.\r\nHoldin" +
     "g \"ctrl\"+\"alt\" while moving a piece will add\r\n it as a proposed solution and add" +
@@ -624,10 +644,9 @@
             this.button_swapPlayers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_swapPlayers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_swapPlayers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_swapPlayers.Location = new System.Drawing.Point(152, 1071);
-            this.button_swapPlayers.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_swapPlayers.Location = new System.Drawing.Point(133, 851);
             this.button_swapPlayers.Name = "button_swapPlayers";
-            this.button_swapPlayers.Size = new System.Drawing.Size(131, 43);
+            this.button_swapPlayers.Size = new System.Drawing.Size(115, 32);
             this.button_swapPlayers.TabIndex = 119;
             this.button_swapPlayers.Text = "Swap Players";
             this.button_swapPlayers.UseVisualStyleBackColor = true;
@@ -638,10 +657,9 @@
             this.button_swapColors.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_swapColors.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_swapColors.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_swapColors.Location = new System.Drawing.Point(14, 1071);
-            this.button_swapColors.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_swapColors.Location = new System.Drawing.Point(12, 851);
             this.button_swapColors.Name = "button_swapColors";
-            this.button_swapColors.Size = new System.Drawing.Size(131, 43);
+            this.button_swapColors.Size = new System.Drawing.Size(115, 32);
             this.button_swapColors.TabIndex = 118;
             this.button_swapColors.Text = "Swap Colors";
             this.button_swapColors.UseVisualStyleBackColor = true;
@@ -650,9 +668,9 @@
             // labelTXB_Descr
             // 
             this.labelTXB_Descr.AutoSize = true;
-            this.labelTXB_Descr.Location = new System.Drawing.Point(10, 261);
+            this.labelTXB_Descr.Location = new System.Drawing.Point(9, 196);
             this.labelTXB_Descr.Name = "labelTXB_Descr";
-            this.labelTXB_Descr.Size = new System.Drawing.Size(49, 20);
+            this.labelTXB_Descr.Size = new System.Drawing.Size(39, 15);
             this.labelTXB_Descr.TabIndex = 117;
             this.labelTXB_Descr.Text = "Descr:";
             this.toolTip1.SetToolTip(this.labelTXB_Descr, "Applied to the whole puzzle");
@@ -661,10 +679,9 @@
             // 
             this.textBox_description.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textBox_description.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_description.Location = new System.Drawing.Point(62, 251);
-            this.textBox_description.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_description.Location = new System.Drawing.Point(54, 188);
             this.textBox_description.Name = "textBox_description";
-            this.textBox_description.Size = new System.Drawing.Size(308, 34);
+            this.textBox_description.Size = new System.Drawing.Size(270, 29);
             this.textBox_description.TabIndex = 116;
             this.toolTip1.SetToolTip(this.textBox_description, "Applied to the whole puzzle");
             // 
@@ -678,40 +695,40 @@
             this.clearAndPasteToolStripMenuItem,
             this.clearToolStripMenuItem1});
             this.contextMenu_TextBoxes.Name = "contextMenu_TextBoxes";
-            this.contextMenu_TextBoxes.Size = new System.Drawing.Size(182, 124);
+            this.contextMenu_TextBoxes.Size = new System.Drawing.Size(158, 114);
             // 
             // copyToolStripMenuItem
             // 
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             this.copyToolStripMenuItem.Click += new System.EventHandler(this.CopyToolStripMenuItem_Click);
             // 
             // copyAllToolStripMenuItem
             // 
             this.copyAllToolStripMenuItem.Name = "copyAllToolStripMenuItem";
-            this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.copyAllToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.copyAllToolStripMenuItem.Text = "Copy All";
             this.copyAllToolStripMenuItem.Click += new System.EventHandler(this.CopyAllToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem
             // 
             this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.pasteToolStripMenuItem.Text = "Paste";
             this.pasteToolStripMenuItem.Click += new System.EventHandler(this.PasteToolStripMenuItem_Click);
             // 
             // clearAndPasteToolStripMenuItem
             // 
             this.clearAndPasteToolStripMenuItem.Name = "clearAndPasteToolStripMenuItem";
-            this.clearAndPasteToolStripMenuItem.Size = new System.Drawing.Size(181, 24);
+            this.clearAndPasteToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.clearAndPasteToolStripMenuItem.Text = "Clear And Paste";
             this.clearAndPasteToolStripMenuItem.Click += new System.EventHandler(this.ClearAndPasteToolStripMenuItem_Click);
             // 
             // clearToolStripMenuItem1
             // 
             this.clearToolStripMenuItem1.Name = "clearToolStripMenuItem1";
-            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(181, 24);
+            this.clearToolStripMenuItem1.Size = new System.Drawing.Size(157, 22);
             this.clearToolStripMenuItem1.Text = "Clear";
             this.clearToolStripMenuItem1.Click += new System.EventHandler(this.ClearToolStripMenuItem1_Click);
             // 
@@ -719,10 +736,9 @@
             // 
             this.checkBox_LastPlayedOptional.AutoSize = true;
             this.checkBox_LastPlayedOptional.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_LastPlayedOptional.Location = new System.Drawing.Point(5, 715);
-            this.checkBox_LastPlayedOptional.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_LastPlayedOptional.Location = new System.Drawing.Point(4, 584);
             this.checkBox_LastPlayedOptional.Name = "checkBox_LastPlayedOptional";
-            this.checkBox_LastPlayedOptional.Size = new System.Drawing.Size(386, 24);
+            this.checkBox_LastPlayedOptional.Size = new System.Drawing.Size(306, 19);
             this.checkBox_LastPlayedOptional.TabIndex = 115;
             this.checkBox_LastPlayedOptional.Text = "Last move played, before the puzzle starts (optional) :";
             this.checkBox_LastPlayedOptional.UseVisualStyleBackColor = true;
@@ -741,10 +757,9 @@
             "6",
             "7",
             "8"});
-            this.comboBox_num2_om.Location = new System.Drawing.Point(232, 751);
-            this.comboBox_num2_om.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_num2_om.Location = new System.Drawing.Point(203, 611);
             this.comboBox_num2_om.Name = "comboBox_num2_om";
-            this.comboBox_num2_om.Size = new System.Drawing.Size(35, 28);
+            this.comboBox_num2_om.Size = new System.Drawing.Size(31, 23);
             this.comboBox_num2_om.TabIndex = 114;
             // 
             // comboBox_letter2_om
@@ -761,18 +776,17 @@
             "f",
             "g",
             "h"});
-            this.comboBox_letter2_om.Location = new System.Drawing.Point(190, 751);
-            this.comboBox_letter2_om.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_letter2_om.Location = new System.Drawing.Point(166, 611);
             this.comboBox_letter2_om.Name = "comboBox_letter2_om";
-            this.comboBox_letter2_om.Size = new System.Drawing.Size(35, 28);
+            this.comboBox_letter2_om.Size = new System.Drawing.Size(31, 23);
             this.comboBox_letter2_om.TabIndex = 113;
             // 
             // label_TakesToOriginal
             // 
             this.label_TakesToOriginal.AutoSize = true;
-            this.label_TakesToOriginal.Location = new System.Drawing.Point(130, 755);
+            this.label_TakesToOriginal.Location = new System.Drawing.Point(114, 614);
             this.label_TakesToOriginal.Name = "label_TakesToOriginal";
-            this.label_TakesToOriginal.Size = new System.Drawing.Size(63, 20);
+            this.label_TakesToOriginal.Size = new System.Drawing.Size(50, 15);
             this.label_TakesToOriginal.TabIndex = 112;
             this.label_TakesToOriginal.Text = "takes/to";
             // 
@@ -790,10 +804,9 @@
             "6",
             "7",
             "8"});
-            this.comboBox_num1_om.Location = new System.Drawing.Point(88, 751);
-            this.comboBox_num1_om.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_num1_om.Location = new System.Drawing.Point(77, 611);
             this.comboBox_num1_om.Name = "comboBox_num1_om";
-            this.comboBox_num1_om.Size = new System.Drawing.Size(35, 28);
+            this.comboBox_num1_om.Size = new System.Drawing.Size(31, 23);
             this.comboBox_num1_om.TabIndex = 111;
             // 
             // comboBox_letter1_om
@@ -810,18 +823,17 @@
             "f",
             "g",
             "h"});
-            this.comboBox_letter1_om.Location = new System.Drawing.Point(46, 751);
-            this.comboBox_letter1_om.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_letter1_om.Location = new System.Drawing.Point(40, 611);
             this.comboBox_letter1_om.Name = "comboBox_letter1_om";
-            this.comboBox_letter1_om.Size = new System.Drawing.Size(35, 28);
+            this.comboBox_letter1_om.Size = new System.Drawing.Size(31, 23);
             this.comboBox_letter1_om.TabIndex = 110;
             // 
             // labelTXB_Event
             // 
             this.labelTXB_Event.AutoSize = true;
-            this.labelTXB_Event.Location = new System.Drawing.Point(15, 215);
+            this.labelTXB_Event.Location = new System.Drawing.Point(13, 161);
             this.labelTXB_Event.Name = "labelTXB_Event";
-            this.labelTXB_Event.Size = new System.Drawing.Size(45, 20);
+            this.labelTXB_Event.Size = new System.Drawing.Size(36, 15);
             this.labelTXB_Event.TabIndex = 109;
             this.labelTXB_Event.Text = "Event";
             this.toolTip1.SetToolTip(this.labelTXB_Event, "Applied to the whole puzzle");
@@ -830,10 +842,9 @@
             // 
             this.textBox_event.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textBox_event.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_event.Location = new System.Drawing.Point(62, 204);
-            this.textBox_event.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_event.Location = new System.Drawing.Point(54, 153);
             this.textBox_event.Name = "textBox_event";
-            this.textBox_event.Size = new System.Drawing.Size(308, 34);
+            this.textBox_event.Size = new System.Drawing.Size(270, 29);
             this.textBox_event.TabIndex = 108;
             this.toolTip1.SetToolTip(this.textBox_event, "Who vs who? ratings? when and where happened?");
             // 
@@ -841,10 +852,9 @@
             // 
             this.textBox_Right.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textBox_Right.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_Right.Location = new System.Drawing.Point(61, 155);
-            this.textBox_Right.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_Right.Location = new System.Drawing.Point(53, 116);
             this.textBox_Right.Name = "textBox_Right";
-            this.textBox_Right.Size = new System.Drawing.Size(308, 34);
+            this.textBox_Right.Size = new System.Drawing.Size(270, 29);
             this.textBox_Right.TabIndex = 106;
             this.toolTip1.SetToolTip(this.textBox_Right, "ex.: If the answer is right, you can explain why");
             // 
@@ -852,10 +862,9 @@
             // 
             this.textbox_Wrong.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textbox_Wrong.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textbox_Wrong.Location = new System.Drawing.Point(59, 108);
-            this.textbox_Wrong.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textbox_Wrong.Location = new System.Drawing.Point(52, 81);
             this.textbox_Wrong.Name = "textbox_Wrong";
-            this.textbox_Wrong.Size = new System.Drawing.Size(308, 34);
+            this.textbox_Wrong.Size = new System.Drawing.Size(270, 29);
             this.textbox_Wrong.TabIndex = 104;
             this.toolTip1.SetToolTip(this.textbox_Wrong, "ex.: If the answer is wrong you can explain why");
             // 
@@ -863,9 +872,9 @@
             // 
             this.label_Puzzles.AutoSize = true;
             this.label_Puzzles.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Puzzles.Location = new System.Drawing.Point(16, 403);
+            this.label_Puzzles.Location = new System.Drawing.Point(14, 302);
             this.label_Puzzles.Name = "label_Puzzles";
-            this.label_Puzzles.Size = new System.Drawing.Size(45, 15);
+            this.label_Puzzles.Size = new System.Drawing.Size(34, 12);
             this.label_Puzzles.TabIndex = 103;
             this.label_Puzzles.Text = "Puzzles";
             // 
@@ -873,11 +882,10 @@
             // 
             this.listbox_Puzzles_Rush.ContextMenuStrip = this.contextRushMenu;
             this.listbox_Puzzles_Rush.FormattingEnabled = true;
-            this.listbox_Puzzles_Rush.ItemHeight = 20;
-            this.listbox_Puzzles_Rush.Location = new System.Drawing.Point(17, 423);
-            this.listbox_Puzzles_Rush.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listbox_Puzzles_Rush.ItemHeight = 15;
+            this.listbox_Puzzles_Rush.Location = new System.Drawing.Point(15, 317);
             this.listbox_Puzzles_Rush.Name = "listbox_Puzzles_Rush";
-            this.listbox_Puzzles_Rush.Size = new System.Drawing.Size(355, 64);
+            this.listbox_Puzzles_Rush.Size = new System.Drawing.Size(311, 49);
             this.listbox_Puzzles_Rush.TabIndex = 102;
             this.listbox_Puzzles_Rush.SelectedIndexChanged += new System.EventHandler(this.Listbox_Puzzles_Rush_SelectedIndexChanged);
             // 
@@ -888,13 +896,13 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5});
             this.contextRushMenu.Name = "contextChaptersList";
-            this.contextRushMenu.Size = new System.Drawing.Size(291, 68);
+            this.contextRushMenu.Size = new System.Drawing.Size(245, 56);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(290, 32);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(244, 26);
             this.toolStripMenuItem4.Text = "Remove Selected Puzzle";
             this.toolStripMenuItem4.Click += new System.EventHandler(this.ToolStripMenuItem4_Click);
             // 
@@ -902,7 +910,7 @@
             // 
             this.toolStripMenuItem5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(290, 32);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(244, 26);
             this.toolStripMenuItem5.Text = "Clear";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.ToolStripMenuItem5_Click);
             // 
@@ -910,9 +918,9 @@
             // 
             this.label_Solutions.AutoSize = true;
             this.label_Solutions.Font = new System.Drawing.Font("Segoe UI", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label_Solutions.Location = new System.Drawing.Point(15, 313);
+            this.label_Solutions.Location = new System.Drawing.Point(13, 235);
             this.label_Solutions.Name = "label_Solutions";
-            this.label_Solutions.Size = new System.Drawing.Size(59, 15);
+            this.label_Solutions.Size = new System.Drawing.Size(43, 12);
             this.label_Solutions.TabIndex = 100;
             this.label_Solutions.Text = "Solutions:";
             // 
@@ -920,9 +928,9 @@
             // 
             this.linkLabel_SCN.AutoSize = true;
             this.linkLabel_SCN.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.linkLabel_SCN.Location = new System.Drawing.Point(279, 793);
+            this.linkLabel_SCN.Location = new System.Drawing.Point(244, 643);
             this.linkLabel_SCN.Name = "linkLabel_SCN";
-            this.linkLabel_SCN.Size = new System.Drawing.Size(97, 20);
+            this.linkLabel_SCN.Size = new System.Drawing.Size(77, 15);
             this.linkLabel_SCN.TabIndex = 99;
             this.linkLabel_SCN.TabStop = true;
             this.linkLabel_SCN.Text = "What is SCN?";
@@ -933,10 +941,9 @@
             this.button_import_local.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_import_local.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_import_local.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_import_local.Location = new System.Drawing.Point(234, 867);
-            this.button_import_local.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_import_local.Location = new System.Drawing.Point(205, 698);
             this.button_import_local.Name = "button_import_local";
-            this.button_import_local.Size = new System.Drawing.Size(134, 43);
+            this.button_import_local.Size = new System.Drawing.Size(117, 32);
             this.button_import_local.TabIndex = 98;
             this.button_import_local.Text = "Import SCN";
             this.button_import_local.UseVisualStyleBackColor = true;
@@ -945,29 +952,28 @@
             // label_SCNImport
             // 
             this.label_SCNImport.AutoSize = true;
-            this.label_SCNImport.Location = new System.Drawing.Point(17, 797);
+            this.label_SCNImport.Location = new System.Drawing.Point(15, 646);
             this.label_SCNImport.Name = "label_SCNImport";
-            this.label_SCNImport.Size = new System.Drawing.Size(223, 20);
+            this.label_SCNImport.Size = new System.Drawing.Size(178, 15);
             this.label_SCNImport.TabIndex = 97;
             this.label_SCNImport.Text = "position based on SCN notation:";
             // 
             // textBox_SCN
             // 
             this.textBox_SCN.ContextMenuStrip = this.contextMenu_TextBoxes;
-            this.textBox_SCN.Location = new System.Drawing.Point(17, 828);
-            this.textBox_SCN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_SCN.Location = new System.Drawing.Point(15, 669);
             this.textBox_SCN.MaxLength = 64;
             this.textBox_SCN.Name = "textBox_SCN";
-            this.textBox_SCN.Size = new System.Drawing.Size(349, 27);
+            this.textBox_SCN.Size = new System.Drawing.Size(306, 23);
             this.textBox_SCN.TabIndex = 96;
             // 
             // linkLabel_FEN
             // 
             this.linkLabel_FEN.AutoSize = true;
             this.linkLabel_FEN.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.linkLabel_FEN.Location = new System.Drawing.Point(281, 925);
+            this.linkLabel_FEN.Location = new System.Drawing.Point(246, 742);
             this.linkLabel_FEN.Name = "linkLabel_FEN";
-            this.linkLabel_FEN.Size = new System.Drawing.Size(95, 20);
+            this.linkLabel_FEN.Size = new System.Drawing.Size(75, 15);
             this.linkLabel_FEN.TabIndex = 95;
             this.linkLabel_FEN.TabStop = true;
             this.linkLabel_FEN.Text = "What is FEN?";
@@ -976,20 +982,19 @@
             // label_FENImportLabel
             // 
             this.label_FENImportLabel.AutoSize = true;
-            this.label_FENImportLabel.Location = new System.Drawing.Point(17, 913);
+            this.label_FENImportLabel.Location = new System.Drawing.Point(15, 733);
             this.label_FENImportLabel.Name = "label_FENImportLabel";
-            this.label_FENImportLabel.Size = new System.Drawing.Size(221, 20);
+            this.label_FENImportLabel.Size = new System.Drawing.Size(176, 15);
             this.label_FENImportLabel.TabIndex = 94;
             this.label_FENImportLabel.Text = "position based on FEN notation:";
             // 
             // textBox_FEN
             // 
             this.textBox_FEN.ContextMenuStrip = this.contextMenu_TextBoxes;
-            this.textBox_FEN.Location = new System.Drawing.Point(14, 949);
-            this.textBox_FEN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_FEN.Location = new System.Drawing.Point(12, 760);
             this.textBox_FEN.MaxLength = 80;
             this.textBox_FEN.Name = "textBox_FEN";
-            this.textBox_FEN.Size = new System.Drawing.Size(353, 27);
+            this.textBox_FEN.Size = new System.Drawing.Size(309, 23);
             this.textBox_FEN.TabIndex = 93;
             // 
             // button_ImprtFEN
@@ -997,10 +1002,9 @@
             this.button_ImprtFEN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_ImprtFEN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_ImprtFEN.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_ImprtFEN.Location = new System.Drawing.Point(235, 979);
-            this.button_ImprtFEN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_ImprtFEN.Location = new System.Drawing.Point(206, 782);
             this.button_ImprtFEN.Name = "button_ImprtFEN";
-            this.button_ImprtFEN.Size = new System.Drawing.Size(131, 43);
+            this.button_ImprtFEN.Size = new System.Drawing.Size(115, 32);
             this.button_ImprtFEN.TabIndex = 92;
             this.button_ImprtFEN.Text = "Import FEN";
             this.button_ImprtFEN.UseVisualStyleBackColor = true;
@@ -1013,10 +1017,9 @@
             this.checkBox_AT.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_AT.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBox_AT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_AT.Location = new System.Drawing.Point(5, 563);
-            this.checkBox_AT.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_AT.Location = new System.Drawing.Point(4, 470);
             this.checkBox_AT.Name = "checkBox_AT";
-            this.checkBox_AT.Size = new System.Drawing.Size(168, 24);
+            this.checkBox_AT.Size = new System.Drawing.Size(136, 19);
             this.checkBox_AT.TabIndex = 91;
             this.checkBox_AT.Text = "Automatic Transition";
             this.checkBox_AT.UseVisualStyleBackColor = true;
@@ -1026,10 +1029,9 @@
             this.button_Transition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Transition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Transition.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_Transition.Location = new System.Drawing.Point(194, 552);
-            this.button_Transition.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_Transition.Location = new System.Drawing.Point(170, 462);
             this.button_Transition.Name = "button_Transition";
-            this.button_Transition.Size = new System.Drawing.Size(117, 40);
+            this.button_Transition.Size = new System.Drawing.Size(102, 30);
             this.button_Transition.TabIndex = 90;
             this.button_Transition.Text = "(T)ransition To";
             this.toolTip1.SetToolTip(this.button_Transition, "Create a chess position from given [square x square] string");
@@ -1039,9 +1041,9 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, -139);
+            this.label6.Location = new System.Drawing.Point(27, -104);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 20);
+            this.label6.Size = new System.Drawing.Size(33, 15);
             this.label6.TabIndex = 89;
             this.label6.Text = "Hint:";
             // 
@@ -1049,21 +1051,19 @@
             // 
             this.textBox_hint.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textBox_hint.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_hint.Location = new System.Drawing.Point(59, 61);
-            this.textBox_hint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_hint.Location = new System.Drawing.Point(52, 46);
             this.textBox_hint.Name = "textBox_hint";
-            this.textBox_hint.Size = new System.Drawing.Size(308, 34);
+            this.textBox_hint.Size = new System.Drawing.Size(270, 29);
             this.textBox_hint.TabIndex = 88;
             // 
             // listbox_Puzzle_Fragments
             // 
             this.listbox_Puzzle_Fragments.ContextMenuStrip = this.contextChaptersList;
             this.listbox_Puzzle_Fragments.FormattingEnabled = true;
-            this.listbox_Puzzle_Fragments.ItemHeight = 20;
-            this.listbox_Puzzle_Fragments.Location = new System.Drawing.Point(16, 333);
-            this.listbox_Puzzle_Fragments.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listbox_Puzzle_Fragments.ItemHeight = 15;
+            this.listbox_Puzzle_Fragments.Location = new System.Drawing.Point(14, 250);
             this.listbox_Puzzle_Fragments.Name = "listbox_Puzzle_Fragments";
-            this.listbox_Puzzle_Fragments.Size = new System.Drawing.Size(355, 64);
+            this.listbox_Puzzle_Fragments.Size = new System.Drawing.Size(311, 49);
             this.listbox_Puzzle_Fragments.TabIndex = 87;
             // 
             // contextChaptersList
@@ -1077,13 +1077,13 @@
             this.clearToolStripMenuItem,
             this.clearPuzzleToolStripMenuItem});
             this.contextChaptersList.Name = "contextChaptersList";
-            this.contextChaptersList.Size = new System.Drawing.Size(532, 170);
+            this.contextChaptersList.Size = new System.Drawing.Size(438, 140);
             // 
             // loadChapterToolStripMenuItem
             // 
             this.loadChapterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.loadChapterToolStripMenuItem.Name = "loadChapterToolStripMenuItem";
-            this.loadChapterToolStripMenuItem.Size = new System.Drawing.Size(531, 32);
+            this.loadChapterToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.loadChapterToolStripMenuItem.Text = "Load This Chapter";
             this.loadChapterToolStripMenuItem.Click += new System.EventHandler(this.LoadChapterToolStripMenuItem_Click);
             // 
@@ -1091,20 +1091,20 @@
             // 
             this.editChapterWithCurrentFieldsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.editChapterWithCurrentFieldsToolStripMenuItem.Name = "editChapterWithCurrentFieldsToolStripMenuItem";
-            this.editChapterWithCurrentFieldsToolStripMenuItem.Size = new System.Drawing.Size(531, 32);
+            this.editChapterWithCurrentFieldsToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.editChapterWithCurrentFieldsToolStripMenuItem.Text = "Change This Chapter With The Current Composition";
             this.editChapterWithCurrentFieldsToolStripMenuItem.Click += new System.EventHandler(this.ChangeChhapterWithCurrenctComposition_click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(528, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(434, 6);
             // 
             // removeLastChapterToolStripMenuItem
             // 
             this.removeLastChapterToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.removeLastChapterToolStripMenuItem.Name = "removeLastChapterToolStripMenuItem";
-            this.removeLastChapterToolStripMenuItem.Size = new System.Drawing.Size(531, 32);
+            this.removeLastChapterToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.removeLastChapterToolStripMenuItem.Text = "Remove Last Chapter";
             this.removeLastChapterToolStripMenuItem.Click += new System.EventHandler(this.RemoveLastChapterToolStripMenuItem_Click);
             // 
@@ -1112,7 +1112,7 @@
             // 
             this.clearToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
-            this.clearToolStripMenuItem.Size = new System.Drawing.Size(531, 32);
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.clearToolStripMenuItem.Text = "Clear Puzzle";
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.ClearToolStripMenuItem_Click);
             // 
@@ -1120,7 +1120,7 @@
             // 
             this.clearPuzzleToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.clearPuzzleToolStripMenuItem.Name = "clearPuzzleToolStripMenuItem";
-            this.clearPuzzleToolStripMenuItem.Size = new System.Drawing.Size(531, 32);
+            this.clearPuzzleToolStripMenuItem.Size = new System.Drawing.Size(437, 26);
             this.clearPuzzleToolStripMenuItem.Text = "Clear List Only";
             this.clearPuzzleToolStripMenuItem.Click += new System.EventHandler(this.ClearPuzzleToolStripMenuItem_Click);
             // 
@@ -1128,10 +1128,9 @@
             // 
             this.button_Add.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Add.Location = new System.Drawing.Point(291, 513);
-            this.button_Add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_Add.Location = new System.Drawing.Point(255, 385);
             this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(78, 31);
+            this.button_Add.Size = new System.Drawing.Size(68, 23);
             this.button_Add.TabIndex = 86;
             this.button_Add.Text = "(A)dd";
             this.toolTip1.SetToolTip(this.button_Add, "Add new chapter");
@@ -1154,10 +1153,9 @@
             "6",
             "7",
             "8"});
-            this.c_number2.Location = new System.Drawing.Point(251, 513);
-            this.c_number2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.c_number2.Location = new System.Drawing.Point(220, 385);
             this.c_number2.Name = "c_number2";
-            this.c_number2.Size = new System.Drawing.Size(35, 28);
+            this.c_number2.Size = new System.Drawing.Size(31, 23);
             this.c_number2.TabIndex = 85;
             // 
             // c_letter2
@@ -1174,18 +1172,17 @@
             "f",
             "g",
             "h"});
-            this.c_letter2.Location = new System.Drawing.Point(209, 513);
-            this.c_letter2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.c_letter2.Location = new System.Drawing.Point(183, 385);
             this.c_letter2.Name = "c_letter2";
-            this.c_letter2.Size = new System.Drawing.Size(35, 28);
+            this.c_letter2.Size = new System.Drawing.Size(31, 23);
             this.c_letter2.TabIndex = 84;
             // 
             // label_Takesto
             // 
             this.label_Takesto.AutoSize = true;
-            this.label_Takesto.Location = new System.Drawing.Point(150, 517);
+            this.label_Takesto.Location = new System.Drawing.Point(131, 388);
             this.label_Takesto.Name = "label_Takesto";
-            this.label_Takesto.Size = new System.Drawing.Size(63, 20);
+            this.label_Takesto.Size = new System.Drawing.Size(50, 15);
             this.label_Takesto.TabIndex = 83;
             this.label_Takesto.Text = "takes/to";
             // 
@@ -1203,10 +1200,9 @@
             "6",
             "7",
             "8"});
-            this.c_number1.Location = new System.Drawing.Point(107, 513);
-            this.c_number1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.c_number1.Location = new System.Drawing.Point(94, 385);
             this.c_number1.Name = "c_number1";
-            this.c_number1.Size = new System.Drawing.Size(35, 28);
+            this.c_number1.Size = new System.Drawing.Size(31, 23);
             this.c_number1.TabIndex = 82;
             // 
             // c_letter1
@@ -1223,27 +1219,26 @@
             "f",
             "g",
             "h"});
-            this.c_letter1.Location = new System.Drawing.Point(65, 513);
-            this.c_letter1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.c_letter1.Location = new System.Drawing.Point(57, 385);
             this.c_letter1.Name = "c_letter1";
-            this.c_letter1.Size = new System.Drawing.Size(35, 28);
+            this.c_letter1.Size = new System.Drawing.Size(31, 23);
             this.c_letter1.TabIndex = 81;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 509);
+            this.label2.Location = new System.Drawing.Point(3, 382);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 40);
+            this.label2.Size = new System.Drawing.Size(54, 30);
             this.label2.TabIndex = 80;
             this.label2.Text = "Given\r\nSolution:";
             // 
             // label_name
             // 
             this.label_name.AutoSize = true;
-            this.label_name.Location = new System.Drawing.Point(21, -187);
+            this.label_name.Location = new System.Drawing.Point(18, -140);
             this.label_name.Name = "label_name";
-            this.label_name.Size = new System.Drawing.Size(52, 20);
+            this.label_name.Size = new System.Drawing.Size(42, 15);
             this.label_name.TabIndex = 79;
             this.label_name.Text = "Name:";
             // 
@@ -1251,11 +1246,10 @@
             // 
             this.textBox_name.ContextMenuStrip = this.contextMenu_TextBoxes;
             this.textBox_name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox_name.Location = new System.Drawing.Point(59, 15);
-            this.textBox_name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox_name.Location = new System.Drawing.Point(52, 11);
             this.textBox_name.MaxLength = 50;
             this.textBox_name.Name = "textBox_name";
-            this.textBox_name.Size = new System.Drawing.Size(308, 34);
+            this.textBox_name.Size = new System.Drawing.Size(270, 29);
             this.textBox_name.TabIndex = 78;
             this.toolTip1.SetToolTip(this.textBox_name, "Every puzzle or puzzle rush has to have a name");
             // 
@@ -1267,19 +1261,18 @@
             this.panel_generate.Controls.Add(this.button_Generate_P);
             this.panel_generate.Controls.Add(this.button_generate_PR);
             this.panel_generate.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_generate.Location = new System.Drawing.Point(3, 808);
-            this.panel_generate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_generate.Location = new System.Drawing.Point(3, 602);
             this.panel_generate.Name = "panel_generate";
-            this.panel_generate.Size = new System.Drawing.Size(412, 133);
+            this.panel_generate.Size = new System.Drawing.Size(359, 100);
             this.panel_generate.TabIndex = 101;
             // 
             // linkLabel_Dif
             // 
             this.linkLabel_Dif.AutoSize = true;
             this.linkLabel_Dif.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.linkLabel_Dif.Location = new System.Drawing.Point(2, 45);
+            this.linkLabel_Dif.Location = new System.Drawing.Point(2, 34);
             this.linkLabel_Dif.Name = "linkLabel_Dif";
-            this.linkLabel_Dif.Size = new System.Drawing.Size(156, 20);
+            this.linkLabel_Dif.Size = new System.Drawing.Size(124, 15);
             this.linkLabel_Dif.TabIndex = 61;
             this.linkLabel_Dif.TabStop = true;
             this.linkLabel_Dif.Text = "What\'s the difference?";
@@ -1289,10 +1282,9 @@
             // 
             this.checkBox_Making_PR.AutoSize = true;
             this.checkBox_Making_PR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_Making_PR.Location = new System.Drawing.Point(2, 4);
-            this.checkBox_Making_PR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_Making_PR.Location = new System.Drawing.Point(2, 3);
             this.checkBox_Making_PR.Name = "checkBox_Making_PR";
-            this.checkBox_Making_PR.Size = new System.Drawing.Size(206, 24);
+            this.checkBox_Making_PR.Size = new System.Drawing.Size(166, 19);
             this.checkBox_Making_PR.TabIndex = 60;
             this.checkBox_Making_PR.Text = "I am making a Puzzle Rush";
             this.checkBox_Making_PR.UseVisualStyleBackColor = true;
@@ -1303,10 +1295,9 @@
             this.button_Generate_P.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Generate_P.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Generate_P.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_Generate_P.Location = new System.Drawing.Point(226, 4);
-            this.button_Generate_P.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_Generate_P.Location = new System.Drawing.Point(198, 3);
             this.button_Generate_P.Name = "button_Generate_P";
-            this.button_Generate_P.Size = new System.Drawing.Size(177, 43);
+            this.button_Generate_P.Size = new System.Drawing.Size(155, 32);
             this.button_Generate_P.TabIndex = 3;
             this.button_Generate_P.Text = "(G)enerate Puzzle";
             this.button_Generate_P.UseVisualStyleBackColor = true;
@@ -1320,10 +1311,9 @@
             this.button_generate_PR.Enabled = false;
             this.button_generate_PR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_generate_PR.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_generate_PR.Location = new System.Drawing.Point(158, 84);
-            this.button_generate_PR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_generate_PR.Location = new System.Drawing.Point(138, 63);
             this.button_generate_PR.Name = "button_generate_PR";
-            this.button_generate_PR.Size = new System.Drawing.Size(246, 43);
+            this.button_generate_PR.Size = new System.Drawing.Size(215, 32);
             this.button_generate_PR.TabIndex = 59;
             this.button_generate_PR.Text = "Generate Puz(z)le Rush";
             this.button_generate_PR.UseVisualStyleBackColor = true;
@@ -1339,10 +1329,9 @@
             this.button_hint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hint.FlatAppearance.BorderSize = 0;
             this.button_hint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hint.Location = new System.Drawing.Point(634, 19);
-            this.button_hint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_hint.Location = new System.Drawing.Point(555, 14);
             this.button_hint.Name = "button_hint";
-            this.button_hint.Size = new System.Drawing.Size(57, 67);
+            this.button_hint.Size = new System.Drawing.Size(50, 50);
             this.button_hint.TabIndex = 39;
             this.toolTip1.SetToolTip(this.button_hint, "Hint");
             this.button_hint.UseVisualStyleBackColor = false;
@@ -1352,9 +1341,9 @@
             // 
             this.label_solution_chapter.AutoSize = true;
             this.label_solution_chapter.BackColor = System.Drawing.Color.Transparent;
-            this.label_solution_chapter.Location = new System.Drawing.Point(488, 16);
+            this.label_solution_chapter.Location = new System.Drawing.Point(427, 12);
             this.label_solution_chapter.Name = "label_solution_chapter";
-            this.label_solution_chapter.Size = new System.Drawing.Size(0, 20);
+            this.label_solution_chapter.Size = new System.Drawing.Size(0, 15);
             this.label_solution_chapter.TabIndex = 40;
             // 
             // menuChangeSquare
@@ -1373,7 +1362,7 @@
             this.thisIsPrepuzzleStartToolStripMenuItem,
             this.thisIsPrePuzzleEndToolStripMenuItem});
             this.menuChangeSquare.Name = "menuChangeSquare";
-            this.menuChangeSquare.Size = new System.Drawing.Size(339, 252);
+            this.menuChangeSquare.Size = new System.Drawing.Size(284, 210);
             // 
             // whiteToolStripMenuItem
             // 
@@ -1387,7 +1376,7 @@
             this.whiteToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.whiteToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.white;
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.whiteToolStripMenuItem.Text = "White";
             // 
             // whitePawnToolStripMenuItem
@@ -1395,7 +1384,7 @@
             this.whitePawnToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.pawn_white;
             this.whitePawnToolStripMenuItem.Name = "whitePawnToolStripMenuItem";
             this.whitePawnToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+1";
-            this.whitePawnToolStripMenuItem.Size = new System.Drawing.Size(282, 32);
+            this.whitePawnToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whitePawnToolStripMenuItem.Text = "White Pawn";
             this.whitePawnToolStripMenuItem.Click += new System.EventHandler(this.WhitePawnToolStripMenuItem_Click);
             // 
@@ -1404,7 +1393,7 @@
             this.whiteRookToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.rook_white;
             this.whiteRookToolStripMenuItem.Name = "whiteRookToolStripMenuItem";
             this.whiteRookToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+2";
-            this.whiteRookToolStripMenuItem.Size = new System.Drawing.Size(282, 32);
+            this.whiteRookToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whiteRookToolStripMenuItem.Text = "White Rook";
             this.whiteRookToolStripMenuItem.Click += new System.EventHandler(this.WhiteRookToolStripMenuItem_Click);
             // 
@@ -1413,7 +1402,7 @@
             this.whiteQueenToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.queen_white;
             this.whiteQueenToolStripMenuItem.Name = "whiteQueenToolStripMenuItem";
             this.whiteQueenToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+3";
-            this.whiteQueenToolStripMenuItem.Size = new System.Drawing.Size(282, 32);
+            this.whiteQueenToolStripMenuItem.Size = new System.Drawing.Size(227, 26);
             this.whiteQueenToolStripMenuItem.Text = "White Queen";
             this.whiteQueenToolStripMenuItem.Click += new System.EventHandler(this.WhiteQueenToolStripMenuItem_Click);
             // 
@@ -1422,7 +1411,7 @@
             this.whiteKingToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.king_white;
             this.whiteKingToolStripMenuItem1.Name = "whiteKingToolStripMenuItem1";
             this.whiteKingToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+4";
-            this.whiteKingToolStripMenuItem1.Size = new System.Drawing.Size(282, 32);
+            this.whiteKingToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteKingToolStripMenuItem1.Text = "White King";
             this.whiteKingToolStripMenuItem1.Click += new System.EventHandler(this.WhiteKingToolStripMenuItem1_Click);
             // 
@@ -1431,7 +1420,7 @@
             this.whiteBishopToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.bishop_white;
             this.whiteBishopToolStripMenuItem1.Name = "whiteBishopToolStripMenuItem1";
             this.whiteBishopToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+5";
-            this.whiteBishopToolStripMenuItem1.Size = new System.Drawing.Size(282, 32);
+            this.whiteBishopToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteBishopToolStripMenuItem1.Text = "White Bishop";
             this.whiteBishopToolStripMenuItem1.Click += new System.EventHandler(this.WhiteBishopToolStripMenuItem1_Click);
             // 
@@ -1440,7 +1429,7 @@
             this.whiteKnightToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.knight_white;
             this.whiteKnightToolStripMenuItem1.Name = "whiteKnightToolStripMenuItem1";
             this.whiteKnightToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+6";
-            this.whiteKnightToolStripMenuItem1.Size = new System.Drawing.Size(282, 32);
+            this.whiteKnightToolStripMenuItem1.Size = new System.Drawing.Size(227, 26);
             this.whiteKnightToolStripMenuItem1.Text = "White Knight";
             this.whiteKnightToolStripMenuItem1.Click += new System.EventHandler(this.WhiteKnightToolStripMenuItem1_Click);
             // 
@@ -1456,7 +1445,7 @@
             this.blackToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.blackToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.pitchBlack;
             this.blackToolStripMenuItem.Name = "blackToolStripMenuItem";
-            this.blackToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.blackToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.blackToolStripMenuItem.Text = "Black";
             // 
             // blackPawnToolStripMenuItem1
@@ -1464,7 +1453,7 @@
             this.blackPawnToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.pawn_black;
             this.blackPawnToolStripMenuItem1.Name = "blackPawnToolStripMenuItem1";
             this.blackPawnToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+1";
-            this.blackPawnToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackPawnToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackPawnToolStripMenuItem1.Text = "Black Pawn";
             this.blackPawnToolStripMenuItem1.Click += new System.EventHandler(this.BlackPawnToolStripMenuItem1_Click);
             // 
@@ -1473,7 +1462,7 @@
             this.blackRookToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.rook_black;
             this.blackRookToolStripMenuItem1.Name = "blackRookToolStripMenuItem1";
             this.blackRookToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+2";
-            this.blackRookToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackRookToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackRookToolStripMenuItem1.Text = "Black Rook";
             this.blackRookToolStripMenuItem1.Click += new System.EventHandler(this.BlackRookToolStripMenuItem1_Click);
             // 
@@ -1482,7 +1471,7 @@
             this.blackQueenToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.queen_black;
             this.blackQueenToolStripMenuItem1.Name = "blackQueenToolStripMenuItem1";
             this.blackQueenToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+3";
-            this.blackQueenToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackQueenToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackQueenToolStripMenuItem1.Text = "Black Queen";
             this.blackQueenToolStripMenuItem1.Click += new System.EventHandler(this.BlackQueenToolStripMenuItem1_Click);
             // 
@@ -1491,7 +1480,7 @@
             this.blackKingToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.king_black;
             this.blackKingToolStripMenuItem1.Name = "blackKingToolStripMenuItem1";
             this.blackKingToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+4";
-            this.blackKingToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackKingToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackKingToolStripMenuItem1.Text = "Black King";
             this.blackKingToolStripMenuItem1.Click += new System.EventHandler(this.BlackKingToolStripMenuItem1_Click);
             // 
@@ -1500,7 +1489,7 @@
             this.blackBishopToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.bishop_black;
             this.blackBishopToolStripMenuItem1.Name = "blackBishopToolStripMenuItem1";
             this.blackBishopToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+5";
-            this.blackBishopToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackBishopToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackBishopToolStripMenuItem1.Text = "Black Bishop";
             this.blackBishopToolStripMenuItem1.Click += new System.EventHandler(this.BlackBishopToolStripMenuItem1_Click);
             // 
@@ -1509,32 +1498,32 @@
             this.blackKnightToolStripMenuItem1.Image = global::Chezz_Puzzler.Properties.Resources.king_black;
             this.blackKnightToolStripMenuItem1.Name = "blackKnightToolStripMenuItem1";
             this.blackKnightToolStripMenuItem1.ShortcutKeyDisplayString = "Alt+6";
-            this.blackKnightToolStripMenuItem1.Size = new System.Drawing.Size(269, 32);
+            this.blackKnightToolStripMenuItem1.Size = new System.Drawing.Size(216, 26);
             this.blackKnightToolStripMenuItem1.Text = "Black Knight";
             this.blackKnightToolStripMenuItem1.Click += new System.EventHandler(this.BlBckKnightToolStripMenuItem1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(335, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(280, 6);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(335, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(280, 6);
             // 
             // eMPYToolStripMenuItem
             // 
             this.eMPYToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.eMPYToolStripMenuItem.Name = "eMPYToolStripMenuItem";
-            this.eMPYToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.eMPYToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.eMPYToolStripMenuItem.Text = "EMPY";
             this.eMPYToolStripMenuItem.Click += new System.EventHandler(this.EMPYToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(335, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(280, 6);
             // 
             // thisIsAttackerToolStripMenuItem
             // 
@@ -1543,7 +1532,7 @@
             this.thisIsAttackerToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.tosquare1;
             this.thisIsAttackerToolStripMenuItem.Name = "thisIsAttackerToolStripMenuItem";
             this.thisIsAttackerToolStripMenuItem.ShortcutKeyDisplayString = "1";
-            this.thisIsAttackerToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.thisIsAttackerToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.thisIsAttackerToolStripMenuItem.Text = "This is Attacker";
             this.thisIsAttackerToolStripMenuItem.Click += new System.EventHandler(this.ThisIsAttackerToolStripMenuItem_Click);
             // 
@@ -1553,21 +1542,21 @@
             this.thisIsAttackedToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.tosquare1;
             this.thisIsAttackedToolStripMenuItem.Name = "thisIsAttackedToolStripMenuItem";
             this.thisIsAttackedToolStripMenuItem.ShortcutKeyDisplayString = "2";
-            this.thisIsAttackedToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.thisIsAttackedToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.thisIsAttackedToolStripMenuItem.Text = "This is Attacked";
             this.thisIsAttackedToolStripMenuItem.Click += new System.EventHandler(this.ThisIsAttackedToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(335, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(280, 6);
             // 
             // thisIsPrepuzzleStartToolStripMenuItem
             // 
             this.thisIsPrepuzzleStartToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.thisIsPrepuzzleStartToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.go_to;
             this.thisIsPrepuzzleStartToolStripMenuItem.Name = "thisIsPrepuzzleStartToolStripMenuItem";
-            this.thisIsPrepuzzleStartToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.thisIsPrepuzzleStartToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.thisIsPrepuzzleStartToolStripMenuItem.Text = "This is last move played, start";
             this.thisIsPrepuzzleStartToolStripMenuItem.Click += new System.EventHandler(this.ThisIsPrepuzzleStartToolStripMenuItem_Click);
             // 
@@ -1576,7 +1565,7 @@
             this.thisIsPrePuzzleEndToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.thisIsPrePuzzleEndToolStripMenuItem.Image = global::Chezz_Puzzler.Properties.Resources.go_to;
             this.thisIsPrePuzzleEndToolStripMenuItem.Name = "thisIsPrePuzzleEndToolStripMenuItem";
-            this.thisIsPrePuzzleEndToolStripMenuItem.Size = new System.Drawing.Size(338, 32);
+            this.thisIsPrePuzzleEndToolStripMenuItem.Size = new System.Drawing.Size(283, 26);
             this.thisIsPrePuzzleEndToolStripMenuItem.Text = "This is last move played, end";
             this.thisIsPrePuzzleEndToolStripMenuItem.Click += new System.EventHandler(this.ThisIsPrePuzzleEndToolStripMenuItem_Click);
             // 
@@ -1584,9 +1573,9 @@
             // 
             this.label_chapterCounter.BackColor = System.Drawing.Color.Transparent;
             this.label_chapterCounter.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_chapterCounter.Location = new System.Drawing.Point(625, 383);
+            this.label_chapterCounter.Location = new System.Drawing.Point(547, 287);
             this.label_chapterCounter.Name = "label_chapterCounter";
-            this.label_chapterCounter.Size = new System.Drawing.Size(77, 28);
+            this.label_chapterCounter.Size = new System.Drawing.Size(67, 21);
             this.label_chapterCounter.TabIndex = 45;
             this.label_chapterCounter.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label_chapterCounter.Visible = false;
@@ -1596,9 +1585,9 @@
             this.label_hint.AutoSize = true;
             this.label_hint.BackColor = System.Drawing.Color.Transparent;
             this.label_hint.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label_hint.Location = new System.Drawing.Point(702, 41);
+            this.label_hint.Location = new System.Drawing.Point(614, 31);
             this.label_hint.Name = "label_hint";
-            this.label_hint.Size = new System.Drawing.Size(0, 20);
+            this.label_hint.Size = new System.Drawing.Size(0, 15);
             this.label_hint.TabIndex = 46;
             this.label_hint.Visible = false;
             // 
@@ -1607,9 +1596,9 @@
             this.label_square_displayer.AutoSize = true;
             this.label_square_displayer.BackColor = System.Drawing.Color.Transparent;
             this.label_square_displayer.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_square_displayer.Location = new System.Drawing.Point(631, 20);
+            this.label_square_displayer.Location = new System.Drawing.Point(552, 15);
             this.label_square_displayer.Name = "label_square_displayer";
-            this.label_square_displayer.Size = new System.Drawing.Size(24, 32);
+            this.label_square_displayer.Size = new System.Drawing.Size(20, 25);
             this.label_square_displayer.TabIndex = 47;
             this.label_square_displayer.Text = "_";
             this.label_square_displayer.Visible = false;
@@ -1619,9 +1608,9 @@
             this.label_Action_Response.BackColor = System.Drawing.Color.Transparent;
             this.label_Action_Response.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_Action_Response.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Action_Response.Location = new System.Drawing.Point(0, 127);
+            this.label_Action_Response.Location = new System.Drawing.Point(0, 95);
             this.label_Action_Response.Name = "label_Action_Response";
-            this.label_Action_Response.Size = new System.Drawing.Size(594, 33);
+            this.label_Action_Response.Size = new System.Drawing.Size(520, 25);
             this.label_Action_Response.TabIndex = 48;
             this.label_Action_Response.Text = "To move: player";
             this.label_Action_Response.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1639,10 +1628,9 @@
             this.panel_bottom.Controls.Add(this.button1);
             this.panel_bottom.Controls.Add(this.checkBox_hotkeys);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_bottom.Location = new System.Drawing.Point(0, 978);
-            this.panel_bottom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_bottom.Location = new System.Drawing.Point(0, 733);
             this.panel_bottom.Name = "panel_bottom";
-            this.panel_bottom.Size = new System.Drawing.Size(1605, 77);
+            this.panel_bottom.Size = new System.Drawing.Size(1404, 58);
             this.panel_bottom.TabIndex = 49;
             // 
             // checkBox_sounds
@@ -1651,10 +1639,9 @@
             this.checkBox_sounds.Checked = true;
             this.checkBox_sounds.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_sounds.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_sounds.Location = new System.Drawing.Point(551, 7);
-            this.checkBox_sounds.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_sounds.Location = new System.Drawing.Point(482, 5);
             this.checkBox_sounds.Name = "checkBox_sounds";
-            this.checkBox_sounds.Size = new System.Drawing.Size(108, 24);
+            this.checkBox_sounds.Size = new System.Drawing.Size(89, 19);
             this.checkBox_sounds.TabIndex = 60;
             this.checkBox_sounds.Text = "Play sounds";
             this.checkBox_sounds.UseVisualStyleBackColor = true;
@@ -1664,10 +1651,9 @@
             // 
             this.checkBox_shuffle_PR.AutoSize = true;
             this.checkBox_shuffle_PR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_shuffle_PR.Location = new System.Drawing.Point(304, 7);
-            this.checkBox_shuffle_PR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_shuffle_PR.Location = new System.Drawing.Point(266, 5);
             this.checkBox_shuffle_PR.Name = "checkBox_shuffle_PR";
-            this.checkBox_shuffle_PR.Size = new System.Drawing.Size(261, 24);
+            this.checkBox_shuffle_PR.Size = new System.Drawing.Size(208, 19);
             this.checkBox_shuffle_PR.TabIndex = 59;
             this.checkBox_shuffle_PR.Text = "Shuffle the puzzles in a puzzle rush";
             this.checkBox_shuffle_PR.UseVisualStyleBackColor = true;
@@ -1680,10 +1666,9 @@
             this.button_settings.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_settings.FlatAppearance.BorderSize = 0;
             this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_settings.Location = new System.Drawing.Point(701, 20);
-            this.button_settings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_settings.Location = new System.Drawing.Point(613, 15);
             this.button_settings.Name = "button_settings";
-            this.button_settings.Size = new System.Drawing.Size(34, 40);
+            this.button_settings.Size = new System.Drawing.Size(30, 30);
             this.button_settings.TabIndex = 54;
             this.button_settings.UseVisualStyleBackColor = true;
             this.button_settings.Click += new System.EventHandler(this.Button9_Click);
@@ -1692,10 +1677,9 @@
             // 
             this.checkBox_AU_Reset.AutoSize = true;
             this.checkBox_AU_Reset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_AU_Reset.Location = new System.Drawing.Point(367, 43);
-            this.checkBox_AU_Reset.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_AU_Reset.Location = new System.Drawing.Point(321, 32);
             this.checkBox_AU_Reset.Name = "checkBox_AU_Reset";
-            this.checkBox_AU_Reset.Size = new System.Drawing.Size(349, 24);
+            this.checkBox_AU_Reset.Size = new System.Drawing.Size(279, 19);
             this.checkBox_AU_Reset.TabIndex = 58;
             this.checkBox_AU_Reset.Text = "Automatically restart the currently solved puzzle\r\n";
             this.checkBox_AU_Reset.UseVisualStyleBackColor = true;
@@ -1705,10 +1689,9 @@
             // 
             this.checkBox_UseBG.AutoSize = true;
             this.checkBox_UseBG.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_UseBG.Location = new System.Drawing.Point(123, 9);
-            this.checkBox_UseBG.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_UseBG.Location = new System.Drawing.Point(108, 7);
             this.checkBox_UseBG.Name = "checkBox_UseBG";
-            this.checkBox_UseBG.Size = new System.Drawing.Size(184, 24);
+            this.checkBox_UseBG.Size = new System.Drawing.Size(148, 19);
             this.checkBox_UseBG.TabIndex = 57;
             this.checkBox_UseBG.Text = "Use background Image";
             this.checkBox_UseBG.UseVisualStyleBackColor = true;
@@ -1720,10 +1703,9 @@
             this.checkBox_autoPR.Checked = true;
             this.checkBox_autoPR.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_autoPR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_autoPR.Location = new System.Drawing.Point(13, 43);
-            this.checkBox_autoPR.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_autoPR.Location = new System.Drawing.Point(11, 32);
             this.checkBox_autoPR.Name = "checkBox_autoPR";
-            this.checkBox_autoPR.Size = new System.Drawing.Size(373, 24);
+            this.checkBox_autoPR.Size = new System.Drawing.Size(297, 19);
             this.checkBox_autoPR.TabIndex = 56;
             this.checkBox_autoPR.Text = "Automatically go to the next puzzle in a puzzle rush";
             this.checkBox_autoPR.UseVisualStyleBackColor = true;
@@ -1737,10 +1719,9 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(1562, 20);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button1.Location = new System.Drawing.Point(1366, 15);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(34, 40);
+            this.button1.Size = new System.Drawing.Size(30, 30);
             this.button1.TabIndex = 55;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.HelpButton_Click);
@@ -1751,10 +1732,9 @@
             this.checkBox_hotkeys.Checked = true;
             this.checkBox_hotkeys.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_hotkeys.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.checkBox_hotkeys.Location = new System.Drawing.Point(13, 9);
-            this.checkBox_hotkeys.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.checkBox_hotkeys.Location = new System.Drawing.Point(11, 7);
             this.checkBox_hotkeys.Name = "checkBox_hotkeys";
-            this.checkBox_hotkeys.Size = new System.Drawing.Size(112, 24);
+            this.checkBox_hotkeys.Size = new System.Drawing.Size(91, 19);
             this.checkBox_hotkeys.TabIndex = 50;
             this.checkBox_hotkeys.Text = "Use Hotkeys";
             this.checkBox_hotkeys.UseVisualStyleBackColor = true;
@@ -1774,13 +1754,13 @@
             this.changeResponseTimeOfPlayer2ToolStripMenuItem,
             this.resetAllToolStripMenuItem});
             this.context_options.Name = "context_options";
-            this.context_options.Size = new System.Drawing.Size(443, 292);
+            this.context_options.Size = new System.Drawing.Size(367, 238);
             // 
             // changeColorOfWhiteSquareToolStripMenuItem
             // 
             this.changeColorOfWhiteSquareToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeColorOfWhiteSquareToolStripMenuItem.Name = "changeColorOfWhiteSquareToolStripMenuItem";
-            this.changeColorOfWhiteSquareToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeColorOfWhiteSquareToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeColorOfWhiteSquareToolStripMenuItem.Text = "Change Color of White Squares...";
             this.changeColorOfWhiteSquareToolStripMenuItem.Click += new System.EventHandler(this.ChangeColorOfWhiteSquareToolStripMenuItem_Click);
             // 
@@ -1788,7 +1768,7 @@
             // 
             this.changeColorOfBlackSquaresToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeColorOfBlackSquaresToolStripMenuItem.Name = "changeColorOfBlackSquaresToolStripMenuItem";
-            this.changeColorOfBlackSquaresToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeColorOfBlackSquaresToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeColorOfBlackSquaresToolStripMenuItem.Text = "Change Color of Black Squares...";
             this.changeColorOfBlackSquaresToolStripMenuItem.Click += new System.EventHandler(this.ChangeColorOfBlackSquaresToolStripMenuItem_Click);
             // 
@@ -1796,7 +1776,7 @@
             // 
             this.changeHightlightedSquareColorToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeHightlightedSquareColorToolStripMenuItem.Name = "changeHightlightedSquareColorToolStripMenuItem";
-            this.changeHightlightedSquareColorToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeHightlightedSquareColorToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeHightlightedSquareColorToolStripMenuItem.Text = "Change Selected Square\'s Color...";
             this.changeHightlightedSquareColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeHightlightedSquareColorToolStripMenuItem_Click);
             // 
@@ -1804,7 +1784,7 @@
             // 
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Name = "changeTheHoverColorOfTheSquaresToolStripMenuItem";
-            this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Text = "Change The Hover Color Of The Squares...";
             this.changeTheHoverColorOfTheSquaresToolStripMenuItem.Click += new System.EventHandler(this.ChangeTheHoverColorOfTheSquaresToolStripMenuItem_Click);
             // 
@@ -1812,7 +1792,7 @@
             // 
             this.changeLastMoveHightlightColorToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeLastMoveHightlightColorToolStripMenuItem.Name = "changeLastMoveHightlightColorToolStripMenuItem";
-            this.changeLastMoveHightlightColorToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeLastMoveHightlightColorToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeLastMoveHightlightColorToolStripMenuItem.Text = "Change Last Move Hightlight\'s Color...";
             this.changeLastMoveHightlightColorToolStripMenuItem.Click += new System.EventHandler(this.ChangeLastMoveHightlightColorToolStripMenuItem_Click);
             // 
@@ -1820,28 +1800,28 @@
             // 
             this.toolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(442, 32);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(366, 26);
             this.toolStripMenuItem1.Text = "Set Current Countdown...";
             // 
             // setCountdownToolStripMenuItem
             // 
             this.setCountdownToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.setCountdownToolStripMenuItem.Name = "setCountdownToolStripMenuItem";
-            this.setCountdownToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.setCountdownToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.setCountdownToolStripMenuItem.Text = "Set Default Countdown...";
             // 
             // changeResponseTimeOfPlayer2ToolStripMenuItem
             // 
             this.changeResponseTimeOfPlayer2ToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.changeResponseTimeOfPlayer2ToolStripMenuItem.Name = "changeResponseTimeOfPlayer2ToolStripMenuItem";
-            this.changeResponseTimeOfPlayer2ToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.changeResponseTimeOfPlayer2ToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.changeResponseTimeOfPlayer2ToolStripMenuItem.Text = "Change response time of player 2...";
             // 
             // resetAllToolStripMenuItem
             // 
             this.resetAllToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.resetAllToolStripMenuItem.Name = "resetAllToolStripMenuItem";
-            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(442, 32);
+            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(366, 26);
             this.resetAllToolStripMenuItem.Text = "Reset All";
             this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.ResetAllToolStripMenuItem_Click);
             // 
@@ -1853,10 +1833,9 @@
             this.button_show_solution.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_show_solution.FlatAppearance.BorderSize = 0;
             this.button_show_solution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_show_solution.Location = new System.Drawing.Point(634, 93);
-            this.button_show_solution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_show_solution.Location = new System.Drawing.Point(555, 70);
             this.button_show_solution.Name = "button_show_solution";
-            this.button_show_solution.Size = new System.Drawing.Size(57, 67);
+            this.button_show_solution.Size = new System.Drawing.Size(50, 50);
             this.button_show_solution.TabIndex = 50;
             this.toolTip1.SetToolTip(this.button_show_solution, "Show solution");
             this.button_show_solution.UseVisualStyleBackColor = false;
@@ -1865,9 +1844,9 @@
             // label_show_solution
             // 
             this.label_show_solution.AutoSize = true;
-            this.label_show_solution.Location = new System.Drawing.Point(698, 115);
+            this.label_show_solution.Location = new System.Drawing.Point(611, 86);
             this.label_show_solution.Name = "label_show_solution";
-            this.label_show_solution.Size = new System.Drawing.Size(0, 20);
+            this.label_show_solution.Size = new System.Drawing.Size(0, 15);
             this.label_show_solution.TabIndex = 51;
             // 
             // button_export_Local
@@ -1875,10 +1854,9 @@
             this.button_export_Local.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_export_Local.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_export_Local.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_export_Local.Location = new System.Drawing.Point(3, 4);
-            this.button_export_Local.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_export_Local.Location = new System.Drawing.Point(3, 3);
             this.button_export_Local.Name = "button_export_Local";
-            this.button_export_Local.Size = new System.Drawing.Size(206, 43);
+            this.button_export_Local.Size = new System.Drawing.Size(180, 32);
             this.button_export_Local.TabIndex = 52;
             this.button_export_Local.Text = "Export position as SCN";
             this.button_export_Local.UseVisualStyleBackColor = true;
@@ -1891,10 +1869,9 @@
             this.button_export_FEN.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_export_FEN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_export_FEN.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button_export_FEN.Location = new System.Drawing.Point(216, 4);
-            this.button_export_FEN.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_export_FEN.Location = new System.Drawing.Point(189, 3);
             this.button_export_FEN.Name = "button_export_FEN";
-            this.button_export_FEN.Size = new System.Drawing.Size(191, 43);
+            this.button_export_FEN.Size = new System.Drawing.Size(167, 32);
             this.button_export_FEN.TabIndex = 53;
             this.button_export_FEN.Text = "Export position as FEN";
             this.button_export_FEN.UseVisualStyleBackColor = true;
@@ -1908,18 +1885,17 @@
             this.panel1.Controls.Add(this.button_export_Local);
             this.panel1.Controls.Add(this.button_export_FEN);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 907);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel1.Location = new System.Drawing.Point(0, 680);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1179, 71);
+            this.panel1.Size = new System.Drawing.Size(1031, 53);
             this.panel1.TabIndex = 54;
             // 
             // label_a
             // 
             this.label_a.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_a.Location = new System.Drawing.Point(24, 711);
+            this.label_a.Location = new System.Drawing.Point(21, 533);
             this.label_a.Name = "label_a";
-            this.label_a.Size = new System.Drawing.Size(75, 23);
+            this.label_a.Size = new System.Drawing.Size(66, 18);
             this.label_a.TabIndex = 56;
             this.label_a.Text = "a";
             this.label_a.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1927,9 +1903,9 @@
             // label_b
             // 
             this.label_b.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_b.Location = new System.Drawing.Point(99, 711);
+            this.label_b.Location = new System.Drawing.Point(87, 533);
             this.label_b.Name = "label_b";
-            this.label_b.Size = new System.Drawing.Size(75, 23);
+            this.label_b.Size = new System.Drawing.Size(66, 18);
             this.label_b.TabIndex = 57;
             this.label_b.Text = "b";
             this.label_b.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1937,9 +1913,9 @@
             // label_d
             // 
             this.label_d.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_d.Location = new System.Drawing.Point(250, 711);
+            this.label_d.Location = new System.Drawing.Point(219, 533);
             this.label_d.Name = "label_d";
-            this.label_d.Size = new System.Drawing.Size(75, 23);
+            this.label_d.Size = new System.Drawing.Size(66, 18);
             this.label_d.TabIndex = 59;
             this.label_d.Text = "d";
             this.label_d.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1947,29 +1923,31 @@
             // label_c
             // 
             this.label_c.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_c.Location = new System.Drawing.Point(175, 711);
+            this.label_c.Location = new System.Drawing.Point(153, 533);
             this.label_c.Name = "label_c";
-            this.label_c.Size = new System.Drawing.Size(75, 23);
+            this.label_c.Size = new System.Drawing.Size(66, 18);
             this.label_c.TabIndex = 58;
             this.label_c.Text = "c";
             this.label_c.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label_h
             // 
+            this.label_h.AllowDrop = true;
             this.label_h.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_h.Location = new System.Drawing.Point(543, 711);
+            this.label_h.Location = new System.Drawing.Point(475, 533);
             this.label_h.Name = "label_h";
-            this.label_h.Size = new System.Drawing.Size(75, 23);
+            this.label_h.Size = new System.Drawing.Size(66, 18);
             this.label_h.TabIndex = 63;
             this.label_h.Text = "h";
             this.label_h.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label_h.DragDrop += new System.Windows.Forms.DragEventHandler(this.label_h_DragDrop);
             // 
             // label_g
             // 
             this.label_g.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_g.Location = new System.Drawing.Point(467, 711);
+            this.label_g.Location = new System.Drawing.Point(409, 533);
             this.label_g.Name = "label_g";
-            this.label_g.Size = new System.Drawing.Size(75, 23);
+            this.label_g.Size = new System.Drawing.Size(66, 18);
             this.label_g.TabIndex = 62;
             this.label_g.Text = "g";
             this.label_g.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1977,9 +1955,9 @@
             // label_f
             // 
             this.label_f.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_f.Location = new System.Drawing.Point(392, 711);
+            this.label_f.Location = new System.Drawing.Point(343, 533);
             this.label_f.Name = "label_f";
-            this.label_f.Size = new System.Drawing.Size(75, 23);
+            this.label_f.Size = new System.Drawing.Size(66, 18);
             this.label_f.TabIndex = 61;
             this.label_f.Text = "f";
             this.label_f.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1987,9 +1965,9 @@
             // label_e
             // 
             this.label_e.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_e.Location = new System.Drawing.Point(317, 711);
+            this.label_e.Location = new System.Drawing.Point(277, 533);
             this.label_e.Name = "label_e";
-            this.label_e.Size = new System.Drawing.Size(75, 23);
+            this.label_e.Size = new System.Drawing.Size(66, 18);
             this.label_e.TabIndex = 60;
             this.label_e.Text = "e";
             this.label_e.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1997,9 +1975,9 @@
             // label_8
             // 
             this.label_8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_8.Location = new System.Drawing.Point(3, 16);
+            this.label_8.Location = new System.Drawing.Point(3, 12);
             this.label_8.Name = "label_8";
-            this.label_8.Size = new System.Drawing.Size(20, 87);
+            this.label_8.Size = new System.Drawing.Size(18, 66);
             this.label_8.TabIndex = 64;
             this.label_8.Text = "8";
             this.label_8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2007,9 +1985,9 @@
             // label_7
             // 
             this.label_7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_7.Location = new System.Drawing.Point(3, 97);
+            this.label_7.Location = new System.Drawing.Point(3, 73);
             this.label_7.Name = "label_7";
-            this.label_7.Size = new System.Drawing.Size(20, 87);
+            this.label_7.Size = new System.Drawing.Size(18, 66);
             this.label_7.TabIndex = 65;
             this.label_7.Text = "7";
             this.label_7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2017,9 +1995,9 @@
             // label_5
             // 
             this.label_5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_5.Location = new System.Drawing.Point(3, 267);
+            this.label_5.Location = new System.Drawing.Point(3, 200);
             this.label_5.Name = "label_5";
-            this.label_5.Size = new System.Drawing.Size(20, 87);
+            this.label_5.Size = new System.Drawing.Size(18, 66);
             this.label_5.TabIndex = 67;
             this.label_5.Text = "5";
             this.label_5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2027,9 +2005,9 @@
             // label_6
             // 
             this.label_6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_6.Location = new System.Drawing.Point(3, 185);
+            this.label_6.Location = new System.Drawing.Point(3, 139);
             this.label_6.Name = "label_6";
-            this.label_6.Size = new System.Drawing.Size(20, 87);
+            this.label_6.Size = new System.Drawing.Size(18, 66);
             this.label_6.TabIndex = 66;
             this.label_6.Text = "6";
             this.label_6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2037,9 +2015,9 @@
             // label_1
             // 
             this.label_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_1.Location = new System.Drawing.Point(3, 620);
+            this.label_1.Location = new System.Drawing.Point(3, 465);
             this.label_1.Name = "label_1";
-            this.label_1.Size = new System.Drawing.Size(20, 87);
+            this.label_1.Size = new System.Drawing.Size(18, 66);
             this.label_1.TabIndex = 71;
             this.label_1.Text = "1";
             this.label_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2047,9 +2025,9 @@
             // label_2
             // 
             this.label_2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_2.Location = new System.Drawing.Point(3, 532);
+            this.label_2.Location = new System.Drawing.Point(3, 399);
             this.label_2.Name = "label_2";
-            this.label_2.Size = new System.Drawing.Size(20, 87);
+            this.label_2.Size = new System.Drawing.Size(18, 66);
             this.label_2.TabIndex = 70;
             this.label_2.Text = "2";
             this.label_2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2057,9 +2035,9 @@
             // label_3
             // 
             this.label_3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_3.Location = new System.Drawing.Point(3, 444);
+            this.label_3.Location = new System.Drawing.Point(3, 333);
             this.label_3.Name = "label_3";
-            this.label_3.Size = new System.Drawing.Size(20, 87);
+            this.label_3.Size = new System.Drawing.Size(18, 66);
             this.label_3.TabIndex = 69;
             this.label_3.Text = "3";
             this.label_3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2067,9 +2045,9 @@
             // label_4
             // 
             this.label_4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label_4.Location = new System.Drawing.Point(3, 355);
+            this.label_4.Location = new System.Drawing.Point(3, 266);
             this.label_4.Name = "label_4";
-            this.label_4.Size = new System.Drawing.Size(20, 87);
+            this.label_4.Size = new System.Drawing.Size(18, 66);
             this.label_4.TabIndex = 68;
             this.label_4.Text = "4";
             this.label_4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2083,13 +2061,13 @@
             this.stopToolStripMenuItem,
             this.restartToolStripMenuItem});
             this.menu_Timer_Puzzle.Name = "contextMenuStripTimerLabel";
-            this.menu_Timer_Puzzle.Size = new System.Drawing.Size(149, 132);
+            this.menu_Timer_Puzzle.Size = new System.Drawing.Size(134, 108);
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(148, 32);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.PauseToolStripMenuItem_Click);
             // 
@@ -2097,7 +2075,7 @@
             // 
             this.resumeToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.resumeToolStripMenuItem.Name = "resumeToolStripMenuItem";
-            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(148, 32);
+            this.resumeToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.resumeToolStripMenuItem.Text = "Resume";
             this.resumeToolStripMenuItem.Click += new System.EventHandler(this.ResumeToolStripMenuItem_Click);
             // 
@@ -2105,7 +2083,7 @@
             // 
             this.stopToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(148, 32);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.StopToolStripMenuItem_Click);
             // 
@@ -2113,7 +2091,7 @@
             // 
             this.restartToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            this.restartToolStripMenuItem.Size = new System.Drawing.Size(148, 32);
+            this.restartToolStripMenuItem.Size = new System.Drawing.Size(133, 26);
             this.restartToolStripMenuItem.Text = "Restart";
             this.restartToolStripMenuItem.Click += new System.EventHandler(this.RestartToolStripMenuItem_Click);
             // 
@@ -2121,9 +2099,9 @@
             // 
             this.label_move_wrong.AutoSize = true;
             this.label_move_wrong.BackColor = System.Drawing.Color.Transparent;
-            this.label_move_wrong.Location = new System.Drawing.Point(698, 267);
+            this.label_move_wrong.Location = new System.Drawing.Point(611, 200);
             this.label_move_wrong.Name = "label_move_wrong";
-            this.label_move_wrong.Size = new System.Drawing.Size(0, 20);
+            this.label_move_wrong.Size = new System.Drawing.Size(0, 15);
             this.label_move_wrong.TabIndex = 74;
             // 
             // label_move_right
@@ -2131,9 +2109,9 @@
             this.label_move_right.AutoSize = true;
             this.label_move_right.BackColor = System.Drawing.Color.Transparent;
             this.label_move_right.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label_move_right.Location = new System.Drawing.Point(689, 349);
+            this.label_move_right.Location = new System.Drawing.Point(603, 262);
             this.label_move_right.Name = "label_move_right";
-            this.label_move_right.Size = new System.Drawing.Size(0, 20);
+            this.label_move_right.Size = new System.Drawing.Size(0, 15);
             this.label_move_right.TabIndex = 75;
             // 
             // panel_cd_event_toMove
@@ -2143,10 +2121,9 @@
             this.panel_cd_event_toMove.Controls.Add(this.label_Countdown_Puzzle);
             this.panel_cd_event_toMove.Controls.Add(this.label_Countdown_Global);
             this.panel_cd_event_toMove.Controls.Add(this.label_Action_Response);
-            this.panel_cd_event_toMove.Location = new System.Drawing.Point(31, 741);
-            this.panel_cd_event_toMove.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_cd_event_toMove.Location = new System.Drawing.Point(27, 556);
             this.panel_cd_event_toMove.Name = "panel_cd_event_toMove";
-            this.panel_cd_event_toMove.Size = new System.Drawing.Size(594, 160);
+            this.panel_cd_event_toMove.Size = new System.Drawing.Size(520, 120);
             this.panel_cd_event_toMove.TabIndex = 78;
             // 
             // label_event
@@ -2155,7 +2132,7 @@
             this.label_event.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_event.Location = new System.Drawing.Point(0, 0);
             this.label_event.Name = "label_event";
-            this.label_event.Size = new System.Drawing.Size(594, 47);
+            this.label_event.Size = new System.Drawing.Size(520, 35);
             this.label_event.TabIndex = 80;
             this.label_event.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -2164,9 +2141,9 @@
             this.label_Countdown_Puzzle.ContextMenuStrip = this.menu_Timer_Puzzle;
             this.label_Countdown_Puzzle.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_Countdown_Puzzle.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Countdown_Puzzle.Location = new System.Drawing.Point(0, 47);
+            this.label_Countdown_Puzzle.Location = new System.Drawing.Point(0, 35);
             this.label_Countdown_Puzzle.Name = "label_Countdown_Puzzle";
-            this.label_Countdown_Puzzle.Size = new System.Drawing.Size(594, 40);
+            this.label_Countdown_Puzzle.Size = new System.Drawing.Size(520, 30);
             this.label_Countdown_Puzzle.TabIndex = 79;
             this.label_Countdown_Puzzle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -2175,9 +2152,9 @@
             this.label_Countdown_Global.ContextMenuStrip = this.menu_global;
             this.label_Countdown_Global.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label_Countdown_Global.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Countdown_Global.Location = new System.Drawing.Point(0, 87);
+            this.label_Countdown_Global.Location = new System.Drawing.Point(0, 65);
             this.label_Countdown_Global.Name = "label_Countdown_Global";
-            this.label_Countdown_Global.Size = new System.Drawing.Size(594, 40);
+            this.label_Countdown_Global.Size = new System.Drawing.Size(520, 30);
             this.label_Countdown_Global.TabIndex = 78;
             this.label_Countdown_Global.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -2190,13 +2167,13 @@
             this.toolStripMenuItem6,
             this.toolStripMenuItem7});
             this.menu_global.Name = "contextMenuStripTimerLabel";
-            this.menu_global.Size = new System.Drawing.Size(149, 132);
+            this.menu_global.Size = new System.Drawing.Size(134, 108);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(148, 32);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(133, 26);
             this.toolStripMenuItem2.Text = "Pause";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.ToolStripMenuItem2_Click);
             // 
@@ -2204,7 +2181,7 @@
             // 
             this.toolStripMenuItem3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(148, 32);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(133, 26);
             this.toolStripMenuItem3.Text = "Resume";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.ToolStripMenuItem3_Click);
             // 
@@ -2212,7 +2189,7 @@
             // 
             this.toolStripMenuItem6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(148, 32);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(133, 26);
             this.toolStripMenuItem6.Text = "Stop";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.ToolStripMenuItem6_Click);
             // 
@@ -2220,7 +2197,7 @@
             // 
             this.toolStripMenuItem7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(148, 32);
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(133, 26);
             this.toolStripMenuItem7.Text = "Restart";
             this.toolStripMenuItem7.Click += new System.EventHandler(this.ToolStripMenuItem7_Click);
             // 
@@ -2232,10 +2209,9 @@
             this.button_GenerateStartingChessPosition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_GenerateStartingChessPosition.FlatAppearance.BorderSize = 0;
             this.button_GenerateStartingChessPosition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_GenerateStartingChessPosition.Location = new System.Drawing.Point(625, 671);
-            this.button_GenerateStartingChessPosition.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_GenerateStartingChessPosition.Location = new System.Drawing.Point(547, 503);
             this.button_GenerateStartingChessPosition.Name = "button_GenerateStartingChessPosition";
-            this.button_GenerateStartingChessPosition.Size = new System.Drawing.Size(57, 67);
+            this.button_GenerateStartingChessPosition.Size = new System.Drawing.Size(50, 50);
             this.button_GenerateStartingChessPosition.TabIndex = 44;
             this.toolTip1.SetToolTip(this.button_GenerateStartingChessPosition, "Generate starting chess position");
             this.button_GenerateStartingChessPosition.UseVisualStyleBackColor = false;
@@ -2250,10 +2226,9 @@
             this.button_reset_puzzle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_reset_puzzle.FlatAppearance.BorderSize = 0;
             this.button_reset_puzzle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_reset_puzzle.Location = new System.Drawing.Point(627, 521);
-            this.button_reset_puzzle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_reset_puzzle.Location = new System.Drawing.Point(549, 391);
             this.button_reset_puzzle.Name = "button_reset_puzzle";
-            this.button_reset_puzzle.Size = new System.Drawing.Size(57, 67);
+            this.button_reset_puzzle.Size = new System.Drawing.Size(50, 50);
             this.button_reset_puzzle.TabIndex = 36;
             this.toolTip1.SetToolTip(this.button_reset_puzzle, "Restart");
             this.button_reset_puzzle.UseVisualStyleBackColor = false;
@@ -2268,10 +2243,9 @@
             this.button_clear_Board.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_clear_Board.FlatAppearance.BorderSize = 0;
             this.button_clear_Board.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_clear_Board.Location = new System.Drawing.Point(627, 597);
-            this.button_clear_Board.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_clear_Board.Location = new System.Drawing.Point(549, 448);
             this.button_clear_Board.Name = "button_clear_Board";
-            this.button_clear_Board.Size = new System.Drawing.Size(57, 67);
+            this.button_clear_Board.Size = new System.Drawing.Size(50, 50);
             this.button_clear_Board.TabIndex = 43;
             this.toolTip1.SetToolTip(this.button_clear_Board, "Clear Board");
             this.button_clear_Board.UseVisualStyleBackColor = false;
@@ -2286,10 +2260,9 @@
             this.button_gotoNextPuzzle.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_gotoNextPuzzle.FlatAppearance.BorderSize = 0;
             this.button_gotoNextPuzzle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_gotoNextPuzzle.Location = new System.Drawing.Point(627, 521);
-            this.button_gotoNextPuzzle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_gotoNextPuzzle.Location = new System.Drawing.Point(549, 391);
             this.button_gotoNextPuzzle.Name = "button_gotoNextPuzzle";
-            this.button_gotoNextPuzzle.Size = new System.Drawing.Size(57, 67);
+            this.button_gotoNextPuzzle.Size = new System.Drawing.Size(50, 50);
             this.button_gotoNextPuzzle.TabIndex = 81;
             this.toolTip1.SetToolTip(this.button_gotoNextPuzzle, "Go to the next puzzle in the puzzle rush");
             this.button_gotoNextPuzzle.UseVisualStyleBackColor = false;
@@ -2304,10 +2277,9 @@
             this.button_Autoplay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Autoplay.FlatAppearance.BorderSize = 0;
             this.button_Autoplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Autoplay.Location = new System.Drawing.Point(627, 597);
-            this.button_Autoplay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_Autoplay.Location = new System.Drawing.Point(549, 448);
             this.button_Autoplay.Name = "button_Autoplay";
-            this.button_Autoplay.Size = new System.Drawing.Size(57, 67);
+            this.button_Autoplay.Size = new System.Drawing.Size(50, 50);
             this.button_Autoplay.TabIndex = 85;
             this.toolTip1.SetToolTip(this.button_Autoplay, "autoplay the opened puzzle or puzzle rush");
             this.button_Autoplay.UseVisualStyleBackColor = false;
@@ -2331,36 +2303,35 @@
             this.mYBoardsSizeIsSmallerToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.context_help.Name = "contextMenu_help";
-            this.context_help.Size = new System.Drawing.Size(256, 76);
+            this.context_help.Size = new System.Drawing.Size(217, 70);
             // 
             // howToSolvePuzzlesToolStripMenuItem
             // 
             this.howToSolvePuzzlesToolStripMenuItem.Name = "howToSolvePuzzlesToolStripMenuItem";
-            this.howToSolvePuzzlesToolStripMenuItem.Size = new System.Drawing.Size(255, 24);
+            this.howToSolvePuzzlesToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.howToSolvePuzzlesToolStripMenuItem.Text = "Tutorials";
             this.howToSolvePuzzlesToolStripMenuItem.Click += new System.EventHandler(this.HowToSolvePuzzlesToolStripMenuItem_Click);
             // 
             // mYBoardsSizeIsSmallerToolStripMenuItem
             // 
             this.mYBoardsSizeIsSmallerToolStripMenuItem.Name = "mYBoardsSizeIsSmallerToolStripMenuItem";
-            this.mYBoardsSizeIsSmallerToolStripMenuItem.Size = new System.Drawing.Size(255, 24);
+            this.mYBoardsSizeIsSmallerToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.mYBoardsSizeIsSmallerToolStripMenuItem.Text = "My board\'s size is smaller...";
             this.mYBoardsSizeIsSmallerToolStripMenuItem.Click += new System.EventHandler(this.mYBoardsSizeIsSmallerToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(255, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(216, 22);
             this.aboutToolStripMenuItem.Text = "About the app";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
             // PuzzlesDisplay
             // 
             this.PuzzlesDisplay.BackColor = System.Drawing.Color.Transparent;
-            this.PuzzlesDisplay.Location = new System.Drawing.Point(717, 551);
-            this.PuzzlesDisplay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PuzzlesDisplay.Location = new System.Drawing.Point(627, 413);
             this.PuzzlesDisplay.Name = "PuzzlesDisplay";
-            this.PuzzlesDisplay.Size = new System.Drawing.Size(455, 425);
+            this.PuzzlesDisplay.Size = new System.Drawing.Size(398, 319);
             this.PuzzlesDisplay.TabIndex = 82;
             this.PuzzlesDisplay.Visible = false;
             // 
@@ -2408,19 +2379,18 @@
             this.panel_setttings.Controls.Add(this.label3);
             this.panel_setttings.Controls.Add(this.button_setwhiteSqColor);
             this.panel_setttings.Controls.Add(this.label1);
-            this.panel_setttings.Location = new System.Drawing.Point(769, 235);
-            this.panel_setttings.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_setttings.Location = new System.Drawing.Point(673, 176);
             this.panel_setttings.Name = "panel_setttings";
-            this.panel_setttings.Size = new System.Drawing.Size(402, 743);
+            this.panel_setttings.Size = new System.Drawing.Size(352, 558);
             this.panel_setttings.TabIndex = 84;
             this.panel_setttings.Visible = false;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(14, 444);
+            this.label16.Location = new System.Drawing.Point(12, 333);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(186, 20);
+            this.label16.Size = new System.Drawing.Size(148, 15);
             this.label16.TabIndex = 134;
             this.label16.Text = "Color - Requested solution";
             // 
@@ -2429,10 +2399,9 @@
             this.button_ColorSolution.BackColor = System.Drawing.Color.White;
             this.button_ColorSolution.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_ColorSolution.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_ColorSolution.Location = new System.Drawing.Point(250, 437);
-            this.button_ColorSolution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_ColorSolution.Location = new System.Drawing.Point(219, 328);
             this.button_ColorSolution.Name = "button_ColorSolution";
-            this.button_ColorSolution.Size = new System.Drawing.Size(29, 33);
+            this.button_ColorSolution.Size = new System.Drawing.Size(25, 25);
             this.button_ColorSolution.TabIndex = 133;
             this.button_ColorSolution.UseVisualStyleBackColor = false;
             this.button_ColorSolution.Click += new System.EventHandler(this.Button_ColorSolution_Click);
@@ -2442,10 +2411,9 @@
             this.Button_StopPuzzleTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_StopPuzzleTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_StopPuzzleTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Button_StopPuzzleTimer.Location = new System.Drawing.Point(358, 524);
-            this.Button_StopPuzzleTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_StopPuzzleTimer.Location = new System.Drawing.Point(313, 393);
             this.Button_StopPuzzleTimer.Name = "Button_StopPuzzleTimer";
-            this.Button_StopPuzzleTimer.Size = new System.Drawing.Size(30, 33);
+            this.Button_StopPuzzleTimer.Size = new System.Drawing.Size(26, 25);
             this.Button_StopPuzzleTimer.TabIndex = 132;
             this.Button_StopPuzzleTimer.Text = "⏹";
             this.Button_StopPuzzleTimer.UseVisualStyleBackColor = false;
@@ -2456,10 +2424,9 @@
             this.Button_StopGlobalTimer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_StopGlobalTimer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Button_StopGlobalTimer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Button_StopGlobalTimer.Location = new System.Drawing.Point(358, 487);
-            this.Button_StopGlobalTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Button_StopGlobalTimer.Location = new System.Drawing.Point(313, 365);
             this.Button_StopGlobalTimer.Name = "Button_StopGlobalTimer";
-            this.Button_StopGlobalTimer.Size = new System.Drawing.Size(30, 33);
+            this.Button_StopGlobalTimer.Size = new System.Drawing.Size(26, 25);
             this.Button_StopGlobalTimer.TabIndex = 131;
             this.Button_StopGlobalTimer.Text = "⏹";
             this.Button_StopGlobalTimer.UseVisualStyleBackColor = false;
@@ -2470,10 +2437,9 @@
             this.button15.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button15.Location = new System.Drawing.Point(368, 4);
-            this.button15.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button15.Location = new System.Drawing.Point(322, 3);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(29, 33);
+            this.button15.Size = new System.Drawing.Size(25, 25);
             this.button15.TabIndex = 30;
             this.button15.Text = "x";
             this.button15.UseVisualStyleBackColor = false;
@@ -2485,7 +2451,7 @@
             this.label_logo_settings.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_logo_settings.Location = new System.Drawing.Point(0, 0);
             this.label_logo_settings.Name = "label_logo_settings";
-            this.label_logo_settings.Size = new System.Drawing.Size(400, 36);
+            this.label_logo_settings.Size = new System.Drawing.Size(350, 27);
             this.label_logo_settings.TabIndex = 130;
             this.label_logo_settings.Text = "Settings";
             this.label_logo_settings.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -2493,9 +2459,9 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(14, 599);
+            this.label15.Location = new System.Drawing.Point(12, 449);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(72, 20);
+            this.label15.Size = new System.Drawing.Size(57, 15);
             this.label15.TabIndex = 129;
             this.label15.Text = "Piece Set:";
             // 
@@ -2504,10 +2470,9 @@
             this.button_SetPieceTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_SetPieceTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SetPieceTheme.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetPieceTheme.Location = new System.Drawing.Point(336, 612);
-            this.button_SetPieceTheme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_SetPieceTheme.Location = new System.Drawing.Point(294, 459);
             this.button_SetPieceTheme.Name = "button_SetPieceTheme";
-            this.button_SetPieceTheme.Size = new System.Drawing.Size(51, 33);
+            this.button_SetPieceTheme.Size = new System.Drawing.Size(45, 25);
             this.button_SetPieceTheme.TabIndex = 128;
             this.button_SetPieceTheme.Text = "Set";
             this.button_SetPieceTheme.UseVisualStyleBackColor = false;
@@ -2518,10 +2483,9 @@
             this.comboBox_Psets.Cursor = System.Windows.Forms.Cursors.Hand;
             this.comboBox_Psets.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Psets.FormattingEnabled = true;
-            this.comboBox_Psets.Location = new System.Drawing.Point(87, 612);
-            this.comboBox_Psets.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBox_Psets.Location = new System.Drawing.Point(76, 459);
             this.comboBox_Psets.Name = "comboBox_Psets";
-            this.comboBox_Psets.Size = new System.Drawing.Size(242, 28);
+            this.comboBox_Psets.Size = new System.Drawing.Size(212, 23);
             this.comboBox_Psets.TabIndex = 127;
             // 
             // button_hColor4
@@ -2529,10 +2493,9 @@
             this.button_hColor4.BackColor = System.Drawing.Color.White;
             this.button_hColor4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor4.Location = new System.Drawing.Point(250, 396);
-            this.button_hColor4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_hColor4.Location = new System.Drawing.Point(219, 297);
             this.button_hColor4.Name = "button_hColor4";
-            this.button_hColor4.Size = new System.Drawing.Size(29, 33);
+            this.button_hColor4.Size = new System.Drawing.Size(25, 25);
             this.button_hColor4.TabIndex = 32;
             this.button_hColor4.UseVisualStyleBackColor = false;
             this.button_hColor4.Click += new System.EventHandler(this.ChangeHLColor_SHIFT);
@@ -2540,9 +2503,9 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(15, 404);
+            this.label14.Location = new System.Drawing.Point(13, 303);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(247, 20);
+            this.label14.Size = new System.Drawing.Size(199, 15);
             this.label14.TabIndex = 31;
             this.label14.Text = "Color - [Shift+Right-Click] Highlight";
             // 
@@ -2551,10 +2514,9 @@
             this.button_setResponseTimePL.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setResponseTimePL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setResponseTimePL.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setResponseTimePL.Location = new System.Drawing.Point(336, 571);
-            this.button_setResponseTimePL.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_setResponseTimePL.Location = new System.Drawing.Point(294, 428);
             this.button_setResponseTimePL.Name = "button_setResponseTimePL";
-            this.button_setResponseTimePL.Size = new System.Drawing.Size(51, 33);
+            this.button_setResponseTimePL.Size = new System.Drawing.Size(45, 25);
             this.button_setResponseTimePL.TabIndex = 29;
             this.button_setResponseTimePL.Text = "Set";
             this.button_setResponseTimePL.UseVisualStyleBackColor = false;
@@ -2562,8 +2524,7 @@
             // 
             // numericUpDown7
             // 
-            this.numericUpDown7.Location = new System.Drawing.Point(272, 571);
-            this.numericUpDown7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numericUpDown7.Location = new System.Drawing.Point(238, 428);
             this.numericUpDown7.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -2575,7 +2536,7 @@
             0,
             0});
             this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(57, 27);
+            this.numericUpDown7.Size = new System.Drawing.Size(50, 23);
             this.numericUpDown7.TabIndex = 28;
             this.numericUpDown7.Value = new decimal(new int[] {
             100,
@@ -2586,9 +2547,9 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(16, 573);
+            this.label13.Location = new System.Drawing.Point(14, 430);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(269, 20);
+            this.label13.Size = new System.Drawing.Size(213, 15);
             this.label13.TabIndex = 27;
             this.label13.Text = "Response Time of Puzzle (milliseconds)";
             // 
@@ -2597,10 +2558,9 @@
             this.button_setPuzzleCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setPuzzleCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_setPuzzleCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_setPuzzleCountdown.Location = new System.Drawing.Point(302, 525);
-            this.button_setPuzzleCountdown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_setPuzzleCountdown.Location = new System.Drawing.Point(264, 394);
             this.button_setPuzzleCountdown.Name = "button_setPuzzleCountdown";
-            this.button_setPuzzleCountdown.Size = new System.Drawing.Size(51, 33);
+            this.button_setPuzzleCountdown.Size = new System.Drawing.Size(45, 25);
             this.button_setPuzzleCountdown.TabIndex = 26;
             this.button_setPuzzleCountdown.Text = "Set";
             this.button_setPuzzleCountdown.UseVisualStyleBackColor = false;
@@ -2611,10 +2571,9 @@
             this.button_SetGlobalCountdown.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_SetGlobalCountdown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_SetGlobalCountdown.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_SetGlobalCountdown.Location = new System.Drawing.Point(302, 487);
-            this.button_SetGlobalCountdown.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_SetGlobalCountdown.Location = new System.Drawing.Point(264, 365);
             this.button_SetGlobalCountdown.Name = "button_SetGlobalCountdown";
-            this.button_SetGlobalCountdown.Size = new System.Drawing.Size(51, 33);
+            this.button_SetGlobalCountdown.Size = new System.Drawing.Size(45, 25);
             this.button_SetGlobalCountdown.TabIndex = 25;
             this.button_SetGlobalCountdown.Text = "Set";
             this.button_SetGlobalCountdown.UseVisualStyleBackColor = false;
@@ -2622,97 +2581,91 @@
             // 
             // numF_Sec_Puzzle
             // 
-            this.numF_Sec_Puzzle.Location = new System.Drawing.Point(255, 528);
-            this.numF_Sec_Puzzle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Sec_Puzzle.Location = new System.Drawing.Point(223, 396);
             this.numF_Sec_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.numF_Sec_Puzzle.Name = "numF_Sec_Puzzle";
-            this.numF_Sec_Puzzle.Size = new System.Drawing.Size(40, 27);
+            this.numF_Sec_Puzzle.Size = new System.Drawing.Size(35, 23);
             this.numF_Sec_Puzzle.TabIndex = 24;
             // 
             // numF_Min_Puzzle
             // 
-            this.numF_Min_Puzzle.Location = new System.Drawing.Point(208, 528);
-            this.numF_Min_Puzzle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Min_Puzzle.Location = new System.Drawing.Point(182, 396);
             this.numF_Min_Puzzle.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.numF_Min_Puzzle.Name = "numF_Min_Puzzle";
-            this.numF_Min_Puzzle.Size = new System.Drawing.Size(40, 27);
+            this.numF_Min_Puzzle.Size = new System.Drawing.Size(35, 23);
             this.numF_Min_Puzzle.TabIndex = 23;
             // 
             // numF_Hour_Puzzle
             // 
-            this.numF_Hour_Puzzle.Location = new System.Drawing.Point(144, 528);
-            this.numF_Hour_Puzzle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Hour_Puzzle.Location = new System.Drawing.Point(126, 396);
             this.numF_Hour_Puzzle.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numF_Hour_Puzzle.Name = "numF_Hour_Puzzle";
-            this.numF_Hour_Puzzle.Size = new System.Drawing.Size(57, 27);
+            this.numF_Hour_Puzzle.Size = new System.Drawing.Size(50, 23);
             this.numF_Hour_Puzzle.TabIndex = 22;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(16, 531);
+            this.label12.Location = new System.Drawing.Point(14, 398);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(131, 20);
+            this.label12.Size = new System.Drawing.Size(106, 15);
             this.label12.TabIndex = 21;
             this.label12.Text = "Puzzle Countdown";
             // 
             // numF_Sec_Global
             // 
-            this.numF_Sec_Global.Location = new System.Drawing.Point(255, 489);
-            this.numF_Sec_Global.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Sec_Global.Location = new System.Drawing.Point(223, 367);
             this.numF_Sec_Global.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.numF_Sec_Global.Name = "numF_Sec_Global";
-            this.numF_Sec_Global.Size = new System.Drawing.Size(40, 27);
+            this.numF_Sec_Global.Size = new System.Drawing.Size(35, 23);
             this.numF_Sec_Global.TabIndex = 20;
             // 
             // numF_Min_Global
             // 
-            this.numF_Min_Global.Location = new System.Drawing.Point(208, 489);
-            this.numF_Min_Global.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Min_Global.Location = new System.Drawing.Point(182, 367);
             this.numF_Min_Global.Maximum = new decimal(new int[] {
             59,
             0,
             0,
             0});
             this.numF_Min_Global.Name = "numF_Min_Global";
-            this.numF_Min_Global.Size = new System.Drawing.Size(40, 27);
+            this.numF_Min_Global.Size = new System.Drawing.Size(35, 23);
             this.numF_Min_Global.TabIndex = 19;
             // 
             // numF_Hour_Global
             // 
-            this.numF_Hour_Global.Location = new System.Drawing.Point(144, 489);
-            this.numF_Hour_Global.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.numF_Hour_Global.Location = new System.Drawing.Point(126, 367);
             this.numF_Hour_Global.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
             this.numF_Hour_Global.Name = "numF_Hour_Global";
-            this.numF_Hour_Global.Size = new System.Drawing.Size(57, 27);
+            this.numF_Hour_Global.Size = new System.Drawing.Size(50, 23);
             this.numF_Hour_Global.TabIndex = 18;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 492);
+            this.label11.Location = new System.Drawing.Point(14, 369);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(133, 20);
+            this.label11.Size = new System.Drawing.Size(107, 15);
             this.label11.TabIndex = 17;
             this.label11.Text = "Global Countdown";
             // 
@@ -2721,10 +2674,9 @@
             this.button_resetAllSettings_Panel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_resetAllSettings_Panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_resetAllSettings_Panel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(280, 685);
-            this.button_resetAllSettings_Panel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_resetAllSettings_Panel.Location = new System.Drawing.Point(245, 514);
             this.button_resetAllSettings_Panel.Name = "button_resetAllSettings_Panel";
-            this.button_resetAllSettings_Panel.Size = new System.Drawing.Size(107, 33);
+            this.button_resetAllSettings_Panel.Size = new System.Drawing.Size(94, 25);
             this.button_resetAllSettings_Panel.TabIndex = 16;
             this.button_resetAllSettings_Panel.Text = "Reset All";
             this.button_resetAllSettings_Panel.UseVisualStyleBackColor = false;
@@ -2735,10 +2687,9 @@
             this.button_hColor3.BackColor = System.Drawing.Color.White;
             this.button_hColor3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor3.Location = new System.Drawing.Point(250, 355);
-            this.button_hColor3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_hColor3.Location = new System.Drawing.Point(219, 266);
             this.button_hColor3.Name = "button_hColor3";
-            this.button_hColor3.Size = new System.Drawing.Size(29, 33);
+            this.button_hColor3.Size = new System.Drawing.Size(25, 25);
             this.button_hColor3.TabIndex = 15;
             this.button_hColor3.UseVisualStyleBackColor = false;
             this.button_hColor3.Click += new System.EventHandler(this.ChangeHLColor_ALT);
@@ -2746,9 +2697,9 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 363);
+            this.label8.Location = new System.Drawing.Point(13, 272);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(236, 20);
+            this.label8.Size = new System.Drawing.Size(190, 15);
             this.label8.TabIndex = 14;
             this.label8.Text = "Color - [Alt+Right-Click] Highlight";
             // 
@@ -2757,10 +2708,9 @@
             this.button_hColor2.BackColor = System.Drawing.Color.White;
             this.button_hColor2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor2.Location = new System.Drawing.Point(250, 313);
-            this.button_hColor2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_hColor2.Location = new System.Drawing.Point(219, 235);
             this.button_hColor2.Name = "button_hColor2";
-            this.button_hColor2.Size = new System.Drawing.Size(29, 33);
+            this.button_hColor2.Size = new System.Drawing.Size(25, 25);
             this.button_hColor2.TabIndex = 13;
             this.button_hColor2.UseVisualStyleBackColor = false;
             this.button_hColor2.Click += new System.EventHandler(this.ChangeHLColor_CTRL);
@@ -2768,9 +2718,9 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 323);
+            this.label9.Location = new System.Drawing.Point(13, 242);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(240, 20);
+            this.label9.Size = new System.Drawing.Size(194, 15);
             this.label9.TabIndex = 12;
             this.label9.Text = "Color - [Ctrl+Right-Click] Highlight";
             // 
@@ -2779,10 +2729,9 @@
             this.button_hColor1.BackColor = System.Drawing.Color.White;
             this.button_hColor1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_hColor1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_hColor1.Location = new System.Drawing.Point(250, 272);
-            this.button_hColor1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_hColor1.Location = new System.Drawing.Point(219, 204);
             this.button_hColor1.Name = "button_hColor1";
-            this.button_hColor1.Size = new System.Drawing.Size(29, 33);
+            this.button_hColor1.Size = new System.Drawing.Size(25, 25);
             this.button_hColor1.TabIndex = 11;
             this.button_hColor1.UseVisualStyleBackColor = false;
             this.button_hColor1.Click += new System.EventHandler(this.ChangeHLColor_Normal);
@@ -2790,9 +2739,9 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 281);
+            this.label10.Location = new System.Drawing.Point(12, 211);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(207, 20);
+            this.label10.Size = new System.Drawing.Size(167, 15);
             this.label10.TabIndex = 10;
             this.label10.Text = "Color - [Right-Click] Highlight";
             // 
@@ -2801,10 +2750,9 @@
             this.button_stHoverColor.BackColor = System.Drawing.Color.White;
             this.button_stHoverColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_stHoverColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_stHoverColor.Location = new System.Drawing.Point(250, 231);
-            this.button_stHoverColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_stHoverColor.Location = new System.Drawing.Point(219, 173);
             this.button_stHoverColor.Name = "button_stHoverColor";
-            this.button_stHoverColor.Size = new System.Drawing.Size(29, 33);
+            this.button_stHoverColor.Size = new System.Drawing.Size(25, 25);
             this.button_stHoverColor.TabIndex = 9;
             this.button_stHoverColor.UseVisualStyleBackColor = false;
             this.button_stHoverColor.Click += new System.EventHandler(this.Button_stHoverColor_Click);
@@ -2812,9 +2760,9 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(15, 237);
+            this.label7.Location = new System.Drawing.Point(13, 178);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(99, 20);
+            this.label7.Size = new System.Drawing.Size(79, 15);
             this.label7.TabIndex = 8;
             this.label7.Text = "Color - Hover";
             // 
@@ -2823,10 +2771,9 @@
             this.button_setLastMoveColor.BackColor = System.Drawing.Color.White;
             this.button_setLastMoveColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setLastMoveColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setLastMoveColor.Location = new System.Drawing.Point(250, 191);
-            this.button_setLastMoveColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_setLastMoveColor.Location = new System.Drawing.Point(219, 143);
             this.button_setLastMoveColor.Name = "button_setLastMoveColor";
-            this.button_setLastMoveColor.Size = new System.Drawing.Size(29, 33);
+            this.button_setLastMoveColor.Size = new System.Drawing.Size(25, 25);
             this.button_setLastMoveColor.TabIndex = 7;
             this.button_setLastMoveColor.UseVisualStyleBackColor = false;
             this.button_setLastMoveColor.Click += new System.EventHandler(this.Button_setLastMoveColor_Click);
@@ -2834,9 +2781,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 197);
+            this.label5.Location = new System.Drawing.Point(13, 148);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 20);
+            this.label5.Size = new System.Drawing.Size(101, 15);
             this.label5.TabIndex = 6;
             this.label5.Text = "Color - Last Move";
             // 
@@ -2845,10 +2792,9 @@
             this.button_setSElectedSquare.BackColor = System.Drawing.Color.White;
             this.button_setSElectedSquare.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setSElectedSquare.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setSElectedSquare.Location = new System.Drawing.Point(250, 149);
-            this.button_setSElectedSquare.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_setSElectedSquare.Location = new System.Drawing.Point(219, 112);
             this.button_setSElectedSquare.Name = "button_setSElectedSquare";
-            this.button_setSElectedSquare.Size = new System.Drawing.Size(29, 33);
+            this.button_setSElectedSquare.Size = new System.Drawing.Size(25, 25);
             this.button_setSElectedSquare.TabIndex = 5;
             this.button_setSElectedSquare.UseVisualStyleBackColor = false;
             this.button_setSElectedSquare.Click += new System.EventHandler(this.Button_setSElectedSquare_Click);
@@ -2856,9 +2802,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 156);
+            this.label4.Location = new System.Drawing.Point(13, 117);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(166, 20);
+            this.label4.Size = new System.Drawing.Size(130, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "Color - Selected Square";
             // 
@@ -2867,10 +2813,9 @@
             this.button_blackSqSetColor.BackColor = System.Drawing.Color.White;
             this.button_blackSqSetColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_blackSqSetColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_blackSqSetColor.Location = new System.Drawing.Point(250, 108);
-            this.button_blackSqSetColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_blackSqSetColor.Location = new System.Drawing.Point(219, 81);
             this.button_blackSqSetColor.Name = "button_blackSqSetColor";
-            this.button_blackSqSetColor.Size = new System.Drawing.Size(29, 33);
+            this.button_blackSqSetColor.Size = new System.Drawing.Size(25, 25);
             this.button_blackSqSetColor.TabIndex = 3;
             this.button_blackSqSetColor.UseVisualStyleBackColor = false;
             this.button_blackSqSetColor.Click += new System.EventHandler(this.Button_blackSqSetColor_Click);
@@ -2878,9 +2823,9 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 115);
+            this.label3.Location = new System.Drawing.Point(13, 86);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 20);
+            this.label3.Size = new System.Drawing.Size(114, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Color - Black Square";
             // 
@@ -2889,10 +2834,9 @@
             this.button_setwhiteSqColor.BackColor = System.Drawing.Color.White;
             this.button_setwhiteSqColor.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_setwhiteSqColor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_setwhiteSqColor.Location = new System.Drawing.Point(250, 65);
-            this.button_setwhiteSqColor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_setwhiteSqColor.Location = new System.Drawing.Point(219, 49);
             this.button_setwhiteSqColor.Name = "button_setwhiteSqColor";
-            this.button_setwhiteSqColor.Size = new System.Drawing.Size(29, 33);
+            this.button_setwhiteSqColor.Size = new System.Drawing.Size(25, 25);
             this.button_setwhiteSqColor.TabIndex = 1;
             this.button_setwhiteSqColor.UseVisualStyleBackColor = false;
             this.button_setwhiteSqColor.Click += new System.EventHandler(this.Button_setwhiteSqColor_Click);
@@ -2900,29 +2844,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 72);
+            this.label1.Location = new System.Drawing.Point(13, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(148, 20);
+            this.label1.Size = new System.Drawing.Size(117, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Color - White Square";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(735, 149);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(114, 133);
-            this.pictureBox1.TabIndex = 86;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form_base
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1605, 1055);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1404, 791);
             this.Controls.Add(this.panel_setttings);
             this.Controls.Add(this.button_Autoplay);
             this.Controls.Add(this.PuzzlesDisplay);
@@ -2966,12 +2901,13 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Chess Puzzle Maker And Solver 1.8.4";
+            this.Text = "PuzzQ - Chess Puzzle Maker And Solver 1.8.5";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form_base_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_base_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.icon_solved)).EndInit();
@@ -3006,7 +2942,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.numF_Sec_Global)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Min_Global)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numF_Hour_Global)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3238,10 +3173,11 @@
         private ToolStripMenuItem toolStripMenuItem6;
         private ToolStripMenuItem toolStripMenuItem7;
         private CheckBox checkBox_shuffle_PR;
-        private PictureBox pictureBox1;
         private Label label16;
         private Button button_ColorSolution;
         private ToolStripMenuItem mYBoardsSizeIsSmallerToolStripMenuItem;
         private CheckBox checkBox_sounds;
+        private CheckBox checkBox_Promotion;
+        private ComboBox combo_promotion;
     }
 }
