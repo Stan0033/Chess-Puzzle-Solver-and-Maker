@@ -2626,7 +2626,7 @@ namespace Chezz_Puzzler
                 }
             }
             //---------------------------------------------
-            string savePath = $"{path_puzzles}\\[PR]{name}.txt";
+            string savePath = $"{path_puzzles}\\[PR]{name}.pzq";
             File.WriteAllLines(savePath, PuzzleRush);
             MessageBox.Show($"Generated the puzzle rush, with {PuzzleRushPuzzles_Composed.Count} puzzles, as:\n {savePath}.");
             PuzzleRushPuzzles_Composed.Clear();
