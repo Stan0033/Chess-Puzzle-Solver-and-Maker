@@ -3571,23 +3571,8 @@ namespace Chezz_Puzzler
             WriteSettingsFile();
         }
 
-        private void panel_solver_DragDrop(object sender, DragEventArgs e)
-        {
-            string pathOfDraggedFile = e.Data.GetData(DataFormats.FileDrop, false).ToString();
-            MessageBox.Show(pathOfDraggedFile);
-        }
-
-        private void label_h_DragDrop(object sender, DragEventArgs e)
-        {
-            string pathOfDraggedFile = e.Data.GetData(DataFormats.FileDrop, false).ToString();
-            MessageBox.Show(pathOfDraggedFile);
-        }
-
-        private void panel2_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            MessageBox.Show(fileList.ToString()); ;
-        }
+       
+      
 
         private void Form_base_DragDrop(object sender, DragEventArgs e)
         {
@@ -3613,15 +3598,7 @@ namespace Chezz_Puzzler
             else { MessageBox.Show("the dropped file must have an extension .pzq"); }    
         }
 
-        private void pictureBox1_DragDrop(object sender, DragEventArgs e)
-        {
-            
-        }
-
-        private void panel2_DragDrop_1(object sender, DragEventArgs e)
-        {
-            
-        }
+      
 
         private void Form_base_DragEnter(object sender, DragEventArgs e)
         {

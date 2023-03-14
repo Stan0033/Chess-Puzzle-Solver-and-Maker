@@ -316,7 +316,6 @@
             this.panel_solver.Name = "panel_solver";
             this.panel_solver.Size = new System.Drawing.Size(520, 520);
             this.panel_solver.TabIndex = 37;
-            this.panel_solver.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel_solver_DragDrop);
             // 
             // panel_composer
             // 
@@ -1940,7 +1939,6 @@
             this.label_h.TabIndex = 63;
             this.label_h.Text = "h";
             this.label_h.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label_h.DragDrop += new System.Windows.Forms.DragEventHandler(this.label_h_DragDrop);
             // 
             // label_g
             // 
@@ -2459,7 +2457,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(12, 449);
+            this.label15.Location = new System.Drawing.Point(12, 462);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(57, 15);
             this.label15.TabIndex = 129;
