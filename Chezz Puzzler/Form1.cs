@@ -1992,142 +1992,151 @@ namespace Chezz_Puzzler
             if (e.KeyCode.ToString() == "ControlKey") { Key_Pressed_Ctrl = true; }
             if (checkBox_hotkeys.Checked == false) { return; }
             if (ActiveControl is TextBox == true) { return; }
-            if (e.KeyCode == Keys.T) TransitionToPositionFromGivenActionSquareXSquare(c_letter1.Text + c_number1.Text + "x" + c_letter2.Text + c_number2.Text, panel_composer);
-            if (e.KeyCode == Keys.R) { RemoveLastChapter(); }
-            if (e.KeyCode == Keys.G) GeneratePuzzle();
-            if (e.KeyCode == Keys.A) AddArrangedChapter();
-            if (e.KeyCode == Keys.S) SolveSelectedPuzzle();
-            if (e.KeyCode == Keys.H) Hint();
-            if (e.KeyCode == Keys.Z) GeneratePuzzleRush();
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up) MessageBox.Show("My message");
-            if (e.KeyCode == Keys.D1)
+            //-----------------------------------------------------------
+            //-----------------------------------------------------------
+            if (tabControl1.SelectedIndex == 0)
             {
-                if (e.Modifiers == Keys.Control)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
-                    {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_white"];
-                        Currently_Hovered_Button.PieceName = "P";
-                    }
-                }
-                if (e.Modifiers == Keys.Alt)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
-                    {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_black"];
-                        Currently_Hovered_Button.PieceName = "p";
-                    }
-                }
-                if (e.Modifiers == Keys.None)
-                {
-                    fix_one = c_letter2.Text;
-                    fix_two = c_number2.Text;
-                    string startSquare = Currently_Hovered_Button.SquareName;
-                    c_letter1.Text = startSquare[0].ToString();
-                    c_number1.Text = startSquare[1].ToString();
-                    Fixer_q.Start();
-                    return;
-                }
+                if (e.KeyCode == Keys.S) SolveSelectedPuzzle();
+                if (e.KeyCode == Keys.H) Hint();
             }
-            if (e.KeyCode == Keys.D2)
+            else
             {
-                if (e.Modifiers == Keys.Control)
+                if (e.KeyCode == Keys.T) TransitionToPositionFromGivenActionSquareXSquare(c_letter1.Text + c_number1.Text + "x" + c_letter2.Text + c_number2.Text, panel_composer);
+                if (e.KeyCode == Keys.R) { RemoveLastChapter(); }
+                if (e.KeyCode == Keys.G) { GeneratePuzzle(); }
+                if (e.KeyCode == Keys.A) { AddArrangedChapter(); }
+                if (e.KeyCode == Keys.Z) { GeneratePuzzleRush(); }
+
+                     // if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up) MessageBox.Show("My message");
+                if (e.KeyCode == Keys.D1)
                 {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_white"];
-                        Currently_Hovered_Button.PieceName = "R";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_white"];
+                            Currently_Hovered_Button.PieceName = "P";
+                        }
+                    }
+                    if (e.Modifiers == Keys.Alt)
+                    {
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["pawn_black"];
+                            Currently_Hovered_Button.PieceName = "p";
+                        }
+                    }
+                    if (e.Modifiers == Keys.None)
+                    {
+                        fix_one = c_letter2.Text;
+                        fix_two = c_number2.Text;
+                        string startSquare = Currently_Hovered_Button.SquareName;
+                        c_letter1.Text = startSquare[0].ToString();
+                        c_number1.Text = startSquare[1].ToString();
+                        Fixer_q.Start();
+                        return;
                     }
                 }
-                if (e.Modifiers == Keys.Alt)
+                if (e.KeyCode == Keys.D2)
                 {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_black"];
-                        Currently_Hovered_Button.PieceName = "r";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_white"];
+                            Currently_Hovered_Button.PieceName = "R";
+                        }
+                    }
+                    if (e.Modifiers == Keys.Alt)
+                    {
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["rook_black"];
+                            Currently_Hovered_Button.PieceName = "r";
+                        }
+                    }
+                    if (e.Modifiers == Keys.None)
+                    {
+                        string startSquare = Currently_Hovered_Button.SquareName;
+                        c_letter2.Text = startSquare[0].ToString();
+                        c_number2.Text = startSquare[1].ToString();
+                        return;
                     }
                 }
-                if (e.Modifiers == Keys.None)
+                if (e.KeyCode == Keys.D3)
                 {
-                    string startSquare = Currently_Hovered_Button.SquareName;
-                    c_letter2.Text = startSquare[0].ToString();
-                    c_number2.Text = startSquare[1].ToString();
-                    return;
-                }
-            }
-            if (e.KeyCode == Keys.D3)
-            {
-                if (e.Modifiers == Keys.Control)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_white"];
-                        Currently_Hovered_Button.PieceName = "Q";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_white"];
+                            Currently_Hovered_Button.PieceName = "Q";
+                        }
+                    }
+                    if (e.Modifiers == Keys.Alt)
+                    {
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_black"];
+                            Currently_Hovered_Button.PieceName = "q";
+                        }
                     }
                 }
-                if (e.Modifiers == Keys.Alt)
+                if (e.KeyCode == Keys.D4)
                 {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["queen_black"];
-                        Currently_Hovered_Button.PieceName = "q";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["king_white"];
+                            Currently_Hovered_Button.PieceName = "K";
+                        }
+                    }
+                    if (e.Modifiers == Keys.Alt)
+                    {
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["king_black"];
+                            Currently_Hovered_Button.PieceName = "P";
+                        }
                     }
                 }
-            }
-            if (e.KeyCode == Keys.D4)
-            {
-                if (e.Modifiers == Keys.Control)
+                if (e.KeyCode == Keys.D5)
                 {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["king_white"];
-                        Currently_Hovered_Button.PieceName = "K";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_white"];
+                            Currently_Hovered_Button.PieceName = "B";
+                        }
+                    }
+                    if (e.Modifiers == Keys.Alt)
+                    {
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_black"];
+                            Currently_Hovered_Button.PieceName = "b";
+                        }
                     }
                 }
-                if (e.Modifiers == Keys.Alt)
+                if (e.KeyCode == Keys.D6)
                 {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Control)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["king_black"];
-                        Currently_Hovered_Button.PieceName = "P";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_white"];
+                            Currently_Hovered_Button.PieceName = "N";
+                        }
                     }
-                }
-            }
-            if (e.KeyCode == Keys.D5)
-            {
-                if (e.Modifiers == Keys.Control)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                    if (e.Modifiers == Keys.Alt)
                     {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_white"];
-                        Currently_Hovered_Button.PieceName = "B";
-                    }
-                }
-                if (e.Modifiers == Keys.Alt)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
-                    {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["bishop_black"];
-                        Currently_Hovered_Button.PieceName = "b";
-                    }
-                }
-            }
-            if (e.KeyCode == Keys.D6)
-            {
-                if (e.Modifiers == Keys.Control)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
-                    {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_white"];
-                        Currently_Hovered_Button.PieceName = "N";
-                    }
-                }
-                if (e.Modifiers == Keys.Alt)
-                {
-                    if (panel_composer.Controls.Contains(Currently_Hovered_Button))
-                    {
-                        Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_black"];
-                        Currently_Hovered_Button.PieceName = "n";
+                        if (panel_composer.Controls.Contains(Currently_Hovered_Button))
+                        {
+                            Currently_Hovered_Button.BackgroundImage = pieces_pics["knight_black"];
+                            Currently_Hovered_Button.PieceName = "n";
+                        }
                     }
                 }
             }

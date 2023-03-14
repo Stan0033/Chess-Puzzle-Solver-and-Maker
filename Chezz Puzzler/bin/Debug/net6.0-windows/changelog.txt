@@ -223,3 +223,6 @@ The image is recommended to be 150x150
 - Added an option to make the moving piece result in promotion, when creating a puzzle
 - now when you open a puzzle from the list or by dragging, its name will also be in the name of the app window
 -----------------------
+1.8.6
+-----------------------
+- Hotkeys for the first and second tab will now only work when their tab is opened

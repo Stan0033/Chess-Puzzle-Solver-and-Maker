@@ -2904,7 +2904,7 @@
             this.MaximizeBox = false;
             this.Name = "Form_base";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PuzzQ - Chess Puzzle Maker And Solver 1.8.5";
+            this.Text = "PuzzQ - Chess Puzzle Maker And Solver 1.8.6";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Form_base_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Form_base_DragEnter);
