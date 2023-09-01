@@ -3,7 +3,7 @@
 Solve and Create chess puzzles!
 
 With this app you can solve, create puzzles, and puzzle rushes! You can also change the colors of the board based on your preference, change the piece set (even create custom) and set countdown timers. Nice and simple app. Also contains video tutorials.
-Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.  
+You can associate the extenstion .pzq with the app and when you click a pzq file, the app will open it! Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.  
 ```diff
 + You can start the app from [Chezz Puzzler/bin/Debug/net6.0-windows/Chess puzzler.exe]
 + Changelog.txt is also there
