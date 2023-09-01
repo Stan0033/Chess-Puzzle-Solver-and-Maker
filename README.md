@@ -15,6 +15,7 @@ Developed and maintained by Stanislav Vladev from Stara Zagora, Bulgaria.
 -If the board is smaller than expected on your PC
 -go to Windows display settings > scaling, and set it to 100%
 ```
+You can download more puzzles from https://www.dropbox.com/scl/fo/b1f1pyi7lc6bmbdu5ibkl/h?dl=0&rlkey=5otc4jwv75ve222c4yb912ixn
 
 FOR any bugs -> report!
 

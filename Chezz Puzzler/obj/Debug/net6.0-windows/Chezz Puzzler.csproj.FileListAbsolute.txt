@@ -112,3 +112,41 @@ C:\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\refint\C
 C:\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.pdb
 C:\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.genruntimeconfig.cache
 C:\Chess-Puzzle-Solver-and-Maker\Chezz Puzzler\obj\Debug\net6.0-windows\ref\Chezz Puzzler.dll
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.AssemblyReference.cache
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.dll
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\refint\Chezz Puzzler.dll
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.pdb
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.exe
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.deps.json
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.runtimeconfig.json
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.dll
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.pdb
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.AssemblyReference.cache
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.CopyDialog.resources
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Form_base.resources
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Properties.Resources.resources
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.GenerateResource.cache
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfoInputs.cache
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfo.cs
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.CoreCompileInputs.cache
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.dll
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\refint\Chezz Puzzler.dll
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.pdb
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.genruntimeconfig.cache
+C:\Projects\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\ref\Chezz Puzzler.dll
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.exe
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.deps.json
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.runtimeconfig.json
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.dll
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\bin\Debug\net6.0-windows\Chezz Puzzler.pdb
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.CopyDialog.resources
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Form_base.resources
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz_Puzzler.Properties.Resources.resources
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.GenerateResource.cache
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.GeneratedMSBuildEditorConfig.editorconfig
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfoInputs.cache
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.AssemblyInfo.cs
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.csproj.CoreCompileInputs.cache
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\Chezz Puzzler.genruntimeconfig.cache
+C:\Chess-Puzzle-Solver-and-Maker-main\Chezz Puzzler\obj\Debug\net6.0-windows\ref\Chezz Puzzler.dll

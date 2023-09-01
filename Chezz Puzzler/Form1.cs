@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using System.Diagnostics;
 using System.Media;
 using System.Text.RegularExpressions;
@@ -6,9 +7,10 @@ using Application = System.Windows.Forms.Application;
 using Image = System.Drawing.Image;
 using TextBox = System.Windows.Forms.TextBox;
 using Timer = System.Windows.Forms.Timer;
- 
+
 namespace Chezz_Puzzler
 {
+
     public partial class Form_base : Form
     {
         bool Key_Pressed_Alt;
@@ -18,6 +20,7 @@ namespace Chezz_Puzzler
         readonly string path_puzzles;
         readonly string path_tutorials;
         readonly string path_pieces;
+        string ClickedFileName;
         TextBox FocusedTextBox;
         string AppTitle;
         readonly List<Color> colors;
@@ -30,6 +33,7 @@ namespace Chezz_Puzzler
         int Time_Puzzle_SecondsLeft;
         int Time_Global_SecondsLeft;
         int Time_Puzzle_SecondsTotal;
+        Timer LaunchFile;
         readonly List<string> CurrentPuzzle_rightAnswers;
         readonly List<string> CurrentPuzzle_wrongAnswers;
         //---------------------------------
@@ -283,6 +287,30 @@ namespace Chezz_Puzzler
             PieceNameToImagePath.Add('r', "rook_black.png");
             PieceNameToImagePath.Add('P', "pawn_white.png");
             PieceNameToImagePath.Add('p', "pawn_black.png");
+
+            if (input.Length > 0)
+            {
+                if (Path.GetExtension(input) == ".pzq")
+                {
+                    DraggedFileSuccessfully = true;
+                    CurrentlyOpenedPuzzleFilename = input;
+                    LaunchFile = new Timer();
+                    LaunchFile.Interval = 500;
+                    LaunchFile.Start();
+                    LaunchFile.Tick += ReadPendingFile;
+
+
+
+
+                }
+            }
+
+        }
+        public void ReadPendingFile(object sender, EventArgs e)
+        {
+
+            SolveSelectedPuzzle();
+            LaunchFile.Stop();
         }
         public void CreateToMoveLabel()
         {
@@ -293,6 +321,7 @@ namespace Chezz_Puzzler
 
 
         }
+
         public void AutoPlayCurrentGame(object? sender, EventArgs e)
         {
             /* when a puzzle is finished stop the timer and hide the button and the icons and the label = ""
@@ -721,7 +750,7 @@ namespace Chezz_Puzzler
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-             
+
             string vs = Environment.Version.ToString().Split(".")[0];
             double versionofApp = double.Parse(vs);
             AppTitle = Text;
@@ -1171,21 +1200,21 @@ namespace Chezz_Puzzler
 
             }
         }
-         
+
         public string findFileWithCorrectExtension(string name, bool FullPath)
         {
             string ext = string.Empty;
             string outputName = string.Empty;
             if (Directory.Exists(path_puzzles))
             {
-               
+
                 List<string> filenames = Directory.GetFiles(path_puzzles, "*.txt").ToList();
                 List<string> filenames2 = Directory.GetFiles(path_puzzles, "*.pzq").ToList();
                 filenames.AddRange(filenames2);
-                 
+
                 foreach (string fileName in filenames)
                 {
-                     
+
                     if (Path.GetFileNameWithoutExtension(fileName) == name)
                     {
                         if (FullPath)
@@ -1194,17 +1223,17 @@ namespace Chezz_Puzzler
                         }
                         else
                         {
-                            outputName =  Path.GetFileNameWithoutExtension(fileName);
+                            outputName = Path.GetFileNameWithoutExtension(fileName);
                         }
-                        
-                        ext = Path.GetExtension( fileName);
-                        
+
+                        ext = Path.GetExtension(fileName);
+
                         break;
                     }
                 }
             }
-            string result =  outputName +  ext;
-            
+            string result = outputName + ext;
+
             return result;
         }
         public string findFileNameWithCorrectExtension(string name)
@@ -1236,17 +1265,17 @@ namespace Chezz_Puzzler
         }
         public void SolveSelectedPuzzle()
         {
-            
+
             try
             {
                 UnhightlightAllSquares();
-                if (listofPuzzles.SelectedItems.Count == 1 || DraggedFileSuccessfully==true) // if an item is selected or a file is dragged
+                if (listofPuzzles.SelectedItems.Count == 1 || DraggedFileSuccessfully == true) // if an item is selected or a file is dragged
                 {
                     string nameOfSelectedPuzzle = string.Empty;
                     if (DraggedFileSuccessfully == false)
                     {
 
-                     
+
                         nameOfSelectedPuzzle = (string)listofPuzzles.SelectedItems[0];
                         if (listofPuzzles.SelectedItems[0].ToString().Contains('<'))
                         {
@@ -1258,9 +1287,9 @@ namespace Chezz_Puzzler
                         nameOfSelectedPuzzle = findFileWithCorrectExtension(nameOfSelectedPuzzle, true);
                         CurrentlyOpenedPuzzleFilename = nameOfSelectedPuzzle;
                     }
-                    
-                  
-                    
+
+
+
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
                         MakeLabelsEmpty(label_show_solution, label_hint, label_move_right, label_move_wrong);
@@ -1317,13 +1346,13 @@ namespace Chezz_Puzzler
                     }
                     else
                     {
- 
+
                         MessageBox.Show("The selected puzzle no longer exists.");
                         RefreshPuzzleList();
                         CurrentlyOpenedPuzzleFilename = "";
                     }
                 }
-                Text = AppTitle  + " - "+ Path.GetFileNameWithoutExtension(CurrentlyOpenedPuzzleFilename);
+                Text = AppTitle + " - " + Path.GetFileNameWithoutExtension(CurrentlyOpenedPuzzleFilename);
             }
             catch
             {
@@ -1697,7 +1726,7 @@ namespace Chezz_Puzzler
             CurrentlySolvedPuzzleChapterStep++;
             PuzzleResponse.Enabled = true;
         }
-        public  void PlaySoundFile(string name)
+        public void PlaySoundFile(string name)
         {
             if (checkBox_sounds.Checked)
             {
@@ -1783,14 +1812,14 @@ namespace Chezz_Puzzler
                 List<string> filenames = Directory.GetFiles(path_puzzles, "*.txt").ToList();
                 List<string> filenames2 = Directory.GetFiles(path_puzzles, "*.pzq").ToList();
                 filenames.AddRange(filenames2);
-                
+
                 if (filenames.Count > 0)
                 {
                     panel_dummy_EL.Visible = false;
                     foreach (string filename in Directory.GetFiles(path_puzzles))
                     {
                         string ext = Path.GetExtension(filename);
-                        if (ext == ".txt" || ext==".pzq")
+                        if (ext == ".txt" || ext == ".pzq")
                         {
 
                             int descriptionCount = File.ReadAllLines(filename).Count(x => x.Contains('<'));
@@ -1891,7 +1920,7 @@ namespace Chezz_Puzzler
         {
             string inpuSq = action_SquareXSquare;
             string promotionPiece = string.Empty;
-            if (action_SquareXSquare.Length==7 && action_SquareXSquare.Contains('='))
+            if (action_SquareXSquare.Length == 7 && action_SquareXSquare.Contains('='))
             {
                 promotionPiece = action_SquareXSquare.Split('=')[1];
                 inpuSq = action_SquareXSquare.Split('=')[0];
@@ -1944,7 +1973,7 @@ namespace Chezz_Puzzler
                         {
                             char name = promotionPiece.ToCharArray()[0];
                             tempList[x][i].BackgroundImage = CharactersAsPieceImages[name];
-                            tempList[x][i].PieceName = name.ToString() ;
+                            tempList[x][i].PieceName = name.ToString();
                         }
                         break;
                     }
@@ -2007,7 +2036,7 @@ namespace Chezz_Puzzler
                 if (e.KeyCode == Keys.A) { AddArrangedChapter(); }
                 if (e.KeyCode == Keys.Z) { GeneratePuzzleRush(); }
 
-                     // if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up) MessageBox.Show("My message");
+                // if (e.Modifiers == Keys.Control && e.KeyCode == Keys.Up) MessageBox.Show("My message");
                 if (e.KeyCode == Keys.D1)
                 {
                     if (e.Modifiers == Keys.Control)
@@ -2810,12 +2839,12 @@ namespace Chezz_Puzzler
                     else
                     {
 
-                    
+
                         name = listofPuzzles.SelectedItems[0].ToString();
                         string nameFile = findFileWithCorrectExtension(name, false);
                         CurrentlyOpenedPuzzleFilename = path_puzzles + "\\" + nameFile;
                     }
-                    
+
                     //------------------------------------------------------------------
                     if (File.Exists(CurrentlyOpenedPuzzleFilename))
                     {
@@ -2993,7 +3022,7 @@ namespace Chezz_Puzzler
             {
                 string? selectedName = listofPuzzles.SelectedItems[0].ToString();
                 if (selectedName.Contains('<')) { selectedName = selectedName.Split("<")[0].Trim(); ; }
-                string path = findFileWithCorrectExtension(selectedName,true);
+                string path = findFileWithCorrectExtension(selectedName, true);
                 if (File.ReadAllLines(path)[0].Contains('<'))
                 {
                     richTextBox_description.Text = File.ReadAllLines(path)[0].Replace("<", "").Replace(">", "");
@@ -3571,15 +3600,15 @@ namespace Chezz_Puzzler
             WriteSettingsFile();
         }
 
-       
-      
+
+
 
         private void Form_base_DragDrop(object sender, DragEventArgs e)
         {
             // drag and drop a file
             string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             string firstFile = fileList[0];
-            if(Path.GetExtension(firstFile) == ".pzq")
+            if (Path.GetExtension(firstFile) == ".pzq")
             {
                 DraggedFileSuccessfully = true;
                 CurrentlyOpenedPuzzleFilename = firstFile;
@@ -3591,14 +3620,14 @@ namespace Chezz_Puzzler
                 {
                     EditPuzzleFile();
                 }
-               
-                
-                                   
+
+
+
             }
-            else { MessageBox.Show("the dropped file must have an extension .pzq"); }    
+            else { MessageBox.Show("the dropped file must have an extension .pzq"); }
         }
 
-      
+
 
         private void Form_base_DragEnter(object sender, DragEventArgs e)
         {

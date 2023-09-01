@@ -1,4 +1,0 @@
-<White can check you to force promote his passed pawn, but you can prevent this>
-[-k-------------------------------------------R-----p--PK---r----][h2xg3][No hints][ ][ ][White to move][ ][ ]
-<White can check you to force promote his passed pawn, but you can prevent this>
-[---R-------P--rk------------------------------------------------][h7xg6][No hints][ ][ ][Black to move][ ][ ]

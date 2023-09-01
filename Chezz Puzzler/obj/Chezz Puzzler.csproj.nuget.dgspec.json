@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {}
+    "C:\\Chess-Puzzle-Solver-and-Maker-main\\Chezz Puzzler\\Chezz Puzzler.csproj": {}
   },
   "projects": {
-    "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj": {
+    "C:\\Chess-Puzzle-Solver-and-Maker-main\\Chezz Puzzler\\Chezz Puzzler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+        "projectUniqueName": "C:\\Chess-Puzzle-Solver-and-Maker-main\\Chezz Puzzler\\Chezz Puzzler.csproj",
         "projectName": "Chezz Puzzler",
-        "projectPath": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\Chezz Puzzler.csproj",
+        "projectPath": "C:\\Chess-Puzzle-Solver-and-Maker-main\\Chezz Puzzler\\Chezz Puzzler.csproj",
         "packagesPath": "C:\\Users\\35987\\.nuget\\packages\\",
-        "outputPath": "C:\\Chess-Puzzle-Solver-and-Maker\\Chezz Puzzler\\obj\\",
+        "outputPath": "C:\\Chess-Puzzle-Solver-and-Maker-main\\Chezz Puzzler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\35987\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
